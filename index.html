@@ -3,34 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuatrero del 415</title>
+    <title>Cuatrero del 415 - Estilo Apple</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #002b5b; color: #ffffff; text-align: center; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: #002b5b; border: 5px solid #c59112; padding: 30px; border-radius: 15px; }
-        h1 { color: #c59112; text-transform: uppercase; }
-        a { color: #c59112; text-decoration: none; font-weight: bold; }
-        .btn { display: inline-block; padding: 15px 25px; margin: 20px; background-color: #c59112; color: #002b5b; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; }
-        #popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: black; padding: 20px; border: 3px solid #c59112; border-radius: 10px; z-index: 1000; }
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        :root { --apple-blue: #0071e3; --apple-gray: #f5f5f7; --apple-text: #1d1d1f; }
+        body { font-family: "SF Pro Display", "Helvetica Neue", Arial, sans-serif; background-color: var(--apple-gray); color: var(--apple-text); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+        .nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); height: 44px; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #d2d2d7; }
+        .hero { text-align: center; padding: 80px 20px; background: #fff; }
+        .hero h1 { font-size: 56px; font-weight: 600; margin: 0; }
+        .hero p { font-size: 24px; color: #86868b; }
+        .container { max-width: 980px; margin: 40px auto; padding: 20px; }
+        .card { background: #fff; border-radius: 18px; padding: 30px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); margin-bottom: 30px; }
+        .banner { background: linear-gradient(90deg, #000, #333); color: #fff; border-radius: 18px; padding: 40px; text-align: center; margin-bottom: 30px; }
+        .banner a { color: var(--apple-blue); text-decoration: none; font-weight: 500; font-size: 19px; }
+        .btn { background: var(--apple-blue); color: #fff; padding: 12px 24px; border-radius: 980px; text-decoration: none; font-weight: 400; display: inline-block; transition: all 0.3s; }
+        .btn:hover { opacity: 0.8; }
+        .schedule-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .schedule-table th, .schedule-table td { text-align: left; padding: 15px; border-bottom: 1px solid #d2d2d7; }
+        .filter-bar { margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .floating-support { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(0,0,0,0.2); cursor: pointer; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-content { background: #fff; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="nav">ENP Plantel 4 UNAM - Grupo 0415</div>
+    <div class="hero">
+        <img src="#" alt="Escudo UNAM/Prepa 4" style="width: 80px; margin-bottom: 20px;">
         <h1>Cuatrero del 415</h1>
-        <p>Explora nuestros proyectos en <a href="https://encardomy.com" target="_blank">Encardomy</a>.</p>
-        <button class="btn" onclick="location.href='#'">Conoce Shaminket</button>
+        <p>Ciclo Escolar 2026 - 2027</p>
         <br>
-        <button class="btn" onclick="showPopup()">Contáctanos por WhatsApp</button>
+        <a href="https://shaminket.com" class="btn">Conoce Shaminket</a>
     </div>
-    <div id="overlay" onclick="hidePopup()"></div>
-    <div id="popup">
-        <p>¿Deseas abrir WhatsApp para hablar con nosotros?</p>
-        <button class="btn" onclick="window.open('https://wa.me/tu_numero')">Confirmar</button>
-        <button onclick="hidePopup()">Cancelar</button>
-    </div>
+    <div class="container">
+        <div class="banner">
+            <h2>Encardomy</h2>
+            <p>Soluciones para tus tareas, copias e impresiones.</p>
+            <a href="https://encardomy.shaminket.com" target="_blank">Visitar sitio oficial &rsaquo;</a>
+        </div>
+        <div class="card">
+            <h3>Horario Oficial de Clases</h3>
+            <div class="filter-bar">
+                <select id="sectionFilter"><option value="all">Todas las secciones</option><option value="A">Sección A</option><option value="B">Sección B</option></select>
+                <input type="text" id="subjectSearch" placeholder="Filtrar por materia...">
+            </div>
+            <table class="schedule-table">
+                <thead><tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Sección</th></tr></thead>
+                <tbody id="scheduleBody">
+                    <!-- Los datos se cargarían dinámicamente aquí -->
+                    <tr><td>07:00</td><td>Matemáticas</td><td>Historia</td><td>Física</td><td>A</td></tr>
+                </tbody></table></div></div>
+    <div class="floating-support" onclick="openModal()">💬</div>
+    <div id="modal">
+        <div class="modal-content">
+            <div id="step1">
+                <h3>¿Necesitas soporte?</h3>
+                <p>Estamos listos para ayudarte vía WhatsApp.</p>
+                <button class="btn" onclick="nextStep()">Siguiente</button>
+            </div>
+            <div id="step2" style="display:none;">
+                <h3>Confirmar acción</h3>
+                <p>Serás redirigido al chat oficial.</p>
+                <a href="https://wa.me/525571985641" class="btn" target="_blank">Abrir WhatsApp</a>
+                <p onclick="closeModal()" style="margin-top:20px; cursor:pointer; color:#86868b;">Cancelar</p>
+            </div></div></div>
     <script>
-        function showPopup() { document.getElementById('popup').style.display = 'block'; document.getElementById('overlay').style.display = 'block'; }
-        function hidePopup() { document.getElementById('popup').style.display = 'none'; document.getElementById('overlay').style.display = 'none'; }
+        function openModal() { document.getElementById('modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; document.getElementById('step1').style.display = 'block'; document.getElementById('step2').style.display = 'none'; }
+        function nextStep() { document.getElementById('step1').style.display = 'none'; document.getElementById('step2').style.display = 'block'; }
     </script>
 </body>
 </html>
