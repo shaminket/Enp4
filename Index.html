@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuatrero del 415</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #002b5b; color: #ffffff; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: #002b5b; border: 5px solid #c59112; padding: 30px; border-radius: 15px; }
+        h1 { color: #c59112; text-transform: uppercase; }
+        a { color: #c59112; text-decoration: none; font-weight: bold; }
+        .btn { display: inline-block; padding: 15px 25px; margin: 20px; background-color: #c59112; color: #002b5b; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; }
+        #popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: black; padding: 20px; border: 3px solid #c59112; border-radius: 10px; z-index: 1000; }
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cuatrero del 415</h1>
+        <p>Explora nuestros proyectos en <a href="https://encardomy.com" target="_blank">Encardomy</a>.</p>
+        <button class="btn" onclick="location.href='#'">Conoce Shaminket</button>
+        <br>
+        <button class="btn" onclick="showPopup()">Contáctanos por WhatsApp</button>
+    </div>
+    <div id="overlay" onclick="hidePopup()"></div>
+    <div id="popup">
+        <p>¿Deseas abrir WhatsApp para hablar con nosotros?</p>
+        <button class="btn" onclick="window.open('https://wa.me/tu_numero')">Confirmar</button>
+        <button onclick="hidePopup()">Cancelar</button>
+    </div>
+    <script>
+        function showPopup() { document.getElementById('popup').style.display = 'block'; document.getElementById('overlay').style.display = 'block'; }
+        function hidePopup() { document.getElementById('popup').style.display = 'none'; document.getElementById('overlay').style.display = 'none'; }
+    </script>
+</body>
+</html>
