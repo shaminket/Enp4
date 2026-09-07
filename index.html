@@ -6,19 +6,102 @@
   <title>Cuatreros del 415 | ENP 4 Vidal Castañeda y Nájera - UNAM</title>
   <meta name="description" content="Portal oficial de los alumnos del Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4 UNAM. Horario, avisos, apoyo escolar y sorpresas con Encardomy By Shaminket.">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* BANNER NEGRO, AZUL Y MORADO DE REINVENCIÓN */
+    .rebrand-cosmic-banner {
+      background: linear-gradient(90deg, #090a0f 0%, #002b49 35%, #4c1d95 70%, #090a0f 100%);
+      color: #ffffff;
+      padding: 0.95rem 1.5rem;
+      position: relative;
+      z-index: 1001;
+      border-bottom: 2px solid #a855f7;
+      box-shadow: 0 4px 25px rgba(124, 58, 237, 0.4);
+      animation: cosmicShift 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes cosmicShift {
+      0% { box-shadow: 0 4px 20px rgba(0, 43, 73, 0.5); }
+      100% { box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6); }
+    }
+
+    .rebrand-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .rebrand-pill {
+      background: rgba(168, 85, 247, 0.25);
+      border: 1px solid #c084fc;
+      color: #f3e8ff;
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .rebrand-text-main {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: #f8fafc;
+    }
+
+    .rebrand-text-main strong {
+      color: #d8b4fe;
+    }
+
+    .btn-mobile-switch {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-mobile-switch:hover {
+      background: #7c3aed;
+      border-color: #a855f7;
+      transform: translateY(-1px);
+    }
+  </style>
+  <script>
+    // Detección y redirección automática para celulares
+    if (/Mobi|Android|iPhone|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 768 && !window.location.search.includes("force=desktop"))) {
+      window.location.href = "index-movil.html";
+    }
+  </script>
 </head>
 <body>
 
-  <!-- BANNER ROJO DRAMÁTICO SUPERIOR: ACTUALIZACIÓN URGENTE -->
-  <aside class="dramatic-alert-banner">
-    <div class="alert-inner">
-      <div class="alert-badge-cluster">
-        <span class="alert-pulse-tag">🚨 ACTUALIZACIÓN URGENTE</span>
-        <span>¡ATENCIÓN GRUPO 415: Nuevos avisos y disposiciones críticas de Lengua Española!</span>
+  <!-- BANNER NEGRO, AZUL Y MORADO -->
+  <aside class="rebrand-cosmic-banner">
+    <div class="rebrand-inner">
+      <div style="display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;">
+        <span class="rebrand-pill">✨ PRÓXIMAMENTE</span>
+        <span class="rebrand-text-main">
+          <strong>¡Algo grande está por venir!</strong> Esta página se reinventa para el Grupo 415 &bull; Encardomy By Shaminket
+        </span>
       </div>
-      <a href="actualizaciones.html" class="alert-action-btn">
-        <span>Ver Actualizaciones Ahora</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      <a href="index-movil.html" class="btn-mobile-switch">
+        <span>📱 Ver Versión Móvil</span>
       </a>
     </div>
   </aside>
@@ -42,7 +125,6 @@
       </a>
 
       <nav class="nav-links-menu">
-        <a href="actualizaciones.html" class="nav-link-item" style="color: #ff8a9b; font-weight: 700;">📢 Actualizaciones</a>
         <a href="#horario" class="nav-link-item">Horario 0415</a>
         <a href="#servicios" class="nav-link-item">Lengua Española</a>
         <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-nav-gold">
@@ -66,12 +148,9 @@
         Aquí encontrarás lo que <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket les tiene para ustedes. Además aquí recibirán las actualizaciones de la asignatura de Lengua Española, también podrán realizar sus preguntas de español y pedir tareas. Esta página es provisional: <strong>¡esperen las sorpresas!</strong>
       </p>
       <div class="hero-btn-row">
-        <a href="actualizaciones.html" class="btn-hero-primary" style="background: linear-gradient(135deg, #ef233c 0%, #d90429 100%); color: #fff; border-color: rgba(255,255,255,0.4);">
-          <span>🚨 Ver Nuevas Actualizaciones</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
         <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
           <span>Conoce Shaminket</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
           Explorar Encardomy
@@ -83,7 +162,7 @@
   <!-- CONTENEDOR MAESTRO -->
   <main class="master-container">
 
-    <!-- BANNER PUBLICITARIO ENCARDOMY (Tareas, Copias e Impresiones) -->
+    <!-- BANNER PUBLICITARIO ENCARDOMY -->
     <section class="promo-apple-card">
       <div class="promo-text-wrap">
         <div class="promo-badge-tag">⚡ Apoyo Estudiantil Exclusivo Grupo 415</div>
@@ -106,7 +185,7 @@
       </div>
     </section>
 
-    <!-- HORARIO OFICIAL DIGITALIZADO CON FILTROS EN TIEMPO REAL -->
+    <!-- HORARIO OFICIAL DIGITALIZADO (TABLA COMPLETA PARA ESCRITORIO) -->
     <section id="horario" class="schedule-master-card">
       <div class="schedule-header-box">
         <div class="schedule-title-area">
@@ -119,7 +198,7 @@
         <span class="badge-prepa4">Plantel 4 Tacubaya</span>
       </div>
 
-      <!-- Consola de Filtros Interactivos -->
+      <!-- Consola de Filtros -->
       <div class="filters-console">
         <div class="filter-line">
           <span class="filter-tag-title">Sección:</span>
@@ -167,286 +246,91 @@
             </tr>
           </thead>
           <tbody>
-            <!-- 7:00 a 7:50 -->
             <tr>
               <td class="time-cell">7:00 - 7:50</td>
-              <td>
-                <div class="class-item" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Dibujo II" data-sec="B">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
+              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
+              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
+              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Dibujo II" data-sec="B"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div></td>
             </tr>
-
-            <!-- 7:50 a 8:40 -->
             <tr>
               <td class="time-cell">7:50 - 8:40</td>
-              <td>
-                <div class="class-item" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-details"><span class="class-room-badge">B-116</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III</div>
-                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-116</span></div></div></td>
+              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
+              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
+              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-117</span></div></div></td>
             </tr>
-
-            <!-- 8:40 a 9:30 -->
             <tr>
               <td class="time-cell">8:40 - 9:30</td>
-              <td>
-                <div class="class-item" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Dibujo II" data-sec="A">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española</div>
-                  <div class="class-details"><span class="class-room-badge">B-110</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Dibujo II" data-sec="A"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div></td>
+              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
+              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-110</span></div></div></td>
+              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-117</span></div></div></td>
             </tr>
-
-            <!-- 9:30 a 10:20 -->
             <tr>
               <td class="time-cell">9:30 - 10:20</td>
               <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
               </td>
+              <td><div class="class-item" data-subj="Informática" data-sec="both"><div class="class-name">Informática</div><div class="class-details"><span class="class-room-badge">I-108</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Informática" data-sec="both">
-                  <div class="class-name">Informática</div>
-                  <div class="class-details"><span class="class-room-badge">I-108</span></div>
-                </div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
               </td>
+              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
+                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
               </td>
             </tr>
-
-            <!-- 10:20 a 11:10 -->
             <tr>
               <td class="time-cell">10:20 - 11:10</td>
+              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
+              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-206</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </div>
+                <div class="class-item" data-subj="Dibujo II" data-sec="A"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
+                <div class="class-item" data-subj="Dibujo II" data-sec="B"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
               </td>
-              <td>
-                <div class="class-item" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica</div>
-                  <div class="class-details"><span class="class-room-badge">B-206</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Dibujo II" data-sec="A">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-                <div class="class-item" data-subj="Dibujo II" data-sec="B">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both">
-                  <div class="class-name">Género y Prevención</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both"><div class="class-name">Género y Prevención</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
             </tr>
-
-            <!-- 11:10 a 12:00 -->
             <tr>
               <td class="time-cell">11:10 - 12:00</td>
-              <td>
-                <div class="class-item" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Informática" data-sec="both">
-                  <div class="class-name">Informática</div>
-                  <div class="class-details"><span class="class-room-badge">CC-2</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española</div>
-                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Educación Física IV" data-sec="both">
-                  <div class="class-name">Educación Física IV</div>
-                  <div class="class-details"><span class="class-room-badge">GIM1</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
+              <td><div class="class-item" data-subj="Informática" data-sec="both"><div class="class-name">Informática</div><div class="class-details"><span class="class-room-badge">CC-2</span></div></div></td>
+              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-113</span></div></div></td>
+              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Educación Física IV" data-sec="both"><div class="class-name">Educación Física IV</div><div class="class-details"><span class="class-room-badge">GIM1</span></div></div></td>
             </tr>
-
-            <!-- 12:00 a 12:50 -->
             <tr>
               <td class="time-cell">12:00 - 12:50</td>
               <td>
-                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="A">
-                  <div class="class-name">Orientación Educativa</div>
-                  <div class="class-details"><span class="class-room-badge">B-110</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </div>
-                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="B">
-                  <div class="class-name">Orientación Educativa</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </div>
+                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="A"><div class="class-name">Orientación Educativa</div><div class="class-details"><span class="class-room-badge">B-110</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
+                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="B"><div class="class-name">Orientación Educativa</div><div class="class-details"><span class="class-room-badge">B-112</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
               </td>
-              <td>
-                <div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both">
-                  <div class="class-name">Género y Prevención</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </div>
-              </td>
-              <td>
-                <div class="class-item" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española</div>
-                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both"><div class="class-name">Género y Prevención</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
+              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-113</span></div></div></td>
               <td class="free-cell">Libre</td>
-              <td>
-                <div class="class-item" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-details"><span class="class-room-badge">B-115</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-115</span></div></div></td>
             </tr>
-
-            <!-- 12:50 a 13:40 -->
             <tr>
               <td class="time-cell">12:50 - 13:40</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
-              <td>
-                <div class="class-item" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III (Laboratorio)</div>
-                  <div class="class-details"><span class="class-room-badge">A-302</span></div>
-                </div>
-              </td>
+              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III (Laboratorio)</div><div class="class-details"><span class="class-room-badge">A-302</span></div></div></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- BENTO GRID APPLE: SERVICIOS, LENGUA ESPAÑOLA Y TAREAS -->
+    <!-- BENTO GRID APPLE: SERVICIOS -->
     <section id="servicios">
       <div class="bento-section-title">
         <h2>Espacio Académico & Apoyo al 415</h2>
@@ -461,8 +345,8 @@
             Recibe el temario oficial, lecturas asignadas, fechas de entrega y avisos cruciales para el salón de clases de Lengua Española del Grupo 415.
           </p>
           <div class="bento-footer-link">
-            <a href="actualizaciones.html" class="link-encardomy" style="color: var(--alert-red); font-weight: 800;">
-              Ver Avisos Urgentes &rarr;
+            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">
+              Ver en Encardomy &rarr;
             </a>
           </div>
         </div>
@@ -497,7 +381,7 @@
 
   </main>
 
-  <!-- BOTÓN FLOTANTE DE SOPORTE ANIMADO (CON EFECTO RADAR) -->
+  <!-- BOTÓN FLOTANTE DE SOPORTE -->
   <div class="floating-support-container">
     <div class="radar-pulse-ring"></div>
     <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp">
@@ -556,7 +440,6 @@
           <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM Escuela Nacional Preparatoria Plantel 4 "Vidal Castañeda y Nájera"
         </div>
         <div class="footer-links-list">
-          <a href="actualizaciones.html">Actualizaciones</a>
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Plataforma Encardomy</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Agencia Shaminket</a>
         </div>

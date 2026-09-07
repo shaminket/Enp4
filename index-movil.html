@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Cuatreros del 415 | Versión Móvil Oficial</title>
+  <meta name="description" content="Horario de hoy y portal estudiantil del Grupo 0415 de la ENP 4 UNAM optimizado para celular.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ==========================================================
+       ESTILOS EXCLUSIVOS PARA VERSIÓN CELULAR (APPLE iOS FEEL)
+       ========================================================== */
+    :root {
+      --mobile-card-bg: #ffffff;
+      --mobile-border: #e2e8f0;
+      --cosmic-purple: #7c3aed;
+      --cosmic-purple-light: #c084fc;
+    }
+
+    body {
+      padding-bottom: 90px; /* Espacio para botón flotante */
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Banner Cósmico Negro, Azul y Morado para Móvil */
+    .rebrand-mobile-banner {
+      background: linear-gradient(135deg, #090a0f 0%, #001f3f 40%, #581c87 85%, #3b0764 100%);
+      color: #ffffff;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 2px solid #a855f7;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.45);
+      position: sticky;
+      top: 0;
+      z-index: 1002;
+    }
+
+    .rebrand-mobile-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rebrand-sparkle-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px #c084fc);
+    }
+
+    .rebrand-mobile-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+
+    .rebrand-mobile-title span {
+      color: #e9d5ff;
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    /* Barra Superior Compacta Móvil */
+    .mobile-header {
+      background: rgba(0, 22, 40, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--unam-gold);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 48px; /* Debajo del banner */
+      z-index: 1000;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .mobile-crest {
+      width: 34px;
+      height: 34px;
+    }
+
+    .mobile-brand-title {
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+    }
+
+    .mobile-brand-title span {
+      background: var(--unam-gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-mobile-nav {
+      background: var(--unam-gold-gradient);
+      color: var(--unam-blue-dark);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(213, 159, 15, 0.35);
+    }
+
+    /* Hero Banner Móvil */
+    .mobile-hero {
+      background: radial-gradient(circle at 50% 10%, #003d6b 0%, var(--unam-blue) 55%, var(--unam-blue-dark) 100%);
+      color: #ffffff;
+      padding: 2.5rem 1.2rem 2.8rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .mobile-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(213, 159, 15, 0.45);
+      padding: 0.3rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--unam-gold-light);
+      margin-bottom: 1rem;
+    }
+
+    .mobile-hero-h1 {
+      font-size: 2.25rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .mobile-hero-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==========================================================
+       HORARIO EN MÓVIL: VISTA DE UN DÍA (HOY) CON BOTONES
+       ========================================================== */
+    .mobile-schedule-card {
+      background: #ffffff;
+      border-radius: 20px;
+      margin: -1.5rem 1rem 2rem;
+      padding: 1.4rem 1.1rem;
+      box-shadow: 0 15px 35px rgba(0, 22, 40, 0.12);
+      border: 1px solid #e2e8f0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .schedule-header-mobile {
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .schedule-tag-pill {
+      display: inline-block;
+      background: rgba(0, 43, 73, 0.08);
+      color: var(--unam-blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.4rem;
+    }
+
+    .current-day-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--unam-blue-dark);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .schedule-date-badge {
+      font-size: 0.82rem;
+      color: var(--apple-text-sec);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* Barra de Navegación de Días (Segmented Tabs) */
+    .days-segmented-bar {
+      display: flex;
+      background: #f1f5f9;
+      padding: 0.3rem;
+      border-radius: 14px;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .day-tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0.6rem 0.2rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1rem;
+    }
+
+    .day-tab-btn span.tab-sub {
+      font-size: 0.68rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    .day-tab-btn.active {
+      background: var(--unam-blue);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 43, 73, 0.25);
+    }
+
+    .day-tab-btn.active span.tab-sub {
+      color: var(--unam-gold-light);
+    }
+
+    /* Flechas para Anterior / Siguiente Día */
+    .day-arrows-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-day-arrow {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      padding: 0.55rem 1rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--unam-blue);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition-fast);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .btn-day-arrow:hover {
+      background: #e2e8f0;
+      border-color: var(--unam-gold);
+    }
+
+    /* Filtro de Sección Móvil */
+    .section-selector-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+      padding: 0.6rem 0.8rem;
+      border-radius: 12px;
+      border: 1px solid #edf2f7;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-selector-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--unam-blue);
+      text-transform: uppercase;
+    }
+
+    .section-pills-cluster {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .sec-pill-btn {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--apple-text);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .sec-pill-btn.active {
+      background: var(--unam-gold);
+      color: var(--unam-blue-dark);
+      border-color: var(--unam-gold);
+      font-weight: 900;
+    }
+
+    /* Lista Vertical de Clases (Cards Diarias) */
+    .timeline-classes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .timeline-class-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-left: 5px solid var(--unam-blue);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: var(--transition-fast);
+      position: relative;
+    }
+
+    .timeline-class-card.active-now {
+      border-left-color: #22c55e;
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .timeline-time-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .class-time-text {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--unam-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .badge-room-mobile {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .class-name-mobile {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--unam-blue-dark);
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .class-prof-mobile {
+      font-size: 0.78rem;
+      color: var(--apple-text-sec);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge-sec-mobile {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: 5px;
+      margin-left: 0.3rem;
+    }
+
+    .free-hour-card {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 0.85rem;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    /* Módulos de Servicios en Celular */
+    .mobile-section-wrap {
+      padding: 0 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .mobile-promo-box {
+      background: linear-gradient(135deg, #001e38 0%, #002b49 70%, #073860 100%);
+      border: 1.5px solid rgba(213, 159, 15, 0.45);
+      border-radius: 18px;
+      padding: 1.6rem 1.3rem;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 22, 40, 0.15);
+      position: relative;
+    }
+
+    .btn-mobile-promo {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--unam-gold-gradient);
+      color: var(--unam-blue-dark);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      font-weight: 900;
+      text-decoration: none;
+      margin-top: 1.1rem;
+      box-shadow: 0 4px 15px rgba(213, 159, 15, 0.4);
+    }
+
+    /* Enlace a Versión de Escritorio */
+    .desktop-switch-footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.82rem;
+      color: var(--apple-text-sec);
+    }
+
+    .desktop-switch-footer a {
+      color: var(--unam-blue);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BANNER CÓSMICO NEGRO, AZUL Y MORADO -->
+  <aside class="rebrand-mobile-banner">
+    <div class="rebrand-mobile-inner">
+      <div class="rebrand-sparkle-icon">✨</div>
+      <div class="rebrand-mobile-title">
+        ¡ALGO GRANDE ESTÁ POR VENIR!
+        <span>Esta página se reinventa para el Grupo 415 &bull; Encardomy</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- BARRA SUPERIOR COMPACTA -->
+  <header class="mobile-header">
+    <a href="index-movil.html" class="mobile-brand">
+      <svg class="mobile-crest" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="46" fill="#002B49" stroke="#D59F0F" stroke-width="4"/>
+        <path d="M50 14 L66 34 L80 30 L72 50 L86 58 L70 64 L76 82 L50 74 L24 82 L30 64 L14 58 L28 50 L20 30 L34 34 Z" fill="#D59F0F"/>
+        <circle cx="50" cy="50" r="14" fill="#002B49" stroke="#D59F0F" stroke-width="2"/>
+        <text x="50" y="55" font-size="10" font-weight="900" fill="#D59F0F" text-anchor="middle" font-family="sans-serif">415</text>
+      </svg>
+      <div class="mobile-brand-title">Cuatreros <span>415</span></div>
+    </a>
+    <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-nav">
+      Shaminket
+    </a>
+  </header>
+
+  <!-- HERO MÓVIL -->
+  <section class="mobile-hero">
+    <div class="mobile-hero-pill">
+      <span>📱 Vista Móvil Optimizada &bull; Prepa 4 UNAM</span>
+    </div>
+    <h1 class="mobile-hero-h1">Cuatreros del 415</h1>
+    <p class="mobile-hero-desc">
+      Consulta tu horario de hoy en tiempo real, tus salones y el apoyo de <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket.
+    </p>
+  </section>
+
+  <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN DÍA A LA VEZ) -->
+  <section class="mobile-schedule-card">
+    <div class="schedule-header-mobile">
+      <span class="schedule-tag-pill">📅 Horario Escolar Oficial</span>
+      <h2 id="currentDayHeading" class="current-day-title">
+        <span>🗓️</span> <span id="dayNameText">Cargando horario...</span>
+      </h2>
+      <div id="dateSubText" class="schedule-date-badge">Detectando día actual...</div>
+    </div>
+
+    <!-- Segmented Tabs para cambiar de día -->
+    <div class="days-segmented-bar">
+      <button class="day-tab-btn" data-day="1" onclick="selectDay(1)">
+        <span>LUN</span>
+        <span class="tab-sub">Lunes</span>
+      </button>
+      <button class="day-tab-btn" data-day="2" onclick="selectDay(2)">
+        <span>MAR</span>
+        <span class="tab-sub">Martes</span>
+      </button>
+      <button class="day-tab-btn" data-day="3" onclick="selectDay(3)">
+        <span>MIÉ</span>
+        <span class="tab-sub">Miérc.</span>
+      </button>
+      <button class="day-tab-btn" data-day="4" onclick="selectDay(4)">
+        <span>JUE</span>
+        <span class="tab-sub">Jueves</span>
+      </button>
+      <button class="day-tab-btn" data-day="5" onclick="selectDay(5)">
+        <span>VIE</span>
+        <span class="tab-sub">Viernes</span>
+      </button>
+    </div>
+
+    <!-- Botones Anterior y Siguiente Día -->
+    <div class="day-arrows-row">
+      <button class="btn-day-arrow" onclick="prevDay()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>Día anterior</span>
+      </button>
+      <button class="btn-day-arrow" onclick="nextDay()">
+        <span>Día siguiente</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+
+    <!-- Filtro de Sección (A, B o Ambas) -->
+    <div class="section-selector-row">
+      <span class="section-selector-label">Filtrar Sección:</span>
+      <div class="section-pills-cluster">
+        <button id="secAllBtn" class="sec-pill-btn active" onclick="setMobileSection('all')">Todas</button>
+        <button id="secABtn" class="sec-pill-btn" onclick="setMobileSection('A')">Sec. A</button>
+        <button id="secBBtn" class="sec-pill-btn" onclick="setMobileSection('B')">Sec. B</button>
+      </div>
+    </div>
+
+    <!-- Timeline vertical de clases del día -->
+    <div id="timelineList" class="timeline-classes-list">
+      <!-- Se inyecta dinámicamente con JavaScript -->
+    </div>
+  </section>
+
+  <!-- BANNER PUBLICITARIO ENCARDOMY PARA CELULAR -->
+  <div class="mobile-section-wrap">
+    <div class="mobile-promo-box">
+      <span class="promo-badge-tag">⚡ Apoyo Estudiantil</span>
+      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">
+        ¿Te ayudamos con tus tareas? ¡Sacamos tus copias!
+      </h3>
+      <p style="font-size: 0.88rem; color: #e2e8f0; line-height: 1.5;">
+        Asesoría rápida en español y preparación de asignaciones para el Grupo 415.
+      </p>
+      <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-promo">
+        Pedir Ayuda en Encardomy
+      </a>
+    </div>
+  </div>
+
+  <!-- ENLACE PARA CAMBIAR A VERSIÓN DE ESCRITORIO -->
+  <div class="desktop-switch-footer">
+    ¿Estás en computadora o tablet? <br>
+    <a href="index.html?force=desktop">Cambiar a la versión de escritorio completa</a>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DE SOPORTE -->
+  <div class="floating-support-container" style="bottom: 20px; right: 20px;">
+    <div class="radar-pulse-ring"></div>
+    <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp" style="padding: 0.85rem 1.25rem; font-size: 0.88rem;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.77.813 2.796.814h.005c3.18 0 5.767-2.586 5.768-5.766 0-1.54-.6-2.988-1.69-4.077a5.72 5.72 0 0 0-4.083-1.923zm0-2.172c4.418 0 8 3.582 8 8 0 1.766-.575 3.398-1.554 4.725l1.523 5.568-5.733-1.504c-1.309.84-2.857 1.211-4.236 1.211-4.418 0-8-3.582-8-8 0-4.418 3.582-8 8-8z"/>
+      </svg>
+      <span>Dudas</span>
+    </button>
+  </div>
+
+  <!-- MODAL EN 2 PASOS DE WHATSAPP -->
+  <div id="supportModalBackdrop" class="modal-backdrop" onclick="onBackdropClick(event)">
+    <div class="modal-apple-card">
+      <div class="modal-top-bar">
+        <h3><span>❓</span> ¿Tienes dudas?</h3>
+        <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
+      </div>
+      <div class="modal-main-body">
+        <div class="step-track-bar">
+          <div id="trackDot1" class="track-dot active"></div>
+          <div id="trackDot2" class="track-dot"></div>
+        </div>
+
+        <div id="dialogStep1" class="step-view active">
+          <p>
+            ¿Necesitas ayuda con tus tareas o pedidos de copias con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a>? Conéctate directamente con el soporte oficial.
+          </p>
+          <button class="btn-step-action" style="background: var(--unam-blue);" onclick="goToStep2()">
+            Continuar al paso 2 &rarr;
+          </button>
+        </div>
+
+        <div id="dialogStep2" class="step-view">
+          <p>
+            <strong>Paso 2 de 2:</strong> Se abrirá WhatsApp al número oficial <strong>+52 55 7198 5641</strong> con atención para el Grupo 415.
+          </p>
+          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola%20/%20Tareas" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-step-action">
+            💬 Abrir WhatsApp
+          </a>
+          <button class="btn-step-back" onclick="goToStep1()">
+            &larr; Volver al paso 1
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE HORARIO DINÁMICO POR DÍA EN CELULAR -->
+  <script>
+    // Datos completos del Horario Grupo 0415
+    const scheduleData = {
+      1: {
+        name: "Lunes",
+        classes: [
+          { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "07:50 - 08:40", subject: "Física III", room: "B-116", prof: "Profra. Reyna García Gabriela", section: "both" },
+          { time: "08:40 - 09:30", subject: "Física III", room: "B-109", prof: "Profra. Reyna García Gabriela", section: "both" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
+          { time: "10:20 - 11:10", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
+          { time: "11:10 - 12:00", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
+          { time: "12:00 - 12:50", subject: "Orientación Educativa IV", room: "B-110", prof: "Sección A", section: "A" },
+          { time: "12:00 - 12:50", subject: "Orientación Educativa IV", room: "B-112", prof: "Sección B", section: "B" }
+        ]
+      },
+      2: {
+        name: "Martes",
+        classes: [
+          { time: "07:00 - 07:50", subject: "Matemáticas IV", room: "B-112", prof: "Prof. Quintana Mejía Saúl", section: "both" },
+          { time: "07:50 - 08:40", subject: "Matemáticas IV", room: "B-112", prof: "Prof. Quintana Mejía Saúl", section: "both" },
+          { time: "08:40 - 09:30", subject: "Dibujo II", room: "B-008", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Informática", room: "I-108", prof: "Laboratorio Informática", section: "both" },
+          { time: "10:20 - 11:10", subject: "Lógica", room: "B-206", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "11:10 - 12:00", subject: "Informática", room: "CC-2", prof: "Centro Cómputo 2", section: "both" },
+          { time: "12:00 - 12:50", subject: "Género y Prevención de las Violencias", room: "B-109", prof: "Asignatura Ordinaria", section: "both" }
+        ]
+      },
+      3: {
+        name: "Miércoles",
+        classes: [
+          { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "07:50 - 08:40", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "08:40 - 09:30", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
+          { time: "10:20 - 11:10", subject: "Dibujo II", room: "B-008", prof: "Sección A", section: "A" },
+          { time: "10:20 - 11:10", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
+          { time: "11:10 - 12:00", subject: "Lengua Española", room: "B-113", prof: "Profra. Vázquez González María", section: "both" },
+          { time: "12:00 - 12:50", subject: "Lengua Española", room: "B-113", prof: "Profra. Vázquez González María", section: "both" }
+        ]
+      },
+      4: {
+        name: "Jueves",
+        classes: [
+          { time: "07:00 - 07:50", subject: "Matemáticas IV", room: "B-109", prof: "Prof. Quintana Mejía Saúl", section: "both" },
+          { time: "07:50 - 08:40", subject: "Matemáticas IV", room: "B-109", prof: "Prof. Quintana Mejía Saúl", section: "both" },
+          { time: "08:40 - 09:30", subject: "Lengua Española", room: "B-110", prof: "Profra. Vázquez González María", section: "both" },
+          { time: "09:30 - 10:20", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "10:20 - 11:10", subject: "Historia Universal III", room: "B-109", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "11:10 - 12:00", subject: "Historia Universal III", room: "B-109", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "12:00 - 13:40", subject: "Tiempo Libre / Estudio", room: "-", prof: "Sin actividades programadas", section: "free" }
+        ]
+      },
+      5: {
+        name: "Viernes",
+        classes: [
+          { time: "07:00 - 07:50", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
+          { time: "07:50 - 08:40", subject: "Historia Universal III", room: "B-117", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "08:40 - 09:30", subject: "Matemáticas IV", room: "B-117", prof: "Prof. Quintana Mejía Saúl", section: "both" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
+          { time: "10:20 - 11:10", subject: "Género y Prevención de las Violencias", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
+          { time: "11:10 - 12:00", subject: "Educación Física IV", room: "GIM1", prof: "Gimnasio 1", section: "both" },
+          { time: "12:00 - 12:50", subject: "Física III", room: "B-115", prof: "Profra. Reyna García Gabriela", section: "both" },
+          { time: "12:50 - 13:40", subject: "Física III (Laboratorio)", room: "A-302", prof: "Laboratorio A-302", section: "both" }
+        ]
+      }
+    };
+
+    let selectedDay = 1;
+    let selectedSection = 'all';
+
+    // Determinar día actual automáticamente
+    function getTodayDayIndex() {
+      const day = new Date().getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+      if (day >= 1 && day <= 5) {
+        return day;
+      }
+      return 1; // Si es sábado o domingo, muestra lunes
+    }
+
+    function initMobileSchedule() {
+      selectedDay = getTodayDayIndex();
+      renderSchedule();
+    }
+
+    function selectDay(dayNum) {
+      selectedDay = dayNum;
+      renderSchedule();
+    }
+
+    function prevDay() {
+      selectedDay = selectedDay > 1 ? selectedDay - 1 : 5;
+      renderSchedule();
+    }
+
+    function nextDay() {
+      selectedDay = selectedDay < 5 ? selectedDay + 1 : 1;
+      renderSchedule();
+    }
+
+    function setMobileSection(sec) {
+      selectedSection = sec;
+      document.getElementById('secAllBtn').classList.toggle('active', sec === 'all');
+      document.getElementById('secABtn').classList.toggle('active', sec === 'A');
+      document.getElementById('secBBtn').classList.toggle('active', sec === 'B');
+      renderSchedule();
+    }
+
+    function renderSchedule() {
+      const dayData = scheduleData[selectedDay];
+      const headingElem = document.getElementById('dayNameText');
+      const subElem = document.getElementById('dateSubText');
+      const listContainer = document.getElementById('timelineList');
+
+      // Actualizar Tabs
+      document.querySelectorAll('.day-tab-btn').forEach(btn => {
+        const d = parseInt(btn.getAttribute('data-day'));
+        btn.classList.toggle('active', d === selectedDay);
+      });
+
+      // Títulos
+      const isToday = (selectedDay === new Date().getDay());
+      headingElem.textContent = isToday ? `Hoy: ${dayData.name}` : `Día: ${dayData.name}`;
+      
+      const now = new Date();
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      if (isToday) {
+        subElem.innerHTML = `<span style="color:#22c55e; font-weight:800;">● Horario en vivo de hoy</span> &bull; Grupo 0415`;
+      } else {
+        subElem.innerHTML = `Mostrando clases del día ${dayData.name} &bull; Ciclo 2026-2027`;
+      }
+
+      // Render de clases
+      listContainer.innerHTML = '';
+      let visibleCount = 0;
+
+      dayData.classes.forEach(c => {
+        if (c.section === 'free') {
+          listContainer.innerHTML += `
+            <div class="free-hour-card">
+              ☕ ${c.time} &bull; ${c.subject} (${c.prof})
+            </div>
+          `;
+          return;
+        }
+
+        const matchSec = (selectedSection === 'all') || (c.section === 'both') || (c.section === selectedSection);
+        if (!matchSec) return;
+
+        visibleCount++;
+        let secBadge = '';
+        if (c.section === 'A') secBadge = '<span class="badge-sec-mobile tag-sec-a">Sección A</span>';
+        if (c.section === 'B') secBadge = '<span class="badge-sec-mobile tag-sec-b">Sección B</span>';
+
+        listContainer.innerHTML += `
+          <div class="timeline-class-card">
+            <div class="timeline-time-row">
+              <div class="class-time-text">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>${c.time}</span>
+              </div>
+              <span class="badge-room-mobile">Salón ${c.room}</span>
+            </div>
+            <div class="class-name-mobile">${c.subject} ${secBadge}</div>
+            <div class="class-prof-mobile">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>${c.prof}</span>
+            </div>
+          </div>
+        `;
+      });
+
+      if (visibleCount === 0) {
+        listContainer.innerHTML = `
+          <div class="free-hour-card" style="padding: 2rem;">
+            No hay clases programadas para esta sección en el día seleccionado.
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileSchedule);
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
