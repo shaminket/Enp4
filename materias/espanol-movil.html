@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Física III | Grupo 0415 &bull; ENP 4 UNAM</title>
-  <meta name="description" content="Centro de apoyo, avisos y tareas de Física III para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
+  <title>Lengua Española | Grupo 0415 &bull; ENP 4 UNAM</title>
+  <meta name="description" content="Centro de apoyo, avisos y tareas de Lengua Española para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
   <link rel="stylesheet" href="../css/styles.css">
   <script>
     function checkResponsive() {
       const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
       if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("fisica-movil");
+        /* mobile */
       }
     }
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
+  </script>
+  <script>
+    function checkDesktop() {
+      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
+        window.location.replace("espanol");
+      }
+    }
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
   </script>
 </head>
 <body>
@@ -58,13 +67,13 @@
   <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">⚡</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Física III</h1>
+      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">📖</div>
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Lengua Española</h1>
       <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1.2rem;">
-        Clave 1401 &bull; 14 créditos &bull; Profra. Reyna García Gabriela
+        Clave 1402 &bull; 20 créditos &bull; Profra. Vázquez González María
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Estudio de la física como motor del desarrollo científico y tecnológico. Centrada en el movimiento de satélites (mecánica, gravitación) y la generación de energía eléctrica (electromagnetismo, circuitos), combinando teoría en aula y prácticas en laboratorio.
+        Tiene como propósito el desarrollo del pensamiento crítico y la competencia comunicativa para comprender y producir diversos tipos textuales (académicos y sociales). Comprende análisis literario de textos españoles, tipología textual (narrativa, expositiva, argumentativa) e investigación con herramientas digitales y TIC.
       </p>
     </div>
   </section>
@@ -75,35 +84,47 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">
             &larr; Volver
           </button>
         </div>
-        <span class="win-titlebar-text">Física III &bull; Grupo 0415</span>
+        <span class="win-titlebar-text">Lengua Española &bull; Grupo 0415</span>
       </div>
 
       <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
         
         <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-                <!-- AVISO OFICIAL DE ACTUALIZACIONES -->
+                <!-- AVISO OFICIAL Y CAJA PARA ENVIAR DUDAS -->
         <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+          <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.4rem;">
             <span style="font-size: 1.8rem;">📢</span>
             <div>
               <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
-                Estado de la Asignatura
+                Actualizaciones del Curso
               </span>
-              <h3 style="color: #001628; font-size: 1.3rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
-                Sin actualizaciones pendientes al momento
+              <h3 style="color: #001628; font-size: 1.35rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
+                Al momento no hay actualizaciones
               </h3>
-              <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin: 0;">
-                Por el momento no hay nuevos avisos o tareas publicadas para este curso. En cuanto el profesor o profesora comparta acuerdos, tareas o temarios de clase, se te notificará de inmediato por este medio.
+              <p style="color: #475569; font-size: 0.98rem; line-height: 1.6; margin: 0;">
+                Mantente pendiente para ver las novedades, acuerdos de evaluación y tareas que asigne la profesora Vázquez.
               </p>
             </div>
+          </div>
+
+          <!-- CUADRO: ENVIAR TUS DUDAS -->
+          <div style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 900; color: #D59F0F; text-transform: uppercase; letter-spacing: 1px;">Nuevo Módulo</div>
+              <strong style="color: #002B7A; font-size: 1.12rem; display: block; margin-top: 0.2rem;">¿Tienes dudas sobre Lengua Española?</strong>
+              <p style="color: #64748b; font-size: 0.88rem; margin-top: 0.2rem; margin-bottom: 0;">Pronto podrás enviar tus dudas directamente a través de nuestro buzón escolar.</p>
+            </div>
+            <a href="espanol-dudas-movil" class="btn-encardomy" style="padding: 0.75rem 1.5rem; font-size: 0.92rem; text-decoration: none;">
+              <span>Enviar tus dudas &rarr;</span>
+            </a>
           </div>
         </div>
 

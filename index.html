@@ -38,12 +38,14 @@
 
     <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
     <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">✨ ALGO GRANDE ESTÁ POR VENIR</span>
-        <span class="rebrand-text-main">
-          <strong>Esta página se reinventa</strong> &bull; La nueva experiencia para los alumnos del Grupo 415
-        </span>
-      </div>
+      <a href="centro-control" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+        <div class="rebrand-inner">
+          <span class="rebrand-pill">✨ NUEVAS ACTUALIZACIONES</span>
+          <span class="rebrand-text-main">
+            <strong>Novedades del 415</strong> &bull; Consulta las actualizaciones en el Centro de Control de Materias &rarr;
+          </span>
+        </div>
+      </a>
     </aside>
 
     <!-- BARRA DE NAVEGACIÓN ULTRA-GLASS -->
@@ -162,6 +164,9 @@
       </div>
 
       <div class="schedule-card-body">
+                <!-- MÓDULO INTERACTIVO DE TOLERANCIA EN TIEMPO REAL -->
+        <div id="liveToleranceModule" style="display: none; margin-bottom: 1.8rem;"></div>
+
         <div class="schedule-header-box">
         <div class="schedule-title-area">
           <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
@@ -231,84 +236,319 @@
             </tr>
           </thead>
           <tbody>
+            <!-- 7:00 - 7:50 -->
             <tr>
               <td class="time-cell">7:00 - 7:50</td>
-              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
-              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
-              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
-              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Dibujo II" data-sec="B"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div></td>
+              <td>
+                <a href="materias/geografia" class="class-item class-item-link" data-subj="Geografía" data-sec="both">
+                  <div class="class-name">Geografía</div>
+                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
+                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
+                  <div class="class-name">Matemáticas IV</div>
+                  <div class="class-prof-name">Prof. Saúl Quintana</div>
+                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/geografia" class="class-item class-item-link" data-subj="Geografía" data-sec="both">
+                  <div class="class-name">Geografía</div>
+                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
+                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
+                  <div class="class-name">Matemáticas IV</div>
+                  <div class="class-prof-name">Prof. Saúl Quintana</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/dibujo-b" class="class-item class-item-link" data-subj="Dibujo II" data-sec="B">
+                  <div class="class-name">Dibujo II</div>
+                  <div class="class-prof-name">Taller Sec. B</div>
+                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 7:50 - 8:40 -->
             <tr>
               <td class="time-cell">7:50 - 8:40</td>
-              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-116</span></div></div></td>
-              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
-              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
-              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-117</span></div></div></td>
+              <td>
+                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
+                  <div class="class-name">Física III</div>
+                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
+                  <div class="class-details"><span class="class-room-badge">B-116</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
+                  <div class="class-name">Matemáticas IV</div>
+                  <div class="class-prof-name">Prof. Saúl Quintana</div>
+                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/logica" class="class-item class-item-link" data-subj="Lógica" data-sec="both">
+                  <div class="class-name">Lógica</div>
+                  <div class="class-prof-name">Colegio de Filosofía</div>
+                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
+                  <div class="class-name">Matemáticas IV</div>
+                  <div class="class-prof-name">Prof. Saúl Quintana</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/historia" class="class-item class-item-link" data-subj="Historia Universal III" data-sec="both">
+                  <div class="class-name">Historia Universal III</div>
+                  <div class="class-prof-name">Colegio de Historia</div>
+                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 8:40 - 9:30 -->
             <tr>
               <td class="time-cell">8:40 - 9:30</td>
-              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Dibujo II" data-sec="A"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div></td>
-              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
-              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-110</span></div></div></td>
-              <td><div class="class-item" data-subj="Matemáticas IV" data-sec="both"><div class="class-name">Matemáticas IV</div><div class="class-details"><span class="class-room-badge">B-117</span></div></div></td>
+              <td>
+                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
+                  <div class="class-name">Física III</div>
+                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/dibujo-a" class="class-item class-item-link" data-subj="Dibujo II" data-sec="A">
+                  <div class="class-name">Dibujo II</div>
+                  <div class="class-prof-name">Taller Sec. A</div>
+                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/logica" class="class-item class-item-link" data-subj="Lógica" data-sec="both">
+                  <div class="class-name">Lógica</div>
+                  <div class="class-prof-name">Colegio de Filosofía</div>
+                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/espanol" class="class-item class-item-link" data-subj="Lengua Española" data-sec="both">
+                  <div class="class-name">Lengua Española</div>
+                  <div class="class-prof-name">Profra. María Vázquez</div>
+                  <div class="class-details"><span class="class-room-badge">B-110</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
+                  <div class="class-name">Matemáticas IV</div>
+                  <div class="class-prof-name">Prof. Saúl Quintana</div>
+                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 9:30 - 10:20 -->
             <tr>
               <td class="time-cell">9:30 - 10:20</td>
               <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
+                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. A (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. B (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
               </td>
-              <td><div class="class-item" data-subj="Informática" data-sec="both"><div class="class-name">Informática</div><div class="class-details"><span class="class-room-badge">I-108</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
+                <a href="materias/informatica" class="class-item class-item-link" data-subj="Informática" data-sec="both">
+                  <div class="class-name">Informática</div>
+                  <div class="class-prof-name">Taller de Cómputo</div>
+                  <div class="class-details"><span class="class-room-badge">I-108</span></div>
+                </a>
               </td>
-              <td><div class="class-item" data-subj="Geografía" data-sec="both"><div class="class-name">Geografía</div><div class="class-details"><span class="class-room-badge">A-104</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="A"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
-                <div class="class-item" data-subj="Lengua extranjera Inglés IV" data-sec="B"><div class="class-name">Inglés IV</div><div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
+                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. A (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. B (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/geografia" class="class-item class-item-link" data-subj="Geografía" data-sec="both">
+                  <div class="class-name">Geografía</div>
+                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
+                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. A (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
+                  <div class="class-name">Inglés IV</div>
+                  <div class="class-prof-name">Sec. B (Profra. Idiomas)</div>
+                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
               </td>
             </tr>
+
+            <!-- 10:20 - 11:10 -->
             <tr>
               <td class="time-cell">10:20 - 11:10</td>
-              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
-              <td><div class="class-item" data-subj="Lógica" data-sec="both"><div class="class-name">Lógica</div><div class="class-details"><span class="class-room-badge">B-206</span></div></div></td>
               <td>
-                <div class="class-item" data-subj="Dibujo II" data-sec="A"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
-                <div class="class-item" data-subj="Dibujo II" data-sec="B"><div class="class-name">Dibujo II</div><div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
+                <a href="materias/espanol" class="class-item class-item-link" data-subj="Lengua Española" data-sec="both">
+                  <div class="class-name">Lengua Española</div>
+                  <div class="class-prof-name">Profra. María Vázquez</div>
+                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
+                </a>
               </td>
-              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both"><div class="class-name">Género y Prevención</div><div class="class-details"><span class="class-room-badge">B-108</span></div></div></td>
+              <td>
+                <a href="materias/logica" class="class-item class-item-link" data-subj="Lógica" data-sec="both">
+                  <div class="class-name">Lógica</div>
+                  <div class="class-prof-name">Colegio de Filosofía</div>
+                  <div class="class-details"><span class="class-room-badge">B-206</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/dibujo-a" class="class-item class-item-link" data-subj="Dibujo II" data-sec="A">
+                  <div class="class-name">Dibujo II</div>
+                  <div class="class-prof-name">Taller Sec. A</div>
+                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+                <a href="materias/dibujo-b" class="class-item class-item-link" data-subj="Dibujo II" data-sec="B">
+                  <div class="class-name">Dibujo II</div>
+                  <div class="class-prof-name">Taller Sec. B</div>
+                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/historia" class="class-item class-item-link" data-subj="Historia Universal III" data-sec="both">
+                  <div class="class-name">Historia Universal III</div>
+                  <div class="class-prof-name">Colegio de Historia</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/genero" class="class-item class-item-link" data-subj="Género y Prevención de las Violencias" data-sec="both">
+                  <div class="class-name">Género y Prevención</div>
+                  <div class="class-prof-name">Cultura de Paz</div>
+                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 11:10 - 12:00 -->
             <tr>
               <td class="time-cell">11:10 - 12:00</td>
-              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-112</span></div></div></td>
-              <td><div class="class-item" data-subj="Informática" data-sec="both"><div class="class-name">Informática</div><div class="class-details"><span class="class-room-badge">CC-2</span></div></div></td>
-              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-113</span></div></div></td>
-              <td><div class="class-item" data-subj="Historia Universal III" data-sec="both"><div class="class-name">Historia Universal III</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Educación Física IV" data-sec="both"><div class="class-name">Educación Física IV</div><div class="class-details"><span class="class-room-badge">GIM1</span></div></div></td>
+              <td>
+                <a href="materias/espanol" class="class-item class-item-link" data-subj="Lengua Española" data-sec="both">
+                  <div class="class-name">Lengua Española</div>
+                  <div class="class-prof-name">Profra. María Vázquez</div>
+                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/informatica" class="class-item class-item-link" data-subj="Informática" data-sec="both">
+                  <div class="class-name">Informática</div>
+                  <div class="class-prof-name">Laboratorio CC-2</div>
+                  <div class="class-details"><span class="class-room-badge">CC-2</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/espanol" class="class-item class-item-link" data-subj="Lengua Española" data-sec="both">
+                  <div class="class-name">Lengua Española</div>
+                  <div class="class-prof-name">Profra. María Vázquez</div>
+                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/historia" class="class-item class-item-link" data-subj="Historia Universal III" data-sec="both">
+                  <div class="class-name">Historia Universal III</div>
+                  <div class="class-prof-name">Colegio de Historia</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/educacion-fisica" class="class-item class-item-link" data-subj="Educación Física IV" data-sec="both">
+                  <div class="class-name">Educación Física IV</div>
+                  <div class="class-prof-name">Gimnasio 1 (GIM1)</div>
+                  <div class="class-details"><span class="class-room-badge">GIM1</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 12:00 - 12:50 -->
             <tr>
               <td class="time-cell">12:00 - 12:50</td>
               <td>
-                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="A"><div class="class-name">Orientación Educativa</div><div class="class-details"><span class="class-room-badge">B-110</span><span class="sec-tag sec-a-badge">Sec. A</span></div></div>
-                <div class="class-item" data-subj="Orientación Educativa IV" data-sec="B"><div class="class-name">Orientación Educativa</div><div class="class-details"><span class="class-room-badge">B-112</span><span class="sec-tag sec-b-badge">Sec. B</span></div></div>
+                <a href="materias/orientacion-a" class="class-item class-item-link" data-subj="Orientación Educativa IV" data-sec="A">
+                  <div class="class-name">Orientación Educativa</div>
+                  <div class="class-prof-name">Sec. A (Tutoría)</div>
+                  <div class="class-details"><span class="class-room-badge">B-110</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
+                </a>
+                <a href="materias/orientacion-b" class="class-item class-item-link" data-subj="Orientación Educativa IV" data-sec="B">
+                  <div class="class-name">Orientación Educativa</div>
+                  <div class="class-prof-name">Sec. B (Tutoría)</div>
+                  <div class="class-details"><span class="class-room-badge">B-112</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
+                </a>
               </td>
-              <td><div class="class-item" data-subj="Género y Prevención de las Violencias" data-sec="both"><div class="class-name">Género y Prevención</div><div class="class-details"><span class="class-room-badge">B-109</span></div></div></td>
-              <td><div class="class-item" data-subj="Lengua Española" data-sec="both"><div class="class-name">Lengua Española</div><div class="class-details"><span class="class-room-badge">B-113</span></div></div></td>
-              <td class="free-cell">Libre</td>
-              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III</div><div class="class-details"><span class="class-room-badge">B-115</span></div></div></td>
+              <td>
+                <a href="materias/genero" class="class-item class-item-link" data-subj="Género y Prevención de las Violencias" data-sec="both">
+                  <div class="class-name">Género y Prevención</div>
+                  <div class="class-prof-name">Cultura de Paz</div>
+                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
+                </a>
+              </td>
+              <td>
+                <a href="materias/espanol" class="class-item class-item-link" data-subj="Lengua Española" data-sec="both">
+                  <div class="class-name">Lengua Española</div>
+                  <div class="class-prof-name">Profra. María Vázquez</div>
+                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
+                </a>
+              </td>
+              <td class="free-cell">Libre / Estudio</td>
+              <td>
+                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
+                  <div class="class-name">Física III</div>
+                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
+                  <div class="class-details"><span class="class-room-badge">B-115</span></div>
+                </a>
+              </td>
             </tr>
+
+            <!-- 12:50 - 13:40 -->
             <tr>
               <td class="time-cell">12:50 - 13:40</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
               <td class="free-cell">Libre</td>
-              <td><div class="class-item" data-subj="Física III" data-sec="both"><div class="class-name">Física III (Laboratorio)</div><div class="class-details"><span class="class-room-badge">A-302</span></div></div></td>
+              <td>
+                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
+                  <div class="class-name">Física III (Laboratorio)</div>
+                  <div class="class-prof-name">Laboratorio A-302</div>
+                  <div class="class-details"><span class="class-room-badge">A-302</span></div>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>

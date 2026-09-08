@@ -398,6 +398,8 @@
     }
     checkDesktopSwitch();
     window.addEventListener("resize", checkDesktopSwitch);
+    // Iniciar tolerancia en móvil
+    setInterval(updateToleranceWidget, 1000);
   </script>
 </head>
 <body>
@@ -415,14 +417,15 @@
     </div>
 
     <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
-    <aside class="rebrand-mobile-banner">
-      <div class="rebrand-mobile-inner">
-        <div class="rebrand-sparkle-icon">✨</div>
-        <div class="rebrand-mobile-title">
-          ¡ALGO GRANDE ESTÁ POR VENIR!
-          <span>Esta página se reinventa &bull; Grupo 0415</span>
+    <aside class="rebrand-cosmic-banner">
+      <a href="centro-control" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+        <div class="rebrand-inner">
+          <span class="rebrand-pill">✨ NUEVAS ACTUALIZACIONES</span>
+          <span class="rebrand-text-main">
+            <strong>Novedades del 415</strong> &bull; Consulta las actualizaciones en el Centro de Control de Materias &rarr;
+          </span>
         </div>
-      </div>
+      </a>
     </aside>
 
     <!-- BARRA SUPERIOR COMPACTA -->
@@ -944,6 +947,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', initMobileSchedule);
+    // Iniciar tolerancia en móvil
+    setInterval(updateToleranceWidget, 1000);
   </script>
   <script src="js/main.js"></script>
 </body>

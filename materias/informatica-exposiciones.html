@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rol de Exposiciones &bull; Informática | Grupo 0415 Prepa 4</title>
+  <meta name="description" content="Calendario oficial y rol de exposiciones de Informática para los 9 equipos del Grupo 0415.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>
+    function checkResponsive() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      if (isNarrow && !window.location.search.includes("force=desktop")) {
+        window.location.replace("informatica-exposiciones-movil");
+      }
+    }
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+  </script>
+</head>
+<body>
+
+  <div class="sticky-top-group">
+    <div class="mac-header-topbar">
+      <div class="mac-header-dots">
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
+        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+      </div>
+      <span class="mac-header-title">Informática &bull; Rol de Exposiciones &bull; Grupo 0415</span>
+    </div>
+
+    <aside class="rebrand-cosmic-banner">
+      <div class="rebrand-inner">
+        <span class="rebrand-pill">🎤 ROL DE EXPOSICIONES</span>
+        <span class="rebrand-text-main">
+          <strong>Informática</strong> &bull; Calendario Oficial de los 9 Equipos
+        </span>
+      </div>
+    </aside>
+
+    <header class="apple-nav">
+      <div class="nav-inner">
+        <a href="../" class="nav-brand">
+          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
+          <div class="brand-text-cluster">
+            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
+              <span>Cuatreros</span> del 415
+              <img src="../assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
+            </div>
+            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
+          </div>
+        </a>
+
+        <nav class="nav-links-menu">
+          <a href="informatica" class="nav-link-item">Volver a Informática</a>
+          <a href="../centro-control" class="nav-link-item">Materias</a>
+          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
+            Shaminket
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5.5rem;">
+    <div class="ambient-glow-1"></div>
+    <div class="hero-content">
+      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🎤</div>
+      <span style="display: inline-block; background: rgba(239, 68, 68, 0.2); border: 1.5px solid #ef4444; color: #fca5a5; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.35rem 1.1rem; border-radius: 980px; margin-bottom: 0.8rem;">
+        Actualización de Informática
+      </span>
+      <h1 class="hero-heading" style="font-size: clamp(2.3rem, 5.5vw, 4rem); margin-bottom: 0.8rem;">
+        ¡Uy, mala suerte! Te toca exponer
+      </h1>
+      <p class="hero-description" style="max-width: 800px;">
+        Aquí tienes el calendario oficial para los 9 equipos del Grupo 0415. Consulta tu fecha, tu integrante registrado y accede a tu ficha de preparación.
+      </p>
+    </div>
+  </section>
+
+  <main class="master-container" style="max-width: 1040px; margin-top: -3rem;">
+    
+    <!-- BANNER DE LA METODOLOGÍA 1 + 3 = 1 -->
+    <section style="background: linear-gradient(135deg, #001628 0%, #002B7A 60%, #003d6b 100%); border: 2.5px solid #2D7FF9; border-radius: 24px; padding: 2rem 2.4rem; color: #ffffff; box-shadow: 0 15px 40px rgba(45, 127, 249, 0.25); margin-bottom: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1.8rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 1.2rem;">
+        <span style="font-size: 2.5rem; background: rgba(255,255,255,0.1); width: 62px; height: 62px; border-radius: 16px; display: center; align-items: center; justify-content: center; border: 1.5px solid #2D7FF9;">💡</span>
+        <div>
+          <span style="background: #31C98D; color: #001628; font-size: 0.76rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 6px;">
+            Estrategia de Exposición
+          </span>
+          <h2 style="font-size: 1.45rem; font-weight: 900; margin-top: 0.3rem; color: #ffffff;">
+            Te enseño a exponer con la metodología 1 + 3 = 1
+          </h2>
+          <p style="color: #DCEEFF; font-size: 0.94rem; margin-top: 0.2rem; margin-bottom: 0;">
+            El secreto para dar exposiciones con calificaciones perfectas y hablar con total seguridad.
+          </p>
+        </div>
+      </div>
+      <a href="metodologia-exposicion" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap; text-decoration: none;">
+        <span>Aprender metodología &rarr;</span>
+      </a>
+    </section>
+
+    <!-- CUADRÍCULA CON LOS 9 EQUIPOS -->
+    <div class="bento-section-title">
+      <h2>Calendario de los 9 Equipos</h2>
+      <p>Localiza a tu equipo para consultar tu fecha y entrar a tu ficha personalizada</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem; margin-bottom: 3.5rem;">
+      
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 1
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Dana
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 22 de septiembre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-1" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 2
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Rodrigo
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 22 de septiembre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-2" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 3
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Regina
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 29 de septiembre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-3" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 4
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Camila
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 29 de septiembre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-4" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 5
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Sandra
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 6 de octubre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-5" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 6
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Said
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 6 de octubre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-6" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 7
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Información no pública
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 13 de octubre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-7" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 8
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Diana
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 13 de octubre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-8" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+          <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 6px;">
+            Equipo 9
+          </span>
+          <span style="font-size: 1.4rem;">👥</span>
+        </div>
+        <h3 style="color: #001628; font-size: 1.25rem; font-weight: 900; margin: 0 0 0.4rem;">
+          Islas
+        </h3>
+        <p style="color: #D59F0F; font-weight: 800; font-size: 0.95rem; margin-bottom: 1.2rem;">
+          📅 20 de octubre 2026
+        </p>
+        <p style="color: #64748b; font-size: 0.86rem; line-height: 1.5; margin-bottom: 1.4rem;">
+          Turno programado para la presentación oral de Informática en el Edificio I / CC-2.
+        </p>
+      </div>
+      <a href="equipo-9" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        <span>Ver tema &rarr;</span>
+      </a>
+    </div>
+    
+    </div>
+
+  </main>
+
+  <footer class="apple-footer-dark">
+    <div class="footer-wrapper">
+      <div class="footer-top-cluster">
+        <div>
+          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
+        </div>
+        <div class="footer-links-list">
+          <a href="informatica">Informática</a>
+          <a href="../centro-control">Materias</a>
+          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+        </div>
+      </div>
+      <p>Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

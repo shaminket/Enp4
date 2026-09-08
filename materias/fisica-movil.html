@@ -10,11 +10,20 @@
     function checkResponsive() {
       const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
       if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("fisica-movil");
+        /* mobile */
       }
     }
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
+  </script>
+  <script>
+    function checkDesktop() {
+      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
+        window.location.replace("fisica");
+      }
+    }
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
   </script>
 </head>
 <body>
@@ -75,9 +84,9 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">
             &larr; Volver

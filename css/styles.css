@@ -1315,3 +1315,173 @@ a.link-encardomy:hover {
   width: 20px;
   height: 20px;
 }
+
+/* ==========================================================
+   ESTILOS DE CONTADOR DE TOLERANCIA (VERDE -> AMARILLO -> ROJO)
+   ========================================================== */
+.tolerance-card {
+  border-radius: 20px;
+  padding: 1.4rem 1.8rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tolerance-green {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #22c55e;
+  color: #14532d;
+}
+
+.tolerance-yellow {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+  color: #78350f;
+  animation: pulseYellowBorder 2s infinite ease-in-out;
+}
+
+.tolerance-red {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border: 2.5px solid #ef4444;
+  color: #7f1d1d;
+  animation: pulseRedBorder 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseYellowBorder {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25); }
+  50% { box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.45); }
+}
+
+@keyframes pulseRedBorder {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.6); }
+}
+
+.tolerance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tolerance-badge-pulse {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tolerance-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sound-toggle-btn, .demo-toggle-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover, .demo-toggle-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.tolerance-body {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.tolerance-countdown-display {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+.tolerance-info {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.tolerance-status-text {
+  font-size: 0.96rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.tolerance-progress-bar {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tolerance-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s linear, background-color 0.3s ease;
+}
+
+/* Aviso de tolerancia finalizada */
+.tolerance-expired-notice {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #ef4444;
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  animation: fadeInDown 0.4s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enlaces y nombres de profesor en la tabla */
+.class-item-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.class-item-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 43, 122, 0.18);
+  border-color: #2D7FF9;
+}
+
+.class-prof-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-top: 0.15rem;
+  line-height: 1.2;
+}
+
+.class-item.is-live-class-now .class-prof-name {
+  color: #166534 !important;
+  font-weight: 800;
+}

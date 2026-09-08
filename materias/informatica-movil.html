@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Física III | Grupo 0415 &bull; ENP 4 UNAM</title>
-  <meta name="description" content="Centro de apoyo, avisos y tareas de Física III para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
+  <title>Informática | Grupo 0415 &bull; ENP 4 UNAM</title>
+  <meta name="description" content="Centro de apoyo, avisos y tareas de Informática para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
   <link rel="stylesheet" href="../css/styles.css">
   <script>
     function checkResponsive() {
       const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
       if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("fisica-movil");
+        /* mobile */
       }
     }
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
+  </script>
+  <script>
+    function checkDesktop() {
+      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
+        window.location.replace("informatica");
+      }
+    }
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
   </script>
 </head>
 <body>
@@ -58,13 +67,13 @@
   <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">⚡</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Física III</h1>
+      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">💻</div>
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Informática</h1>
       <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1.2rem;">
-        Clave 1401 &bull; 14 créditos &bull; Profra. Reyna García Gabriela
+        Clave 1408 &bull; 10 créditos &bull; Asignatura Colegiada ENP 4
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Estudio de la física como motor del desarrollo científico y tecnológico. Centrada en el movimiento de satélites (mecánica, gravitación) y la generación de energía eléctrica (electromagnetismo, circuitos), combinando teoría en aula y prácticas en laboratorio.
+        Manejo integral de herramientas computacionales, hojas de cálculo avanzadas, procesamiento de datos, algoritmos básicos, seguridad digital y uso ético de la información.
       </p>
     </div>
   </section>
@@ -75,34 +84,37 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">
             &larr; Volver
           </button>
         </div>
-        <span class="win-titlebar-text">Física III &bull; Grupo 0415</span>
+        <span class="win-titlebar-text">Informática &bull; Grupo 0415</span>
       </div>
 
       <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
         
         <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-                <!-- AVISO OFICIAL DE ACTUALIZACIONES -->
-        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="font-size: 1.8rem;">📢</span>
-            <div>
-              <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
-                Estado de la Asignatura
+                <!-- ACTUALIZACIÓN OFICIAL: EXPOSICIONES -->
+        <div style="background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border: 2px solid #ef4444; border-left: 8px solid #dc2626; border-radius: 18px; padding: 2rem 2.2rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; align-items: flex-start; gap: 1.2rem; flex-wrap: wrap;">
+            <span style="font-size: 2.4rem;">🎤</span>
+            <div style="flex-grow: 1;">
+              <span style="background: #dc2626; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 6px;">
+                Actualización Importante
               </span>
-              <h3 style="color: #001628; font-size: 1.3rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
-                Sin actualizaciones pendientes al momento
+              <h3 style="color: #991b1b; font-size: 1.6rem; font-weight: 900; margin: 0.6rem 0 0.4rem;">
+                ¡Uy, mala suerte! Te toca exponer
               </h3>
-              <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin: 0;">
-                Por el momento no hay nuevos avisos o tareas publicadas para este curso. En cuanto el profesor o profesora comparta acuerdos, tareas o temarios de clase, se te notificará de inmediato por este medio.
+              <p style="color: #7f1d1d; font-size: 1.02rem; line-height: 1.6; margin-bottom: 1.4rem;">
+                Se ha publicado el rol oficial de fechas y los 9 equipos para las exposiciones de Informática en el Edificio I y CC-2. Revisa cuándo le toca a tu equipo y accede a la guía para sacar calificación perfecta.
               </p>
+              <a href="informatica-exposiciones-movil" class="btn-encardomy" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%) !important; border-color: #fca5a5 !important; padding: 0.85rem 1.8rem; font-size: 0.98rem; text-decoration: none; display: inline-flex;">
+                <span>Ver fechas y equipos de exposición &rarr;</span>
+              </a>
             </div>
           </div>
         </div>

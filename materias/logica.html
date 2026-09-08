@@ -6,6 +6,16 @@
   <title>Lógica | Grupo 0415 &bull; ENP 4 UNAM</title>
   <meta name="description" content="Centro de apoyo, avisos y tareas de Lógica para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
   <link rel="stylesheet" href="../css/styles.css">
+  <script>
+    function checkResponsive() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      if (isNarrow && !window.location.search.includes("force=desktop")) {
+        window.location.replace("logica-movil");
+      }
+    }
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+  </script>
 </head>
 <body>
 
@@ -79,44 +89,20 @@
       <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
         
         <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 2px solid #D59F0F; border-radius: 20px; padding: 2.5rem 2rem; text-align: center; color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 2.5rem;">
-          <div style="font-size: 2.4rem; margin-bottom: 0.8rem;">🚀</div>
-          <span style="display: inline-block; background: rgba(213, 159, 15, 0.2); border: 1px solid #D59F0F; color: #fcd866; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 1rem;">
-            Próximamente habrá algo grande
-          </span>
-          <h2 style="font-size: 1.85rem; font-weight: 900; margin-bottom: 0.8rem; color: #ffffff;">
-            Módulo Académico en Construcción
-          </h2>
-          <p style="color: #cbd5e1; max-width: 620px; margin: 0 auto 1.8rem; font-size: 1.02rem; line-height: 1.6;">
-            Estamos integrando resúmenes de clase, guías de estudio, avisos del profesor y tareas resueltas para que tengas todo listo para tus exámenes y entregas.
-          </p>
-          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.85rem 1.8rem;">
-              <span>Pedir copias / tareas de esta materia</span>
-            </a>
-            <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20sobre%20la%20materia%20de%20Lógica%20en%20el%20415" target="_blank" rel="noopener noreferrer" class="btn-support-trigger" style="text-decoration: none; padding: 0.85rem 1.8rem;">
-              <span>Preguntar dudas por WhatsApp</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- DATOS CLAVE DEL HORARIO DE LA MATERIA -->
-        <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; margin-bottom: 2rem;">
-          <h3 style="color: #002B7A; font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>⏰</span> Horario y Salones del 415
-          </h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; font-size: 0.95rem;">
-            <div style="background: #ffffff; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-              <span style="color: #64748b; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Días y Horarios</span>
-              <p style="font-weight: 700; color: #001628; margin-top: 0.3rem;">Martes 10:20 - 11:10, Miércoles 07:50 - 09:30</p>
-            </div>
-            <div style="background: #ffffff; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-              <span style="color: #64748b; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Salón Asignado</span>
-              <p style="font-weight: 700; color: #002B7A; margin-top: 0.3rem;">B-108, B-206</p>
-            </div>
-            <div style="background: #ffffff; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-              <span style="color: #64748b; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">Profesor / Área</span>
-              <p style="font-weight: 700; color: #001628; margin-top: 0.3rem;">Asignatura Colegiada ENP 4</p>
+                <!-- AVISO OFICIAL DE ACTUALIZACIONES -->
+        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <span style="font-size: 1.8rem;">📢</span>
+            <div>
+              <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
+                Estado de la Asignatura
+              </span>
+              <h3 style="color: #001628; font-size: 1.3rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
+                Sin actualizaciones pendientes al momento
+              </h3>
+              <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin: 0;">
+                Por el momento no hay nuevos avisos o tareas publicadas para este curso. En cuanto el profesor o profesora comparta acuerdos, tareas o temarios de clase, se te notificará de inmediato por este medio.
+              </p>
             </div>
           </div>
         </div>

@@ -425,3 +425,248 @@ renderDesktopDayView = function() {
     });
   }
 };
+
+
+/* ==========================================================
+   MOTOR DE TOLERANCIA Y CRONÓMETRO SONORO EN TIEMPO REAL
+   ========================================================== */
+const subjectTolerancesMinutes = {
+  "Geografía": 10,
+  "Física III": 10,
+  "Física III (Laboratorio)": 10,
+  "Lengua extranjera Inglés IV (Sec. A)": 5,
+  "Lengua extranjera Inglés IV (Sec. B)": null, // Sec B sin contador
+  "Lengua extranjera Inglés IV": 5,
+  "Lengua Española": 5,
+  "Orientación Educativa IV (Sec. A)": 10,
+  "Orientación Educativa IV (Sec. B)": null, // Sec B sin información
+  "Orientación Educativa IV": 10,
+  "Matemáticas IV": 15,
+  "Dibujo II (Sec. A)": 10,
+  "Dibujo II (Sec. B)": null, // Sec B no pongas nada
+  "Dibujo II": 10,
+  "Informática": 10,
+  "Lógica": 10,
+  "Género y Prevención de las Violencias": 10,
+  "Género y Prevención": 10,
+  "Historia Universal III": 10,
+  "Educación Física IV": 10
+};
+
+// Web Audio API Ticker
+let audioCtx = null;
+let isAudioMuted = false;
+let lastSoundTickTime = 0;
+
+function playTickSound(frequency = 880, duration = 0.04) {
+  if (isAudioMuted) return;
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+  } catch (e) {
+    // Audio no permitido o silenciado
+  }
+}
+
+function toggleToleranceAudio() {
+  isAudioMuted = !isAudioMuted;
+  const icon = document.getElementById('audioIcon');
+  if (icon) {
+    icon.textContent = isAudioMuted ? '🔇' : '🔊';
+  }
+}
+
+// Variables de estado del cronómetro
+let demoModeActive = false;
+let demoSecondsLeft = 0;
+let toleranceExpiredShown = false;
+
+function triggerToleranceDemo(seconds = 195) {
+  demoModeActive = true;
+  demoSecondsLeft = seconds; // Inicia en verde (> 180s) para mostrar toda la secuencia
+  toleranceExpiredShown = false;
+  updateToleranceWidget();
+}
+
+function updateToleranceWidget() {
+  const container = document.getElementById('liveToleranceModule');
+  if (!container) return;
+
+  const now = new Date();
+  const currentDay = now.getDay();
+  const currentTotalSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+  let activeSubject = null;
+  let tolMinutes = null;
+  let remainingSec = 0;
+  let totalTolSec = 0;
+  let slotRoom = "";
+
+  if (demoModeActive) {
+    activeSubject = "Matemáticas IV (Demostración)";
+    slotRoom = "Salón B-112";
+    totalTolSec = 15 * 60;
+    remainingSec = demoSecondsLeft;
+    demoSecondsLeft--;
+    if (demoSecondsLeft < 0) {
+      demoModeActive = false;
+      remainingSec = 0;
+    }
+  } else {
+    // Búsqueda en tiempo real
+    if (currentDay < 1 || currentDay > 5) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+    const slotIdx = getActiveSlotIndex();
+
+    if (slotIdx === -1) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const slot = timeSlots[slotIdx];
+    const todayClasses = desktopScheduleData[currentDay] || [];
+    const activeClassObj = todayClasses[slotIdx];
+
+    if (!activeClassObj || activeClassObj.sec === 'free') {
+      container.style.display = 'none';
+      return;
+    }
+
+    activeSubject = activeClassObj.subj;
+    slotRoom = activeClassObj.room;
+    tolMinutes = subjectTolerancesMinutes[activeSubject];
+
+    // Si la materia no tiene tolerancia o no se le debe poner contador
+    if (tolMinutes === null || tolMinutes === undefined) {
+      container.style.display = 'none';
+      return;
+    }
+
+    totalTolSec = tolMinutes * 60;
+    const startTotalSec = (Math.floor(slot.start / 60)) * 3600 + (slot.start % 60) * 60;
+    const elapsedSec = currentTotalSec - startTotalSec;
+    remainingSec = totalTolSec - elapsedSec;
+  }
+
+  // 1. Si el tiempo de tolerancia terminó
+  if (remainingSec <= 0) {
+    if (!toleranceExpiredShown) {
+      toleranceExpiredShown = true;
+      container.style.display = 'block';
+      container.innerHTML = `
+        <div class="tolerance-expired-notice">
+          <span style="font-size: 2.2rem;">🚪</span>
+          <div>
+            <h4 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #ffffff;">
+              Clase iniciada, espera a la siguiente hora para integrarte.
+            </h4>
+            <p style="margin: 0.25rem 0 0; font-size: 0.92rem; color: #fca5a5; font-weight: 700;">
+              Evita interrumpir.
+            </p>
+          </div>
+        </div>
+      `;
+      // Dura unos pocos segundos y vuelve a crecer el horario
+      setTimeout(() => {
+        container.style.display = 'none';
+      }, 7000);
+    }
+    return;
+  }
+
+  // 2. Si la tolerancia está corriendo activamente
+  toleranceExpiredShown = false;
+  container.style.display = 'block';
+
+  // Reglas de color:
+  // Verde: > 180s
+  // Amarillo: <= 180s
+  // Rojo: <= 90s
+  let colorClass = 'tolerance-green';
+  let progressColor = '#22c55e';
+  let tickIntervalMs = 6000;
+  let beepFreq = 880;
+
+  if (remainingSec <= 90) {
+    colorClass = 'tolerance-red';
+    progressColor = '#ef4444';
+    tickIntervalMs = (remainingSec <= 30) ? 750 : 1500;
+    beepFreq = 1200;
+  } else if (remainingSec <= 180) {
+    colorClass = 'tolerance-yellow';
+    progressColor = '#f59e0b';
+    tickIntervalMs = 3000;
+    beepFreq = 960;
+  }
+
+  // Sonido proporcional al tiempo restante
+  const nowMs = Date.now();
+  if (nowMs - lastSoundTickTime >= tickIntervalMs) {
+    playTickSound(beepFreq, remainingSec <= 30 ? 0.08 : 0.04);
+    lastSoundTickTime = nowMs;
+  }
+
+  // Formato MM:SS
+  const mins = Math.floor(remainingSec / 60);
+  const secs = remainingSec % 60;
+  const timeFormatted = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+  const pct = Math.max(0, Math.min(100, (remainingSec / totalTolSec) * 100));
+
+  container.innerHTML = `
+    <div class="tolerance-card ${colorClass}">
+      <div class="tolerance-header">
+        <div class="tolerance-badge-pulse">
+          <span class="live-pulse-dot" style="background: ${progressColor};"></span>
+          <span>Tolerancia de Entrada &bull; ${activeSubject}</span>
+        </div>
+        <div class="tolerance-controls">
+          <button class="sound-toggle-btn" onclick="toggleToleranceAudio()" title="Silenciar / Activar sonido">
+            <span id="audioIcon">${isAudioMuted ? '🔇' : '🔊'}</span>
+          </button>
+          <button class="demo-toggle-btn" onclick="triggerToleranceDemo(195)" title="Reiniciar demostración de tolerancia">
+            ⏱️ Probar 3m
+          </button>
+        </div>
+      </div>
+
+      <div class="tolerance-body">
+        <div class="tolerance-countdown-display" id="toleranceTimeDisplay">
+          ${timeFormatted}
+        </div>
+        <div class="tolerance-info">
+          <p class="tolerance-status-text" id="toleranceStatusText">
+            Tiempo de tolerancia restante para entrar al ${slotRoom} sin falta
+          </p>
+          <div class="tolerance-progress-bar">
+            <div class="tolerance-progress-fill" style="width: ${pct}%; background-color: ${progressColor};"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Iniciar cronómetro de tolerancia segundo a segundo
+document.addEventListener('DOMContentLoaded', () => {
+  updateToleranceWidget();
+  setInterval(updateToleranceWidget, 1000);
+});

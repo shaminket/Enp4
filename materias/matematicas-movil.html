@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Física III | Grupo 0415 &bull; ENP 4 UNAM</title>
-  <meta name="description" content="Centro de apoyo, avisos y tareas de Física III para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
+  <title>Matemáticas IV | Grupo 0415 &bull; ENP 4 UNAM</title>
+  <meta name="description" content="Centro de apoyo, avisos y tareas de Matemáticas IV para el Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4.">
   <link rel="stylesheet" href="../css/styles.css">
   <script>
     function checkResponsive() {
       const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
       if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("fisica-movil");
+        /* mobile */
       }
     }
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
+  </script>
+  <script>
+    function checkDesktop() {
+      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
+        window.location.replace("matematicas");
+      }
+    }
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
   </script>
 </head>
 <body>
@@ -58,13 +67,13 @@
   <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">⚡</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Física III</h1>
+      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">📐</div>
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Matemáticas IV</h1>
       <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1.2rem;">
-        Clave 1401 &bull; 14 créditos &bull; Profra. Reyna García Gabriela
+        Clave 1400 &bull; 20 créditos &bull; Prof. Quintana Mejía Saúl
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Estudio de la física como motor del desarrollo científico y tecnológico. Centrada en el movimiento de satélites (mecánica, gravitación) y la generación de energía eléctrica (electromagnetismo, circuitos), combinando teoría en aula y prácticas en laboratorio.
+        Enfocada en el razonamiento lógico, la abstracción y la modelación matemática mediante aritmética, expresiones algebraicas, ecuaciones de primer y segundo grado, sistemas de ecuaciones lineales e inecuaciones para resolver problemas reales del entorno natural y social.
       </p>
     </div>
   </section>
@@ -75,15 +84,15 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">
             &larr; Volver
           </button>
         </div>
-        <span class="win-titlebar-text">Física III &bull; Grupo 0415</span>
+        <span class="win-titlebar-text">Matemáticas IV &bull; Grupo 0415</span>
       </div>
 
       <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
