@@ -402,9 +402,19 @@
 </head>
 <body>
 
-  <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (SIEMPRE FIJO AL SCROLLEAR) -->
+  <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
   <div class="sticky-top-mobile-group">
-    <!-- BANNER NEGRO, AZUL Y MORADO -->
+    <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
+    <div class="mac-header-topbar">
+      <div class="mac-header-dots">
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver atrás"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir al inicio"></button>
+        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+      </div>
+      <span class="mac-header-title">Cuatreros 415 &bull; Prepa 4</span>
+    </div>
+
+    <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
     <aside class="rebrand-mobile-banner">
       <div class="rebrand-mobile-inner">
         <div class="rebrand-sparkle-icon">✨</div>
@@ -810,7 +820,19 @@
     function initMobileSchedule() {
       selectedDay = getTodayDayIndex();
       renderSchedule();
+      // Auto-scroll suave a la materia que se está teniendo ahora
+      setTimeout(() => {
+        const liveCard = document.getElementById('liveActiveMobileCard');
+        if (liveCard) {
+          liveCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 350);
     }
+
+    // Actualizar periódicamente en tiempo real
+    setInterval(() => {
+      renderSchedule();
+    }, 30000);
 
     function selectDay(dayNum) {
       selectedDay = dayNum;
@@ -876,8 +898,26 @@
         if (c.section === 'A') secBadge = '<span class="badge-sec-mobile tag-sec-a">Sec. A</span>';
         if (c.section === 'B') secBadge = '<span class="badge-sec-mobile tag-sec-b">Sec. B</span>';
 
+        // Comprobar si esta clase corresponde a la hora actual
+        const now = new Date();
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+        const [st, et] = c.time.split(' - ');
+        const [sh, sm] = st.split(':').map(Number);
+        const [eh, em] = et.split(':').map(Number);
+        const slotStart = sh * 60 + sm;
+        const slotEnd = eh * 60 + em;
+        const isLiveNow = (selectedDay === now.getDay()) && (currentMinutes >= slotStart && currentMinutes < slotEnd);
+
+        let liveBadgeHtml = '';
+        let liveClassModifier = '';
+        if (isLiveNow) {
+          liveClassModifier = ' is-live-class-now';
+          liveBadgeHtml = '<div class="live-status-badge" style="margin-bottom: 0.5rem;"><span class="live-pulse-dot"></span> EN CLASE EN VIVO AHORA</div>';
+        }
+
         listContainer.innerHTML += `
-          <div class="timeline-class-card">
+          <div class="timeline-class-card${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}">
+            ${liveBadgeHtml}
             <div class="timeline-time-row">
               <div class="class-time-text">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>

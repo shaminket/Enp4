@@ -321,3 +321,107 @@ function submitPageFeedback() {
   const url = `https://wa.me/525571985641?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 }
+
+
+/* ==========================================================
+   SISTEMA DE DETECCIÓN Y RESALTADO DE MATERIA EN TIEMPO REAL
+   ========================================================== */
+const timeSlots = [
+  { start: 420, end: 470, text: "07:00 - 07:50", label: "7:00 - 7:50", row: 0 },
+  { start: 470, end: 520, text: "07:50 - 08:40", label: "7:50 - 8:40", row: 1 },
+  { start: 520, end: 570, text: "08:40 - 09:30", label: "8:40 - 9:30", row: 2 },
+  { start: 570, end: 620, text: "09:30 - 10:20", label: "9:30 - 10:20", row: 3 },
+  { start: 620, end: 670, text: "10:20 - 11:10", label: "10:20 - 11:10", row: 4 },
+  { start: 670, end: 720, text: "11:10 - 12:00", label: "11:10 - 12:00", row: 5 },
+  { start: 720, end: 770, text: "12:00 - 12:50", label: "12:00 - 12:50", row: 6 },
+  { start: 770, end: 820, text: "12:50 - 13:40", label: "12:50 - 13:40", row: 7 }
+];
+
+function getActiveSlotIndex() {
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  for (let i = 0; i < timeSlots.length; i++) {
+    if (currentMinutes >= timeSlots[i].start && currentMinutes < timeSlots[i].end) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function highlightDesktopLiveClass() {
+  const table = document.getElementById('mainTimetable');
+  if (!table) return;
+
+  const now = new Date();
+  const currentDay = now.getDay(); // 1 = Lun, 2 = Mar, ..., 5 = Vie
+  const activeSlotIdx = getActiveSlotIndex();
+
+  // Limpiar estados anteriores
+  table.querySelectorAll('.is-live-class-now').forEach(el => el.classList.remove('is-live-class-now'));
+  table.querySelectorAll('.is-live-time-now').forEach(el => el.classList.remove('is-live-time-now'));
+  table.querySelectorAll('.live-status-badge').forEach(el => el.remove());
+
+  // Si hoy es entre Lunes y Viernes y hay una clase activa
+  if (currentDay >= 1 && currentDay <= 5 && activeSlotIdx !== -1) {
+    const rows = table.querySelectorAll('tbody tr');
+    const targetRow = rows[activeSlotIdx];
+    if (targetRow) {
+      // 1. Resaltar la hora en la columna 0
+      const timeCell = targetRow.querySelector('.time-cell');
+      if (timeCell) {
+        timeCell.classList.add('is-live-time-now');
+        const badge = document.createElement('div');
+        badge.className = 'live-status-badge';
+        badge.innerHTML = '<span class="live-pulse-dot"></span> HORA ACTUAL';
+        timeCell.prepend(badge);
+      }
+
+      // 2. Resaltar la materia que se está teniendo ahora en el día actual
+      const dayCell = targetRow.children[currentDay];
+      if (dayCell) {
+        const classItems = dayCell.querySelectorAll('.class-item');
+        classItems.forEach(item => {
+          item.classList.add('is-live-class-now');
+          const liveBadge = document.createElement('div');
+          liveBadge.className = 'live-status-badge';
+          liveBadge.innerHTML = '<span class="live-pulse-dot"></span> EN CURSO AHORA';
+          item.prepend(liveBadge);
+        });
+      }
+    }
+  }
+}
+
+// Ejecutar al cargar y actualizar cada 30 segundos
+document.addEventListener('DOMContentLoaded', () => {
+  highlightDesktopLiveClass();
+  setInterval(highlightDesktopLiveClass, 30000);
+});
+
+// En renderDesktopDayView, resaltar la clase en curso
+const originalRenderDesktopDayView = renderDesktopDayView;
+renderDesktopDayView = function() {
+  originalRenderDesktopDayView();
+  const now = new Date();
+  const currentDay = now.getDay();
+  const activeSlotIdx = getActiveSlotIndex();
+
+  if (currentCalDay === currentDay && activeSlotIdx !== -1) {
+    const slot = timeSlots[activeSlotIdx];
+    const container = document.getElementById('desktopDayCardsList');
+    if (!container) return;
+
+    container.querySelectorAll('.timeline-class-card, div').forEach(card => {
+      if (card.textContent.includes(slot.label) || card.textContent.includes(slot.text)) {
+        card.classList.add('is-live-class-now');
+        if (!card.querySelector('.live-status-badge')) {
+          const b = document.createElement('div');
+          b.className = 'live-status-badge';
+          b.style.marginBottom = '0.5rem';
+          b.innerHTML = '<span class="live-pulse-dot"></span> EN CLASE AHORA';
+          card.prepend(b);
+        }
+      }
+    });
+  }
+};
