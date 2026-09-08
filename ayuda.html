@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Uso & Accesibilidad | Grupo 0415 &bull; ENP 4 UNAM</title>
+  <meta name="description" content="Guía completa de uso, manual de navegación y herramientas de accesibilidad para el portal del Grupo 0415 Prepa 4.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Estilos propios de Accesibilidad */
+    .a11y-toolbar {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .a11y-btn {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      color: #002B7A;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .a11y-btn:hover {
+      background: #002B7A;
+      color: #ffffff;
+      border-color: #002B7A;
+    }
+    .a11y-btn.active {
+      background: #002B7A;
+      color: #ffffff;
+      border-color: #002B7A;
+    }
+    .guide-step-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .guide-step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    .guide-step-num {
+      background: #002B7A;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 900;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .guide-step-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #001628;
+      margin: 0;
+    }
+    body.high-contrast {
+      background: #000000 !important;
+      color: #ffffff !important;
+    }
+    body.high-contrast .schedule-master-card,
+    body.high-contrast .guide-step-card,
+    body.high-contrast .bento-card {
+      background: #111111 !important;
+      border-color: #D59F0F !important;
+      color: #ffffff !important;
+    }
+    body.high-contrast h2, body.high-contrast h3, body.high-contrast strong {
+      color: #F7C438 !important;
+    }
+    body.high-contrast p, body.high-contrast span {
+      color: #e2e8f0 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA PERSISTENTE -->
+  <div class="sticky-top-group">
+    <aside class="rebrand-cosmic-banner">
+      <div class="rebrand-inner">
+        <span class="rebrand-pill">📖 MANUAL DE USO</span>
+        <span class="rebrand-text-main">
+          <strong>Guía de Uso y Accesibilidad</strong> &bull; Portal Alumnos Grupo 0415
+        </span>
+      </div>
+    </aside>
+
+    <header class="apple-nav">
+      <div class="nav-inner">
+        <a href="./" class="nav-brand">
+          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
+          <div class="brand-text-cluster">
+            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
+              <span>Cuatreros</span> del 415
+              <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
+            </div>
+            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
+          </div>
+        </a>
+
+        <nav class="nav-links-menu">
+          <a href="./" class="nav-link-item">Inicio</a>
+          <a href="centro-control" class="nav-link-item">Centro de Control</a>
+          <a href="artisticas" class="nav-link-item">Artísticas</a>
+          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
+            Shaminket
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <!-- HERO DE AYUDA -->
+  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5.5rem;">
+    <div class="ambient-glow-1"></div>
+    <div class="hero-content">
+      <span style="display: inline-block; background: rgba(213, 159, 15, 0.2); border: 1px solid #D59F0F; color: #fcd866; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 1rem;">
+        Manual del Alumno
+      </span>
+      <h1 class="hero-heading" style="font-size: clamp(2.3rem, 5.5vw, 4.2rem); margin-bottom: 0.8rem;">
+        Guía de Uso & Accesibilidad
+      </h1>
+      <p class="hero-description" style="max-width: 820px;">
+        Aprende a navegar y sacarle el 100% de provecho a cada función de nuestra página: horarios, salones, materias, copias con Encardomy y ajustes de lectura accesible.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENEDOR MAESTRO -->
+  <main class="master-container" style="margin-top: -3rem; max-width: 1040px;">
+    <div class="schedule-master-card">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
+          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
+          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        </div>
+        <span class="win-titlebar-text">Centro de Ayuda y Accesibilidad &bull; Cuatreros 415</span>
+      </div>
+
+      <div class="schedule-card-body" style="padding: 2.5rem 2.8rem;">
+
+        <!-- BARRA DE HERRAMIENTAS DE ACCESIBILIDAD INTERACTIVA -->
+        <div class="a11y-toolbar">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.3rem;">♿</span>
+            <strong style="color: #002B7A; font-size: 0.95rem;">Ajustes Rápidos de Accesibilidad:</strong>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="a11y-btn" id="contrastToggleBtn" onclick="toggleA11yContrast()">
+              <span>🌗</span> Alto Contraste
+            </button>
+            <button class="a11y-btn" onclick="adjustFontSize(-1)">
+              <span>A-</span> Reducir texto
+            </button>
+            <button class="a11y-btn" onclick="resetFontSize()">
+              <span>A</span> Normal
+            </button>
+            <button class="a11y-btn" onclick="adjustFontSize(1)">
+              <span>A+</span> Aumentar texto
+            </button>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 1: ¿PARA QUÉ SIRVE ESTA PÁGINA? -->
+        <div style="margin-bottom: 2.8rem;">
+          <h2 style="color: #002B7A; font-size: 1.6rem; font-weight: 900; margin-bottom: 0.8rem;">
+            🤝 El propósito de nuestro portal
+          </h2>
+          <p style="color: #475569; font-size: 1.02rem; line-height: 1.65;">
+            Esta página no es un portal institucional rígido ni un trámite burocrático. Es un espacio hecho <strong>de estudiante a estudiante</strong> para respaldar a todos los que formamos el <strong>Grupo 0415</strong> en la Escuela Nacional Preparatoria Plantel 4 "Vidal Castañeda y Nájera". Aquí centralizamos todo lo que necesitas a diario para que no te pierdas, no repruebes por faltas y resuelvas cualquier bronca en minutos.
+          </p>
+        </div>
+
+        <!-- SECCIÓN 2: CÓMO USAR CADA MÓDULO (PASO A PASO) -->
+        <h2 style="color: #002B7A; font-size: 1.6rem; font-weight: 900; margin-bottom: 1.4rem;">
+          📱 Manual de uso por sección
+        </h2>
+
+        <!-- Paso 1: Horario -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">1</span>
+            <h3 class="guide-step-title">Horario de Clases (Día y Semana)</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            &bull; <strong>Modo Día vs Modo Semana:</strong> En la parte superior del horario puedes pulsar <strong>"Día"</strong> para ver solo las clases del día en curso en formato de lista, o <strong>"Semana"</strong> para ver la cuadrícula completa de Lunes a Viernes.<br>
+            &bull; <strong>Navegación &lt; Hoy &gt;:</strong> Usa los botones para adelantar o retrasar el día, o presiona <strong>"Hoy"</strong> para regresar al día actual.<br>
+            &bull; <strong>Filtros por Sección A y B:</strong> Si te toca Inglés, Dibujo u Orientación en Sección A o B, usa los botones del filtro para que solo se iluminen tus salones.<br>
+            &bull; <strong>Atajos de teclado:</strong> Usa las flechas <code>&larr;</code> y <code>&rarr;</code> de tu teclado para cambiar de día rápidamente.
+          </p>
+        </div>
+
+        <!-- Paso 2: Ubicador de Salones -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">2</span>
+            <h3 class="guide-step-title">Ubicador de Salones en Prepa 4</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            Si acabas de entrar a 4to año y no ubicas los edificios de Tacubaya:<br>
+            &bull; <strong>Edificio B:</strong> Nuestra base. Aquí están los salones B-108 a B-117 (primer piso) y B-206 (segundo piso).<br>
+            &bull; <strong>Edificio A:</strong> Salón A-104 (Geografía) y Laboratorio A-302 (Física III, tercer piso con bata).<br>
+            &bull; <strong>Edificio C:</strong> C-201 (Dibujo II) y salones de idiomas C-205 y C-306.<br>
+            &bull; <strong>Cómputo y Gimnasio:</strong> Edificio I (I-108), Centro de Cómputo 2 (CC-2) y Gimnasio 1 (GIM1).
+          </p>
+        </div>
+
+        <!-- Paso 3: Centro de Control de Materias -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">3</span>
+            <h3 class="guide-step-title">Centro de Control de Materias</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            Accede desde el botón superior en la página principal o navegando a <code>centro-control.html</code>:<br>
+            &bull; <strong>Lengua Española:</strong> Ocupa el banner principal con los acuerdos de la profesora Vázquez, la forma de trabajo, el generador de foto de perfil y el libro <em>Wyatt</em>.<br>
+            &bull; <strong>Las 12 Asignaturas:</strong> Cada tarjeta te da acceso a la ficha de la materia, su horario específico y el módulo de tareas.
+          </p>
+        </div>
+
+        <!-- Paso 4: Artísticas -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">4</span>
+            <h3 class="guide-step-title">Educación Estética y Artística (Artísticas)</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            La UNAM exige cursar una artística obligatoria en 4° año:<br>
+            &bull; Entra a <strong>Artísticas</strong> para ver las 6 disciplinas: Teatro, Danza Folclórica, Contemporánea, Música, Artes Plásticas y Fotografía.<br>
+            &bull; Elige tu disciplina favorita y verás la lista de profesores con sus horarios y talleres en Prepa 4.<br>
+            &bull; Selecciona al profesor que quieras para ver su ficha individual y requisitos antes de inscribirte en el sistema SiHo.
+          </p>
+        </div>
+
+        <!-- Paso 5: Encardomy -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">5</span>
+            <h3 class="guide-step-title">Copias, Tareas e Impresiones con Encardomy</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            Todos los botones en <strong>Azul Eléctrico</strong> te conectan con la plataforma de <strong>Encardomy</strong>. Si tienes una entrega urgente a las 7:00 am, solicita tus impresiones HD o preparación de copias con tiempo para que las tengas listas y sin filas en el plantel.
+          </p>
+        </div>
+
+        <!-- Paso 6: Buzón y Dudas -->
+        <div class="guide-step-card">
+          <div class="guide-step-header">
+            <span class="guide-step-num">6</span>
+            <h3 class="guide-step-title">Buzón de Sugerencias y Soporte WhatsApp</h3>
+          </div>
+          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6;">
+            Al final de la página principal encontrarás la pregunta: <em>"¿Crees que le falta algo a esta página? ¿Qué es?"</em>. Escribe tu propuesta o necesidad escolar y al hacer clic se abrirá WhatsApp con el mensaje estructurado para que llegue directamente al soporte del grupo.
+          </p>
+        </div>
+
+        <!-- SECCIÓN 3: COMPATIBILIDAD Y LECTORES DE PANTALLA -->
+        <div style="background: #f1f5f9; border-radius: 16px; padding: 1.8rem; margin-top: 2rem;">
+          <h3 style="color: #002B7A; font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">
+            👓 Accesibilidad para Lectores de Pantalla y Teclado
+          </h3>
+          <p style="color: #475569; font-size: 0.94rem; line-height: 1.6;">
+            Este sitio cuenta con etiquetas semánticas y compatibilidad con lectores de pantalla como <strong>VoiceOver</strong> (en macOS y iPhone) y <strong>TalkBack</strong> (en Android). Puedes navegar por todos los enlaces y botones pulsando la tecla <code>Tab</code> y accionarlos con <code>Enter</code> o <code>Espacio</code>.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="./" class="btn-encardomy" style="padding: 0.85rem 2rem; font-size: 1rem; text-decoration: none;">
+            <span>Volver a la Página Principal &rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="apple-footer-dark">
+    <div class="footer-wrapper">
+      <div class="footer-top-cluster">
+        <div>
+          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
+        </div>
+        <div class="footer-links-list">
+          <a href="./">Inicio</a>
+          <a href="centro-control">Centro de Control</a>
+          <a href="artisticas">Artísticas</a>
+          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+        </div>
+      </div>
+      <p>
+        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Funciones de Accesibilidad en la página
+    function toggleA11yContrast() {
+      document.body.classList.toggle('high-contrast');
+      const btn = document.getElementById('contrastToggleBtn');
+      if (btn) btn.classList.toggle('active');
+    }
+
+    let currentZoom = 100;
+    function adjustFontSize(delta) {
+      currentZoom = Math.min(Math.max(currentZoom + (delta * 10), 80), 140);
+      document.querySelector('.schedule-card-body').style.fontSize = currentZoom + '%';
+    }
+
+    function resetFontSize() {
+      currentZoom = 100;
+      document.querySelector('.schedule-card-body').style.fontSize = '100%';
+    }
+  </script>
+</body>
+</html>

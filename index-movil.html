@@ -393,7 +393,7 @@
     function checkDesktopSwitch() {
       const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
       if (isWide && !window.location.search.includes("force=mobile")) {
-        window.location.replace("index.html");
+        window.location.replace("./");
       }
     }
     checkDesktopSwitch();
@@ -417,7 +417,7 @@
 
     <!-- BARRA SUPERIOR COMPACTA -->
     <header class="mobile-header">
-      <a href="index-movil.html" class="mobile-brand">
+      <a href="index-movil" class="mobile-brand">
         <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 42px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
         <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 36px;">
         <div class="mobile-brand-title">Cuatreros <span>415</span></div>
@@ -459,7 +459,7 @@
       <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 0.9rem;">
         Avisos, tareas y programas de Español, Matemáticas, Física y las 12 asignaturas del 415.
       </p>
-      <a href="centro-control.html" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
+      <a href="centro-control" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
         Explorar Centro de Control &rarr;
       </a>
     </div>
@@ -537,6 +537,24 @@
     <div id="timelineList" class="timeline-classes-list"></div>
   </section>
 
+
+
+  <!-- ACCESOS RÁPIDOS MÓVIL: ARTÍSTICAS Y GUÍA DE AYUDA -->
+  <div class="mobile-section-wrap" style="margin-bottom: 1.5rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+      <a href="artisticas" style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+        <span style="font-size: 1.6rem;">🎭</span>
+        <strong style="color: #002B7A; font-size: 0.86rem;">Artísticas 415</strong>
+        <span style="color: #D59F0F; font-size: 0.72rem; font-weight: 800;">6 disciplinas &rarr;</span>
+      </a>
+
+      <a href="ayuda" style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+        <span style="font-size: 1.6rem;">📖</span>
+        <strong style="color: #002B7A; font-size: 0.86rem;">Guía & Ayuda</strong>
+        <span style="color: #64748b; font-size: 0.72rem; font-weight: 800;">Manual de uso &rarr;</span>
+      </a>
+    </div>
+  </div>
 
   <!-- GUÍA DE SALONES DEL 415 EN PREPA 4 (MÓVIL) -->
   <div class="mobile-section-wrap">
@@ -699,7 +717,10 @@
         <strong style="color: #ffffff;">Cuatreros del 415</strong><br>
         <span style="font-size: 0.78rem; opacity: 0.75;">Universidad Nacional Autónoma de México &bull; ENP Plantel 4</span>
       </div>
-      <div class="footer-links-list" style="justify-content: center; gap: 1.2rem;">
+      <div class="footer-links-list" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="centro-control">Materias</a>
+        <a href="artisticas">Artísticas</a>
+        <a href="ayuda">Ayuda</a>
         <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
         <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
       </div>

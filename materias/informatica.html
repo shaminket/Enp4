@@ -22,7 +22,7 @@
 
     <header class="apple-nav">
       <div class="nav-inner">
-        <a href="../index.html" class="nav-brand">
+        <a href="../" class="nav-brand">
           <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
           <div class="brand-text-cluster">
             <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
@@ -34,8 +34,8 @@
         </a>
 
         <nav class="nav-links-menu">
-          <a href="../centro-control.html" class="nav-link-item">Centro de Control</a>
-          <a href="../index.html#horario" class="nav-link-item">Horario 0415</a>
+          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
+          <a href="../#horario" class="nav-link-item">Horario 0415</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
             Shaminket
           </a>
@@ -63,10 +63,15 @@
   <main class="master-container" style="max-width: 1040px; margin-top: -2.5rem;">
     <div class="schedule-master-card">
       <div class="window-titlebar">
-        <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <div class="window-dots">
+            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+          </div>
+          <button class="mac-nav-back-btn" onclick="window.history.back()">
+            &larr; Volver
+          </button>
         </div>
         <span class="win-titlebar-text">Informática &bull; Grupo 0415</span>
       </div>
@@ -118,7 +123,7 @@
 
         <!-- BOTÓN PARA REGRESAR AL CENTRO DE CONTROL -->
         <div style="text-align: center; margin-top: 2rem;">
-          <a href="../centro-control.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #002B7A; font-weight: 800; text-decoration: none; font-size: 1rem;">
+          <a href="../centro-control" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #002B7A; font-weight: 800; text-decoration: none; font-size: 1rem;">
             &larr; Volver al Centro de Control de Materias
           </a>
         </div>
@@ -134,7 +139,7 @@
           <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
         </div>
         <div class="footer-links-list">
-          <a href="../centro-control.html">Todas las materias</a>
+          <a href="../centro-control">Todas las materias</a>
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
         </div>

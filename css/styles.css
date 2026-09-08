@@ -1088,3 +1088,59 @@ a.link-encardomy:hover {
 .footer-links-list a:hover {
   color: #F7C438;
 }
+
+/* Símbolos Mac al hacer hover en los botones */
+.win-dot-close:hover::after {
+  content: "×";
+  font-size: 11px;
+  font-weight: 900;
+  color: #630808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.win-dot-minimize:hover::after {
+  content: "−";
+  font-size: 11px;
+  font-weight: 900;
+  color: #613e00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.win-dot-maximize:hover::after {
+  content: "+";
+  font-size: 11px;
+  font-weight: 900;
+  color: #044b14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.mac-nav-back-btn {
+  background: rgba(0, 43, 122, 0.08);
+  border: 1px solid rgba(0, 43, 122, 0.2);
+  color: #002B7A;
+  font-weight: 800;
+  font-size: 0.84rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.mac-nav-back-btn:hover {
+  background: #002B7A;
+  color: #ffffff;
+  border-color: #002B7A;
+}

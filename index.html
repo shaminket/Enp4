@@ -15,7 +15,7 @@
       
       // Si el ancho es estrecho y no está forzado a escritorio, redirige a móvil
       if ((isMobileUA || isNarrow) && !window.location.search.includes("force=desktop")) {
-        window.location.replace("index-movil.html");
+        window.location.replace("index-movil");
       }
     }
     checkResponsiveLayout();
@@ -39,7 +39,7 @@
     <!-- BARRA DE NAVEGACIÓN ULTRA-GLASS -->
     <header class="apple-nav">
       <div class="nav-inner">
-        <a href="index.html" class="nav-brand">
+        <a href="./" class="nav-brand">
           <img src="assets/escudo-unam-original.png" alt="Escudo Oficial UNAM" class="unam-header-crest" style="width: 52px; height: 60px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); flex-shrink: 0;">
           <div class="brand-text-cluster">
             <div class="brand-name" style="display: flex; align-items: center; gap: 0.7rem;">
@@ -51,8 +51,10 @@
         </a>
 
         <nav class="nav-links-menu">
-          <a href="#horario" class="nav-link-item">Horario 0415</a>
-          <a href="#servicios" class="nav-link-item">Servicios y Dudas</a>
+          <a href="centro-control" class="nav-link-item">Materias</a>
+          <a href="#horario" class="nav-link-item">Horario</a>
+          <a href="artisticas" class="nav-link-item">Artísticas</a>
+          <a href="ayuda" class="nav-link-item">Ayuda &bull; Guía</a>
           <!-- Botón a Shaminket (Morado) -->
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
             Conoce Shaminket
@@ -108,7 +110,7 @@
           <p style="color: #cbd5e1; font-size: 0.94rem; margin-top: 0.15rem;">Consulta avisos, resúmenes, programas oficiales y tareas de Español, Matemáticas, Física y las 12 asignaturas.</p>
         </div>
       </div>
-      <a href="centro-control.html" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap;">
+      <a href="centro-control" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap;">
         <span>Explorar Centro de Control &rarr;</span>
       </a>
     </section>
@@ -445,6 +447,38 @@
             </a>
           </div>
         </div>
+
+        <!-- Tarjeta 4: Educación Estética y Artística (Artísticas de Prepa 4) -->
+        <div class="bento-card" style="border: 1.5px solid #D59F0F;">
+          <div class="bento-icon-box" style="color: #D59F0F; background: rgba(213, 159, 15, 0.15);">🎭</div>
+          <h3>Educación Estética y Artística</h3>
+          <p>
+            Explora las 6 disciplinas en Prepa 4 (Teatro, Danza Folclórica, Contemporánea, Música, Artes Plásticas y Fotografía) y consulta profesores y horarios.
+          </p>
+          <div class="bento-footer-link">
+            <a href="artisticas" 
+               class="btn-encardomy" 
+               style="padding: 0.55rem 1.25rem; font-size: 0.88rem; text-decoration: none;">
+              <span>Ver Artísticas &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta 5: Guía de Uso y Accesibilidad -->
+        <div class="bento-card">
+          <div class="bento-icon-box" style="color: #002B7A; background: rgba(0, 43, 122, 0.1);">📖</div>
+          <h3>Guía de Uso & Accesibilidad</h3>
+          <p>
+            Aprende a sacarle el 100% al horario inteligente, el ubicador de salones de Tacubaya y activa herramientas de alto contraste y tamaño de letra.
+          </p>
+          <div class="bento-footer-link">
+            <a href="ayuda" 
+               class="btn-encardomy" 
+               style="padding: 0.55rem 1.25rem; font-size: 0.88rem; text-decoration: none;">
+              <span>Abrir Guía &rarr;</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -565,8 +599,11 @@
           </div>
         </div>
         <div class="footer-links-list">
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Plataforma Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Agencia Shaminket</a>
+          <a href="centro-control">Centro de Control</a>
+          <a href="artisticas">Artísticas</a>
+          <a href="ayuda">Guía de Ayuda</a>
+          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
         </div>
       </div>
       <p>
