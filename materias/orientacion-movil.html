@@ -16,15 +16,26 @@
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
   </script>
+
+  <script>
+    function checkDesktopSwitch() {
+      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
+      if (isWide && !window.location.search.includes("force=mobile")) {
+        window.location.replace("orientacion");
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
   <div class="sticky-top-group">
-    <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+    <div class="mac-header-topbar" style="padding: 10px 16px;">
+      <div class="mac-header-dots" style="gap: 12px;">
+        <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
+        <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Orientación Educativa IV &bull; Grupo 0415 &bull; ENP 4</span>
     </div>
@@ -62,7 +73,7 @@
     </header>
   </div>
 
-  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5.5rem;">
+  <section class="hero-cinematic" style="padding: 2.8rem 1.2rem 3.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
       <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🧭</div>
@@ -83,16 +94,16 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         </div>
         <span class="win-titlebar-text">Selecciona tu Sección &bull; Orientación Educativa IV</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.8rem 2.5rem;">
+      <div class="schedule-card-body" style="padding: 1.6rem 1.2rem;">
         <h2 style="color: #002B7A; font-size: 1.65rem; font-weight: 900; text-align: center; margin-bottom: 0.5rem;">
           ¿A qué sección perteneces?
         </h2>

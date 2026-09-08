@@ -16,6 +16,17 @@
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
   </script>
+
+  <script>
+    function checkDesktopSwitch() {
+      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
+      if (isWide && !window.location.search.includes("force=mobile")) {
+        window.location.replace("actualizaciones");
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
@@ -59,9 +70,9 @@
     <div style="margin-bottom: 2rem;">
       <div class="window-titlebar" style="background: rgba(255,255,255,0.9); box-shadow: var(--shadow-sm); border-radius: 16px; border: 1px solid var(--apple-border);">
         <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+          <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+          <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+          <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
         </div>
         <span class="win-titlebar-text">Cuatreros 415 &bull; Navegación</span>
       </div>

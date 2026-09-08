@@ -6,6 +6,16 @@
   <title>Centro de Control de Materias | Grupo 0415 &bull; ENP 4 UNAM</title>
   <meta name="description" content="Centro de control académico para los alumnos del Grupo 0415 de la Prepa 4. Avisos, guías, tareas y materias oficiales.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    function checkResponsive() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      if (isNarrow && !window.location.search.includes("force=desktop")) {
+        window.location.replace("centro-control-movil");
+      }
+    }
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+  </script>
 </head>
 <body>
 

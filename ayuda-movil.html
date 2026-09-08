@@ -105,17 +105,28 @@
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
   </script>
+
+  <script>
+    function checkDesktopSwitch() {
+      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
+      if (isWide && !window.location.search.includes("force=mobile")) {
+        window.location.replace("ayuda");
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
   <!-- CABECERA PERSISTENTE -->
   <div class="sticky-top-group">
     <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-    <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver atrás"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Ir al inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+    <div class="mac-header-topbar" style="padding: 10px 16px;">
+      <div class="mac-header-dots" style="gap: 12px;">
+        <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver atrás"></button>
+        <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Ir al inicio"></button>
+        <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
     </div>
@@ -154,7 +165,7 @@
   </div>
 
   <!-- HERO DE AYUDA -->
-  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5.5rem;">
+  <section class="hero-cinematic" style="padding: 2.8rem 1.2rem 3.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
       <span style="display: inline-block; background: rgba(213, 159, 15, 0.2); border: 1px solid #D59F0F; color: #fcd866; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 1rem;">
@@ -174,14 +185,14 @@
     <div class="schedule-master-card">
       <div class="window-titlebar">
         <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+          <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Volver"></button>
+          <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
+          <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
         </div>
         <span class="win-titlebar-text">Centro de Ayuda y Accesibilidad &bull; Cuatreros 415</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.5rem 2.8rem;">
+      <div class="schedule-card-body" style="padding: 1.6rem 1.2rem;">
 
         <!-- BARRA DE HERRAMIENTAS DE ACCESIBILIDAD INTERACTIVA -->
         <div class="a11y-toolbar">

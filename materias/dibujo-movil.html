@@ -3,37 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orientación Educativa IV &bull; Selección de Sección | Grupo 0415 Prepa 4</title>
-  <meta name="description" content="Selecciona tu sección (A o B) para la materia de Orientación Educativa IV en el Grupo 0415 de la ENP 4.">
+  <title>Dibujo II &bull; Selección de Sección | Grupo 0415 Prepa 4</title>
+  <meta name="description" content="Selecciona tu sección (A o B) para la materia de Dibujo II en el Grupo 0415 de la ENP 4.">
   <link rel="stylesheet" href="../css/styles.css">
   <script>
     function checkResponsive() {
       const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
       if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("orientacion-movil");
+        window.location.replace("dibujo-movil");
       }
     }
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
   </script>
+
+  <script>
+    function checkDesktopSwitch() {
+      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
+      if (isWide && !window.location.search.includes("force=mobile")) {
+        window.location.replace("dibujo");
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
   <div class="sticky-top-group">
-    <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+    <div class="mac-header-topbar" style="padding: 10px 16px;">
+      <div class="mac-header-dots" style="gap: 12px;">
+        <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
+        <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
-      <span class="mac-header-title">Orientación Educativa IV &bull; Grupo 0415 &bull; ENP 4</span>
+      <span class="mac-header-title">Dibujo II &bull; Grupo 0415 &bull; ENP 4</span>
     </div>
 
     <aside class="rebrand-cosmic-banner">
       <div class="rebrand-inner">
         <span class="rebrand-pill">✨ SELECCIÓN DE SECCIÓN</span>
         <span class="rebrand-text-main">
-          <strong>Orientación Educativa IV</strong> &bull; Grupo 0415 Prepa 4
+          <strong>Dibujo II</strong> &bull; Grupo 0415 Prepa 4
         </span>
       </div>
     </aside>
@@ -62,18 +73,18 @@
     </header>
   </div>
 
-  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5.5rem;">
+  <section class="hero-cinematic" style="padding: 2.8rem 1.2rem 3.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🧭</div>
+      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🎨</div>
       <span style="display: inline-block; background: rgba(213, 159, 15, 0.2); border: 1px solid #D59F0F; color: #fcd866; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 0.8rem;">
-        Clave 1410 &bull; Materia Dividida en Secciones
+        Clave 1406 &bull; Materia Dividida en Secciones
       </span>
       <h1 class="hero-heading" style="font-size: clamp(2.3rem, 5.5vw, 4rem); margin-bottom: 0.8rem;">
-        Orientación Educativa IV
+        Dibujo II
       </h1>
       <p class="hero-description" style="max-width: 760px;">
-        Espacio de tutoría, integración al bachillerato UNAM y desarrollo de habilidades escolares dividido por sección. ¿En qué sección estás inscrito? Selecciona tu sección para ver tu salón y horarios exactos:
+        El curso de Dibujo II se imparte dividido en dos secciones para prácticas en taller. ¿En qué sección estás inscrito? Selecciona tu sección para ver tu salón y horarios exactos:
       </p>
     </div>
   </section>
@@ -83,16 +94,16 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         </div>
-        <span class="win-titlebar-text">Selecciona tu Sección &bull; Orientación Educativa IV</span>
+        <span class="win-titlebar-text">Selecciona tu Sección &bull; Dibujo II</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.8rem 2.5rem;">
+      <div class="schedule-card-body" style="padding: 1.6rem 1.2rem;">
         <h2 style="color: #002B7A; font-size: 1.65rem; font-weight: 900; text-align: center; margin-bottom: 0.5rem;">
           ¿A qué sección perteneces?
         </h2>
@@ -107,13 +118,13 @@
               <span style="background: #e0f2fe; color: #0369a1; font-weight: 900; font-size: 0.85rem; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 8px;">
                 Sección A
               </span>
-              <h3 style="color: #001628; font-size: 1.5rem; font-weight: 900; margin: 1rem 0 0.4rem;">Salón B-110</h3>
-              <p style="color: #2D7FF9; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.8rem;">⏰ Lunes 12:00 - 12:50</p>
+              <h3 style="color: #001628; font-size: 1.5rem; font-weight: 900; margin: 1rem 0 0.4rem;">Salón B-008</h3>
+              <p style="color: #2D7FF9; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.8rem;">⏰ Martes 08:40 - 09:30 y Miércoles 10:20 - 11:10</p>
               <p style="color: #475569; font-size: 0.92rem; line-height: 1.55; margin-bottom: 1.5rem;">
-                Salón B-110 (Primer piso del Edificio B). Acompañamiento psicopedagógico, técnicas de estudio y proyecto vocacional temprano.
+                Taller B-008 (Planta baja del Edificio B). Enfoque en dibujo analítico, técnicas a lápiz, tinta y perspectiva básica.
               </p>
             </div>
-            <a href="orientacion-a" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.85rem 1.2rem; font-size: 0.95rem; text-decoration: none;">
+            <a href="dibujo-a" class="btn-encardomy" style="width: 100%; justify-content: center; padding: 0.85rem 1.2rem; font-size: 0.95rem; text-decoration: none;">
               <span>Entrar a Sección A &rarr;</span>
             </a>
           </div>
@@ -124,13 +135,13 @@
               <span style="background: #fef3c7; color: #92400e; font-weight: 900; font-size: 0.85rem; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 8px;">
                 Sección B
               </span>
-              <h3 style="color: #001628; font-size: 1.5rem; font-weight: 900; margin: 1rem 0 0.4rem;">Salón B-112</h3>
-              <p style="color: #b38205; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.8rem;">⏰ Lunes 12:00 - 12:50</p>
+              <h3 style="color: #001628; font-size: 1.5rem; font-weight: 900; margin: 1rem 0 0.4rem;">Salón C-201</h3>
+              <p style="color: #b38205; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.8rem;">⏰ Miércoles 10:20 - 11:10 y Viernes 07:00 - 07:50</p>
               <p style="color: #475569; font-size: 0.92rem; line-height: 1.55; margin-bottom: 1.5rem;">
-                Salón B-112 (Primer piso del Edificio B). Habilidades socioemocionales, prevención de riesgos y adaptación al plantel.
+                Taller C-201 (Segundo piso del Edificio C). Prácticas de composición gráfica, lenguaje visual y teoría del color.
               </p>
             </div>
-            <a href="orientacion-b" class="btn-encardomy" style="background: linear-gradient(135deg, #D59F0F 0%, #92400e 100%) !important; border-color: #fef3c7 !important; width: 100%; justify-content: center; padding: 0.85rem 1.2rem; font-size: 0.95rem; text-decoration: none;">
+            <a href="dibujo-b" class="btn-encardomy" style="background: linear-gradient(135deg, #D59F0F 0%, #92400e 100%) !important; border-color: #fef3c7 !important; width: 100%; justify-content: center; padding: 0.85rem 1.2rem; font-size: 0.95rem; text-decoration: none;">
               <span>Entrar a Sección B &rarr;</span>
             </a>
           </div>

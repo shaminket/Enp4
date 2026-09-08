@@ -6,6 +6,16 @@
   <title>Plan de Estudios | Lengua Española - Cuatreros del 415</title>
   <meta name="description" content="Información importante sobre el Plan de Estudios de Lengua Española del Grupo 0415 y lectura de regalo.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    function checkResponsive() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      if (isNarrow && !window.location.search.includes("force=desktop")) {
+        window.location.replace("plan-estudios-movil");
+      }
+    }
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+  </script>
 </head>
 <body>
 

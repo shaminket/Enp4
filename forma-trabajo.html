@@ -6,6 +6,16 @@
   <title>Forma de Trabajo | Lengua Española - Cuatreros del 415</title>
   <meta name="description" content="Detalles dictados en clase sobre la forma de trabajo y evaluación de Lengua Española para el Grupo 415 de la ENP 4 UNAM, más prompt de regalo.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    function checkResponsive() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      if (isNarrow && !window.location.search.includes("force=desktop")) {
+        window.location.replace("forma-trabajo-movil");
+      }
+    }
+    checkResponsive();
+    window.addEventListener("resize", checkResponsive);
+  </script>
 </head>
 <body>
 
