@@ -3,77 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Cuatreros del 415 | Versión Móvil Oficial</title>
-  <meta name="description" content="Horario de hoy y portal estudiantil del Grupo 0415 de la ENP 4 UNAM optimizado para celular.">
+  <title>Cuatreros del 415 | ENP 4 UNAM</title>
+  <meta name="description" content="Portal oficial de los alumnos del Grupo 0415 de la ENP 4 UNAM. Horario de hoy en vivo, tareas y dudas.">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* ==========================================================
-       ESTILOS EXCLUSIVOS PARA VERSIÓN CELULAR (APPLE iOS FEEL)
-       ========================================================== */
-    :root {
-      --mobile-card-bg: #ffffff;
-      --mobile-border: #e2e8f0;
-      --cosmic-purple: #7c3aed;
-      --cosmic-purple-light: #c084fc;
-    }
-
+    /* Estilos de la versión móvil */
     body {
-      padding-bottom: 90px; /* Espacio para botón flotante */
+      padding-bottom: 95px;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Banner Cósmico Negro, Azul y Morado para Móvil */
+    .sticky-top-mobile-group {
+      position: sticky;
+      top: 0;
+      z-index: 1005;
+      width: 100%;
+    }
+
     .rebrand-mobile-banner {
       background: linear-gradient(135deg, #090a0f 0%, #001f3f 40%, #581c87 85%, #3b0764 100%);
       color: #ffffff;
-      padding: 0.9rem 1.1rem;
+      padding: 0.75rem 1rem;
       border-bottom: 2px solid #a855f7;
       box-shadow: 0 4px 20px rgba(124, 58, 237, 0.45);
-      position: sticky;
-      top: 0;
-      z-index: 1002;
     }
 
     .rebrand-mobile-inner {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: center;
+      text-align: center;
+      gap: 0.6rem;
     }
 
     .rebrand-sparkle-icon {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       line-height: 1;
-      filter: drop-shadow(0 0 8px #c084fc);
     }
 
     .rebrand-mobile-title {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: -0.2px;
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     .rebrand-mobile-title span {
       color: #e9d5ff;
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
     }
 
-    /* Barra Superior Compacta Móvil */
     .mobile-header {
-      background: rgba(0, 22, 40, 0.92);
+      background: rgba(0, 22, 40, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1.5px solid var(--unam-gold);
-      padding: 0.75rem 1rem;
+      padding: 0.65rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 48px; /* Debajo del banner */
-      z-index: 1000;
     }
 
     .mobile-brand {
@@ -102,46 +93,21 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .btn-mobile-nav {
-      background: var(--unam-gold-gradient);
-      color: var(--unam-blue-dark);
-      padding: 0.4rem 0.9rem;
-      border-radius: var(--radius-full);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 2px 8px rgba(213, 159, 15, 0.35);
-    }
-
-    /* Hero Banner Móvil */
     .mobile-hero {
       background: radial-gradient(circle at 50% 10%, #003d6b 0%, var(--unam-blue) 55%, var(--unam-blue-dark) 100%);
       color: #ffffff;
-      padding: 2.5rem 1.2rem 2.8rem;
+      padding: 2.2rem 1.2rem 2.6rem;
       text-align: center;
-      position: relative;
     }
 
-    .mobile-hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(213, 159, 15, 0.45);
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--unam-gold-light);
-      margin-bottom: 1rem;
-    }
+    
 
     .mobile-hero-h1 {
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       font-weight: 900;
       letter-spacing: -1px;
       line-height: 1.1;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .mobile-hero-desc {
@@ -151,9 +117,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ==========================================================
-       HORARIO EN MÓVIL: VISTA DE UN DÍA (HOY) CON BOTONES
-       ========================================================== */
+    /* Tarjeta del Horario Diario */
     .mobile-schedule-card {
       background: #ffffff;
       border-radius: 20px;
@@ -201,7 +165,6 @@
       margin-top: 0.2rem;
     }
 
-    /* Barra de Navegación de Días (Segmented Tabs) */
     .days-segmented-bar {
       display: flex;
       background: #f1f5f9;
@@ -221,7 +184,6 @@
       font-weight: 700;
       color: #64748b;
       cursor: pointer;
-      transition: var(--transition-fast);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -244,7 +206,6 @@
       color: var(--unam-gold-light);
     }
 
-    /* Flechas para Anterior / Siguiente Día */
     .day-arrows-row {
       display: flex;
       justify-content: space-between;
@@ -265,17 +226,10 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      transition: var(--transition-fast);
       flex: 1;
       justify-content: center;
     }
 
-    .btn-day-arrow:hover {
-      background: #e2e8f0;
-      border-color: var(--unam-gold);
-    }
-
-    /* Filtro de Sección Móvil */
     .section-selector-row {
       display: flex;
       align-items: center;
@@ -308,7 +262,6 @@
       font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
-      transition: var(--transition-fast);
     }
 
     .sec-pill-btn.active {
@@ -318,7 +271,6 @@
       font-weight: 900;
     }
 
-    /* Lista Vertical de Clases (Cards Diarias) */
     .timeline-classes-list {
       display: flex;
       flex-direction: column;
@@ -332,14 +284,6 @@
       border-radius: 14px;
       padding: 1rem 1.1rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-      transition: var(--transition-fast);
-      position: relative;
-    }
-
-    .timeline-class-card.active-now {
-      border-left-color: #22c55e;
-      background: #f0fdf4;
-      border-color: #bbf7d0;
     }
 
     .timeline-time-row {
@@ -365,7 +309,6 @@
       font-weight: 800;
       padding: 0.2rem 0.55rem;
       border-radius: 6px;
-      letter-spacing: 0.5px;
     }
 
     .class-name-mobile {
@@ -405,96 +348,139 @@
       font-style: italic;
     }
 
-    /* Módulos de Servicios en Celular */
+    /* Tarjeta de Tareas y Copias (Encardomy) */
     .mobile-section-wrap {
       padding: 0 1rem;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
 
     .mobile-promo-box {
-      background: linear-gradient(135deg, #001e38 0%, #002b49 70%, #073860 100%);
-      border: 1.5px solid rgba(213, 159, 15, 0.45);
+      background: linear-gradient(135deg, #0a1f3d 0%, var(--enc-azul-marino) 60%, #0d3868 100%);
+      border: 2px solid var(--enc-azul-electrico);
       border-radius: 18px;
       padding: 1.6rem 1.3rem;
       color: #ffffff;
-      box-shadow: 0 10px 25px rgba(0, 22, 40, 0.15);
-      position: relative;
+      box-shadow: 0 10px 25px rgba(18, 59, 106, 0.25);
     }
 
-    .btn-mobile-promo {
+    .btn-mobile-encardomy {
       display: block;
       width: 100%;
       text-align: center;
-      background: var(--unam-gold-gradient);
-      color: var(--unam-blue-dark);
+      background: var(--enc-btn-gradient);
+      color: #ffffff;
+      border: 1.5px solid var(--enc-azul-tint);
       padding: 0.85rem 1rem;
       border-radius: var(--radius-full);
       font-size: 0.95rem;
       font-weight: 900;
       text-decoration: none;
       margin-top: 1.1rem;
-      box-shadow: 0 4px 15px rgba(213, 159, 15, 0.4);
+      box-shadow: var(--shadow-encardomy);
     }
 
-    /* Enlace a Versión de Escritorio */
-    .desktop-switch-footer {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.82rem;
-      color: var(--apple-text-sec);
-    }
-
-    .desktop-switch-footer a {
-      color: var(--unam-blue);
-      font-weight: 700;
-      text-decoration: underline;
+    /* Tarjeta de Dudas (WhatsApp) */
+    .mobile-dudas-box {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.6rem 1.3rem;
+      box-shadow: var(--shadow-sm);
     }
   </style>
+  <script>
+    // Detección fluida: Si se agranda la ventana en Mac a formato horizontal, vuelve a escritorio
+    function checkDesktopSwitch() {
+      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
+      if (isWide && !window.location.search.includes("force=mobile")) {
+        window.location.replace("index.html");
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
-  <!-- BANNER CÓSMICO NEGRO, AZUL Y MORADO -->
-  <aside class="rebrand-mobile-banner">
-    <div class="rebrand-mobile-inner">
-      <div class="rebrand-sparkle-icon">✨</div>
-      <div class="rebrand-mobile-title">
-        ¡ALGO GRANDE ESTÁ POR VENIR!
-        <span>Esta página se reinventa para el Grupo 415 &bull; Encardomy</span>
+  <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (SIEMPRE FIJO AL SCROLLEAR) -->
+  <div class="sticky-top-mobile-group">
+    <!-- BANNER NEGRO, AZUL Y MORADO -->
+    <aside class="rebrand-mobile-banner">
+      <div class="rebrand-mobile-inner">
+        <div class="rebrand-sparkle-icon">✨</div>
+        <div class="rebrand-mobile-title">
+          ¡ALGO GRANDE ESTÁ POR VENIR!
+          <span>Esta página se reinventa &bull; Grupo 0415</span>
+        </div>
       </div>
-    </div>
-  </aside>
+    </aside>
 
-  <!-- BARRA SUPERIOR COMPACTA -->
-  <header class="mobile-header">
-    <a href="index-movil.html" class="mobile-brand">
-      <svg class="mobile-crest" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="46" fill="#002B49" stroke="#D59F0F" stroke-width="4"/>
-        <path d="M50 14 L66 34 L80 30 L72 50 L86 58 L70 64 L76 82 L50 74 L24 82 L30 64 L14 58 L28 50 L20 30 L34 34 Z" fill="#D59F0F"/>
-        <circle cx="50" cy="50" r="14" fill="#002B49" stroke="#D59F0F" stroke-width="2"/>
-        <text x="50" y="55" font-size="10" font-weight="900" fill="#D59F0F" text-anchor="middle" font-family="sans-serif">415</text>
-      </svg>
-      <div class="mobile-brand-title">Cuatreros <span>415</span></div>
-    </a>
-    <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-nav">
-      Shaminket
-    </a>
-  </header>
+    <!-- BARRA SUPERIOR COMPACTA -->
+    <header class="mobile-header">
+      <a href="index-movil.html" class="mobile-brand">
+        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 42px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
+        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 36px;">
+        <div class="mobile-brand-title">Cuatreros <span>415</span></div>
+      </a>
+      <!-- Botón Shaminket Morado -->
+      <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.4rem 0.95rem; font-size: 0.78rem;">
+        Shaminket
+      </a>
+    </header>
+  </div>
 
   <!-- HERO MÓVIL -->
   <section class="mobile-hero">
-    <div class="mobile-hero-pill">
-      <span>📱 Vista Móvil Optimizada &bull; Prepa 4 UNAM</span>
+    <!-- IDENTIDAD INSTITUCIONAL FLOTANTE SIN FONDOS PEGADOS -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 1.2rem;">
+      <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 75px; width: auto; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.5));">
+      <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 70px; width: auto; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.5));">
+    </div>
+    <div style="display: flex; justify-content: center; margin-bottom: 1.2rem;">
+      <img src="assets/enp4-unam-wordmark.svg" alt="ENP4 unam" style="height: 65px; width: auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));">
     </div>
     <h1 class="mobile-hero-h1">Cuatreros del 415</h1>
     <p class="mobile-hero-desc">
-      Consulta tu horario de hoy en tiempo real, tus salones y el apoyo de <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket.
+      El espacio hecho por y para la comunidad del 415 en la Prepa 4. Consulta tu horario de hoy en vivo, tus salones y apóyate con tus tareas y copias con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy" style="color: #93c5fd; border-bottom-color: #93c5fd;">Encardomy</a> By Shaminket.
     </p>
   </section>
 
-  <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN DÍA A LA VEZ) -->
-  <section class="mobile-schedule-card">
+
+  <!-- ACCESO DESTACADO AL CENTRO DE CONTROL ACADÉMICO EN MÓVIL -->
+  <div class="mobile-section-wrap" style="margin-bottom: 1.5rem;">
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #002B7A 100%); border: 2px solid #D59F0F; border-radius: 18px; padding: 1.3rem 1.1rem; color: #ffffff; box-shadow: 0 4px 15px rgba(0,22,40,0.1);">
+      <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem;">
+        <span style="font-size: 1.6rem;">📚</span>
+        <div>
+          <span style="background: #D59F0F; color: #001628; font-size: 0.68rem; font-weight: 900; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 5px;">Nuevo</span>
+          <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin: 0.1rem 0 0;">Centro de Control de Materias</h3>
+        </div>
+      </div>
+      <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 0.9rem;">
+        Avisos, tareas y programas de Español, Matemáticas, Física y las 12 asignaturas del 415.
+      </p>
+      <a href="centro-control.html" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
+        Explorar Centro de Control &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN SOLO DÍA A LA VEZ) -->
+  <section class="mobile-schedule-card" style="padding-top: 0; overflow: hidden;">
+    <div class="window-titlebar" style="margin: 0 -1.1rem 1.2rem; padding: 10px 14px;">
+      <div class="window-dots">
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
+        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Ampliar"></button>
+      </div>
+      <span class="win-titlebar-text">Grupo 0415 &bull; ENP 4</span>
+    </div>
     <div class="schedule-header-mobile">
-      <span class="schedule-tag-pill">📅 Horario Escolar Oficial</span>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem;">
+        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 45px; width: auto;">
+        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 42px; width: auto;">
+      </div>
+      <span class="schedule-tag-pill" style="margin-bottom: 0.4rem;">📅 Horario Oficial &bull; ENP 4 Vidal Castañeda y Nájera</span>
       <h2 id="currentDayHeading" class="current-day-title">
         <span>🗓️</span> <span id="dayNameText">Cargando horario...</span>
       </h2>
@@ -548,34 +534,78 @@
     </div>
 
     <!-- Timeline vertical de clases del día -->
-    <div id="timelineList" class="timeline-classes-list">
-      <!-- Se inyecta dinámicamente con JavaScript -->
-    </div>
+    <div id="timelineList" class="timeline-classes-list"></div>
   </section>
 
-  <!-- BANNER PUBLICITARIO ENCARDOMY PARA CELULAR -->
+
+  <!-- GUÍA DE SALONES DEL 415 EN PREPA 4 (MÓVIL) -->
+  <div class="mobile-section-wrap">
+    <div style="background: #ffffff; border-radius: 18px; border: 1.5px solid #e2e8f0; padding: 1.4rem 1.2rem; box-shadow: 0 4px 15px rgba(0,22,40,0.04);">
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
+        <span style="font-size: 1.4rem;">🗺️</span>
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: #002B7A; margin: 0;">Ubicador de Salones &bull; Prepa 4</h3>
+      </div>
+      <p style="font-size: 0.84rem; color: #64748b; margin-bottom: 1rem; line-height: 1.45;">
+        Salones del Grupo 0415 en el Plantel 4 "Vidal Castañeda y Nájera" (Tacubaya):
+      </p>
+      
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
+        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #002B7A;">
+          <strong style="color: #002B7A;">Edificio A:</strong> A-104 (Geografía) &bull; A-302 (Física Lab).
+        </div>
+        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #D59F0F;">
+          <strong style="color: #002B7A;">Edificio B:</strong> B-108, B-109, B-110, B-112, B-113, B-115, B-116, B-117, B-206.
+        </div>
+        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #2D7FF9;">
+          <strong style="color: #002B7A;">Edificio C:</strong> C-201 (Dibujo) &bull; C-205 / C-306 (Inglés).
+        </div>
+        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #31C98D;">
+          <strong style="color: #002B7A;">Cómputo & Deportes:</strong> I-108, CC-2 y GIM1 (Gimnasio).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIO DE TAREAS Y COPIAS (EXCLUSIVO ENCARDOMY - AZUL ELÉCTRICO) -->
   <div class="mobile-section-wrap">
     <div class="mobile-promo-box">
-      <span class="promo-badge-tag">⚡ Apoyo Estudiantil</span>
-      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">
+      <span class="promo-badge-tag" style="background: rgba(49,201,141,0.2); color: var(--enc-verde-menta); border-color: var(--enc-verde-menta);">
+        ⚡ Tareas y Copias &bull; Encardomy
+      </span>
+      <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem; color: #ffffff;">
         ¿Te ayudamos con tus tareas? ¡Sacamos tus copias!
       </h3>
-      <p style="font-size: 0.88rem; color: #e2e8f0; line-height: 1.5;">
-        Asesoría rápida en español y preparación de asignaciones para el Grupo 415.
+      <p style="font-size: 0.88rem; color: var(--enc-azul-tint); line-height: 1.5;">
+        Servicio prioritario de impresiones HD, copias limpias y apoyo académico exclusivo en la plataforma de Encardomy.
       </p>
-      <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-promo">
-        Pedir Ayuda en Encardomy
+      <!-- Botón Encardomy Azul Eléctrico -->
+      <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-encardomy">
+        Pedir Copias y Tareas en Encardomy
       </a>
     </div>
   </div>
 
-  <!-- ENLACE PARA CAMBIAR A VERSIÓN DE ESCRITORIO -->
-  <div class="desktop-switch-footer">
-    ¿Estás en computadora o tablet? <br>
-    <a href="index.html?force=desktop">Cambiar a la versión de escritorio completa</a>
+  <!-- SECCIÓN DE PREGUNTAS Y DUDAS (DIRECTO A WHATSAPP) -->
+  <div class="mobile-section-wrap">
+    <div class="mobile-dudas-box">
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
+        <span style="font-size: 1.4rem;">💬</span>
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--unam-blue-dark);">¿Dudas de Español o del 415?</h3>
+      </div>
+      <p style="font-size: 0.86rem; color: var(--apple-text-sec); line-height: 1.5; margin-bottom: 1rem;">
+        Para dudas académicas de Lengua Española, aclaraciones o preguntas sobre las clases, comunícate directo por WhatsApp al número de soporte del grupo.
+      </p>
+      <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20acad%C3%A9mica%20sobre%20el%20Grupo%20415" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-support-trigger" 
+         style="justify-content: center; width: 100%; text-decoration: none; padding: 0.85rem 1rem; font-size: 0.95rem;">
+        <span>Preguntar por WhatsApp (+52 55 7198 5641)</span>
+      </a>
+    </div>
   </div>
 
-  <!-- BOTÓN FLOTANTE DE SOPORTE -->
+  <!-- BOTÓN FLOTANTE DE SOPORTE WHATSAPP -->
   <div class="floating-support-container" style="bottom: 20px; right: 20px;">
     <div class="radar-pulse-ring"></div>
     <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp" style="padding: 0.85rem 1.25rem; font-size: 0.88rem;">
@@ -590,7 +620,7 @@
   <div id="supportModalBackdrop" class="modal-backdrop" onclick="onBackdropClick(event)">
     <div class="modal-apple-card">
       <div class="modal-top-bar">
-        <h3><span>❓</span> ¿Tienes dudas?</h3>
+        <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
         <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
       </div>
       <div class="modal-main-body">
@@ -601,7 +631,7 @@
 
         <div id="dialogStep1" class="step-view active">
           <p>
-            ¿Necesitas ayuda con tus tareas o pedidos de copias con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a>? Conéctate directamente con el soporte oficial.
+            ¿Tienes dudas sobre Lengua Española o alguna tarea del 415? Conéctate directamente con el soporte oficial por WhatsApp.
           </p>
           <button class="btn-step-action" style="background: var(--unam-blue);" onclick="goToStep2()">
             Continuar al paso 2 &rarr;
@@ -612,11 +642,11 @@
           <p>
             <strong>Paso 2 de 2:</strong> Se abrirá WhatsApp al número oficial <strong>+52 55 7198 5641</strong> con atención para el Grupo 415.
           </p>
-          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola%20/%20Tareas" 
+          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-step-action">
-            💬 Abrir WhatsApp
+            💬 Abrir WhatsApp (+52 55 7198 5641)
           </a>
           <button class="btn-step-back" onclick="goToStep1()">
             &larr; Volver al paso 1
@@ -626,9 +656,58 @@
     </div>
   </div>
 
-  <!-- SCRIPT DE HORARIO DINÁMICO POR DÍA EN CELULAR -->
+
+  <!-- SECCIÓN DE FEEDBACK EN MÓVIL: ¿CREES QUE LE FALTA ALGO A ESTA PÁGINA? -->
+  <div class="mobile-section-wrap" style="margin-bottom: 2.5rem;">
+    <div style="background: #ffffff; border: 2px solid #D59F0F; border-radius: 18px; padding: 1.8rem 1.2rem; box-shadow: var(--shadow-sm); text-align: center;">
+      <span style="display: inline-block; background: rgba(213, 159, 15, 0.15); border: 1px solid #D59F0F; color: #b38205; font-size: 0.76rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 980px; margin-bottom: 0.8rem;">
+        Buzón de Alumnos
+      </span>
+      <h3 style="font-size: 1.4rem; font-weight: 900; color: #002B7A; line-height: 1.2; margin-bottom: 0.6rem;">
+        ¿Crees que le falta algo a esta página? ¿Qué es?
+      </h3>
+      <p style="font-size: 0.86rem; color: #64748b; line-height: 1.5; margin-bottom: 1.4rem;">
+        Hecha por y para nosotros los alumnos del 415. Dinos qué herramienta o apunte te gustaría que agreguemos.
+      </p>
+
+      <div style="text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem;">
+        <div style="margin-bottom: 0.9rem;">
+          <label style="display: block; font-weight: 800; font-size: 0.82rem; color: #002B7A; margin-bottom: 0.3rem;">Tu nombre (opcional):</label>
+          <input type="text" id="feedbackAuthor" placeholder="Tu nombre o apodo..." style="width: 100%; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem;">
+        </div>
+
+        <div style="margin-bottom: 1.1rem;">
+          <label style="display: block; font-weight: 800; font-size: 0.82rem; color: #002B7A; margin-bottom: 0.3rem;">Sugerencia o necesidad: <span style="color: red;">*</span></label>
+          <textarea id="feedbackContent" rows="3" placeholder="Escribe aquí tu sugerencia para el grupo..." style="width: 100%; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem;"></textarea>
+        </div>
+
+        <button onclick="submitPageFeedback()" style="width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; border: none; padding: 0.85rem; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer;">
+          💬 Enviar sugerencia por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="apple-footer-dark" style="padding: 2.5rem 1rem 2rem;">
+    <div class="footer-wrapper">
+      <div style="display: flex; justify-content: center; align-items: center; gap: 0.9rem; margin-bottom: 0.5rem;">
+        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 32px;">
+        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 28px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="text-align: center;">
+        <strong style="color: #ffffff;">Cuatreros del 415</strong><br>
+        <span style="font-size: 0.78rem; opacity: 0.75;">Universidad Nacional Autónoma de México &bull; ENP Plantel 4</span>
+      </div>
+      <div class="footer-links-list" style="justify-content: center; gap: 1.2rem;">
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE HORARIO DINÁMICO POR DÍA -->
   <script>
-    // Datos completos del Horario Grupo 0415
     const scheduleData = {
       1: {
         name: "Lunes",
@@ -701,13 +780,10 @@
     let selectedDay = 1;
     let selectedSection = 'all';
 
-    // Determinar día actual automáticamente
     function getTodayDayIndex() {
-      const day = new Date().getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-      if (day >= 1 && day <= 5) {
-        return day;
-      }
-      return 1; // Si es sábado o domingo, muestra lunes
+      const day = new Date().getDay();
+      if (day >= 1 && day <= 5) return day;
+      return 1;
     }
 
     function initMobileSchedule() {
@@ -744,25 +820,20 @@
       const subElem = document.getElementById('dateSubText');
       const listContainer = document.getElementById('timelineList');
 
-      // Actualizar Tabs
       document.querySelectorAll('.day-tab-btn').forEach(btn => {
         const d = parseInt(btn.getAttribute('data-day'));
         btn.classList.toggle('active', d === selectedDay);
       });
 
-      // Títulos
       const isToday = (selectedDay === new Date().getDay());
       headingElem.textContent = isToday ? `Hoy: ${dayData.name}` : `Día: ${dayData.name}`;
       
-      const now = new Date();
-      const options = { weekday: 'long', month: 'long', day: 'numeric' };
       if (isToday) {
         subElem.innerHTML = `<span style="color:#22c55e; font-weight:800;">● Horario en vivo de hoy</span> &bull; Grupo 0415`;
       } else {
         subElem.innerHTML = `Mostrando clases del día ${dayData.name} &bull; Ciclo 2026-2027`;
       }
 
-      // Render de clases
       listContainer.innerHTML = '';
       let visibleCount = 0;
 
@@ -781,8 +852,8 @@
 
         visibleCount++;
         let secBadge = '';
-        if (c.section === 'A') secBadge = '<span class="badge-sec-mobile tag-sec-a">Sección A</span>';
-        if (c.section === 'B') secBadge = '<span class="badge-sec-mobile tag-sec-b">Sección B</span>';
+        if (c.section === 'A') secBadge = '<span class="badge-sec-mobile tag-sec-a">Sec. A</span>';
+        if (c.section === 'B') secBadge = '<span class="badge-sec-mobile tag-sec-b">Sec. B</span>';
 
         listContainer.innerHTML += `
           <div class="timeline-class-card">
@@ -805,7 +876,7 @@
       if (visibleCount === 0) {
         listContainer.innerHTML = `
           <div class="free-hour-card" style="padding: 2rem;">
-            No hay clases programadas para esta sección en el día seleccionado.
+            No hay clases para esta sección en el día seleccionado.
           </div>
         `;
       }

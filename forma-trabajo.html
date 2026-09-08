@@ -13,24 +13,20 @@
   <header class="apple-nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand">
-        <div class="crest-icon-box">
-          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="46" fill="#002B49" stroke="#D59F0F" stroke-width="4"/>
-            <path d="M50 14 L66 34 L80 30 L72 50 L86 58 L70 64 L76 82 L50 74 L24 82 L30 64 L14 58 L28 50 L20 30 L34 34 Z" fill="#D59F0F"/>
-            <circle cx="50" cy="50" r="14" fill="#002B49" stroke="#D59F0F" stroke-width="2"/>
-            <text x="50" y="55" font-size="10" font-weight="900" fill="#D59F0F" text-anchor="middle" font-family="sans-serif">ENP 4</text>
-          </svg>
-        </div>
+        <img src="assets/escudo-unam.svg" alt="Escudo Oficial UNAM" style="width: 48px; height: 55px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); flex-shrink: 0;">
         <div class="brand-text-cluster">
-          <div class="brand-name">Cuatreros <span>del 415</span></div>
-          <div class="brand-subline">UNAM &bull; Prepa 4 Vidal Castañeda y Nájera</div>
+          <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
+            <span>Cuatreros</span> del 415
+            <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="width: 26px; height: 26px;">
+          </div>
+          <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
         </div>
       </a>
 
       <nav class="nav-links-menu">
         <a href="actualizaciones.html" class="nav-link-item">&larr; Actualizaciones</a>
         <a href="index.html" class="nav-link-item">Inicio</a>
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-nav-gold">
+        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
           Conoce Shaminket
         </a>
       </nav>
@@ -41,9 +37,6 @@
   <section class="page-hero">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
-      <div class="hero-pill-badge">
-        <span>📋 Documento Oficial &bull; Dictado en Clase</span>
-      </div>
       <h1 class="page-hero-title">Forma de Trabajo y Criterios de Evaluación</h1>
       <p class="page-hero-sub">
         Resumen de las indicaciones dadas por la profesora de Lengua Española en el aula para el Grupo 0415.
@@ -53,11 +46,15 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="master-container" style="margin-top: -2.5rem;">
-    <div class="back-nav-bar">
-      <a href="actualizaciones.html" class="btn-back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        <span>Volver a Actualizaciones</span>
-      </a>
+    <div style="margin-bottom: 2rem;">
+      <div class="window-titlebar" style="background: rgba(255,255,255,0.9); box-shadow: var(--shadow-sm); border-radius: 16px; border: 1px solid var(--apple-border);">
+        <div class="window-dots">
+          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        </div>
+        <span class="win-titlebar-text">Cuatreros 415 &bull; Navegación</span>
+      </div>
     </div>
 
     <!-- TARJETA EXPLICATIVA DEL DICTADO EN CLASE -->
@@ -115,7 +112,7 @@
         </p>
       </div>
       <div class="promo-action-wrap">
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-promo-main">
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 1rem 2rem;">
           <span>Ir a Encardomy</span>
         </a>
       </div>

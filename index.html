@@ -4,156 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuatreros del 415 | ENP 4 Vidal Castañeda y Nájera - UNAM</title>
-  <meta name="description" content="Portal oficial de los alumnos del Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4 UNAM. Horario, avisos, apoyo escolar y sorpresas con Encardomy By Shaminket.">
+  <meta name="description" content="Portal oficial de los alumnos del Grupo 0415 de la Escuela Nacional Preparatoria Plantel 4 UNAM. Horario, avisos, apoyo escolar y sorpresas.">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* BANNER NEGRO, AZUL Y MORADO DE REINVENCIÓN */
-    .rebrand-cosmic-banner {
-      background: linear-gradient(90deg, #090a0f 0%, #002b49 35%, #4c1d95 70%, #090a0f 100%);
-      color: #ffffff;
-      padding: 0.95rem 1.5rem;
-      position: relative;
-      z-index: 1001;
-      border-bottom: 2px solid #a855f7;
-      box-shadow: 0 4px 25px rgba(124, 58, 237, 0.4);
-      animation: cosmicShift 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes cosmicShift {
-      0% { box-shadow: 0 4px 20px rgba(0, 43, 73, 0.5); }
-      100% { box-shadow: 0 6px 30px rgba(168, 85, 247, 0.6); }
-    }
-
-    .rebrand-inner {
-      max-width: 1260px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .rebrand-pill {
-      background: rgba(168, 85, 247, 0.25);
-      border: 1px solid #c084fc;
-      color: #f3e8ff;
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .rebrand-text-main {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      color: #f8fafc;
-    }
-
-    .rebrand-text-main strong {
-      color: #d8b4fe;
-    }
-
-    .btn-mobile-switch {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-      padding: 0.45rem 1.1rem;
-      border-radius: var(--radius-full);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: var(--transition-fast);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-mobile-switch:hover {
-      background: #7c3aed;
-      border-color: #a855f7;
-      transform: translateY(-1px);
-    }
-  </style>
   <script>
-    // Detección y redirección automática para celulares
-    if (/Mobi|Android|iPhone|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 768 && !window.location.search.includes("force=desktop"))) {
-      window.location.href = "index-movil.html";
+    // Adaptabilidad fluida: Si en la Mac la ventana se pone vertical/estrecha, cambia a móvil.
+    // Si en celular activan "Modo computadora" (viewport ancho >= 820px), se queda aquí.
+    function checkResponsiveLayout() {
+      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
+      const isMobileUA = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
+      
+      // Si el ancho es estrecho y no está forzado a escritorio, redirige a móvil
+      if ((isMobileUA || isNarrow) && !window.location.search.includes("force=desktop")) {
+        window.location.replace("index-movil.html");
+      }
     }
+    checkResponsiveLayout();
+    window.addEventListener("resize", checkResponsiveLayout);
   </script>
 </head>
 <body>
 
-  <!-- BANNER NEGRO, AZUL Y MORADO -->
-  <aside class="rebrand-cosmic-banner">
-    <div class="rebrand-inner">
-      <div style="display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;">
-        <span class="rebrand-pill">✨ PRÓXIMAMENTE</span>
+  <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (SIEMPRE VISIBLE AL HACER SCROLL) -->
+  <div class="sticky-top-group">
+    <!-- BANNER NEGRO, AZUL Y MORADO -->
+    <aside class="rebrand-cosmic-banner">
+      <div class="rebrand-inner">
+        <span class="rebrand-pill">✨ ALGO GRANDE ESTÁ POR VENIR</span>
         <span class="rebrand-text-main">
-          <strong>¡Algo grande está por venir!</strong> Esta página se reinventa para el Grupo 415 &bull; Encardomy By Shaminket
+          <strong>Esta página se reinventa</strong> &bull; La nueva experiencia para los alumnos del Grupo 415
         </span>
       </div>
-      <a href="index-movil.html" class="btn-mobile-switch">
-        <span>📱 Ver Versión Móvil</span>
-      </a>
-    </div>
-  </aside>
+    </aside>
 
-  <!-- BARRA DE NAVEGACIÓN APPLE ULTRA-GLASS -->
-  <header class="apple-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <div class="crest-icon-box">
-          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="46" fill="#002B49" stroke="#D59F0F" stroke-width="4"/>
-            <path d="M50 14 L66 34 L80 30 L72 50 L86 58 L70 64 L76 82 L50 74 L24 82 L30 64 L14 58 L28 50 L20 30 L34 34 Z" fill="#D59F0F"/>
-            <circle cx="50" cy="50" r="14" fill="#002B49" stroke="#D59F0F" stroke-width="2"/>
-            <text x="50" y="55" font-size="10" font-weight="900" fill="#D59F0F" text-anchor="middle" font-family="sans-serif">ENP 4</text>
-          </svg>
-        </div>
-        <div class="brand-text-cluster">
-          <div class="brand-name">Cuatreros <span>del 415</span></div>
-          <div class="brand-subline">UNAM &bull; Prepa 4 Vidal Castañeda y Nájera</div>
-        </div>
-      </a>
-
-      <nav class="nav-links-menu">
-        <a href="#horario" class="nav-link-item">Horario 0415</a>
-        <a href="#servicios" class="nav-link-item">Lengua Española</a>
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-nav-gold">
-          Conoce Shaminket
+    <!-- BARRA DE NAVEGACIÓN ULTRA-GLASS -->
+    <header class="apple-nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/escudo-unam-original.png" alt="Escudo Oficial UNAM" class="unam-header-crest" style="width: 52px; height: 60px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); flex-shrink: 0;">
+          <div class="brand-text-cluster">
+            <div class="brand-name" style="display: flex; align-items: center; gap: 0.7rem;">
+              <span>Cuatreros</span> del 415
+              <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            </div>
+            <div class="brand-subline">Universidad Nacional Autónoma de México &bull; ENP 4</div>
+          </div>
         </a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- HERO CINEÁTICO ESTILO APPLE -->
+        <nav class="nav-links-menu">
+          <a href="#horario" class="nav-link-item">Horario 0415</a>
+          <a href="#servicios" class="nav-link-item">Servicios y Dudas</a>
+          <!-- Botón a Shaminket (Morado) -->
+          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
+            Conoce Shaminket
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <!-- HERO CINEÁTICO -->
   <section class="hero-cinematic">
     <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
     <div class="hero-content">
-      <div class="hero-pill-badge">
-        <span class="live-dot"></span>
-        <span>Portal Estudiantil Oficial &bull; Grupo 0415</span>
+      <!-- ESCAPARATE INSTITUCIONAL OFICIAL UNAM Y ENP 4 (ALTA VISIBILIDAD) -->
+      <div class="hero-emblems-floating-stage">
+        <!-- Escudo Oficial UNAM Auténtico Transparente -->
+        <img src="assets/escudo-unam-original.png" alt="Escudo Oficial UNAM" style="height: 115px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
+        
+        <!-- ENP4unam en Letras Grandes Oficiales -->
+        <img src="assets/enp4-unam-wordmark.svg" alt="ENP4 unam" style="height: 95px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
+        
+        <!-- Logotipo Oficial ENP 4 Tacubaya Transparente -->
+        <img src="assets/logo-enp4.svg" alt="Logotipo Oficial ENP 4" style="height: 105px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
       </div>
       <h1 class="hero-heading">Cuatreros del 415</h1>
       <p class="hero-description">
-        Aquí encontrarás lo que <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket les tiene para ustedes. Además aquí recibirán las actualizaciones de la asignatura de Lengua Española, también podrán realizar sus preguntas de español y pedir tareas. Esta página es provisional: <strong>¡esperen las sorpresas!</strong>
+        El espacio creado por y para la comunidad del 415 en la Prepa 4. Tu punto de apoyo para checar tu horario al día, resolver cualquier duda y respaldarte con tus tareas y copias al instante con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket. Cualquier bronca que tengas en el semestre, aquí estamos para hacer equipo.
       </p>
       <div class="hero-btn-row">
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+        <!-- Botón a Shaminket (Morado) -->
+        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
           <span>Conoce Shaminket</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
-          Explorar Encardomy
+        <!-- Botón a Encardomy (Azul Eléctrico Oficial) -->
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
+          <span>Pedir Tareas y Copias</span>
         </a>
       </div>
     </div>
@@ -162,38 +98,69 @@
   <!-- CONTENEDOR MAESTRO -->
   <main class="master-container">
 
-    <!-- BANNER PUBLICITARIO ENCARDOMY -->
+    <!-- ACCESO DESTACADO AL CENTRO DE CONTROL ACADÉMICO (MATERIAS Y TAREAS) -->
+    <section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #002B7A 100%); border: 2px solid #D59F0F; border-radius: 24px; padding: 1.8rem 2.4rem; color: #ffffff; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.8rem; flex-wrap: wrap; box-shadow: var(--shadow-md);">
+      <div style="display: flex; align-items: center; gap: 1.2rem;">
+        <span style="font-size: 2.4rem; background: rgba(213, 159, 15, 0.2); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1.5px solid #D59F0F;">📚</span>
+        <div>
+          <span style="background: #D59F0F; color: #001628; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 6px;">Nuevo &bull; Todas las materias</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 0.25rem; color: #ffffff; letter-spacing: -0.3px;">Centro de Control de Materias del 415</h2>
+          <p style="color: #cbd5e1; font-size: 0.94rem; margin-top: 0.15rem;">Consulta avisos, resúmenes, programas oficiales y tareas de Español, Matemáticas, Física y las 12 asignaturas.</p>
+        </div>
+      </div>
+      <a href="centro-control.html" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap;">
+        <span>Explorar Centro de Control &rarr;</span>
+      </a>
+    </section>
+
+
+    <!-- BANNER PUBLICITARIO ENCARDOMY (EXCLUSIVO PARA TAREAS Y COPIAS) -->
     <section class="promo-apple-card">
       <div class="promo-text-wrap">
-        <div class="promo-badge-tag">⚡ Apoyo Estudiantil Exclusivo Grupo 415</div>
+        <div class="promo-badge-tag">⚡ Servicio de Tareas y Copias &bull; Encardomy</div>
         <h2 class="promo-card-title">¡Te ayudamos con tus tareas! Sacamos tus copias e impresiones</h2>
         <p class="promo-card-desc">
-          ¿Entrega urgente a primera hora? En <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket te respaldamos con asesoría en español, resolución de dudas académicas y servicio prioritario de copias e impresiones de alta fidelidad para el plantel 4.
+          ¿Entrega urgente a primera hora? En <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket te respaldamos con copias de alta fidelidad, preparación de trabajos y servicio prioritario para el Grupo 415.
         </p>
         <div class="promo-features-grid">
-          <span class="promo-feature-pill">📄 Copias e Impresiones Rápidas</span>
+          <span class="promo-feature-pill">📄 Copias e Impresiones HD</span>
           <span class="promo-feature-pill">✍️ Apoyo en Tareas y Reportes</span>
-          <span class="promo-feature-pill">📚 Asesoría Lengua Española</span>
-          <span class="promo-feature-pill">🚀 Atención Inmediata</span>
+          <span class="promo-feature-pill">⚡ Entrega Inmediata en Prepa 4</span>
         </div>
       </div>
       <div class="promo-action-wrap">
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-promo-main">
-          <span>Pedir Tareas o Copias</span>
+        <!-- Botón Encardomy Azul Eléctrico -->
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 1.15rem 2.4rem; font-size: 1.12rem;">
+          <span>Pedir con Encardomy</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </a>
       </div>
     </section>
 
-    <!-- HORARIO OFICIAL DIGITALIZADO (TABLA COMPLETA PARA ESCRITORIO) -->
+    <!-- HORARIO DIGITALIZADO GRUPO 0415 (ESCRITORIO) -->
     <section id="horario" class="schedule-master-card">
-      <div class="schedule-header-box">
+      <!-- Barra de ventana con los 3 botones interactivos -->
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
+          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir al inicio"></button>
+          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        </div>
+        <span class="win-titlebar-text">Horario de Clases &bull; Grupo 0415 &bull; ENP 4 Vidal Castañeda y Nájera</span>
+      </div>
+
+      <div class="schedule-card-body">
+        <div class="schedule-header-box">
         <div class="schedule-title-area">
-          <h2>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#002B49" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            Horario Oficial &bull; Grupo 0415
-          </h2>
-          <p>Escuela Nacional Preparatoria Plantel #4 &bull; Ciclo Escolar 2026 - 2027</p>
+          <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+            <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 78px; width: auto; filter: drop-shadow(0 4px 10px rgba(0,43,73,0.15));">
+            <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 72px; width: auto; filter: drop-shadow(0 4px 10px rgba(0,43,73,0.15));">
+            <div>
+              <span style="font-size: 0.8rem; font-weight: 800; color: #D59F0F; text-transform: uppercase; letter-spacing: 1px;">Escuela Nacional Preparatoria &bull; UNAM</span>
+              <h2 style="margin: 0.2rem 0; line-height: 1.1; font-size: 2.1rem; color: #002B7A;">Horario de Clases &bull; Grupo 0415</h2>
+              <p style="color: var(--apple-text-sec); font-size: 0.95rem; margin: 0;">Plantel 4 "Vidal Castañeda y Nájera" &bull; Ciclo Escolar 2026 - 2027</p>
+            </div>
+          </div>
         </div>
         <span class="badge-prepa4">Plantel 4 Tacubaya</span>
       </div>
@@ -230,6 +197,12 @@
             ⚡ Selecciona una materia o sección para aislar tus salones al instante
           </span>
         </div>
+      </div>
+
+
+      <!-- VISTA DIARIA (MODO DÍA) -->
+      <div id="desktopDayTimelineView" style="display: none; margin-bottom: 2rem;">
+        <div id="desktopDayCardsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
       </div>
 
       <!-- Tabla Responsiva del Horario -->
@@ -327,61 +300,208 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </section>
 
-    <!-- BENTO GRID APPLE: SERVICIOS -->
+
+    <!-- GUÍA DE SUPERVIVENCIA Y SALONES DEL 415 EN PREPA 4 -->
+    <section class="prepa4-guide-card">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
+          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
+          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        </div>
+        <span class="win-titlebar-text">Guía Rápida de Salones y Ubicación &bull; Plantel 4 Tacubaya</span>
+      </div>
+      <div class="guide-body">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1.5px solid #edf2f7; padding-bottom: 1.2rem;">
+          <div>
+            <h2 style="font-size: 1.8rem; font-weight: 900; color: #002B7A; margin-bottom: 0.3rem;">
+              🗺️ Ubicador de Salones del 415 en Plantel 4
+            </h2>
+            <p style="color: var(--text-sec); font-size: 0.95rem;">
+              Para que nadie de nuestro grupo se pierda entre los edificios ni llegue tarde a clase.
+            </p>
+          </div>
+          <span class="badge-prepa4">Av. Observatorio 170 &bull; Tacubaya</span>
+        </div>
+
+        <div class="buildings-grid">
+          <!-- Edificio A -->
+          <div class="building-pill-card">
+            <span class="building-tag">Edificio A</span>
+            <div class="building-title">A-104 y Laboratorio A-302</div>
+            <div class="building-desc">
+              <strong>A-104 (Piso 1):</strong> Geografía (Lun, Mié y Jue).<br>
+              <strong>A-302 (Piso 3):</strong> Laboratorio de Física III (Viernes 12:50). Recuerda llevar tu bata blanca.
+            </div>
+          </div>
+
+          <!-- Edificio B -->
+          <div class="building-pill-card">
+            <span class="building-tag">Edificio B (Nuestra base)</span>
+            <div class="building-title">Salones B-108 a B-117 y B-206</div>
+            <div class="building-desc">
+              <strong>Piso 1:</strong> B-108 (Lógica / Género), B-109 (Mate / Física / Historia), B-110 (Español / Orientación A), B-112 (Español / Mate / Orientación B), B-113 (Español), B-116 y B-117.<br>
+              <strong>Piso 2:</strong> B-206 (Lógica Mar).
+            </div>
+          </div>
+
+          <!-- Edificio C -->
+          <div class="building-pill-card">
+            <span class="building-tag">Edificio C</span>
+            <div class="building-title">Dibujo e Idiomas</div>
+            <div class="building-desc">
+              <strong>C-201 (Piso 2):</strong> Dibujo II (Sec. B, Mié y Vie).<br>
+              <strong>C-205 (Piso 2):</strong> Inglés IV (Sec. B, Lun, Mié y Vie).<br>
+              <strong>C-306 (Piso 3):</strong> Inglés IV (Sec. A, Lun, Mié y Vie).
+            </div>
+          </div>
+
+          <!-- Cómputo y Deportes -->
+          <div class="building-pill-card">
+            <span class="building-tag">Cómputo & Deportes</span>
+            <div class="building-title">Informática y Gimnasio</div>
+            <div class="building-desc">
+              <strong>Edificio I (I-108):</strong> Informática (Martes 9:30).<br>
+              <strong>Centro Cómputo (CC-2):</strong> Informática (Martes 11:10).<br>
+              <strong>GIM1:</strong> Educación Física IV (Viernes 11:10). Entrada puntual con tenis.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tips de Supervivencia para el 415 -->
+        <div style="margin-top: 1.8rem; background: #fffdf5; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem;">
+          <span style="font-size: 1.8rem;">💡</span>
+          <div>
+            <strong style="color: #002B7A; font-size: 0.98rem;">Tips clave para pasar 4to año en la Prepa 4:</strong>
+            <p style="color: #78350f; font-size: 0.88rem; margin-top: 0.25rem; line-height: 1.5;">
+              &bull; <strong>Asistencia:</strong> La UNAM pide mínimo 85% de asistencias para tener derecho a examen ordinario. ¡No faltes!<br>
+              &bull; <strong>Copias y Tareas exprés:</strong> Si tienes entrega a las 7:00 am, pide tus copias con anticipación en <strong>Encardomy</strong> para evitar filas.<br>
+              &bull; <strong>Dudas de Español o del grupo:</strong> Si te atoras con la tarea, manda WhatsApp al número de soporte del 415.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENTO GRID: SERVICIOS CON ENLACES CORREGIDOS -->
     <section id="servicios">
       <div class="bento-section-title">
         <h2>Espacio Académico & Apoyo al 415</h2>
-        <p>Herramientas y soporte diseñados exclusivamente para los estudiantes de la ENP 4</p>
+        <p>Servicios, asesorías y soporte directo para los alumnos del grupo</p>
       </div>
 
       <div class="bento-grid">
+        <!-- Tarjeta 1: Actualizaciones de Lengua Española (Abre soporte / WhatsApp) -->
         <div class="bento-card">
           <div class="bento-icon-box">📢</div>
           <h3>Actualizaciones de Lengua Española</h3>
           <p>
-            Recibe el temario oficial, lecturas asignadas, fechas de entrega y avisos cruciales para el salón de clases de Lengua Española del Grupo 415.
+            Consulta avisos sobre temarios, criterios y acuerdos de la materia. Si tienes dudas sobre los avisos dados en clase, comunícate al canal oficial.
           </p>
           <div class="bento-footer-link">
-            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">
-              Ver en Encardomy &rarr;
-            </a>
+            <button onclick="openSupportDialog()" class="btn-support-trigger" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
+              <span>Consultar en WhatsApp &rarr;</span>
+            </button>
           </div>
         </div>
 
+        <!-- Tarjeta 2: Preguntas y Dudas de Español (Directo a WhatsApp) -->
         <div class="bento-card">
-          <div class="bento-icon-box">💬</div>
+          <div class="bento-icon-box" style="color: #25D366; background: rgba(37, 211, 102, 0.12);">💬</div>
           <h3>Preguntas & Dudas de Español</h3>
           <p>
-            ¿Complicaciones con sintaxis, redacción o análisis literario? Deja tus consultas para resolverlas antes de los exámenes y entregas.
+            ¿Complicaciones con sintaxis, redacción o análisis literario? Envía tus preguntas directamente por WhatsApp para resolverlas de inmediato.
           </p>
           <div class="bento-footer-link">
-            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">
-              Resolver dudas en Encardomy &rarr;
+            <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20de%20Lengua%20Espa%C3%B1ola%20en%20el%20Grupo%20415" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-support-trigger" 
+               style="padding: 0.5rem 1.1rem; font-size: 0.85rem; text-decoration: none;">
+              <span>Preguntar por WhatsApp &rarr;</span>
             </a>
           </div>
         </div>
 
-        <div class="bento-card">
-          <div class="bento-icon-box">🖨️</div>
+        <!-- Tarjeta 3: Copias, Tareas e Impresiones (EXCLUSIVO ENCARDOMY - AZUL ELÉCTRICO) -->
+        <div class="bento-card" style="border: 1.5px solid var(--enc-azul-electrico);">
+          <div class="bento-icon-box" style="color: var(--enc-azul-electrico); background: var(--enc-azul-tint);">🖨️</div>
           <h3>Copias, Tareas e Impresiones</h3>
           <p>
-            Gestiona tus solicitudes de copias, impresiones de emergencia y asesoría en proyectos para llegar a tiempo a cada una de tus materias.
+            Gestiona tus solicitudes de copias, impresiones de emergencia y preparación de trabajos exclusivamente en la plataforma de Encardomy.
           </p>
           <div class="bento-footer-link">
-            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">
-              Solicitar con Encardomy &rarr;
+            <!-- Botón Encardomy Azul Eléctrico Oficial -->
+            <a href="https://encardomy.shaminket.com" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-encardomy" 
+               style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">
+              <span>Pedir en Encardomy &rarr;</span>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         SECCIÓN DE FEEDBACK: ¿CREES QUE LE FALTA ALGO A ESTA PÁGINA?
+         ========================================================== -->
+    <section style="background: #ffffff; border-radius: 28px; border: 2px solid #D59F0F; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 4rem;">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
+          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
+          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        </div>
+        <span class="win-titlebar-text">Buzón de Ideas y Necesidades &bull; Grupo 0415</span>
+      </div>
+
+      <div style="padding: 3rem 2.8rem; text-align: center;">
+        <span style="display: inline-block; background: rgba(213, 159, 15, 0.15); border: 1px solid #D59F0F; color: #b38205; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 1.2rem;">
+          Tu opinión importa
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #002B7A; letter-spacing: -0.8px; margin-bottom: 1rem; line-height: 1.15;">
+          ¿Crees que le falta algo a esta página? ¿Qué es?
+        </h2>
+        <p style="color: var(--text-sec); font-size: 1.1rem; max-width: 720px; margin: 0 auto 2.5rem; line-height: 1.6;">
+          Esta página está hecha por y para nosotros los alumnos del 415. Si tienes una idea, necesitas una herramienta especial para alguna materia, o crees que falta algo, dínoslo aquí y lo agregamos.
+        </p>
+
+        <!-- Formulario dentro de la misma página -->
+        <div style="max-width: 680px; margin: 0 auto; text-align: left; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 2rem 2.2rem; box-shadow: var(--shadow-sm);">
+          <div style="margin-bottom: 1.4rem;">
+            <label for="feedbackAuthor" style="display: block; font-weight: 800; font-size: 0.9rem; color: #002B7A; margin-bottom: 0.4rem;">
+              Tu nombre o apodo (opcional):
+            </label>
+            <input type="text" id="feedbackAuthor" placeholder="Ej. Diego, Sofía, Alumno del 415..." style="width: 100%; padding: 0.85rem 1.1rem; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#D59F0F'" onblur="this.style.borderColor='#cbd5e1'">
+          </div>
+
+          <div style="margin-bottom: 1.8rem;">
+            <label for="feedbackContent" style="display: block; font-weight: 800; font-size: 0.9rem; color: #002B7A; margin-bottom: 0.4rem;">
+              ¿Qué le falta o qué te gustaría que agreguemos? <span style="color: #ef4444;">*</span>
+            </label>
+            <textarea id="feedbackContent" rows="4" placeholder="Escribe aquí tu sugerencia, duda o necesidad escolar (ej. calculadora de faltas, guías para el examen de Mate, más apuntes de Español...)" style="width: 100%; padding: 0.85rem 1.1rem; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 1rem; outline: none; transition: border-color 0.2s; resize: vertical;" onfocus="this.style.borderColor='#D59F0F'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
+          </div>
+
+          <button onclick="submitPageFeedback()" style="width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; border: none; padding: 1.1rem 1.6rem; border-radius: 14px; font-size: 1.08rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); transition: transform 0.2s ease;">
+            <span>💬 Enviar sugerencia al WhatsApp del Grupo 415</span>
+          </button>
+          <p style="font-size: 0.78rem; color: #94a3b8; text-align: center; margin-top: 0.8rem;">
+            Al enviar, se abrirá WhatsApp con tu mensaje listo para que llegue al soporte del 415.
+          </p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- BOTÓN FLOTANTE DE SOPORTE -->
+  <!-- BOTÓN FLOTANTE DE SOPORTE WHATSAPP -->
   <div class="floating-support-container">
     <div class="radar-pulse-ring"></div>
     <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp">
@@ -396,7 +516,7 @@
   <div id="supportModalBackdrop" class="modal-backdrop" onclick="onBackdropClick(event)">
     <div class="modal-apple-card">
       <div class="modal-top-bar">
-        <h3><span>❓</span> ¿Tienes más dudas?</h3>
+        <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
         <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
       </div>
       <div class="modal-main-body">
@@ -407,7 +527,7 @@
 
         <div id="dialogStep1" class="step-view active">
           <p>
-            ¿Necesitas ayuda con tus tareas, preguntas de Lengua Española o pedidos de copias e impresiones con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a>? Conéctate directamente con nuestro soporte estudiantil.
+            ¿Tienes dudas sobre Lengua Española o alguna tarea del 415? Puedes contactar directamente con el soporte del grupo para resolverla rápidamente.
           </p>
           <button class="btn-step-action" style="background: var(--unam-blue);" onclick="goToStep2()">
             Continuar al paso 2 &rarr;
@@ -418,7 +538,7 @@
           <p>
             <strong>Paso 2 de 2:</strong> Serás redirigido al WhatsApp oficial para alumnos del Grupo 415 al número <strong>+52 55 7198 5641</strong>.
           </p>
-          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola%20/%20Tareas" 
+          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-step-action">
@@ -432,12 +552,17 @@
     </div>
   </div>
 
-  <!-- FOOTER ESTILO APPLE -->
+  <!-- FOOTER -->
   <footer class="apple-footer-dark">
     <div class="footer-wrapper">
       <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM Escuela Nacional Preparatoria Plantel 4 "Vidal Castañeda y Nájera"
+        <div style="display: flex; align-items: center; gap: 1.2rem;">
+          <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 38px;">
+          <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 34px; filter: brightness(0) invert(1);">
+          <div>
+            <strong style="color: #ffffff; font-size: 1rem;">Cuatreros del 415</strong><br>
+            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Universidad Nacional Autónoma de México &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</span>
+          </div>
         </div>
         <div class="footer-links-list">
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Plataforma Encardomy</a>
@@ -445,7 +570,7 @@
         </div>
       </div>
       <p>
-        Diseñado con filosofía Apple, colores oficiales Azul y Oro de la UNAM y compatibilidad fluida para Mac, iPhone, iPad y dispositivos Android.
+        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
       </p>
     </div>
   </footer>

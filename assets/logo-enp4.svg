@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Emblema Oficial ENP 4 Vidal Castañeda y Nájera (Fondo 100% Transparente) -->
+  <g id="enp4-pure">
+    <!-- El número 4 en Oro UNAM -->
+    <path d="M 120 15 L 145 15 L 145 105 L 190 105 L 190 135 L 145 135 L 145 195 L 118 195 L 118 135 L 15 135 L 15 108 L 120 15 Z M 118 105 L 118 52 L 45 105 L 118 105 Z" fill="#D59F0F" stroke="#FFFFFF" stroke-width="2"/>
+    
+    <!-- Bloque ENP -->
+    <rect x="18" y="107" width="75" height="26" fill="#002B49" rx="3" stroke="#D59F0F" stroke-width="1.5"/>
+    <text x="23" y="127" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif" font-weight="900" font-size="19" fill="#FFFFFF" letter-spacing="1">ENP</text>
+    
+    <!-- Cúpula del Observatorio Astronómico Nacional de Tacubaya -->
+    <path d="M 75 105 A 50 50 0 0 1 180 105" stroke="#D59F0F" stroke-width="8" fill="none"/>
+    <path d="M 75 105 A 50 50 0 0 1 180 105" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+    <ellipse cx="145" cy="85" rx="14" ry="8" transform="rotate(-30 145 85)" fill="#D59F0F" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <!-- Glifo Prehispánico de Tacubaya (Atlacuihuayan: cántaro de agua) -->
+    <g transform="translate(102, 142) scale(0.65)">
+      <path d="M 28 32 C 18 32 10 42 10 56 C 10 70 20 80 32 80 C 44 80 54 70 54 56 C 54 42 46 32 36 32 Z" fill="#FFFFFF" stroke="#002B49" stroke-width="4"/>
+      <ellipse cx="32" cy="32" rx="8" ry="4" fill="#FFFFFF" stroke="#002B49" stroke-width="3"/>
+      <path d="M 28 28 Q 20 15 12 24 Q 18 32 26 30" fill="#FFFFFF" stroke="#002B49" stroke-width="3"/>
+      <path d="M 32 28 Q 32 8 40 12 Q 38 24 34 30" fill="#FFFFFF" stroke="#002B49" stroke-width="3"/>
+      <circle cx="20" cy="18" r="3" fill="#D59F0F"/>
+    </g>
+  </g>
+</svg>

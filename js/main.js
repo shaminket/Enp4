@@ -102,3 +102,222 @@ function copyPrompt(elementId, btnElement) {
     alert('No se pudo copiar automáticamente. Por favor selecciónalo y cópialo manualmente.');
   });
 }
+
+// Control de Pantalla Completa para el botón verde
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+}
+
+
+/* ==========================================================
+   LÓGICA DE CALENDARIO, MODOS DÍA/SEMANA Y GESTOS
+   ========================================================== */
+let currentCalDay = new Date().getDay();
+if (currentCalDay < 1 || currentCalDay > 5) currentCalDay = 1; // Lunes por defecto si es fin de semana
+let currentCalMode = 'week'; // 'week' o 'day'
+
+const dayNames = {
+  1: "Lunes",
+  2: "Martes",
+  3: "Miércoles",
+  4: "Jueves",
+  5: "Viernes"
+};
+
+const desktopScheduleData = {
+  1: [
+    { time: "07:00 - 07:50", subj: "Geografía", room: "A-104", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "07:50 - 08:40", subj: "Física III", room: "B-116", sec: "both", prof: "Profra. Reyna García Gabriela" },
+    { time: "08:40 - 09:30", subj: "Física III", room: "B-109", sec: "both", prof: "Profra. Reyna García Gabriela" },
+    { time: "09:30 - 10:20", subj: "Lengua extranjera Inglés IV", room: "C-306 (Sec. A) / C-205 (Sec. B)", sec: "both", prof: "Sección A y B" },
+    { time: "10:20 - 11:10", subj: "Lengua Española", room: "B-112", sec: "both", prof: "Profra. Vázquez González María" },
+    { time: "11:10 - 12:00", subj: "Lengua Española", room: "B-112", sec: "both", prof: "Profra. Vázquez González María" },
+    { time: "12:00 - 12:50", subj: "Orientación Educativa IV", room: "B-110 (Sec. A) / B-112 (Sec. B)", sec: "both", prof: "Sección A y B" }
+  ],
+  2: [
+    { time: "07:00 - 07:50", subj: "Matemáticas IV", room: "B-112", sec: "both", prof: "Prof. Quintana Mejía Saúl" },
+    { time: "07:50 - 08:40", subj: "Matemáticas IV", room: "B-112", sec: "both", prof: "Prof. Quintana Mejía Saúl" },
+    { time: "08:40 - 09:30", subj: "Dibujo II", room: "B-008", sec: "A", prof: "Sección A" },
+    { time: "09:30 - 10:20", subj: "Informática", room: "I-108", sec: "both", prof: "Edificio I" },
+    { time: "10:20 - 11:10", subj: "Lógica", room: "B-206", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "11:10 - 12:00", subj: "Informática", room: "CC-2", sec: "both", prof: "Centro Cómputo 2" },
+    { time: "12:00 - 12:50", subj: "Género y Prevención de las Violencias", room: "B-109", sec: "both", prof: "Asignatura Ordinaria" }
+  ],
+  3: [
+    { time: "07:00 - 07:50", subj: "Geografía", room: "A-104", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "07:50 - 08:40", subj: "Lógica", room: "B-108", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "08:40 - 09:30", subj: "Lógica", room: "B-108", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "09:30 - 10:20", subj: "Lengua extranjera Inglés IV", room: "C-306 (Sec. A) / C-205 (Sec. B)", sec: "both", prof: "Sección A y B" },
+    { time: "10:20 - 11:10", subj: "Dibujo II", room: "B-008 (Sec. A) / C-201 (Sec. B)", sec: "both", prof: "Sección A y B" },
+    { time: "11:10 - 12:00", subj: "Lengua Española", room: "B-113", sec: "both", prof: "Profra. Vázquez González María" },
+    { time: "12:00 - 12:50", subj: "Lengua Española", room: "B-113", sec: "both", prof: "Profra. Vázquez González María" }
+  ],
+  4: [
+    { time: "07:00 - 07:50", subj: "Matemáticas IV", room: "B-109", sec: "both", prof: "Prof. Quintana Mejía Saúl" },
+    { time: "07:50 - 08:40", subj: "Matemáticas IV", room: "B-109", sec: "both", prof: "Prof. Quintana Mejía Saúl" },
+    { time: "08:40 - 09:30", subj: "Lengua Española", room: "B-110", sec: "both", prof: "Profra. Vázquez González María" },
+    { time: "09:30 - 10:20", subj: "Geografía", room: "A-104", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "10:20 - 11:10", subj: "Historia Universal III", room: "B-109", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "11:10 - 12:00", subj: "Historia Universal III", room: "B-109", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "12:00 - 13:40", subj: "Tiempo Libre / Estudio", room: "-", sec: "free", prof: "Sin clases programadas" }
+  ],
+  5: [
+    { time: "07:00 - 07:50", subj: "Dibujo II", room: "C-201", sec: "B", prof: "Sección B" },
+    { time: "07:50 - 08:40", subj: "Historia Universal III", room: "B-117", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "08:40 - 09:30", subj: "Matemáticas IV", room: "B-117", sec: "both", prof: "Prof. Quintana Mejía Saúl" },
+    { time: "09:30 - 10:20", subj: "Lengua extranjera Inglés IV", room: "C-306 (Sec. A) / C-205 (Sec. B)", sec: "both", prof: "Sección A y B" },
+    { time: "10:20 - 11:10", subj: "Género y Prevención de las Violencias", room: "B-108", sec: "both", prof: "Asignatura Ordinaria" },
+    { time: "11:10 - 12:00", subj: "Educación Física IV", room: "GIM1", sec: "both", prof: "Gimnasio 1" },
+    { time: "12:00 - 12:50", subj: "Física III", room: "B-115", sec: "both", prof: "Profra. Reyna García Gabriela" },
+    { time: "12:50 - 13:40", subj: "Física III (Laboratorio)", room: "A-302", sec: "both", prof: "Laboratorio A-302" }
+  ]
+};
+
+function updateCalLabel() {
+  const lbl = document.getElementById('calDateLabel');
+  if (!lbl) return;
+  const today = new Date().getDay();
+  const isToday = (currentCalDay === today);
+  const prefix = isToday ? "Hoy: " : "";
+  lbl.innerHTML = `${prefix}${dayNames[currentCalDay]}, Ciclo 2026-2027`;
+}
+
+function setCalendarMode(mode) {
+  currentCalMode = mode;
+  const dayView = document.getElementById('desktopDayTimelineView');
+  const weekView = document.getElementById('mainTimetable')?.parentElement;
+  const btnDay = document.getElementById('viewBtnDay');
+  const btnWeek = document.getElementById('viewBtnWeek');
+
+  if (!btnDay || !btnWeek) return;
+
+  if (mode === 'day') {
+    btnDay.style.background = '#002B7A';
+    btnDay.style.color = '#ffffff';
+    btnWeek.style.background = 'transparent';
+    btnWeek.style.color = '#64748b';
+    if (dayView) dayView.style.display = 'block';
+    if (weekView) weekView.style.display = 'none';
+    renderDesktopDayView();
+  } else {
+    btnWeek.style.background = '#002B7A';
+    btnWeek.style.color = '#ffffff';
+    btnDay.style.background = 'transparent';
+    btnDay.style.color = '#64748b';
+    if (dayView) dayView.style.display = 'none';
+    if (weekView) weekView.style.display = 'block';
+  }
+  updateCalLabel();
+}
+
+function renderDesktopDayView() {
+  const container = document.getElementById('desktopDayCardsList');
+  if (!container) return;
+  const classes = desktopScheduleData[currentCalDay] || [];
+  container.innerHTML = '';
+
+  classes.forEach(c => {
+    if (c.sec === 'free') {
+      container.innerHTML += `
+        <div style="background: #f8fafc; border: 1.5px dashed #cbd5e1; border-radius: 14px; padding: 1rem; text-align: center; color: #94a3b8; font-style: italic;">
+          ☕ ${c.time} &bull; ${c.subj} (${c.prof})
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML += `
+      <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-left: 5px solid #002B7A; border-radius: 14px; padding: 1.1rem 1.4rem; box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+        <div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: #002B7A; margin-bottom: 0.2rem;">⏰ ${c.time}</div>
+          <div style="font-size: 1.15rem; font-weight: 900; color: #001628;">${c.subj}</div>
+          <div style="font-size: 0.84rem; color: #64748b; margin-top: 0.2rem;">👤 ${c.prof}</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="background: #e0f2fe; color: #0369a1; font-weight: 800; padding: 0.35rem 0.8rem; border-radius: 8px; font-size: 0.9rem; display: inline-block;">
+            Salón ${c.room}
+          </span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function calGoToday() {
+  const d = new Date().getDay();
+  currentCalDay = (d >= 1 && d <= 5) ? d : 1;
+  updateCalLabel();
+  if (currentCalMode === 'day') renderDesktopDayView();
+}
+
+function calPrevDay() {
+  currentCalDay = currentCalDay > 1 ? currentCalDay - 1 : 5;
+  updateCalLabel();
+  if (currentCalMode === 'day') renderDesktopDayView();
+}
+
+function calNextDay() {
+  currentCalDay = currentCalDay < 5 ? currentCalDay + 1 : 1;
+  updateCalLabel();
+  if (currentCalMode === 'day') renderDesktopDayView();
+}
+
+// Gestos táctiles de deslizamiento (Swipe)
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+  const diff = touchEndX - touchStartX;
+  if (Math.abs(diff) > 70) {
+    if (diff > 0) {
+      if (typeof prevDay === 'function') prevDay();
+      calPrevDay();
+    } else {
+      if (typeof nextDay === 'function') nextDay();
+      calNextDay();
+    }
+  }
+}
+
+// Navegación por flechas del teclado en computadora
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowLeft') {
+    calPrevDay();
+  } else if (e.key === 'ArrowRight') {
+    calNextDay();
+  }
+});
+
+/* ==========================================================
+   FORMULARIO DE FEEDBACK -> ENVÍO DIRECTO A WHATSAPP
+   ========================================================== */
+function submitPageFeedback() {
+  const author = document.getElementById('feedbackAuthor')?.value.trim() || 'Un alumno del 415';
+  const content = document.getElementById('feedbackContent')?.value.trim();
+
+  if (!content) {
+    alert('Por favor escribe tu sugerencia o necesidad para poder enviarla al grupo.');
+    document.getElementById('feedbackContent')?.focus();
+    return;
+  }
+
+  const message = `¡Hola! Soy ${author} del Grupo 0415.\n\n📝 Sugerencia para la página web:\n"${content}"`;
+  const url = `https://wa.me/525571985641?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
