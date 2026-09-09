@@ -1485,3 +1485,186 @@ a.link-encardomy:hover {
   color: #166534 !important;
   font-weight: 800;
 }
+
+/* ==========================================================
+   BANNER MORADO DE AVISO DE 5 SEGUNDOS (ENTRA POR EL LADO)
+   ========================================================== */
+.announcement-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 8, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.announcement-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.announcement-card-purple {
+  background: linear-gradient(135deg, #3b0764 0%, #6b21a8 45%, #7c3aed 100%);
+  border: 2.5px solid #c084fc;
+  border-radius: 32px;
+  padding: 2.8rem 3rem;
+  color: #ffffff;
+  box-shadow: 0 25px 80px rgba(107, 33, 168, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.25);
+  max-width: 92vw;
+  width: 660px;
+  text-align: center;
+  position: relative;
+  transform: translateX(110vw);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.announcement-overlay.active .announcement-card-purple {
+  transform: translateX(0);
+}
+
+.announcement-overlay.dismissing .announcement-card-purple {
+  transform: translateX(110vw);
+  transition: transform 0.55s cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+.announcement-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #f3e8ff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.announcement-title-big {
+  font-size: clamp(1.8rem, 4.8vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 0.8rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.announcement-desc-text {
+  font-size: 1.05rem;
+  color: #e9d5ff;
+  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 520px;
+}
+
+.announcement-timer-box {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1.5px solid rgba(192, 132, 252, 0.4);
+  border-radius: 20px;
+  padding: 1.2rem 1.6rem;
+  margin-top: 1.8rem;
+}
+
+.announcement-time-num {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #fcd866;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-progress-track {
+  width: 100%;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.announcement-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #fcd866 0%, #c084fc 100%);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================
+   CONTORNO MORADO GIRATORIO MIENTRAS EL BANNER ESTÁ ACTIVO
+   ========================================================== */
+@keyframes spinConicPurple {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rotating-purple-border {
+  position: relative !important;
+  z-index: 50 !important;
+  border-color: transparent !important;
+  border-radius: 18px !important;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 60px rgba(124, 58, 237, 0.5) !important;
+}
+
+.rotating-purple-border::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -5px !important;
+  left: -5px !important;
+  right: -5px !important;
+  bottom: -5px !important;
+  background: conic-gradient(from 0deg, #7c3aed, #a855f7, #f3e8ff, #c084fc, #6d28d9, #7c3aed) !important;
+  border-radius: 23px !important;
+  z-index: -2 !important;
+  animation: spinConicPurple 1.8s linear infinite !important;
+}
+
+.rotating-purple-border::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 2.5px !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  z-index: -1 !important;
+}
+
+/* Para banners con fondo azul oscuro */
+.rotating-purple-border-dark::after {
+  background: #001628 !important;
+}
+
+/* Botón de prueba siempre en el banner superior */
+.banner-test-btn {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fcd866;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.banner-test-btn:hover {
+  background: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
+  color: #ffffff;
+}

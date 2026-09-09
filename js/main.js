@@ -458,7 +458,8 @@ let audioCtx = null;
 let isAudioMuted = false;
 let lastSoundTickTime = 0;
 
-function playTickSound(frequency = 880, duration = 0.04) {
+// Generador de sonido de alerta de alto volumen con Web Audio API
+function playTickSound(frequency = 1050, duration = 0.06, volume = 0.6) {
   if (isAudioMuted) return;
   try {
     if (!audioCtx) {
@@ -469,16 +470,20 @@ function playTickSound(frequency = 880, duration = 0.04) {
     }
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    osc.type = 'sine';
+    // Onda triangular/seno con armónicos para sonar claro y fuerte como alarma
+    osc.type = 'triangle';
     osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+    
+    // Volumen al máximo (0.6 a 0.8) para alerta perceptible
+    gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    
     osc.connect(gain);
     gain.connect(audioCtx.destination);
     osc.start();
     osc.stop(audioCtx.currentTime + duration);
   } catch (e) {
-    // Audio no permitido o silenciado
+    // Audio bloqueado por el navegador
   }
 }
 
@@ -596,31 +601,34 @@ function updateToleranceWidget() {
   toleranceExpiredShown = false;
   container.style.display = 'block';
 
-  // Reglas de color:
-  // Verde: > 180s
-  // Amarillo: <= 180s
-  // Rojo: <= 90s
+  // Reglas de color y ritmo sonoro exactas:
+  // Verde (> 180s): sonido cada segundo (1000ms)
+  // Amarillo (<= 180s): sonido cada medio segundo (500ms)
+  // Rojo (<= 90s): sonido cada cuarto de segundo (250ms)
   let colorClass = 'tolerance-green';
   let progressColor = '#22c55e';
-  let tickIntervalMs = 6000;
-  let beepFreq = 880;
+  let tickIntervalMs = 1000; // Verde: cada segundo
+  let beepFreq = 950;
+  let alertVol = 0.55;
 
   if (remainingSec <= 90) {
     colorClass = 'tolerance-red';
     progressColor = '#ef4444';
-    tickIntervalMs = (remainingSec <= 30) ? 750 : 1500;
-    beepFreq = 1200;
+    tickIntervalMs = 250; // Rojo: cada cuarto de segundo
+    beepFreq = 1250;
+    alertVol = 0.75; // Máxima alerta
   } else if (remainingSec <= 180) {
     colorClass = 'tolerance-yellow';
     progressColor = '#f59e0b';
-    tickIntervalMs = 3000;
-    beepFreq = 960;
+    tickIntervalMs = 500; // Amarillo: cada medio segundo
+    beepFreq = 1100;
+    alertVol = 0.65;
   }
 
   // Sonido proporcional al tiempo restante
   const nowMs = Date.now();
   if (nowMs - lastSoundTickTime >= tickIntervalMs) {
-    playTickSound(beepFreq, remainingSec <= 30 ? 0.08 : 0.04);
+    playTickSound(beepFreq, 0.05, alertVol);
     lastSoundTickTime = nowMs;
   }
 
@@ -669,4 +677,107 @@ function updateToleranceWidget() {
 document.addEventListener('DOMContentLoaded', () => {
   updateToleranceWidget();
   setInterval(updateToleranceWidget, 1000);
+});
+
+
+/* ==========================================================
+   SISTEMA DE BANNER MORADO (5 SEGUNDOS) + CONTORNO GIRATORIO
+   ========================================================== */
+let announcementTimerInterval = null;
+let announcementAudioInterval = null;
+
+function activateRotatingPurpleBorders(activate = true) {
+  // Buscar elementos de Lengua Española e Informática
+  document.querySelectorAll('.class-item, .timeline-class-card, .bento-card').forEach(el => {
+    const txt = (el.textContent || '').toLowerCase();
+    if (txt.includes('español') || txt.includes('informát')) {
+      if (activate) {
+        el.classList.add('rotating-purple-border');
+        if (el.classList.contains('promo-featured') || el.closest('section')) {
+          el.classList.add('rotating-purple-border-dark');
+        }
+      } else {
+        el.classList.remove('rotating-purple-border');
+        el.classList.remove('rotating-purple-border-dark');
+      }
+    }
+  });
+
+  // En centro de control, el banner principal de Español
+  const espBanner = document.querySelector('section[style*="linear-gradient(135deg, #001628"]');
+  if (espBanner) {
+    if (activate) espBanner.classList.add('rotating-purple-border');
+    else espBanner.classList.remove('rotating-purple-border');
+  }
+}
+
+function triggerAnnouncementModal() {
+  const overlay = document.getElementById('announcementOverlay');
+  if (!overlay) return;
+
+  // Activar contorno morado giratorio en Español e Informática
+  activateRotatingPurpleBorders(true);
+
+  // Mostrar el banner deslizándose desde el lado
+  overlay.classList.remove('dismissing');
+  overlay.classList.add('active');
+
+  let timeLeftMs = 5000;
+  const timeNumEl = document.getElementById('announcementTimeNum');
+  const progressFillEl = document.getElementById('announcementProgressFill');
+
+  if (timeNumEl) timeNumEl.textContent = '5.0s';
+  if (progressFillEl) progressFillEl.style.width = '100%';
+
+  // Sonido cada cuarto de segundo (250 ms) a buen volumen
+  if (announcementAudioInterval) clearInterval(announcementAudioInterval);
+  announcementAudioInterval = setInterval(() => {
+    playTickSound(1150, 0.04, 0.5);
+  }, 250);
+
+  // Actualizar temporizador de 5 segundos
+  if (announcementTimerInterval) clearInterval(announcementTimerInterval);
+  const stepMs = 50;
+  announcementTimerInterval = setInterval(() => {
+    timeLeftMs -= stepMs;
+    const s = Math.max(0, timeLeftMs / 1000).toFixed(1);
+    if (timeNumEl) timeNumEl.textContent = s + 's';
+    if (progressFillEl) {
+      const pct = Math.max(0, (timeLeftMs / 5000) * 100);
+      progressFillEl.style.width = pct + '%';
+    }
+
+    if (timeLeftMs <= 0) {
+      clearInterval(announcementTimerInterval);
+      clearInterval(announcementAudioInterval);
+      dismissAnnouncementModal();
+    }
+  }, stepMs);
+}
+
+function dismissAnnouncementModal() {
+  const overlay = document.getElementById('announcementOverlay');
+  if (!overlay) return;
+
+  if (announcementAudioInterval) clearInterval(announcementAudioInterval);
+  if (announcementTimerInterval) clearInterval(announcementTimerInterval);
+
+  // Se guarda por donde nació (desliza hacia el lado)
+  overlay.classList.add('dismissing');
+
+  // Retirar contorno morado giratorio
+  activateRotatingPurpleBorders(false);
+
+  setTimeout(() => {
+    overlay.classList.remove('active');
+    overlay.classList.remove('dismissing');
+  }, 550);
+}
+
+// Desplegar automáticamente al entrar a la página
+document.addEventListener('DOMContentLoaded', () => {
+  // Pequeño delay de 250ms para que la animación de entrada desde el lado sea visualmente perfecta
+  setTimeout(() => {
+    triggerAnnouncementModal();
+  }, 250);
 });
