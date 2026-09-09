@@ -403,17 +403,57 @@
   </script>
 </head>
 <body>
+  <!-- BANNER MORADO DE AVISO (5 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
+  <div id="announcementOverlay" class="announcement-overlay">
+    <div class="announcement-card-purple">
+      <div class="announcement-badge-pill">
+        <span>✨ AVISO DE LA PLATAFORMA</span>
+      </div>
+      <h2 class="announcement-title-big">
+        Actualizaciones disponibles de español e informática
+      </h2>
+      <p class="announcement-desc-text">
+        Consulta los acuerdos de evaluación en Lengua Española y el rol oficial de fechas para las exposiciones de Informática.
+      </p>
+
+      <div class="announcement-timer-box">
+        <div class="announcement-time-num" id="announcementTimeNum">5.0s</div>
+        <div class="announcement-progress-track">
+          <div class="announcement-progress-fill" id="announcementProgressFill"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
+          <span>Ver Actualizaciones &rarr;</span>
+        </a>
+        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
+          Omitir
+        </button>
+      </div>
+    </div>
+  </div>
+
 
   <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
   <div class="sticky-top-mobile-group">
     <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-    <div class="mac-header-topbar">
+        <div class="mac-header-topbar">
       <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver atrás"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir al inicio"></button>
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
-      <span class="mac-header-title">Cuatreros 415 &bull; Prepa 4</span>
+      <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
+      <!-- BOTONES DE PRUEBA SIEMPRE VISIBLES EN EL BANNER -->
+      <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto;">
+        <button class="banner-test-btn" onclick="triggerToleranceDemo(195)" title="Probar simulador de tolerancia con sonido en verde, amarillo y rojo">
+          ⏱️ Probar Tolerancia
+        </button>
+        <button class="banner-test-btn" onclick="triggerAnnouncementModal()" title="Ver aviso morado de 5 segundos">
+          📢 Aviso 5s
+        </button>
+      </div>
     </div>
 
     <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
