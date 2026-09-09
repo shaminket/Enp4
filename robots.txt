@@ -1,0 +1,6 @@
+# robots.txt para shaminket.com
+User-agent: *
+Allow: /
+
+# Sitemap oficial para indexación en Google
+Sitemap: https://shaminket.com/sitemap.xml
