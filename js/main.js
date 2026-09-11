@@ -713,6 +713,64 @@ document.addEventListener('DOMContentLoaded', () => {
    SISTEMA DE BANNER MORADO (5 SEGUNDOS) + CONTORNO GIRATORIO
    ========================================================== */
 let announcementTimerInterval = null;
+
+let isAnnouncementPaused = false;
+let announcementTimeLeftMs = 10000;
+
+function togglePauseAnnouncement() {
+  const pauseBtn = document.getElementById('announcementPauseBtn');
+  if (!isAnnouncementPaused) {
+    // Pausar
+    isAnnouncementPaused = true;
+    if (announcementTimerInterval) clearInterval(announcementTimerInterval);
+    if (announcementAudioInterval) clearInterval(announcementAudioInterval);
+    if (pauseBtn) {
+      pauseBtn.innerHTML = '▶️ Reanudar';
+      pauseBtn.style.background = '#16a34a';
+      pauseBtn.style.color = '#ffffff';
+    }
+  } else {
+    // Reanudar
+    isAnnouncementPaused = false;
+    if (pauseBtn) {
+      pauseBtn.innerHTML = '⏸️ Pausar';
+      pauseBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+      pauseBtn.style.color = '#fcd866';
+    }
+    resumeAnnouncementTimer();
+  }
+}
+
+function resumeAnnouncementTimer() {
+  const timeNumEl = document.getElementById('announcementTimeNum');
+  const progressFillEl = document.getElementById('announcementProgressFill');
+
+  // Sonido cada cuarto de segundo (250 ms)
+  if (announcementAudioInterval) clearInterval(announcementAudioInterval);
+  announcementAudioInterval = setInterval(() => {
+    playTickSound(1150, 0.04, 0.5);
+  }, 250);
+
+  // Reanudar el temporizador
+  if (announcementTimerInterval) clearInterval(announcementTimerInterval);
+  const stepMs = 50;
+  announcementTimerInterval = setInterval(() => {
+    announcementTimeLeftMs -= stepMs;
+    const s = Math.max(0, announcementTimeLeftMs / 1000).toFixed(1);
+    if (timeNumEl) timeNumEl.textContent = s + 's';
+    if (progressFillEl) {
+      const pct = Math.max(0, (announcementTimeLeftMs / 10000) * 100);
+      progressFillEl.style.width = pct + '%';
+    }
+
+    if (announcementTimeLeftMs <= 0) {
+      clearInterval(announcementTimerInterval);
+      clearInterval(announcementAudioInterval);
+      dismissAnnouncementModal();
+    }
+  }, stepMs);
+}
+
 let announcementAudioInterval = null;
 
 function activateRotatingPurpleBorders(activate = true) {
@@ -751,37 +809,21 @@ function triggerAnnouncementModal() {
   overlay.classList.remove('dismissing');
   overlay.classList.add('active');
 
-  let timeLeftMs = 10000;
+  isAnnouncementPaused = false;
+  announcementTimeLeftMs = 10000;
   const timeNumEl = document.getElementById('announcementTimeNum');
   const progressFillEl = document.getElementById('announcementProgressFill');
+  const pauseBtn = document.getElementById('announcementPauseBtn');
 
   if (timeNumEl) timeNumEl.textContent = '10.0s';
   if (progressFillEl) progressFillEl.style.width = '100%';
+  if (pauseBtn) {
+    pauseBtn.innerHTML = '⏸️ Pausar';
+    pauseBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+    pauseBtn.style.color = '#fcd866';
+  }
 
-  // Sonido cada cuarto de segundo (250 ms) a buen volumen
-  if (announcementAudioInterval) clearInterval(announcementAudioInterval);
-  announcementAudioInterval = setInterval(() => {
-    playTickSound(1150, 0.04, 0.5);
-  }, 250);
-
-  // Actualizar temporizador de 5 segundos
-  if (announcementTimerInterval) clearInterval(announcementTimerInterval);
-  const stepMs = 50;
-  announcementTimerInterval = setInterval(() => {
-    timeLeftMs -= stepMs;
-    const s = Math.max(0, timeLeftMs / 1000).toFixed(1);
-    if (timeNumEl) timeNumEl.textContent = s + 's';
-    if (progressFillEl) {
-      const pct = Math.max(0, (timeLeftMs / 10000) * 100);
-      progressFillEl.style.width = pct + '%';
-    }
-
-    if (timeLeftMs <= 0) {
-      clearInterval(announcementTimerInterval);
-      clearInterval(announcementAudioInterval);
-      dismissAnnouncementModal();
-    }
-  }, stepMs);
+  resumeAnnouncementTimer();
 }
 
 function dismissAnnouncementModal() {
@@ -816,3 +858,5 @@ window.triggerAnnouncementModal = triggerAnnouncementModal;
 window.dismissAnnouncementModal = dismissAnnouncementModal;
 window.triggerToleranceDemo = triggerToleranceDemo;
 window.toggleToleranceAudio = toggleToleranceAudio;
+
+window.togglePauseAnnouncement = togglePauseAnnouncement;
