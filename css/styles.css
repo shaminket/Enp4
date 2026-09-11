@@ -1668,3 +1668,93 @@ a.link-encardomy:hover {
   transform: translateY(-1px);
   color: #ffffff;
 }
+
+/* Optimización de visualización en celular para el aviso morado de 5s */
+@media (max-width: 820px) {
+  .announcement-overlay {
+    background: rgba(0, 8, 20, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    align-items: flex-start !important;
+    padding-top: 25px !important;
+  }
+
+  .announcement-card-purple {
+    padding: 1.5rem 1.25rem !important;
+    max-width: 92vw !important;
+    border-radius: 24px !important;
+    box-shadow: 0 15px 40px rgba(107, 33, 168, 0.6) !important;
+  }
+
+  .announcement-badge-pill {
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.8rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .announcement-title-big {
+    font-size: 1.35rem !important;
+    margin: 0 0 0.4rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .announcement-desc-text {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .announcement-timer-box {
+    padding: 0.8rem 1rem !important;
+    margin-top: 0.8rem !important;
+  }
+
+  .announcement-time-num {
+    font-size: 1.7rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+}
+
+/* Barra de Navegación Rápida Flotante Inferior para Celular */
+.mobile-bottom-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 66px;
+  background: rgba(0, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1.5px solid rgba(213, 159, 15, 0.4);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -4px 25px rgba(0,0,0,0.35);
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 700;
+  flex: 1;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+}
+
+.dock-item:hover, .dock-item:active, .dock-item.active {
+  color: #fcd866;
+  transform: translateY(-1px);
+}
+
+.dock-icon {
+  font-size: 1.28rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}

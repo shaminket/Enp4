@@ -18,22 +18,21 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
-  <script>
-    function checkDesktop() {
-      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
-        window.location.replace("metodologia-exposicion");
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("metodologia-exposicion"));
       }
     }
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("metodologia-exposicion-movil");
-      }
-    }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
   </script>
 </head>
 <body>
@@ -71,7 +70,7 @@
         </a>
 
         <nav class="nav-links-menu">
-          <a href="informatica-exposiciones" class="nav-link-item">Equipos</a>
+          <a href="informatica-exposiciones-movil" class="nav-link-item">Equipos</a>
           <a href="../centro-control" class="nav-link-item">Materias</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
             Shaminket
@@ -165,7 +164,7 @@
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.85rem 1.8rem;">
             <span>Solicitar apoyo de diapositivas en Encardomy &rarr;</span>
           </a>
-          <a href="informatica-exposiciones" class="mac-nav-back-btn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
+          <a href="informatica-exposiciones-movil" class="mac-nav-back-btn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             &larr; Volver al rol de equipos
           </a>
         </div>
@@ -181,7 +180,7 @@
           <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
         </div>
         <div class="footer-links-list">
-          <a href="informatica-exposiciones">Equipos</a>
+          <a href="informatica-exposiciones-movil">Equipos</a>
           <a href="../centro-control">Materias</a>
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
         </div>

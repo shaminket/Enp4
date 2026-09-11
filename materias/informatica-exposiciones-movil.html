@@ -18,22 +18,21 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
-  <script>
-    function checkDesktop() {
-      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
-        window.location.replace("informatica-exposiciones");
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("informatica-exposiciones"));
       }
     }
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("informatica-exposiciones-movil");
-      }
-    }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
   </script>
 </head>
 <body>
@@ -115,7 +114,7 @@
           </p>
         </div>
       </div>
-      <a href="metodologia-exposicion" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap; text-decoration: none;">
+      <a href="metodologia-exposicion-movil" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap; text-decoration: none;">
         <span>Aprender metodología &rarr;</span>
       </a>
     </section>

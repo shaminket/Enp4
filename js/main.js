@@ -466,7 +466,7 @@ function playTickSound(frequency = 1050, duration = 0.06, volume = 0.6) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
     if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
+      audioCtx.resume().catch(() => {});
     }
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
@@ -781,3 +781,9 @@ document.addEventListener('DOMContentLoaded', () => {
     triggerAnnouncementModal();
   }, 250);
 });
+
+// Exposición global para interoperabilidad
+window.triggerAnnouncementModal = triggerAnnouncementModal;
+window.dismissAnnouncementModal = dismissAnnouncementModal;
+window.triggerToleranceDemo = triggerToleranceDemo;
+window.toggleToleranceAudio = toggleToleranceAudio;

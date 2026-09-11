@@ -18,15 +18,22 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
-  <script>
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("geografia-movil");
+  
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkResponsiveLayout() {
+      if (window.location.search.includes("force=desktop")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("geografia-movil"));
       }
     }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
+    checkResponsiveLayout();
+    window.addEventListener("resize", checkResponsiveLayout);
   </script>
 </head>
 <body>

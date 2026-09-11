@@ -18,24 +18,22 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
-  <script>
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        /* mobile */
+  
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("genero"));
       }
     }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
-  </script>
-  <script>
-    function checkDesktop() {
-      if (window.innerWidth > 820 && !window.location.search.includes("force=mobile")) {
-        window.location.replace("genero");
-      }
-    }
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
   </script>
 </head>
 <body>
