@@ -268,28 +268,45 @@ function calNextDay() {
   if (currentCalMode === 'day') renderDesktopDayView();
 }
 
-// Gestos táctiles de deslizamiento (Swipe)
+// Gestos táctiles de deslizamiento (Swipe calibrado para evitar cambios involuntarios)
 let touchStartX = 0;
+let touchStartY = 0;
 let touchEndX = 0;
+let touchEndY = 0;
 
 document.addEventListener('touchstart', e => {
+  // Solo registrar si el toque inicia dentro del contenedor de horario
+  const scheduleArea = e.target.closest('#horario, .mobile-schedule-card, #timelineList');
+  if (!scheduleArea) return;
+
   touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
 }, { passive: true });
 
 document.addEventListener('touchend', e => {
+  const scheduleArea = e.target.closest('#horario, .mobile-schedule-card, #timelineList');
+  if (!scheduleArea || touchStartX === 0) return;
+
   touchEndX = e.changedTouches[0].screenX;
+  touchEndY = e.changedTouches[0].screenY;
   handleSwipe();
+  touchStartX = 0;
+  touchStartY = 0;
 }, { passive: true });
 
 function handleSwipe() {
-  const diff = touchEndX - touchStartX;
-  if (Math.abs(diff) > 70) {
-    if (diff > 0) {
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  // Si hubo movimiento vertical significativo, es scroll; NO cambiar de día
+  if (Math.abs(diffY) > 40) return;
+
+  // Solo si es un deslizamiento horizontal firme e intencionado (> 120px)
+  if (Math.abs(diffX) > 120 && Math.abs(diffX) > Math.abs(diffY) * 2.5) {
+    if (diffX > 0) {
       if (typeof prevDay === 'function') prevDay();
-      calPrevDay();
     } else {
       if (typeof nextDay === 'function') nextDay();
-      calNextDay();
     }
   }
 }
@@ -507,10 +524,8 @@ function triggerToleranceDemo(seconds = 195) {
   updateToleranceWidget();
 }
 
-function updateToleranceWidget() {
-  const container = document.getElementById('liveToleranceModule');
-  if (!container) return;
 
+function updateToleranceWidget() {
   const now = new Date();
   const currentDay = now.getDay();
   const currentTotalSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
@@ -522,7 +537,7 @@ function updateToleranceWidget() {
   let slotRoom = "";
 
   if (demoModeActive) {
-    activeSubject = "Matemáticas IV (Demostración)";
+    activeSubject = "Matemáticas IV";
     slotRoom = "Salón B-112";
     totalTolSec = 15 * 60;
     remainingSec = demoSecondsLeft;
@@ -532,9 +547,9 @@ function updateToleranceWidget() {
       remainingSec = 0;
     }
   } else {
-    // Búsqueda en tiempo real
+    // Si es fin de semana
     if (currentDay < 1 || currentDay > 5) {
-      container.style.display = 'none';
+      removeLiveToleranceWidgets();
       return;
     }
 
@@ -542,7 +557,7 @@ function updateToleranceWidget() {
     const slotIdx = getActiveSlotIndex();
 
     if (slotIdx === -1) {
-      container.style.display = 'none';
+      removeLiveToleranceWidgets();
       return;
     }
 
@@ -551,7 +566,7 @@ function updateToleranceWidget() {
     const activeClassObj = todayClasses[slotIdx];
 
     if (!activeClassObj || activeClassObj.sec === 'free') {
-      container.style.display = 'none';
+      removeLiveToleranceWidgets();
       return;
     }
 
@@ -559,9 +574,8 @@ function updateToleranceWidget() {
     slotRoom = activeClassObj.room;
     tolMinutes = subjectTolerancesMinutes[activeSubject];
 
-    // Si la materia no tiene tolerancia o no se le debe poner contador
     if (tolMinutes === null || tolMinutes === undefined) {
-      container.style.display = 'none';
+      removeLiveToleranceWidgets();
       return;
     }
 
@@ -571,40 +585,14 @@ function updateToleranceWidget() {
     remainingSec = totalTolSec - elapsedSec;
   }
 
-  // 1. Si el tiempo de tolerancia terminó
+  // 1. Si la tolerancia expiró
   if (remainingSec <= 0) {
-    if (!toleranceExpiredShown) {
-      toleranceExpiredShown = true;
-      container.style.display = 'block';
-      container.innerHTML = `
-        <div class="tolerance-expired-notice">
-          <span style="font-size: 2.2rem;">🚪</span>
-          <div>
-            <h4 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #ffffff;">
-              Clase iniciada, espera a la siguiente hora para integrarte.
-            </h4>
-            <p style="margin: 0.25rem 0 0; font-size: 0.92rem; color: #fca5a5; font-weight: 700;">
-              Evita interrumpir.
-            </p>
-          </div>
-        </div>
-      `;
-      // Dura unos pocos segundos y vuelve a crecer el horario
-      setTimeout(() => {
-        container.style.display = 'none';
-      }, 7000);
-    }
+    injectExpiredNoticeInActiveClass();
     return;
   }
 
   // 2. Si la tolerancia está corriendo activamente
-  toleranceExpiredShown = false;
-  container.style.display = 'block';
-
-  // Reglas de color y ritmo sonoro exactas:
-  // Verde (> 180s): sonido cada segundo (1000ms)
-  // Amarillo (<= 180s): sonido cada medio segundo (500ms)
-  // Rojo (<= 90s): sonido cada cuarto de segundo (250ms)
+  // Reglas de color: Verde > 180s, Amarillo <= 180s, Rojo <= 90s
   let colorClass = 'tolerance-green';
   let progressColor = '#22c55e';
   let tickIntervalMs = 1000; // Verde: cada segundo
@@ -616,7 +604,7 @@ function updateToleranceWidget() {
     progressColor = '#ef4444';
     tickIntervalMs = 250; // Rojo: cada cuarto de segundo
     beepFreq = 1250;
-    alertVol = 0.75; // Máxima alerta
+    alertVol = 0.75;
   } else if (remainingSec <= 180) {
     colorClass = 'tolerance-yellow';
     progressColor = '#f59e0b';
@@ -625,7 +613,7 @@ function updateToleranceWidget() {
     alertVol = 0.65;
   }
 
-  // Sonido proporcional al tiempo restante
+  // Sonido
   const nowMs = Date.now();
   if (nowMs - lastSoundTickTime >= tickIntervalMs) {
     playTickSound(beepFreq, 0.05, alertVol);
@@ -636,41 +624,82 @@ function updateToleranceWidget() {
   const mins = Math.floor(remainingSec / 60);
   const secs = remainingSec % 60;
   const timeFormatted = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-
   const pct = Math.max(0, Math.min(100, (remainingSec / totalTolSec) * 100));
 
-  container.innerHTML = `
-    <div class="tolerance-card ${colorClass}">
-      <div class="tolerance-header">
-        <div class="tolerance-badge-pulse">
-          <span class="live-pulse-dot" style="background: ${progressColor};"></span>
-          <span>Tolerancia de Entrada &bull; ${activeSubject}</span>
-        </div>
-        <div class="tolerance-controls">
-          <button class="sound-toggle-btn" onclick="toggleToleranceAudio()" title="Silenciar / Activar sonido">
-            <span id="audioIcon">${isAudioMuted ? '🔇' : '🔊'}</span>
-          </button>
-          <button class="demo-toggle-btn" onclick="triggerToleranceDemo(195)" title="Reiniciar demostración de tolerancia">
-            ⏱️ Probar 3m
-          </button>
-        </div>
-      </div>
+  injectToleranceDisplayInActiveClass(timeFormatted, colorClass, progressColor, pct, activeSubject, slotRoom);
+}
 
-      <div class="tolerance-body">
-        <div class="tolerance-countdown-display" id="toleranceTimeDisplay">
+function removeLiveToleranceWidgets() {
+  document.querySelectorAll('.in-class-tolerance-widget').forEach(el => el.remove());
+  document.querySelectorAll('.live-time-ticker').forEach(el => el.remove());
+}
+
+function injectExpiredNoticeInActiveClass() {
+  removeLiveToleranceWidgets();
+  const activeCards = document.querySelectorAll('.is-live-class-now, #liveActiveMobileCard');
+  activeCards.forEach(card => {
+    if (!card.querySelector('.in-class-tolerance-widget')) {
+      const w = document.createElement('div');
+      w.className = 'in-class-tolerance-widget tolerance-expired-notice';
+      w.style.padding = '0.8rem 1rem';
+      w.style.margin = '0.5rem 0';
+      w.style.fontSize = '0.85rem';
+      w.innerHTML = `
+        <span style="font-size: 1.4rem;">🚪</span>
+        <div>
+          <strong style="color: #ffffff; display: block; font-size: 0.88rem;">Clase iniciada, espera a la siguiente hora para integrarte.</strong>
+          <span style="color: #fca5a5; font-size: 0.78rem;">Evita interrumpir.</span>
+        </div>
+      `;
+      card.appendChild(w);
+      setTimeout(() => { w.remove(); }, 7000);
+    }
+  });
+}
+
+function injectToleranceDisplayInActiveClass(timeFormatted, colorClass, progressColor, pct, subject, room) {
+  // En escritorio y móvil: buscar la clase activa
+  let activeCards = document.querySelectorAll('.is-live-class-now, #liveActiveMobileCard');
+  
+  // Si estamos en demo y no hay ninguna marcada en vivo, usar la primera de Matemáticas
+  if (activeCards.length === 0 && demoModeActive) {
+    const demoCard = document.querySelector('.class-item[data-subj="Matemáticas IV"]') || document.querySelector('.timeline-class-card');
+    if (demoCard) {
+      activeCards = [demoCard];
+    }
+  }
+
+  activeCards.forEach(card => {
+    let widget = card.querySelector('.in-class-tolerance-widget');
+    if (!widget) {
+      widget = document.createElement('div');
+      widget.className = `in-class-tolerance-widget tolerance-card ${colorClass}`;
+      widget.style.padding = '0.75rem 0.9rem';
+      widget.style.marginTop = '0.5rem';
+      widget.style.borderRadius = '14px';
+      card.appendChild(widget);
+    } else {
+      widget.className = `in-class-tolerance-widget tolerance-card ${colorClass}`;
+      widget.style.padding = '0.75rem 0.9rem';
+      widget.style.marginTop = '0.5rem';
+      widget.style.borderRadius = '14px';
+    }
+
+    widget.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+        <span style="font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px;">
+          <span class="live-pulse-dot" style="background: ${progressColor}; width: 8px; height: 8px;"></span>
+          Tolerancia en Curso
+        </span>
+        <span style="font-size: 1.25rem; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1;">
           ${timeFormatted}
-        </div>
-        <div class="tolerance-info">
-          <p class="tolerance-status-text" id="toleranceStatusText">
-            Tiempo de tolerancia restante para entrar al ${slotRoom} sin falta
-          </p>
-          <div class="tolerance-progress-bar">
-            <div class="tolerance-progress-fill" style="width: ${pct}%; background-color: ${progressColor};"></div>
-          </div>
-        </div>
+        </span>
       </div>
-    </div>
-  `;
+      <div style="background: rgba(0,0,0,0.1); border-radius: 999px; height: 5px; overflow: hidden; width: 100%;">
+        <div style="width: ${pct}%; height: 100%; background: ${progressColor}; border-radius: 999px; transition: width 1s linear;"></div>
+      </div>
+    `;
+  });
 }
 
 // Iniciar cronómetro de tolerancia segundo a segundo
@@ -722,11 +751,11 @@ function triggerAnnouncementModal() {
   overlay.classList.remove('dismissing');
   overlay.classList.add('active');
 
-  let timeLeftMs = 5000;
+  let timeLeftMs = 10000;
   const timeNumEl = document.getElementById('announcementTimeNum');
   const progressFillEl = document.getElementById('announcementProgressFill');
 
-  if (timeNumEl) timeNumEl.textContent = '5.0s';
+  if (timeNumEl) timeNumEl.textContent = '10.0s';
   if (progressFillEl) progressFillEl.style.width = '100%';
 
   // Sonido cada cuarto de segundo (250 ms) a buen volumen
@@ -743,7 +772,7 @@ function triggerAnnouncementModal() {
     const s = Math.max(0, timeLeftMs / 1000).toFixed(1);
     if (timeNumEl) timeNumEl.textContent = s + 's';
     if (progressFillEl) {
-      const pct = Math.max(0, (timeLeftMs / 5000) * 100);
+      const pct = Math.max(0, (timeLeftMs / 10000) * 100);
       progressFillEl.style.width = pct + '%';
     }
 

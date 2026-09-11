@@ -1758,3 +1758,279 @@ a.link-encardomy:hover {
   line-height: 1;
   margin-bottom: 2px;
 }
+
+/* ==========================================================
+   SELLO DE MARCA: TRANQUI!! EN MORADO VIBRANTE
+   ========================================================== */
+.tranqui-brand {
+  color: #7C3AED !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 12px rgba(124, 58, 237, 0.35);
+  display: inline-block;
+}
+
+/* ==========================================================
+   MATERIAS CON TAREA: COLOR AZUL REY (#1d4ed8 / #2563eb)
+   ========================================================== */
+.has-homework {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  border: 2px solid #60a5fa !important;
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.35) !important;
+  position: relative;
+}
+
+.has-homework .class-name,
+.has-homework .class-name-mobile {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+.has-homework .class-prof-name,
+.has-homework .class-prof-mobile {
+  color: #bfdbfe !important;
+}
+
+.homework-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fcd866;
+  color: #001628;
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================
+   AVISO SOBREEXPUESTO: INGLÉS EN MEDIATECA B-318 (LUNES)
+   ========================================================== */
+.mediateca-alert-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.3rem;
+  animation: pulseRedBorder 1.5s infinite ease-in-out;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.5);
+}
+
+/* ==========================================================
+   RECUADRO MORADO PARA MATERIAS CON ACTUALIZACIÓN EN CENTRO DE CONTROL
+   ========================================================== */
+.card-updated-purple {
+  border: 2.5px solid #7C3AED !important;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.25) !important;
+  position: relative;
+}
+
+.purple-update-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+}
+
+/* ==========================================================
+   CHAT ESTILO WHATSAPP PARA LENGUA ESPAÑOLA
+   ========================================================== */
+.whatsapp-chat-container {
+  background: #efeae2;
+  background-image: radial-gradient(#d1d7db 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 1.6rem 1.4rem;
+  max-width: 620px;
+  margin: 1.5rem auto;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.chat-bubble {
+  background: #ffffff;
+  border-radius: 14px 14px 14px 2px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #111b21;
+}
+
+.chat-bubble.chat-outgoing {
+  background: #d9fdd3;
+  border-radius: 14px 14px 2px 14px;
+  margin-left: auto;
+}
+
+.chat-timestamp {
+  font-size: 0.68rem;
+  color: #667781;
+  text-align: right;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   WIDGETS DE PDF Y CAJAS DE PROMPTS
+   ========================================================== */
+.pdf-widget-card {
+  background: #ffffff;
+  border: 2px solid #D59F0F;
+  border-radius: 20px;
+  padding: 1.8rem;
+  margin: 1.8rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.prompt-copy-box {
+  background: #0f172a;
+  border: 1.5px solid #334155;
+  border-radius: 16px;
+  padding: 1.4rem 1.6rem;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  position: relative;
+  margin: 1.2rem 0 2rem;
+}
+
+.btn-copy-prompt {
+  background: #2D7FF9;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  float: right;
+  margin-bottom: 0.6rem;
+}
+
+.btn-copy-prompt:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================
+   VISTA DE CALENDARIO MENSUAL (AGOSTO 2026 - ABRIL 2027)
+   ========================================================== */
+.calendar-month-view {
+  display: none;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.calendar-month-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #002B7A;
+}
+
+.calendar-grid-7cols {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-header-cell {
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #64748b;
+  padding: 0.5rem 0.2rem;
+  text-transform: uppercase;
+}
+
+.cal-day-cell {
+  min-height: 85px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
+}
+
+.cal-day-cell.is-today {
+  border: 2px solid #2D7FF9;
+  background: #eff6ff;
+}
+
+.cal-day-cell.other-month {
+  opacity: 0.35;
+}
+
+.cal-day-num {
+  font-weight: 800;
+  color: #001628;
+}
+
+.cal-event-pill {
+  font-size: 0.68rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2px;
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cal-event-blue {
+  background: #1d4ed8;
+  color: #ffffff;
+}
+
+.cal-deadline-red {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+.graduation-celebration-banner {
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  text-align: center;
+  margin: 1.8rem 0;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+}
