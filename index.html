@@ -18,16 +18,18 @@
   
   
   <link rel="stylesheet" href="css/styles.css">
-  <script>
-    // Adaptabilidad fluida: Si en la Mac la ventana se pone vertical/estrecha, cambia a móvil.
-    // Si en celular activan "Modo computadora" (viewport ancho >= 820px), se queda aquí.
+    
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
     function checkResponsiveLayout() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      const isMobileUA = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
-      
-      // Si el ancho es estrecho y no está forzado a escritorio, redirige a móvil
-      if ((isMobileUA || isNarrow) && !window.location.search.includes("force=desktop")) {
-        window.location.replace("index-movil");
+      if (window.location.search.includes("force=desktop")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("index-movil"));
       }
     }
     checkResponsiveLayout();

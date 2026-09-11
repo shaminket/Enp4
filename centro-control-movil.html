@@ -18,22 +18,20 @@
   
   
   <link rel="stylesheet" href="css/styles.css">
-  <script>
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("centro-control-movil");
-      }
-    }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
-  </script>
+  
 
-  <script>
+  
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
     function checkDesktopSwitch() {
-      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
-      if (isWide && !window.location.search.includes("force=mobile")) {
-        window.location.replace("centro-control");
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("centro-control"));
       }
     }
     checkDesktopSwitch();
@@ -62,7 +60,7 @@
       </div>
 
       <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
+        <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
           <span>Ver Actualizaciones &rarr;</span>
         </a>
         <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
@@ -97,8 +95,8 @@
         <nav class="nav-links-menu">
           <a href="./" class="nav-link-item">Inicio</a>
           <a href="./#horario" class="nav-link-item">Horario</a>
-          <a href="artisticas" class="nav-link-item">Artísticas</a>
-          <a href="ayuda" class="nav-link-item">Ayuda &bull; Guía</a>
+          <a href="artisticas-movil" class="nav-link-item">Artísticas</a>
+          <a href="ayuda-movil" class="nav-link-item">Ayuda &bull; Guía</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
             Shaminket
           </a>
@@ -166,7 +164,7 @@
           </div>
         </div>
 
-        <a href="materias/espanol" class="btn-encardomy" style="padding: 0.9rem 2rem; font-size: 1.02rem;">
+        <a href="materias/espanol-movil" class="btn-encardomy" style="padding: 0.9rem 2rem; font-size: 1.02rem;">
           <span>Abrir Módulo de Español &rarr;</span>
         </a>
       </div>
@@ -177,19 +175,19 @@
 
       <!-- Accesos Rápidos de Español -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
-        <a href="actualizaciones" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <a href="actualizaciones-movil" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📢</div>
           <strong style="color: #F7C438; font-size: 1rem;">Avisos Oficiales de Clase</strong>
           <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Consulta los comunicados y acuerdos de la profesora Vázquez.</p>
         </a>
 
-        <a href="forma-trabajo" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <a href="forma-trabajo-movil" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📝</div>
           <strong style="color: #F7C438; font-size: 1rem;">Forma de Trabajo y Foto Perfil</strong>
           <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Firma de tutor, lineamientos y el prompt IA para tu correo institucional.</p>
         </a>
 
-        <a href="plan-estudios" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <a href="plan-estudios-movil" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📚</div>
           <strong style="color: #F7C438; font-size: 1rem;">Hojas de Reúso y Novela "Wyatt"</strong>
           <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Aviso sobre el copiado de 18 hojas y acceso al libro de lectura.</p>
@@ -212,7 +210,7 @@
         <h3>Matemáticas IV</h3>
         <p>Prof. Quintana Mejía Saúl &bull; Clave 1400 (20 créditos). Álgebra, funciones, sistemas de ecuaciones lineales y modelación matemática.</p>
         <div class="bento-footer-link">
-          <a href="materias/matematicas" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/matematicas-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -224,7 +222,7 @@
         <h3>Física III</h3>
         <p>Profra. Reyna García Gabriela &bull; Clave 1401 (14 créditos). Movimiento de satélites, energía eléctrica y prácticas en Laboratorio A-302.</p>
         <div class="bento-footer-link">
-          <a href="materias/fisica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/fisica-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -236,7 +234,7 @@
         <h3>Geografía</h3>
         <p>Clave 1405 (12 créditos) &bull; Salón A-104. Espacio geográfico, recursos naturales, dinámica poblacional y geopolítica contemporánea.</p>
         <div class="bento-footer-link">
-          <a href="materias/geografia" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/geografia-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -248,7 +246,7 @@
         <h3>Historia Universal III</h3>
         <p>Clave 1403 (12 créditos) &bull; Salones B-109 y B-117. Industrialización, transformaciones capitalistas y movimientos del siglo XX y XXI.</p>
         <div class="bento-footer-link">
-          <a href="materias/historia" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/historia-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -260,7 +258,7 @@
         <h3>Lengua Extranjera Inglés IV</h3>
         <p>Clave 1407 (12 créditos) &bull; Salones C-306 (Sec. A) y C-205 (Sec. B). Competencias comunicativas A2/B1 MCERL y comprensión de textos.</p>
         <div class="bento-footer-link">
-          <a href="materias/ingles" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/ingles-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -272,7 +270,7 @@
         <h3>Lógica</h3>
         <p>Clave 1404 (12 créditos) &bull; Salones B-108 y B-206. Análisis de argumentos, identificación de falacias y formalización lógica.</p>
         <div class="bento-footer-link">
-          <a href="materias/logica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/logica-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -284,7 +282,7 @@
         <h3>Dibujo II</h3>
         <p>Clave 1406 (08 créditos) &bull; Salones B-008 (Sec. A) y C-201 (Sec. B). Lenguaje visual, proporción, técnicas de color y composición.</p>
         <div class="bento-footer-link">
-          <a href="materias/dibujo" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/dibujo-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -296,7 +294,7 @@
         <h3>Informática</h3>
         <p>Clave 1408 (10 créditos) &bull; I-108 y CC-2. Hojas de cálculo avanzadas, procesamiento de datos, lógica algorítmica y seguridad en la red.</p>
         <div class="bento-footer-link">
-          <a href="materias/informatica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/informatica-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -308,7 +306,7 @@
         <h3>Orientación Educativa IV</h3>
         <p>Clave 1410 &bull; Salones B-110 (Sec. A) y B-112 (Sec. B). Adaptación al bachillerato UNAM, hábitos de estudio y proyecto de vida.</p>
         <div class="bento-footer-link">
-          <a href="materias/orientacion" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/orientacion-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -320,7 +318,7 @@
         <h3>Género y Prevención de Violencias</h3>
         <p>Clave 8000 &bull; Salones B-108 y B-109. Cultura comunitaria de paz, derechos humanos y convivencia escolar libre de violencia.</p>
         <div class="bento-footer-link">
-          <a href="materias/genero" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/genero-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
@@ -333,7 +331,7 @@
         <p>Obligatoria de 4° año. Teatro, Danza Folclórica, Contemporánea, Música, Artes Plásticas y Fotografía. Consulta profesores, salones y horarios disponibles en SiHo.</p>
         <div class="bento-footer-link">
           <span style="font-size: 0.82rem; font-weight: 800; color: #002B7A;">6 disciplinas &bull; Prepa 4</span>
-          <a href="artisticas" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
+          <a href="artisticas-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
             <span>Elegir artística &rarr;</span>
           </a>
         </div>
@@ -345,7 +343,7 @@
         <h3>Educación Física IV</h3>
         <p>Clave 1409 &bull; Gimnasio 1 (GIM1). Salud física, resistencia, fundamentos de disciplinas deportivas y trabajo en equipo.</p>
         <div class="bento-footer-link">
-          <a href="materias/educacion-fisica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/educacion-fisica-movil" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>

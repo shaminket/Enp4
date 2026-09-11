@@ -400,18 +400,22 @@
       box-shadow: var(--shadow-sm);
     }
   </style>
-  <script>
-    // Detección fluida: Si se agranda la ventana en Mac a formato horizontal, vuelve a escritorio
+    
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
     function checkDesktopSwitch() {
-      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
-      if (isWide && !window.location.search.includes("force=mobile")) {
-        window.location.replace("./");
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("index"));
       }
     }
     checkDesktopSwitch();
     window.addEventListener("resize", checkDesktopSwitch);
-    // Iniciar tolerancia en móvil
-    setInterval(updateToleranceWidget, 1000);
   </script>
 </head>
 <body>
@@ -436,7 +440,7 @@
       </div>
 
       <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
+        <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
           <span>Ver Actualizaciones &rarr;</span>
         </a>
         <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
@@ -470,7 +474,7 @@
 
     <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
     <aside class="rebrand-cosmic-banner">
-      <a href="centro-control" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+      <a href="centro-control-movil" style="text-decoration: none; color: inherit; display: block; width: 100%;">
         <div class="rebrand-inner">
           <span class="rebrand-pill">✨ NUEVAS ACTUALIZACIONES</span>
           <span class="rebrand-text-main">
@@ -482,7 +486,7 @@
 
     <!-- BARRA SUPERIOR COMPACTA -->
     <header class="mobile-header">
-      <a href="index-movil" class="mobile-brand">
+      <a href="index-movil.html" class="mobile-brand">
         <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 42px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
         <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 36px;">
         <div class="mobile-brand-title">Cuatreros <span>415</span></div>
@@ -524,14 +528,17 @@
       <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 0.9rem;">
         Avisos, tareas y programas de Español, Matemáticas, Física y las 12 asignaturas del 415.
       </p>
-      <a href="centro-control" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
+      <a href="centro-control-movil" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
         Explorar Centro de Control &rarr;
       </a>
     </div>
   </div>
 
   <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN SOLO DÍA A LA VEZ) -->
-  <section class="mobile-schedule-card" style="padding-top: 0; overflow: hidden;">
+  <!-- CONTENEDOR DE TOLERANCIA EN MÓVIL -->
+    <div id="liveToleranceModule" style="display: none; margin: 0 1rem 1.2rem;"></div>
+
+    <section id="horario" class="mobile-schedule-card" style="padding-top: 0; overflow: hidden;">
     <div class="window-titlebar" style="margin: 0 -1.1rem 1.2rem; padding: 10px 14px;">
       <div class="window-dots">
         <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
@@ -607,13 +614,13 @@
   <!-- ACCESOS RÁPIDOS MÓVIL: ARTÍSTICAS Y GUÍA DE AYUDA -->
   <div class="mobile-section-wrap" style="margin-bottom: 1.5rem;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-      <a href="artisticas" style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+      <a href="artisticas-movil" style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
         <span style="font-size: 1.6rem;">🎭</span>
         <strong style="color: #002B7A; font-size: 0.86rem;">Artísticas 415</strong>
         <span style="color: #D59F0F; font-size: 0.72rem; font-weight: 800;">6 disciplinas &rarr;</span>
       </a>
 
-      <a href="ayuda" style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
+      <a href="ayuda-movil" style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
         <span style="font-size: 1.6rem;">📖</span>
         <strong style="color: #002B7A; font-size: 0.86rem;">Guía & Ayuda</strong>
         <span style="color: #64748b; font-size: 0.72rem; font-weight: 800;">Manual de uso &rarr;</span>
@@ -771,6 +778,30 @@
     </div>
   </div>
 
+  <!-- BARRA INFERIOR DE ACCESO RÁPIDO PARA CELULAR -->
+  <nav class="mobile-bottom-dock">
+    <a href="#horario" class="dock-item active" onclick="document.getElementById('horario').scrollIntoView({behavior:'smooth'}); return false;">
+      <span class="dock-icon">📅</span>
+      <span class="dock-label">Horario</span>
+    </a>
+    <a href="centro-control-movil" class="dock-item">
+      <span class="dock-icon">📚</span>
+      <span class="dock-label">Materias</span>
+    </a>
+    <a href="artisticas-movil" class="dock-item">
+      <span class="dock-icon">🎭</span>
+      <span class="dock-label">Artísticas</span>
+    </a>
+    <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="dock-item">
+      <span class="dock-icon">⚡</span>
+      <span class="dock-label">Copias</span>
+    </a>
+    <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20acad%C3%A9mica%20sobre%20el%20Grupo%20415" target="_blank" rel="noopener noreferrer" class="dock-item">
+      <span class="dock-icon">💬</span>
+      <span class="dock-label">Dudas</span>
+    </a>
+  </nav>
+
   <!-- FOOTER -->
   <footer class="apple-footer-dark" style="padding: 2.5rem 1rem 2rem;">
     <div class="footer-wrapper">
@@ -783,9 +814,9 @@
         <span style="font-size: 0.78rem; opacity: 0.75;">Universidad Nacional Autónoma de México &bull; ENP Plantel 4</span>
       </div>
       <div class="footer-links-list" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control">Materias</a>
-        <a href="artisticas">Artísticas</a>
-        <a href="ayuda">Ayuda</a>
+        <a href="centro-control-movil">Materias</a>
+        <a href="artisticas-movil">Artísticas</a>
+        <a href="ayuda-movil">Ayuda</a>
         <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
         <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
       </div>
@@ -912,11 +943,48 @@
       renderSchedule();
     }
 
+    
+    // Mapeo automático de materias a sus páginas de información y tareas
+    function getSubjectLink(subjectName, section) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      const ext = (isFile || hasHtml) ? '-movil.html' : '-movil';
+
+      const s = subjectName.toLowerCase();
+      if (s.includes('español')) return 'materias/espanol' + ext;
+      if (s.includes('matemát')) return 'materias/matematicas' + ext;
+      if (s.includes('física')) return 'materias/fisica' + ext;
+      if (s.includes('geograf')) return 'materias/geografia' + ext;
+      if (s.includes('historia')) return 'materias/historia' + ext;
+      if (s.includes('informát')) return 'materias/informatica' + ext;
+      if (s.includes('lógica')) return 'materias/logica' + ext;
+      if (s.includes('género')) return 'materias/genero' + ext;
+      if (s.includes('educación física')) return 'materias/educacion-fisica' + ext;
+      if (s.includes('dibujo')) {
+        if (section === 'A') return 'materias/dibujo-a' + ext;
+        if (section === 'B') return 'materias/dibujo-b' + ext;
+        return 'materias/dibujo' + ext;
+      }
+      if (s.includes('inglés')) {
+        if (section === 'A') return 'materias/ingles-a' + ext;
+        if (section === 'B') return 'materias/ingles-b' + ext;
+        return 'materias/ingles' + ext;
+      }
+      if (s.includes('orientac')) {
+        if (section === 'A') return 'materias/orientacion-a' + ext;
+        if (section === 'B') return 'materias/orientacion-b' + ext;
+        return 'materias/orientacion' + ext;
+      }
+      return 'centro-control' + ext;
+    }
+
     function renderSchedule() {
       const dayData = scheduleData[selectedDay];
       const headingElem = document.getElementById('dayNameText');
       const subElem = document.getElementById('dateSubText');
       const listContainer = document.getElementById('timelineList');
+
+      if (!dayData || !listContainer) return;
 
       document.querySelectorAll('.day-tab-btn').forEach(btn => {
         const d = parseInt(btn.getAttribute('data-day'));
@@ -970,8 +1038,10 @@
           liveBadgeHtml = '<div class="live-status-badge" style="margin-bottom: 0.5rem;"><span class="live-pulse-dot"></span> EN CLASE EN VIVO AHORA</div>';
         }
 
+        const subjectUrl = getSubjectLink(c.subject, c.section);
+
         listContainer.innerHTML += `
-          <div class="timeline-class-card${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}">
+          <a href="${subjectUrl}" class="timeline-class-card${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
             ${liveBadgeHtml}
             <div class="timeline-time-row">
               <div class="class-time-text">
@@ -980,12 +1050,18 @@
               </div>
               <span class="badge-room-mobile">Salón ${c.room}</span>
             </div>
-            <div class="class-name-mobile">${c.subject} ${secBadge}</div>
+            <div class="class-name-mobile" style="display: flex; justify-content: space-between; align-items: center;">
+              <span>${c.subject} ${secBadge}</span>
+              <span style="font-size: 0.9rem; color: #2D7FF9; font-weight: 900;">&rarr;</span>
+            </div>
             <div class="class-prof-mobile">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <span>${c.prof}</span>
             </div>
-          </div>
+            <div style="font-size: 0.72rem; color: #2D7FF9; font-weight: 800; margin-top: 0.4rem; display: flex; align-items: center; gap: 0.25rem;">
+              <span>Ver apuntes, avisos y tareas</span> &rarr;
+            </div>
+          </a>
         `;
       });
 
@@ -999,8 +1075,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', initMobileSchedule);
+    initMobileSchedule();
     // Iniciar tolerancia en móvil
-    setInterval(updateToleranceWidget, 1000);
+    
   </script>
   <script src="js/main.js"></script>
 </body>

@@ -18,22 +18,20 @@
   
   
   <link rel="stylesheet" href="css/styles.css">
-  <script>
-    function checkResponsive() {
-      const isNarrow = window.innerWidth <= 820 || (window.innerHeight > window.innerWidth && window.innerWidth < 850);
-      if (isNarrow && !window.location.search.includes("force=desktop")) {
-        window.location.replace("artisticas-movil");
-      }
-    }
-    checkResponsive();
-    window.addEventListener("resize", checkResponsive);
-  </script>
+  
 
-  <script>
+  
+    <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
     function checkDesktopSwitch() {
-      const isWide = window.innerWidth > 820 && window.innerWidth >= window.innerHeight;
-      if (isWide && !window.location.search.includes("force=mobile")) {
-        window.location.replace("artisticas");
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("artisticas"));
       }
     }
     checkDesktopSwitch();
@@ -77,7 +75,7 @@
 
         <nav class="nav-links-menu">
           <a href="./" class="nav-link-item">Inicio</a>
-          <a href="centro-control" class="nav-link-item">Centro de Control</a>
+          <a href="centro-control-movil" class="nav-link-item">Centro de Control</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
             Shaminket
           </a>
@@ -239,7 +237,7 @@
         </div>
         <div class="footer-links-list">
           <a href="./">Inicio</a>
-          <a href="centro-control">Centro de Control</a>
+          <a href="centro-control-movil">Centro de Control</a>
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
         </div>
       </div>
