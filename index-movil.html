@@ -419,25 +419,48 @@
   </script>
 </head>
 <body>
-  <!-- BANNER MORADO DE AVISO (5 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
+    <!-- BANNER MORADO DE AVISO (10 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
   <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-purple">
+    <div class="announcement-card-purple" style="max-height: 88vh; overflow-y: auto;">
       <div class="announcement-badge-pill">
-        <span>✨ AVISO DE LA PLATAFORMA</span>
+        <span>✨ AVISOS & TAREAS OFICIALES &bull; GRUPO 0415</span>
       </div>
       <h2 class="announcement-title-big">
-        Actualizaciones disponibles de español e informática
+        Nuevas Actualizaciones y Tareas del 415
       </h2>
-      <p class="announcement-desc-text">
-        Consulta los acuerdos de evaluación en Lengua Española y el rol oficial de fechas para las exposiciones de Informática.
+      <p class="announcement-desc-text" style="font-weight: 700; color: #fef08a; margin-bottom: 1rem;">
+        Revisa las nuevas tareas y acuerdos asignados en las materias esta semana:
       </p>
 
-      <div class="announcement-timer-box">
-        <div class="announcement-time-num" id="announcementTimeNum">5.0s</div>
+      <!-- Lista de tareas y avisos -->
+      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 18px; padding: 1.2rem; text-align: left; font-size: 0.88rem; line-height: 1.55; display: flex; flex-direction: column; gap: 0.65rem;">
+        <div>📜 <strong>Historia:</strong> Subir 2 tareas con renombrado obligatorio (<code>Grupo415_ApellidoP_ApellidoM_tarea#</code>) + herramientas PDF en la página.</div>
+        <div>📖 <strong>Español:</strong> Aviso urgente: pasar a papelería <em>La Gomita</em> ($20 MXN) por hoja oficial de la Profra. Vázquez.</div>
+        <div>💻 <strong>Informática:</strong> Rol oficial de fechas para los 9 equipos de exposición + metodología 1+3=1.</div>
+        <div>🌍 <strong>Geografía:</strong> Llevar libro o pedir hojas con nombre ($50 MXN) y tarea de 4 noticias en equipo para el lunes.</div>
+        <div>🧠 <strong>Lógica:</strong> 3 tareas (tipos de frases, corrección de clase y casos de Gettier).</div>
+        <div>🎨 <strong>Dibujo A:</strong> Paisaje con líneas en impresión 2 o libro y corrección de puntillismo.</div>
+        <div>🇬🇧 <strong>Inglés A:</strong> Examen próximo (libro/cuaderno/bitácora para 10) y el lunes nos vemos en <strong>Mediateca B-318</strong>.</div>
+        <div>🧭 <strong>Orientación A:</strong> Traer post-it, plumones y carpeta; 2 tareas (datos históricos y 5 personajes UNAM sin Gabino Barreda) con Prompts IA listos.</div>
+      </div>
+
+      <div class="announcement-timer-box" style="margin-top: 1.2rem;">
+        <div class="announcement-time-num" id="announcementTimeNum">10.0s</div>
         <div class="announcement-progress-track">
           <div class="announcement-progress-fill" id="announcementProgressFill"></div>
         </div>
       </div>
+
+      <div style="margin-top: 1.2rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
+        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.65rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none;">
+          <span>Ir al Centro de Control &rarr;</span>
+        </a>
+        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.25);">
+          Omitir aviso
+        </button>
+      </div>
+    </div>
+  </div>
 
       <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
         <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
@@ -472,17 +495,7 @@
       </div>
     </div>
 
-    <!-- 2. BANNER NEGRO, AZUL Y MORADO -->
-    <aside class="rebrand-cosmic-banner">
-      <a href="centro-control-movil" style="text-decoration: none; color: inherit; display: block; width: 100%;">
-        <div class="rebrand-inner">
-          <span class="rebrand-pill">✨ NUEVAS ACTUALIZACIONES</span>
-          <span class="rebrand-text-main">
-            <strong>Novedades del 415</strong> &bull; Consulta las actualizaciones en el Centro de Control de Materias &rarr;
-          </span>
-        </div>
-      </a>
-    </aside>
+    
 
     <!-- BARRA SUPERIOR COMPACTA -->
     <header class="mobile-header">
@@ -534,9 +547,21 @@
     </div>
   </div>
 
+      <!-- BARRA DE SELECCIÓN DE VISTA EN CELULAR: DÍA O MES -->
+    <div style="margin: 0 1rem 1.2rem; background: #ffffff; padding: 0.6rem 0.8rem; border-radius: 16px; border: 1.5px solid #D59F0F; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
+      <span style="font-size: 0.78rem; font-weight: 800; color: #002B7A; text-transform: uppercase;">Calendario:</span>
+      <div style="display: flex; gap: 0.4rem;">
+        <button id="btnViewDay" class="sec-pill-btn active" onclick="setCalendarView('day')">🗓️ Vista Día</button>
+        <button id="btnViewMonth" class="sec-pill-btn" onclick="setCalendarView('month')">📅 Vista Mes</button>
+      </div>
+    </div>
+
+    <!-- CONTENEDOR DEL CALENDARIO MENSUAL EN MÓVIL -->
+    <div id="calendarMonthViewContainer" class="calendar-month-view" style="margin: 0 1rem 1.8rem;"></div>
+
   <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN SOLO DÍA A LA VEZ) -->
   <!-- CONTENEDOR DE TOLERANCIA EN MÓVIL -->
-    <div id="liveToleranceModule" style="display: none; margin: 0 1rem 1.2rem;"></div>
+    
 
     <section id="horario" class="mobile-schedule-card" style="padding-top: 0; overflow: hidden;">
     <div class="window-titlebar" style="margin: 0 -1.1rem 1.2rem; padding: 10px 14px;">
@@ -562,24 +587,32 @@
     <!-- Segmented Tabs para cambiar de día -->
     <div class="days-segmented-bar">
       <button class="day-tab-btn" data-day="1" onclick="selectDay(1)">
-        <span>LUN</span>
+        <span>LUN 14</span>
         <span class="tab-sub">Lunes</span>
       </button>
       <button class="day-tab-btn" data-day="2" onclick="selectDay(2)">
-        <span>MAR</span>
+        <span>MAR 15</span>
         <span class="tab-sub">Martes</span>
       </button>
       <button class="day-tab-btn" data-day="3" onclick="selectDay(3)">
-        <span>MIÉ</span>
+        <span>MIÉ 16</span>
         <span class="tab-sub">Miérc.</span>
       </button>
       <button class="day-tab-btn" data-day="4" onclick="selectDay(4)">
-        <span>JUE</span>
+        <span>JUE 17</span>
         <span class="tab-sub">Jueves</span>
       </button>
       <button class="day-tab-btn" data-day="5" onclick="selectDay(5)">
-        <span>VIE</span>
+        <span>VIE 18</span>
         <span class="tab-sub">Viernes</span>
+      </button>
+      <button class="day-tab-btn" data-day="6" onclick="selectDay(6)">
+        <span>SÁB 19</span>
+        <span class="tab-sub">Sábado</span>
+      </button>
+      <button class="day-tab-btn" data-day="0" onclick="selectDay(0)">
+        <span>DOM 20</span>
+        <span class="tab-sub">Domingo</span>
       </button>
     </div>
 
@@ -832,7 +865,7 @@
           { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
           { time: "07:50 - 08:40", subject: "Física III", room: "B-116", prof: "Profra. Reyna García Gabriela", section: "both" },
           { time: "08:40 - 09:30", subject: "Física III", room: "B-109", prof: "Profra. Reyna García Gabriela", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
           { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
           { time: "10:20 - 11:10", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
           { time: "11:10 - 12:00", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
@@ -858,7 +891,7 @@
           { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
           { time: "07:50 - 08:40", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
           { time: "08:40 - 09:30", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
           { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
           { time: "10:20 - 11:10", subject: "Dibujo II", room: "B-008", prof: "Sección A", section: "A" },
           { time: "10:20 - 11:10", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
@@ -884,12 +917,25 @@
           { time: "07:00 - 07:50", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
           { time: "07:50 - 08:40", subject: "Historia Universal III", room: "B-117", prof: "Asignatura Ordinaria", section: "both" },
           { time: "08:40 - 09:30", subject: "Matemáticas IV", room: "B-117", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-306", prof: "Sección A", section: "A" },
+          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
           { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
           { time: "10:20 - 11:10", subject: "Género y Prevención de las Violencias", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
           { time: "11:10 - 12:00", subject: "Educación Física IV", room: "GIM1", prof: "Gimnasio 1", section: "both" },
           { time: "12:00 - 12:50", subject: "Física III", room: "B-115", prof: "Profra. Reyna García Gabriela", section: "both" },
           { time: "12:50 - 13:40", subject: "Física III (Laboratorio)", room: "A-302", prof: "Laboratorio A-302", section: "both" }
+        ]
+      }
+    ,
+      6: {
+        name: "Sábado 19",
+        classes: [
+          { time: "Todo el día", subject: "Fin de Semana &bull; Descanso", room: "-", prof: "Sin clases presenciales", section: "free" }
+        ]
+      },
+      0: {
+        name: "Domingo 20",
+        classes: [
+          { time: "Todo el día", subject: "Fin de Semana &bull; Descanso", room: "-", prof: "Prepara tus tareas para el lunes", section: "free" }
         ]
       }
     };
@@ -1040,25 +1086,55 @@
 
         const subjectUrl = getSubjectLink(c.subject, c.section);
 
+        // Comprobar tareas y avisos de la materia
+        const homeworkSubjects = {
+          "Geografía": "📝 4 Noticias",
+          "Historia Universal III": "📝 2 Tareas PDF",
+          "Lógica": "📝 3 Tareas",
+          "Lengua Española": "🔔 Papelería La Gomita",
+          "Informática": "💻 Exposiciones"
+        };
+
+        let isHw = false;
+        let hwBadge = '';
+        const sName = c.subject;
+        if (homeworkSubjects[sName]) {
+          isHw = true;
+          hwBadge = `<span class="homework-tag-badge">${homeworkSubjects[sName]}</span>`;
+        } else if (sName === 'Dibujo II' && c.section === 'A') {
+          isHw = true;
+          hwBadge = `<span class="homework-tag-badge">🎨 Paisaje Líneas</span>`;
+        } else if (sName.includes('Inglés') && c.section === 'A') {
+          isHw = true;
+          hwBadge = `<span class="homework-tag-badge" style="background:#ef4444; color:#fff;">🔔 Examen</span>`;
+        } else if (sName.includes('Orientación') && c.section === 'A') {
+          isHw = true;
+          hwBadge = `<span class="homework-tag-badge">📝 Materiales + 2 Tareas</span>`;
+        }
+
+        const hwModifier = isHw ? ' has-homework' : '';
+        const isMondayInglesA = (selectedDay === 1 && sName.includes('Inglés') && c.section === 'A');
+
         listContainer.innerHTML += `
-          <a href="${subjectUrl}" class="timeline-class-card${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <a href="${subjectUrl}" class="timeline-class-card${hwModifier}${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}" style="text-decoration: none; color: inherit; display: block; cursor: pointer; ${isMondayInglesA ? 'border: 2px solid #ef4444 !important;' : ''}">
             ${liveBadgeHtml}
             <div class="timeline-time-row">
-              <div class="class-time-text">
+              <div class="class-time-text" style="${isHw ? 'color: #bfdbfe;' : ''}">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 <span>${c.time}</span>
               </div>
-              <span class="badge-room-mobile">Salón ${c.room}</span>
+              <span class="badge-room-mobile" style="${isMondayInglesA ? 'background:#fee2e2; color:#b91c1c; font-weight:900;' : ''}">Salón ${c.room}</span>
             </div>
-            <div class="class-name-mobile" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="class-name-mobile" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.3rem;">
               <span>${c.subject} ${secBadge}</span>
-              <span style="font-size: 0.9rem; color: #2D7FF9; font-weight: 900;">&rarr;</span>
+              ${hwBadge}
             </div>
-            <div class="class-prof-mobile">
+            ${isMondayInglesA ? '<span class="mediateca-alert-badge" style="margin-bottom: 0.3rem;">📍 En Mediateca Salón B-318</span>' : ''}
+            <div class="class-prof-mobile" style="${isHw ? 'color: #e0f2fe;' : ''}">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
               <span>${c.prof}</span>
             </div>
-            <div style="font-size: 0.72rem; color: #2D7FF9; font-weight: 800; margin-top: 0.4rem; display: flex; align-items: center; gap: 0.25rem;">
+            <div style="font-size: 0.72rem; color: ${isHw ? '#fcd866' : '#2D7FF9'}; font-weight: 800; margin-top: 0.4rem; display: flex; align-items: center; gap: 0.25rem;">
               <span>Ver apuntes, avisos y tareas</span> &rarr;
             </div>
           </a>
@@ -1079,6 +1155,8 @@
     // Iniciar tolerancia en móvil
     
   </script>
+  <script src="js/calendar.js"></script>
   <script src="js/main.js"></script>
+  <script>initCalendarSystem("day");</script>
 </body>
 </html>
