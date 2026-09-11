@@ -108,21 +108,124 @@
       <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
         
         <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-                <!-- AVISO OFICIAL DE ACTUALIZACIONES -->
-        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="font-size: 1.8rem;">📢</span>
+                        <!-- ACTUALIZACIÓN OFICIAL: TAREAS Y HERRAMIENTA PDF -->
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2.5px solid #1d4ed8; border-left: 8px solid #1d4ed8; border-radius: 20px; padding: 2.2rem 2rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
+          <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem;">
+            <span style="font-size: 2.4rem;">📚</span>
             <div>
-              <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
-                Estado de la Asignatura
+              <span style="background: #1d4ed8; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 6px;">
+                Aviso Importante &bull; 2 Tareas de Historia
               </span>
-              <h3 style="color: #001628; font-size: 1.3rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
-                Sin actualizaciones pendientes al momento
+              <h3 style="color: #1e3a8a; font-size: 1.55rem; font-weight: 900; margin: 0.5rem 0 0.4rem;">
+                Instrucciones de Entrega y Formato de Renombrado
               </h3>
-              <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin: 0;">
-                Por el momento no hay nuevos avisos o tareas publicadas para este curso. En cuanto el profesor o profesora comparta acuerdos, tareas o temarios de clase, se te notificará de inmediato por este medio.
+              <p style="color: #1e293b; font-size: 1rem; line-height: 1.6; margin: 0;">
+                Recuerda que tienes que subir tus <strong>dos tareas de historia</strong> obligatoriamente renombradas de la siguiente manera:
               </p>
             </div>
+          </div>
+
+          <!-- Cuadro de Nomenclatura -->
+          <div style="background: #ffffff; border: 2px dashed #1d4ed8; border-radius: 14px; padding: 1.2rem 1.5rem; margin: 1.2rem 0 1.6rem; font-family: monospace; font-size: 1.05rem; color: #002B7A;">
+            <strong>Formato obligatorio:</strong><br>
+            <span style="color: #d97706; font-weight: 800;">“grupo415_apellido_apellidomaterno_tarea#detarea”</span><br><br>
+            <strong>Así es como debería verse:</strong><br>
+            <span style="background: #eff6ff; padding: 0.2rem 0.6rem; border-radius: 6px; color: #1d4ed8; font-weight: 800;">Grupo415_Morales_Garcia_tarea00</span><br>
+            <span style="font-size: 0.85rem; color: #64748b; font-family: sans-serif; display: block; margin-top: 0.4rem;">
+              (Esto suponiendo que eres del grupo 415, tu apellido paterno es Morales, el materno García y es la tarea 00).
+            </span>
+          </div>
+
+          <!-- Introducción a la herramienta PDF24 -->
+          <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;">
+            <h4 style="color: #002B7A; font-size: 1.2rem; font-weight: 900; margin-bottom: 0.4rem;">
+              ¿Tienes varios archivos y ocupas renombrarlos en PDF gratis y no sabes cómo?
+            </h4>
+            <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+              ¡<span class="tranqui-brand">Tranqui!!</span> Aquí te dejo el acceso directo para que desde aquí mismo unas, conviertas y renombres tu PDF sin salir de la página:
+            </p>
+            
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+              <a href="#widgetUnirPdf" class="mac-nav-back-btn" style="padding: 0.55rem 1.1rem; font-size: 0.88rem;">
+                📑 Unir 2 o más archivos &darr;
+              </a>
+              <a href="#widgetConvertirPdf" class="mac-nav-back-btn" style="padding: 0.55rem 1.1rem; font-size: 0.88rem;">
+                📄 Convertir 1 solo archivo &darr;
+              </a>
+            </div>
+          </div>
+
+          <!-- WIDGET 1: UNIR PDF (Para 2 o más archivos) -->
+          <div id="widgetUnirPdf" class="pdf-widget-card" style="border: 2px solid #1d4ed8;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div>
+                <span style="background: #1d4ed8; color: #ffffff; font-weight: 800; font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 6px; text-transform: uppercase;">Herramienta 1</span>
+                <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin: 0.3rem 0 0;">Unir varios archivos PDF</h4>
+              </div>
+              <a href="#widgetConvertirPdf" style="font-size: 0.84rem; font-weight: 800; color: #2D7FF9; text-decoration: none;">
+                ¿Solo tienes 1 archivo? Clic aquí &darr;
+              </a>
+            </div>
+            <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 1.2rem;">
+              <strong>Importante:</strong> Para este ocupas tener 2 o más archivos. Arrástralos al recuadro para combinarlos en uno solo con el nombre correcto.
+            </p>
+
+            <!-- Widget PDF24 Merge -->
+            <script src="https://tools.pdf24.org/static/js/widget.js"></script>
+            <div id="mergePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 250px;"></div>
+            <script>
+              if (window.pdf24) {
+                pdf24.loadWidget('merge-pdf', {
+                  containerId: 'mergePdfWidgetContainer',
+                  langCode: 'es',
+                  readyCallback : function() {
+                    console.log('Merge PDF widget ready');
+                  },
+                  widgetConfig : {
+                    theme: 'lightTheme'
+                  }
+                });
+              }
+            </script>
+          </div>
+
+          <!-- WIDGET 2: CONVERTIR A PDF (Para 1 solo archivo) -->
+          <div id="widgetConvertirPdf" class="pdf-widget-card" style="border: 2px solid #D59F0F;">
+            <div style="margin-bottom: 1rem;">
+              <span style="background: #D59F0F; color: #001628; font-weight: 800; font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 6px; text-transform: uppercase;">Herramienta 2</span>
+              <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin: 0.3rem 0 0;">Convertir imagen / documento a PDF</h4>
+              <p style="font-size: 0.88rem; color: #64748b; margin-top: 0.2rem;">
+                Si solo tienes un solo archivo (fotos de tu cuaderno o Word), conviértelo aquí directamente a PDF.
+              </p>
+            </div>
+
+            <!-- Widget PDF24 Convert -->
+            <div id="convertToPdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 250px;"></div>
+            <script>
+              if (window.pdf24) {
+                pdf24.loadWidget('convert-to-pdf', {
+                  containerId: 'convertToPdfWidgetContainer',
+                  langCode: 'es',
+                  readyCallback : function() {
+                    console.log('Convert To PDF widget ready');
+                  },
+                  widgetConfig : {
+                    theme: 'lightTheme'
+                  }
+                });
+              }
+            </script>
+          </div>
+
+          <!-- Nota de servicio Encardomy / $2 USD -->
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <strong style="color: #002B7A; font-size: 0.96rem;">¿De plano no puedes o se te complica?</strong>
+              <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0;">Pues por $2 USD (o $40 MXN) te lo hago yo en minutos con el formato exacto.</p>
+            </div>
+            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20para%20unir%20y%20renombrar%20mis%20tareas%20de%20Historia%20del%20415" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.65rem 1.4rem; font-size: 0.88rem; text-decoration: none;">
+              <span>Pedir ayuda por WhatsApp &rarr;</span>
+            </a>
           </div>
         </div>
 
