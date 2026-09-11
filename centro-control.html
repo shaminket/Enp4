@@ -61,6 +61,7 @@
         <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
           <span>Ver Actualizaciones &rarr;</span>
         </a>
+        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.2); color: #fcd866; font-weight: 800; cursor: pointer;">⏸️ Pausar</button>
         <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
           Omitir
         </button>
@@ -163,56 +164,7 @@
     </div>
 
 
-    <!-- ==========================================================
-         BANNER MÁS GRANDE Y DESTACADO: LENGUA ESPAÑOLA
-         ========================================================== -->
-    <section style="background: linear-gradient(135deg, #001628 0%, #002B7A 60%, #003d6b 100%); border: 2.5px solid #D59F0F; border-radius: 28px; padding: 3rem 2.5rem; color: #ffffff; box-shadow: 0 20px 50px rgba(0, 43, 122, 0.35); margin-bottom: 3.5rem; position: relative; overflow: hidden;">
-      <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 3rem; background: rgba(255,255,255,0.1); width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 18px; border: 1.5px solid #D59F0F;">📖</span>
-          <div>
-            <span style="background: #D59F0F; color: #001628; font-size: 0.78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 6px;">
-              📢 ACTUALIZACIONES EN LENGUA ESPAÑOLA &bull; Grupo 0415
-            </span>
-            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.7rem); font-weight: 900; margin-top: 0.3rem; color: #ffffff; letter-spacing: -0.5px;">
-              Lengua Española
-            </h2>
-            <p style="color: #fcd866; font-weight: 700; font-size: 1rem; margin-top: 0.1rem;">
-              Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113
-            </p>
-          </div>
-        </div>
-
-        <a href="materias/espanol" class="btn-encardomy" style="padding: 0.9rem 2rem; font-size: 1.02rem;">
-          <span>Abrir Módulo de Español &rarr;</span>
-        </a>
-      </div>
-
-      <p style="color: #e2e8f0; font-size: 1.05rem; line-height: 1.65; max-width: 900px; margin-bottom: 2rem;">
-        Espacio dedicado al curso de Lengua Española: tipología textual, análisis literario, sintaxis y preparación de trabajos de investigación. Aquí tienes los avisos directos dados en clase, las pautas de evaluación y los recursos para que no se te pase ninguna entrega.
-      </p>
-
-      <!-- Accesos Rápidos de Español -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
-        <a href="actualizaciones" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-          <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📢</div>
-          <strong style="color: #F7C438; font-size: 1rem;">Avisos Oficiales de Clase</strong>
-          <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Consulta los comunicados y acuerdos de la profesora Vázquez.</p>
-        </a>
-
-        <a href="forma-trabajo" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-          <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📝</div>
-          <strong style="color: #F7C438; font-size: 1rem;">Forma de Trabajo y Foto Perfil</strong>
-          <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Firma de tutor, lineamientos y el prompt IA para tu correo institucional.</p>
-        </a>
-
-        <a href="plan-estudios" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-decoration: none; color: #ffffff; transition: transform 0.25s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-          <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📚</div>
-          <strong style="color: #F7C438; font-size: 1rem;">Hojas de Reúso y Novela "Wyatt"</strong>
-          <p style="color: #cbd5e1; font-size: 0.86rem; margin-top: 0.3rem;">Aviso sobre el copiado de 18 hojas y acceso al libro de lectura.</p>
-        </a>
-      </div>
-    </section>
+    
 
     <!-- ==========================================================
          GRID DE LAS DEMÁS MATERIAS DEL GRUPO 0415
@@ -223,6 +175,50 @@
     </div>
 
     <div class="bento-grid">
+      <!-- Lengua Española (Mismo formato bento-card pero destacado y más grande) -->
+      <div class="bento-card bento-card-featured card-updated-purple">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="bento-icon-box" style="font-size: 2.2rem; width: 62px; height: 62px;">📖</div>
+            <div>
+              <span class="purple-update-pill">● Actualizado &bull; Papelería La Gomita ($20) &bull; Buzón Habilitado</span>
+              <h3 style="font-size: 1.85rem; margin-top: 0.2rem; color: #002B7A; font-weight: 900;">Lengua Española</h3>
+            </div>
+          </div>
+          <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px;">
+            Materia Troncal &bull; Clave 1402
+          </span>
+        </div>
+
+        <p style="font-size: 0.98rem; line-height: 1.6; color: #334155; margin-bottom: 1.2rem;">
+          <strong>Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113.</strong> Curso de tipología textual, análisis literario, sintaxis y redacción de trabajos de investigación. Revisa el aviso urgente sobre la hoja de trabajo en la papelería <em>"La Gomita"</em> y los formularios del buzón escolar de dudas.
+        </p>
+
+        <!-- Accesos directos rápidos de Español en formato chips -->
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <a href="actualizaciones" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
+            📢 Avisos Oficiales
+          </a>
+          <a href="forma-trabajo" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
+            📝 Forma de Trabajo
+          </a>
+          <a href="plan-estudios" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
+            📚 Novela Wyatt
+          </a>
+          <a href="materias/espanol-dudas" style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
+            ✉️ Buzón de Dudas Activo
+          </a>
+        </div>
+
+        <div class="bento-footer-link" style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <a href="materias/espanol" class="btn-encardomy" style="padding: 0.65rem 1.6rem; font-size: 0.92rem; text-decoration: none;">
+            <span>Abrir Módulo de Español &rarr;</span>
+          </a>
+          <a href="materias/espanol-dudas" class="mac-nav-back-btn" style="padding: 0.65rem 1.2rem; font-size: 0.92rem; text-decoration: none;">
+            <span>Llenar Formulario de Dudas &rarr;</span>
+          </a>
+        </div>
+      </div>
       <!-- Matemáticas IV -->
       <div class="bento-card">
         <div class="bento-icon-box">📐</div>
@@ -338,13 +334,14 @@
         </div>
       </div>
 
-      <!-- Género y Prevención de Violencias -->
-      <div class="bento-card">
-        <div class="bento-icon-box">🤝</div>
-        <h3>Género y Prevención de Violencias</h3>
-        <p>Clave 8000 &bull; Salones B-108 y B-109. Cultura comunitaria de paz, derechos humanos y convivencia escolar libre de violencia.</p>
+            <!-- Prevención de las Violencias -->
+      <div class="bento-card card-updated-purple">
+        <div class="bento-icon-box">🛡️</div>
+        <span class="purple-update-pill">● Actualizado &bull; Cultura de Paz</span>
+        <h3>Prevención de las Violencias</h3>
+        <p><strong>Género y Prevención de las Violencias</strong> &bull; Clave 8000 &bull; Salones B-108 y B-109. Cultura comunitaria de paz, derechos humanos, equidad de género y convivencia escolar libre de violencia.</p>
         <div class="bento-footer-link">
-          <a href="materias/genero" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          <a href="materias/genero" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
             <span>Ver materia &rarr;</span>
           </a>
         </div>
