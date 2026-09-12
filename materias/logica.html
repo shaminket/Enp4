@@ -16,10 +16,9 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="shaminket">
   
-  
   <link rel="stylesheet" href="../css/styles.css">
   
-    <script>
+  <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
@@ -40,15 +39,6 @@
 
   <!-- CABECERA SUPERIOR PERSISTENTE -->
   <div class="sticky-top-group">
-    <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">✨ ALGO GRANDE ESTÁ POR VENIR</span>
-        <span class="rebrand-text-main">
-          <strong>Esta página se reinventa</strong> &bull; Centro de Control Académico 415
-        </span>
-      </div>
-    </aside>
-
     <header class="apple-nav">
       <div class="nav-inner">
         <a href="../" class="nav-brand">
@@ -74,116 +64,144 @@
   </div>
 
   <!-- HERO DE LA MATERIA -->
-  <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
+  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
       <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🧠</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Lógica</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1.2rem;">
-        Clave 1404 &bull; 12 créditos &bull; Asignatura Colegiada ENP 4
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Lógica</h1>
+      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
+        Clave 1404 &bull; 12 créditos &bull; Salones B-108 y B-206 &bull; Grupo 0415
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Estudio de las formas del pensamiento correcto y verdadero. Análisis de argumentos, identificación de falacias, lógica proposicional formal y desarrollo del pensamiento crítico para el debate y la argumentación sólida.
+        Formas del pensamiento correcto y verdadero. Argumentación, falacias, lógica proposicional y debate crítico.
       </p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL CON VENTANA -->
-  <main class="master-container" style="max-width: 1040px; margin-top: -2.5rem;">
-    <div class="schedule-master-card">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="master-container seamless-subject-container">
+    <div class="schedule-master-card seamless-subject-card">
       <div class="window-titlebar">
-        <div style="display: flex; align-items: center; gap: 0.8rem;">
-          <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-          </div>
-          <button class="mac-nav-back-btn" onclick="window.history.back()">
-            &larr; Volver
-          </button>
-        </div>
+        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         <span class="win-titlebar-text">Lógica &bull; Grupo 0415</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
+      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
         
-        <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-                        <!-- ACTUALIZACIÓN OFICIAL: TAREAS DE LÓGICA -->
-        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2.5px solid #1d4ed8; border-left: 8px solid #1d4ed8; border-radius: 20px; padding: 2.2rem 2rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem;">
-            <span style="font-size: 2.4rem;">🧠</span>
-            <div>
-              <span style="background: #1d4ed8; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 6px;">
-                Tarea Pendiente de Lógica &bull; Grupo 0415
-              </span>
-              <h3 style="color: #1e3a8a; font-size: 1.55rem; font-weight: 900; margin: 0.4rem 0 0.2rem;">
-                ¡No te olvides de la tarea! Aquí te la recuerdo:
-              </h3>
-              <p style="color: #475569; font-size: 0.95rem; margin: 0;">Salones B-108 y B-206 &bull; Colegio de Filosofía</p>
-            </div>
-          </div>
+        <!-- BARRA DE LAS 3 OPCIONES -->
+        <div class="subject-three-options-bar">
+          <!-- Opción 1: Tareas (AZUL REY BRILLANTE) -->
+          <button id="logBtnTareas" class="opt-pill-btn opt-blue-active" onclick="showLogOption('tareas')">
+            <span>📝 1. Tareas</span>
+            <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">3 TAREAS PENDIENTES</span>
+          </button>
 
-          <p style="color: #334155; font-size: 1rem; line-height: 1.6; margin-bottom: 1.4rem;">
-            Para que no se te pase ningún punto en tu cuaderno, aquí tienes la lista exacta de lo que debes completar:
-          </p>
+          <!-- Opción 2: Avisos (Blanco) -->
+          <button id="logBtnAvisos" class="opt-pill-btn opt-white-empty" onclick="showLogOption('avisos')">
+            <span>🔔 2. Avisos</span>
+            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente)</span>
+          </button>
 
-          <!-- Tarjetas de los 3 puntos de tarea -->
-          <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.6rem;">
-            <!-- Punto 1 -->
-            <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
-              <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">1</span>
+          <!-- Opción 3: Regalos -->
+          <button id="logBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showLogOption('regalos')">
+            <span>🎁 3. Regalos</span>
+            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Tablas & Falacias)</span>
+          </button>
+        </div></div></div>
+
+        <!-- SECCIÓN 1: TAREAS (3 TAREAS) -->
+        <div id="logSecTareas" style="display: block;" class="seamless-section-pane color-block-tareas-active">
+        <div class="color-block-inner">
+          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
+            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem;">
               <div>
-                <strong style="color: #002B7A; font-size: 1.05rem;">Busca los tipos de frases</strong>
-                <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0; line-height: 1.5;">
-                  Investiga y clasifica las distintas clases de oraciones y proposiciones trabajadas en la introducción formal.
-                </p>
+                <span style="background: #1d4ed8; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 6px;">
+                  Tarea Pendiente de Lógica &bull; Grupo 0415
+                </span>
+                <h3 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 900; margin: 0.5rem 0 0.2rem;">
+                  ¡No te olvides de la tarea! Aquí te la recuerdo:
+                </h3>
               </div>
             </div>
 
-            <!-- Punto 2 -->
-            <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
-              <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">2</span>
-              <div style="flex-grow: 1;">
-                <strong style="color: #002B7A; font-size: 1.05rem;">Corrige lo hecho en clase si lo tienes mal</strong>
-                <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0.6rem; line-height: 1.5;">
-                  Revisa los ejercicios y argumentos analizados en la sesión anterior para asegurar que estén correctamente formalizados.
-                </p>
-                <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a8a;">
-                  ¿No sabes si está bien? ¡<span class="tranqui-brand">Tranqui!!</span> Por <strong>$30 MXN</strong> te lo reviso y por <strong>$70 MXN</strong> te lo corrijo si está mal.
+            <!-- Tarjetas de los 3 puntos de tarea -->
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.6rem;">
+              <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
+                <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">1</span>
+                <div>
+                  <strong style="color: #002B7A; font-size: 1.05rem;">Busca los tipos de frases</strong>
+                  <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0; line-height: 1.5;">
+                    Investiga y clasifica las distintas clases de oraciones y proposiciones trabajadas en clase.
+                  </p>
+                </div>
+              </div>
+
+              <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
+                <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">2</span>
+                <div style="flex-grow: 1;">
+                  <strong style="color: #002B7A; font-size: 1.05rem;">Corrige lo hecho en clase si lo tienes mal</strong>
+                  <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0.6rem; line-height: 1.5;">
+                    Revisa los ejercicios y argumentos analizados en la sesión anterior para asegurar que estén correctamente formalizados.
+                  </p>
+                  <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a8a;">
+                    ¿No sabes si está bien? ¡<span class="tranqui-brand" style="color: #7C3AED; font-weight: 900;">Tranqui!!</span> Por <strong>$30 MXN</strong> te lo reviso y por <strong>$70 MXN</strong> te lo corrijo si está mal.
+                  </div>
+                </div>
+              </div>
+
+              <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
+                <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">3</span>
+                <div>
+                  <strong style="color: #002B7A; font-size: 1.05rem;">Ejemplo de casos de Gettier</strong>
+                  <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0; line-height: 1.5;">
+                    Redacta un contraejemplo epistemológico donde una creencia verdadera justificada falle en constituir conocimiento real (problema de Gettier).
+                  </p>
                 </div>
               </div>
             </div>
 
-            <!-- Punto 3 -->
-            <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.9rem;">
-              <span style="background: #1d4ed8; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; flex-shrink: 0;">3</span>
-              <div>
-                <strong style="color: #002B7A; font-size: 1.05rem;">Ejemplo de casos de Gettier</strong>
-                <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0; line-height: 1.5;">
-                  Redacta un contraejemplo epistemológico donde una creencia verdadera justificada falle en constituir conocimiento real (problema de Gettier).
-                </p>
+            <!-- Mensaje de finalización -->
+            <div style="background: #ffffff; border: 2px solid #22c55e; border-radius: 14px; padding: 1rem 1.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.4rem;">🎉</span>
+                <strong style="color: #15803d; font-size: 1rem;">¡Y ya por fin terminaste!</strong>
+              </div>
+              <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20apoyo%20con%20la%20revision%20o%20correccion%20de%20Logica%20del%20415" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.6rem 1.3rem; font-size: 0.85rem; text-decoration: none;">
+                <span>Pedir revisión por WhatsApp &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        <!-- SECCIÓN 2: AVISOS -->
+        <div id="logSecAvisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; text-align: center;">
+            <p style="color: #64748b; font-size: 0.95rem; margin: 0;">Sin avisos extraordinarios. Las clases se imparten normalmente en salones B-108 y B-206.</p>
+          </div>
+        </div>
+
+        </div>
+        <!-- SECCIÓN 3: REGALOS Y COSAS ÚTILES -->
+        <div id="logSecRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
+            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Herramientas Lógicas y Filosofía</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
+                📐 <strong>Tabla de Conectivos Lógicos:</strong> Conjunción (&and;), disyunción (&or;), condicional (&rarr;) y bicondicional (&harr;) con sus tablas de verdad.
+              </div>
+              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
+                🎯 <strong>Catálogo de Falacias No Formales:</strong> Ad hominem, ad verecundiam, ad ignorantiam y petición de principio explicadas.
               </div>
             </div>
           </div>
-
-          <!-- Mensaje de finalización -->
-          <div style="background: #ffffff; border: 2px solid #22c55e; border-radius: 14px; padding: 1rem 1.4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <span style="font-size: 1.4rem;">🎉</span>
-              <strong style="color: #15803d; font-size: 1rem;">¡Y ya por fin terminaste!</strong>
-            </div>
-            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20apoyo%20con%20la%20revisi%C3%B3n%20o%20correcci%C3%B3n%20de%20L%C3%B3gica%20del%20415" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.6rem 1.3rem; font-size: 0.85rem; text-decoration: none;">
-              <span>Pedir revisión por WhatsApp &rarr;</span>
-            </a>
-          </div>
         </div>
 
-        <!-- BOTÓN PARA REGRESAR AL CENTRO DE CONTROL -->
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="../centro-control" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #002B7A; font-weight: 800; text-decoration: none; font-size: 1rem;">
-            &larr; Volver al Centro de Control de Materias
-          </a>
         </div>
+        <!-- BOTÓN REGRESO -->
+        <div class="seamless-bottom-nav"><a href="../centro-control" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
 
       </div>
     </div>
@@ -208,5 +226,20 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    function showLogOption(opt) {
+      document.getElementById('logSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
+      document.getElementById('logSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
+      document.getElementById('logSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
+
+      const btnT = document.getElementById('logBtnTareas');
+      const btnA = document.getElementById('logBtnAvisos');
+      const btnR = document.getElementById('logBtnRegalos');
+
+      btnT.style.opacity = (opt === 'tareas') ? '1' : '0.85';
+      btnA.style.background = (opt === 'avisos') ? '#f1f5f9' : '#ffffff';
+      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
+    }
+  </script>
 </body>
 </html>

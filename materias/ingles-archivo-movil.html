@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archivo Histórico de Inglés IV Sección A | Grupo 0415 Prepa 4</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl("ingles-archivo"));
+      }
+    }
+      if (window.location.search.includes("force=desktop")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("/* movil */"));
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkResponsiveLayout);
+  </script>
+</head>
+<body>
+  <div class="sticky-top-group">
+    <header class="apple-nav">
+      <div class="nav-inner">
+        <a href="../" class="nav-brand">
+          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto;">
+          <div class="brand-text-cluster">
+            <div class="brand-name"><span>Cuatreros</span> del 415</div>
+            <div class="brand-subline">Archivo Escolar Histórico</div>
+          </div>
+        </a>
+        <nav class="nav-links-menu">
+          <a href="ingles-a" class="nav-link-item">&larr; Volver a Inglés A</a>
+          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <section class="hero-cinematic" style="padding: 3.5rem 1.5rem 4rem;">
+    <div class="hero-content">
+      <div style="font-size: 3rem; margin-bottom: 0.5rem;">📁</div>
+      <h1 class="hero-heading" style="font-size: clamp(2rem, 4.5vw, 3.2rem);">Archivo Histórico &bull; Inglés IV Sección A</h1>
+      <p style="color: #cbd5e1; font-size: 1rem;">Registro de avisos y tareas de evaluación concluidas en periodos anteriores.</p>
+    </div>
+  </section>
+
+  <main class="master-container" style="max-width: 960px; margin-top: -2.5rem;">
+    <div class="schedule-master-card" style="padding: 2.2rem 2.4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 1rem;">
+        <span style="font-size: 0.85rem; font-weight: 800; color: #64748b; text-transform: uppercase;">Estado: Tareas Archivadas</span>
+        <a href="ingles-a" class="mac-nav-back-btn">&larr; Volver a Inglés Activo</a>
+      </div>
+
+      <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.6rem; margin-bottom: 1.5rem;">
+        <span style="background: #64748b; color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Archivada &bull; Evaluación previa</span>
+        <h3 style="color: #002B7A; font-size: 1.3rem; font-weight: 900; margin: 0.5rem 0 0.3rem;">Pautas de Evaluación de Examen Parcial</h3>
+        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6;">
+          Instrucciones previas archivadas: Examen regular acreditado mediante la entrega de libro de texto al corriente, cuaderno de apuntes con firmas y bitácora completa sellada para calificación de 10.
+        </p>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="ingles-a" class="btn-encardomy" style="padding: 0.7rem 1.8rem; text-decoration: none;">
+          <span>Ir a la página principal de Inglés A &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

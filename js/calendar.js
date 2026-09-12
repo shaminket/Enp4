@@ -26,9 +26,9 @@ const calendarSpecialEvents = {
   // Lunes 14 de septiembre 2026: Mediateca y Tareas
   "2026-09-14": [
     { title: "🇬🇧 Inglés Sec. A: En Mediateca Salón B-318 (Examen)", type: "red", href: "materias/ingles-a" },
-    { title: "📝 Historia: 2 Tareas con renombrado (Grupo415_...)", type: "blue", href: "materias/historia" },
+    { title: "🗺️ Historia: Planisferio con nombres & entrega pendientes", type: "blue", href: "materias/historia" },
     { title: "📝 Geografía: 4 Noticias en equipo (hoja en 4)", type: "blue", href: "materias/geografia" },
-    { title: "🔔 Lengua Española: Hoja en papelería La Gomita ($20)", type: "blue", href: "materias/espanol" }
+    { title: "🔔 Lengua Española: Hojas pospuestas (Espera indicaciones)", type: "blue", href: "materias/espanol" }
   ],
   "2026-09-15": [
     { title: "📝 Lógica: 3 Tareas (tipos de frases, clase y Gettier)", type: "blue", href: "materias/logica" },
@@ -186,7 +186,7 @@ function renderDayDetailsDrawer(dateStr, year, month, day, dayOfWeekIdx) {
         { t: "Matemáticas IV (8:40 AM &bull; B-117)", h: "materias/matematicas" + ext },
         { t: "Inglés IV (9:30 AM &bull; C-306 / C-205)", h: "materias/ingles" + ext },
         { t: "Género y Prevención (10:20 AM &bull; B-108)", h: "materias/genero" + ext },
-        { t: "Educación Física IV (11:10 AM &bull; GIM1)", h: "materias/educacion-fisica" + ext },
+        { t: "🏃 Educación Física IV: Tarea Condición Física (11:10 AM &bull; GIM1)", h: "materias/educacion-fisica" + ext },
         { t: "Física III y Laboratorio (12:00 - 13:40 &bull; B-115 / A-302)", h: "materias/fisica" + ext }
       ]
     };

@@ -16,10 +16,9 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="shaminket">
   
-  
   <link rel="stylesheet" href="../css/styles.css">
   
-    <script>
+  <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
@@ -40,15 +39,6 @@
 
   <!-- CABECERA SUPERIOR PERSISTENTE -->
   <div class="sticky-top-group">
-    <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">✨ ALGO GRANDE ESTÁ POR VENIR</span>
-        <span class="rebrand-text-main">
-          <strong>Esta página se reinventa</strong> &bull; Centro de Control Académico 415
-        </span>
-      </div>
-    </aside>
-
     <header class="apple-nav">
       <div class="nav-inner">
         <a href="../" class="nav-brand">
@@ -74,30 +64,25 @@
   </div>
 
   <!-- HERO DE LA MATERIA -->
-  <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
+  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
       <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">📖</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Lengua Española</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1.2rem;">
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Lengua Española</h1>
+      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
         Clave 1402 &bull; 20 créditos &bull; Profra. Vázquez González María
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Tiene como propósito el desarrollo del pensamiento crítico y la competencia comunicativa para comprender y producir diversos tipos textuales (académicos y sociales). Comprende análisis literario de textos españoles, tipología textual (narrativa, expositiva, argumentativa) e investigación con herramientas digitales y TIC.
+        Tipología textual, análisis literario de textos españoles, sintaxis y redacción académica para el Grupo 0415 en los salones B-110, B-112 y B-113.
       </p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL CON VENTANA -->
-  <main class="master-container" style="max-width: 1040px; margin-top: -2.5rem;">
-    <div class="schedule-master-card">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="master-container seamless-subject-container">
+    <div class="schedule-master-card seamless-subject-card">
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
-          <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-          </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">
             &larr; Volver
           </button>
@@ -105,94 +90,112 @@
         <span class="win-titlebar-text">Lengua Española &bull; Grupo 0415</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
+      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
         
-        <!-- TARJETA PRÓXIMAMENTE ALGO GRANDE -->
-                <!-- AVISO OFICIAL Y CAJA PARA ENVIAR DUDAS -->
-        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.4rem;">
-            <span style="font-size: 1.8rem;">📢</span>
-            <div>
-              <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
-                Actualizaciones del Curso
-              </span>
-              <h3 style="color: #001628; font-size: 1.35rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
-                Al momento no hay actualizaciones
-              </h3>
-              <p style="color: #475569; font-size: 0.98rem; line-height: 1.6; margin: 0;">
-                Mantente pendiente para ver las novedades, acuerdos de evaluación y tareas que asigne la profesora Vázquez.
-              </p>
-            </div>
-          </div>
+        <!-- BARRA DE LAS 3 OPCIONES -->
+        <div class="subject-three-options-bar">
+          <!-- Opción 1: Tareas -->
+          <button id="espBtnTareas" class="opt-pill-btn opt-white-empty" onclick="showEspOption('tareas')">
+            <span>📝 1. Tareas</span>
+            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente &bull; Sin tareas)</span>
+          </button>
 
-                  <!-- AVISO URGENTE: PAPELERÍA LA GOMITA (ESTILO CHAT WHATSAPP) -->
-        <div style="background: #ffffff; border: 2px solid #25D366; border-radius: 24px; padding: 2rem 1.8rem; margin-bottom: 2.5rem; box-shadow: 0 8px 30px rgba(37, 211, 102, 0.15);">
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.2rem; border-bottom: 1.5px solid #edf2f7; padding-bottom: 1rem;">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-              <span style="background: #25D366; color: #ffffff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">💬</span>
+          <!-- Opción 2: Avisos (Azul Rey brillante por el nuevo aviso) -->
+          <button id="espBtnAvisos" class="opt-pill-btn opt-blue-active" onclick="showEspOption('avisos')">
+            <span>🔔 2. Avisos</span>
+            <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">HOJAS POSPUESTAS</span>
+          </button>
+
+          <!-- Opción 3: Regalos y Cosas que te sirven -->
+          <button id="espBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showEspOption('regalos')">
+            <span>🎁 3. Regalos</span>
+            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Novela Wyatt & Buzón)</span>
+          </button>
+        </div></div></div>
+
+        <!-- SECCIÓN 1: TAREAS (ESTADO AL CORRIENTE) -->
+        <div id="espSecTareas" style="display: none;" class="seamless-section-pane color-block-tareas-clean">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
+            <span style="font-size: 2.2rem;">✅</span>
+            <h3 style="color: #002B7A; font-size: 1.3rem; margin: 0.5rem 0 0.3rem;">Sin tareas activas pendientes en este momento</h3>
+            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.2rem;">
+              Las actividades de redacción y firmas de clase se encuentran al corriente.
+            </p>
+          </div>
+        </div>
+
+        </div>
+        <!-- SECCIÓN 2: AVISOS (NUEVO AVISO OFICIAL: HOJAS POSPUESTAS) -->
+        <div id="espSecAvisos" style="display: block;" class="seamless-section-pane color-block-avisos-active">
+        <div class="color-block-inner">
+          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
+            <div style="display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1rem;">
+              <span style="font-size: 2.4rem;">📄</span>
               <div>
-                <span style="background: #ef4444; color: #ffffff; font-size: 0.72rem; font-weight: 900; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 4px; letter-spacing: 0.5px;">
-                  AVISO URGENTE
+                <span style="background: #1d4ed8; color: #ffffff; font-size: 0.78rem; font-weight: 900; padding: 0.25rem 0.75rem; border-radius: 6px; text-transform: uppercase;">
+                  Aviso Oficial de Clase &bull; Grupo 0415
                 </span>
-                <h3 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0.2rem 0 0;">
-                  Pasa a la Papelería "La Gomita" por tu Hoja
+                <h3 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 900; margin: 0.4rem 0 0.2rem;">
+                  ¿No conseguiste las hojas en La Gomita?
                 </h3>
+                <p style="color: #475569; font-size: 0.92rem; margin: 0;">Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113</p>
               </div>
             </div>
-            <span style="font-size: 0.82rem; color: #64748b; font-weight: 700;">Grupo 0415 &bull; Profra. Vázquez</span>
-          </div>
 
-          <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin-bottom: 1.4rem;">
-            ⚠️ <strong>Atención grupo:</strong> Tienen que pasar a la papelería <em>"La Gomita"</em> a recoger su hoja de trabajo oficial. Recuerda llevar <strong>$20 MXN extras</strong> (porque no son gratis).
-          </p>
-
-          <!-- CONTENEDOR TIPO CHAT DE WHATSAPP -->
-          <div class="whatsapp-chat-container">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 0.5rem;">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <span style="width: 10px; height: 10px; background: #25D366; border-radius: 50%; display: inline-block;"></span>
-                <strong style="color: #111b21; font-size: 0.88rem;">Instrucciones para pedirla en La Gomita</strong>
-              </div>
-              <span style="font-size: 0.72rem; color: #667781;">Hoy</span>
-            </div>
-
-            <!-- Burbuja 1 -->
-            <div class="chat-bubble">
-              <strong>1. Saludo cordial:</strong><br>
-              "Buenos días, buenas tardes o buenas noches" <em>(la amabilidad por delante siempre 😊)</em>.
-              <div class="chat-timestamp">10:14 AM</div>
-            </div>
-
-            <!-- Burbuja 2 -->
-            <div class="chat-bubble">
-              <strong>2. Lo que debes decir exactamente:</strong><br>
-              <em>"¿Me podría proporcionar la hoja de la maestra <strong>Vázquez González María</strong> de 4to año, por favor?"</em><br>
-              <span style="background: #fef08a; color: #854d0e; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 0.82rem; display: inline-block; margin-top: 0.3rem;">
-                ⚠️ MUY IMPORTANTE: Mencionar que eres del Grupo 0415.
+            <!-- Recuadro del Mensaje de Calma -->
+            <div style="background: #ffffff; border: 2px solid #60a5fa; border-radius: 14px; padding: 1.4rem 1.6rem; margin-bottom: 1.2rem; font-size: 1.05rem; line-height: 1.65; color: #001628;">
+              ¡<span class="tranqui-brand" style="color: #7C3AED; font-weight: 900;">Tranquiii!!</span> <strong>No te apures, ya no son para el lunes.</strong><br>
+              <span style="color: #1e40af; font-size: 0.96rem; display: block; margin-top: 0.4rem;">
+                Espera indicaciones de la profesora directamente en el aula durante la próxima sesión de clase.
               </span>
-              <div class="chat-timestamp">10:15 AM</div>
             </div>
 
-            <!-- Burbuja 3 (Saliente / Confirmación) -->
-            <div class="chat-bubble chat-outgoing">
-              <strong>3. Pago y agradecimiento:</strong><br>
-              Pagas tus $20 pesos, revisas que sea la hoja correcta de tu grupo y agradeces. ¡Listo!
-              <div class="chat-timestamp">10:16 AM &bull; Entregado ✓✓</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+              <span style="font-size: 0.84rem; color: #64748b;">Estado: Entrega pospuesta por la profesora</span>
+              <a href="espanol-archivo" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
+                📁 Ver aviso anterior archivado de La Gomita &rarr;
+              </a>
             </div>
           </div>
         </div>
 
-          <!-- CUADRO: ENVIAR TUS DUDAS -->
-          <div style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <div style="font-size: 0.78rem; font-weight: 900; color: #15803d; text-transform: uppercase; letter-spacing: 1px;">Buzón Habilitado</div>
-              <strong style="color: #002B7A; font-size: 1.12rem; display: block; margin-top: 0.2rem;">¿Tienes dudas sobre Lengua Española?</strong>
-              <p style="color: #64748b; font-size: 0.88rem; margin-top: 0.2rem; margin-bottom: 0;">Envía tus dudas y preguntas directamente a través de los dos formularios oficiales.</p>
+        </div>
+        <!-- SECCIÓN 3: REGALOS Y COSAS ÚTILES -->
+        <div id="espSecRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 1.8rem;">
+            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Herramientas y Recursos de Lengua Española</h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
+              <a href="../plan-estudios" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
+                📚 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Novela Wyatt y Copias</strong>
+                <span style="font-size: 0.82rem; color: #64748b;">Información sobre las 18 hojas y libro de lectura.</span>
+              </a>
+
+              <a href="../forma-trabajo" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
+                📝 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Forma de Trabajo</strong>
+                <span style="font-size: 0.82rem; color: #64748b;">Firma de tutor y lineamientos de evaluación.</span>
+              </a>
+
+              <a href="espanol-dudas" style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
+                ✉️ <strong style="color: #1d4ed8; display: block; margin-top: 0.2rem;">Buzón de Dudas Activo</strong>
+                <span style="font-size: 0.82rem; color: #3b82f6;">Formularios oficiales para enviar tus preguntas.</span>
+              </a>
             </div>
-            <a href="espanol-dudas" class="btn-encardomy" style="padding: 0.75rem 1.5rem; font-size: 0.92rem; text-decoration: none;">
-              <span>Llenar formularios de dudas &rarr;</span>
-            </a>
           </div>
+        </div>
+
+        <!-- CUADRO: ENVIAR TUS DUDAS -->
+        <div style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+          <div>
+            <div style="font-size: 0.78rem; font-weight: 900; color: #15803d; text-transform: uppercase; letter-spacing: 1px;">Buzón Habilitado</div>
+            <strong style="color: #002B7A; font-size: 1.12rem; display: block; margin-top: 0.2rem;">¿Tienes dudas sobre Lengua Española?</strong>
+            <p style="color: #64748b; font-size: 0.88rem; margin-top: 0.2rem; margin-bottom: 0;">Envía tus dudas y preguntas directamente a través de los dos formularios oficiales.</p>
+          </div>
+          <a href="espanol-dudas" class="btn-encardomy" style="padding: 0.75rem 1.5rem; font-size: 0.92rem; text-decoration: none;">
+            <span>Llenar formularios de dudas &rarr;</span>
+          </a>
         </div>
 
         <!-- BOTÓN PARA REGRESAR AL CENTRO DE CONTROL -->
@@ -225,5 +228,25 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    function showEspOption(opt) {
+      document.getElementById('espSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
+      document.getElementById('espSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
+      document.getElementById('espSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
+
+      const btnT = document.getElementById('espBtnTareas');
+      const btnA = document.getElementById('espBtnAvisos');
+      const btnR = document.getElementById('espBtnRegalos');
+
+      btnT.className = (opt === 'tareas') ? 'opt-pill-btn opt-white-empty' : 'opt-pill-btn opt-white-empty';
+      btnT.style.background = (opt === 'tareas') ? '#f1f5f9' : '#ffffff';
+
+      btnA.className = (opt === 'avisos') ? 'opt-pill-btn opt-blue-active' : 'opt-pill-btn opt-blue-active';
+      btnA.style.opacity = (opt === 'avisos') ? '1' : '0.85';
+
+      btnR.className = (opt === 'regalos') ? 'opt-pill-btn opt-white-gift' : 'opt-pill-btn opt-white-gift';
+      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
+    }
+  </script>
 </body>
 </html>

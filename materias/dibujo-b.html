@@ -16,10 +16,9 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="shaminket">
   
-  
   <link rel="stylesheet" href="../css/styles.css">
   
-    <script>
+  <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
@@ -38,25 +37,8 @@
 </head>
 <body>
 
+  <!-- CABECERA SUPERIOR PERSISTENTE -->
   <div class="sticky-top-group">
-    <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-      </div>
-      <span class="mac-header-title">Dibujo II &bull; Sección B &bull; ENP 4</span>
-    </div>
-
-    <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">✨ Sección B</span>
-        <span class="rebrand-text-main">
-          <strong>Dibujo II</strong> &bull; Grupo 0415 Vidal Castañeda y Nájera
-        </span>
-      </div>
-    </aside>
-
     <header class="apple-nav">
       <div class="nav-inner">
         <a href="../" class="nav-brand">
@@ -72,22 +54,21 @@
 
         <nav class="nav-links-menu">
           <a href="dibujo" class="nav-link-item">Cambiar Sección</a>
-          <a href="../centro-control" class="nav-link-item">Materias</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
+          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
+          <a href="../#horario" class="nav-link-item">Horario</a>
         </nav>
       </div>
     </header>
   </div>
 
-  <section class="hero-cinematic" style="padding: 4rem 1.5rem 5rem;">
+  <!-- HERO DE LA MATERIA -->
+  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
     <div class="ambient-glow-1"></div>
     <div class="hero-content">
       <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🎨</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.8rem;">Dibujo II</h1>
+      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Dibujo II &bull; Sección B</h1>
       <p style="color: #fcd866; font-size: 1.15rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
-        Clave 1406 &bull; Sección B &bull; Salón C-201
+        Clave 1406 &bull; Sección B &bull; Salón C-201 &bull; Grupo 0415
       </p>
       <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
         Taller C-201 (Segundo piso del Edificio C). Prácticas de composición gráfica, lenguaje visual y teoría del color.
@@ -95,39 +76,76 @@
     </div>
   </section>
 
-  <main class="master-container" style="max-width: 1040px; margin-top: -2.5rem;">
-    <div class="schedule-master-card">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="master-container seamless-subject-container">
+    <div class="schedule-master-card seamless-subject-card">
       <div class="window-titlebar">
-        <div style="display: flex; align-items: center; gap: 0.8rem;">
-          <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-          </div>
-          <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
-        </div>
+        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         <span class="win-titlebar-text">Dibujo II &bull; Sección B</span>
       </div>
 
-      <div class="schedule-card-body" style="padding: 2.2rem 2.4rem 2.8rem;">
-                <!-- AVISO OFICIAL DE ACTUALIZACIONES -->
-        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 6px solid #002B7A; border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="display: flex; align-items: flex-start; gap: 1rem;">
-            <span style="font-size: 1.8rem;">📢</span>
-            <div>
-              <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.76rem; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 6px;">
-                Estado de la Asignatura
-              </span>
-              <h3 style="color: #001628; font-size: 1.3rem; font-weight: 900; margin: 0.4rem 0 0.4rem;">
-                Sin actualizaciones pendientes al momento
-              </h3>
-              <p style="color: #475569; font-size: 0.96rem; line-height: 1.6; margin: 0;">
-                Por el momento no hay nuevos avisos o tareas publicadas para este curso. En cuanto el profesor o profesora comparta acuerdos, tareas o temarios de clase, se te notificará de inmediato por este medio.
-              </p>
+      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
+        
+        <!-- BARRA DE LAS 3 OPCIONES -->
+        <div class="subject-three-options-bar">
+          <!-- Opción 1: Tareas -->
+          <button id="dibBBtnTareas" class="opt-pill-btn opt-white-empty" onclick="showDibBOption('tareas')">
+            <span>📝 1. Tareas</span>
+            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente)</span>
+          </button>
+
+          <!-- Opción 2: Avisos -->
+          <button id="dibBBtnAvisos" class="opt-pill-btn opt-white-empty" onclick="showDibBOption('avisos')">
+            <span>🔔 2. Avisos</span>
+            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Taller C-201)</span>
+          </button>
+
+          <!-- Opción 3: Regalos -->
+          <button id="dibBBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showDibBOption('regalos')">
+            <span>🎁 3. Regalos</span>
+            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Guías de Color)</span>
+          </button>
+        </div></div></div>
+
+        <!-- SECCIÓN 1: TAREAS -->
+        <div id="dibBSecTareas" style="display: block;" class="seamless-section-pane color-block-tareas-clean">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
+            <span style="font-size: 2.2rem;">✅</span>
+            <h3 style="color: #002B7A; font-size: 1.3rem; margin: 0.5rem 0 0.3rem;">Sin tareas pendientes registradas en Sección B</h3>
+            <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
+              Llevar block de dibujo Marquilla y lápices de grafito a la sesión en el salón C-201.
+            </p>
+          </div>
+        </div>
+
+        </div>
+        <!-- SECCIÓN 2: AVISOS -->
+        <div id="dibBSecAvisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; text-align: center;">
+            <p style="color: #334155; font-size: 0.95rem; margin: 0;">
+              Clases regulares los viernes de 7:00 a 7:50 AM y miércoles a las 10:20 AM en el salón C-201.
+            </p>
+          </div>
+        </div>
+
+        </div>
+        <!-- SECCIÓN 3: REGALOS -->
+        <div id="dibBSecRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
+        <div class="color-block-inner">
+          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
+            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Recursos para Dibujo Sección B</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
+                🎨 <strong>Círculo Cromático y Armonías:</strong> Colores primarios, secundarios, terciarios, complementarios y análogos.
+              </div>
             </div>
           </div>
         </div>
 
+        </div>
+        <!-- BOTÓN REGRESO -->
         <div style="text-align: center; margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
           <a href="dibujo" style="color: #002B7A; font-weight: 800; text-decoration: none; font-size: 0.98rem;">
             &larr; Cambiar de Sección (A / B)
@@ -136,6 +154,7 @@
             Ver todas las materias &rarr;
           </a>
         </div>
+
       </div>
     </div>
   </main>
@@ -159,5 +178,20 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script>
+    function showDibBOption(opt) {
+      document.getElementById('dibBSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
+      document.getElementById('dibBSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
+      document.getElementById('dibBSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
+
+      const btnT = document.getElementById('dibBBtnTareas');
+      const btnA = document.getElementById('dibBBtnAvisos');
+      const btnR = document.getElementById('dibBBtnRegalos');
+
+      btnT.style.background = (opt === 'tareas') ? '#f1f5f9' : '#ffffff';
+      btnA.style.background = (opt === 'avisos') ? '#f1f5f9' : '#ffffff';
+      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
+    }
+  </script>
 </body>
 </html>
