@@ -39,15 +39,15 @@
 <body>
   <!-- BANNER MORADO DE AVISO (5 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
   <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-purple">
+    <div class="announcement-card-blue">
       <div class="announcement-badge-pill">
         <span>✨ AVISO DE LA PLATAFORMA</span>
       </div>
       <h2 class="announcement-title-big">
-        Si el recuadro es color morado, está actualizado
+        Si el recuadro es color AZUL REY, está actualizado
       </h2>
       <p class="announcement-desc-text">
-        Las asignaturas con borde morado tienen nuevas tareas, materiales, cambios de salón o acuerdos escolares. ¡Te recomendamos revisarlas!
+        Las asignaturas con borde azul rey tienen nuevas tareas, materiales, cambios de salón o acuerdos escolares. ¡Te recomendamos revisarlas!
       </p>
 
       <div class="announcement-timer-box">
@@ -80,15 +80,7 @@
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
-      <!-- BOTONES DE PRUEBA SIEMPRE VISIBLES EN EL BANNER -->
-      <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto;">
-        <button class="banner-test-btn" onclick="triggerToleranceDemo(195)" title="Probar simulador de tolerancia con sonido en verde, amarillo y rojo">
-          ⏱️ Probar Tolerancia
-        </button>
-        <button class="banner-test-btn" onclick="triggerAnnouncementModal()" title="Ver aviso morado de 5 segundos">
-          📢 Aviso 5s
-        </button>
-      </div>
+      
     </div>
     <aside class="rebrand-cosmic-banner">
       <div class="rebrand-inner">
@@ -169,19 +161,35 @@
     <!-- ==========================================================
          GRID DE LAS DEMÁS MATERIAS DEL GRUPO 0415
          ========================================================== -->
+        <!-- BARRA DE BÚSQUEDA INTERACTIVA Y ORDENAMIENTO -->
+    <div class="control-search-wrapper">
+      <div class="control-search-input-box">
+        <span class="control-search-icon">🔍</span>
+        <input type="text" id="subjectSearchInput" class="control-search-input" placeholder="Buscar materia por nombre, clave o salón (ej. Geografía, 1405, B-110)..." oninput="filterSubjects(this.value)">
+      </div>
+      <div class="control-filter-actions">
+        <div class="control-sort-pills">
+          <button id="btnSortDefault" class="control-sort-btn active" onclick="setSortMode('default')">⚡ Actualizadas Primero</button>
+          <button id="btnSortAlpha" class="control-sort-btn" onclick="setSortMode('alpha')">🔤 Orden Alfabético (A - Z)</button>
+          <button id="btnStackToggle" class="control-sort-btn" onclick="toggleCardStackMode()">🃏 Modo Cartas Apiladas</button>
+        </div>
+        <span id="subjectCountBadge" class="control-count-tag">13 materias disponibles</span>
+      </div>
+    </div>
+
     <div class="bento-section-title">
       <h2>Todas las Asignaturas del 415</h2>
       <p>Selecciona una materia para consultar su programa, salón y estado de apuntes</p>
     </div>
 
-    <div class="bento-grid">
+    <div id="bentoSubjectsGrid" class="bento-grid">
       <!-- Lengua Española (Mismo formato bento-card pero destacado y más grande) -->
-      <div class="bento-card bento-card-featured card-updated-purple">
+      <div class="bento-card bento-card-featured card-updated-blue">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
           <div style="display: flex; align-items: center; gap: 1rem;">
             <div class="bento-icon-box" style="font-size: 2.2rem; width: 62px; height: 62px;">📖</div>
             <div>
-              <span class="purple-update-pill">● Actualizado &bull; Papelería La Gomita ($20) &bull; Buzón Habilitado</span>
+              <span class="blue-update-pill">● Actualizado &bull; Hojas pospuestas (Espera indicaciones) &bull; Buzón Habilitado</span>
               <h3 style="font-size: 1.85rem; margin-top: 0.2rem; color: #002B7A; font-weight: 900;">Lengua Española</h3>
             </div>
           </div>
@@ -191,7 +199,7 @@
         </div>
 
         <p style="font-size: 0.98rem; line-height: 1.6; color: #334155; margin-bottom: 1.2rem;">
-          <strong>Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113.</strong> Curso de tipología textual, análisis literario, sintaxis y redacción de trabajos de investigación. Revisa el aviso urgente sobre la hoja de trabajo en la papelería <em>"La Gomita"</em> y los formularios del buzón escolar de dudas.
+          <strong>Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113.</strong> Curso de tipología textual, análisis literario, sintaxis y redacción de trabajos de investigación. Revisa el nuevo aviso sobre las hojas de trabajo (pospuestas, ya no son para el lunes; espera indicaciones en el aula) y los formularios del buzón escolar de dudas.
         </p>
 
         <!-- Accesos directos rápidos de Español en formato chips -->
@@ -244,9 +252,9 @@
       </div>
 
       <!-- Geografía -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🌍</div>
-        <span class="purple-update-pill">● Actualizado &bull; Tarea 4 Noticias</span>
+        <span class="blue-update-pill">● Actualizado &bull; Tarea 4 Noticias</span>
         <h3>Geografía</h3>
         <p>Clave 1405 (12 créditos) &bull; Salón A-104. Espacio geográfico, recursos naturales, dinámica poblacional y geopolítica contemporánea.</p>
         <div class="bento-footer-link">
@@ -257,9 +265,9 @@
       </div>
 
       <!-- Historia Universal III -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🏛️</div>
-        <span class="purple-update-pill">● Actualizado &bull; Tareas PDF</span>
+        <span class="blue-update-pill">● Actualizado &bull; Aviso Lunes 14 & Planisferio</span>
         <h3>Historia Universal III</h3>
         <p>Clave 1403 (12 créditos) &bull; Salones B-109 y B-117. Industrialización, transformaciones capitalistas y movimientos del siglo XX y XXI.</p>
         <div class="bento-footer-link">
@@ -270,9 +278,9 @@
       </div>
 
       <!-- Inglés IV -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🗣️</div>
-        <span class="purple-update-pill">● Actualizado &bull; Mediateca B-318</span>
+        <span class="blue-update-pill">● Actualizado &bull; Mediateca B-318</span>
         <h3>Lengua Extranjera Inglés IV</h3>
         <p>Clave 1407 (12 créditos) &bull; Salones C-306 (Sec. A) y C-205 (Sec. B). Competencias comunicativas A2/B1 MCERL y comprensión de textos.</p>
         <div class="bento-footer-link">
@@ -283,9 +291,9 @@
       </div>
 
       <!-- Lógica -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🧠</div>
-        <span class="purple-update-pill">● Actualizado &bull; Tarea</span>
+        <span class="blue-update-pill">● Actualizado &bull; Tarea</span>
         <h3>Lógica</h3>
         <p>Clave 1404 (12 créditos) &bull; Salones B-108 y B-206. Análisis de argumentos, identificación de falacias y formalización lógica.</p>
         <div class="bento-footer-link">
@@ -296,9 +304,9 @@
       </div>
 
       <!-- Dibujo II -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🎨</div>
-        <span class="purple-update-pill">● Actualizado &bull; Paisaje y Líneas</span>
+        <span class="blue-update-pill">● Actualizado &bull; Paisaje y Líneas</span>
         <h3>Dibujo II</h3>
         <p>Clave 1406 (08 créditos) &bull; Salones B-008 (Sec. A) y C-201 (Sec. B). Lenguaje visual, proporción, técnicas de color y composición.</p>
         <div class="bento-footer-link">
@@ -309,9 +317,9 @@
       </div>
 
       <!-- Informática -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">💻</div>
-        <span class="purple-update-pill">● Actualizado &bull; Exposiciones</span>
+        <span class="blue-update-pill">● Actualizado &bull; Exposiciones</span>
         <h3>Informática</h3>
         <p>Clave 1408 (10 créditos) &bull; I-108 y CC-2. Hojas de cálculo avanzadas, procesamiento de datos, lógica algorítmica y seguridad en la red.</p>
         <div class="bento-footer-link">
@@ -322,9 +330,9 @@
       </div>
 
       <!-- Orientación Educativa IV -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🧭</div>
-        <span class="purple-update-pill">● Actualizado &bull; 2 Tareas + Prompts</span>
+        <span class="blue-update-pill">● Actualizado &bull; 2 Tareas + Prompts</span>
         <h3>Orientación Educativa IV</h3>
         <p>Clave 1410 &bull; Salones B-110 (Sec. A) y B-112 (Sec. B). Adaptación al bachillerato UNAM, hábitos de estudio y proyecto de vida.</p>
         <div class="bento-footer-link">
@@ -335,9 +343,9 @@
       </div>
 
             <!-- Prevención de las Violencias -->
-      <div class="bento-card card-updated-purple">
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🛡️</div>
-        <span class="purple-update-pill">● Actualizado &bull; Cultura de Paz</span>
+        <span class="blue-update-pill">● Actualizado &bull; Cultura de Paz</span>
         <h3>Prevención de las Violencias</h3>
         <p><strong>Género y Prevención de las Violencias</strong> &bull; Clave 8000 &bull; Salones B-108 y B-109. Cultura comunitaria de paz, derechos humanos, equidad de género y convivencia escolar libre de violencia.</p>
         <div class="bento-footer-link">
@@ -360,11 +368,12 @@
         </div>
       </div>
 
-      <!-- Educación Física IV -->
-      <div class="bento-card">
+            <!-- Educación Física IV -->
+      <div class="bento-card card-updated-blue">
         <div class="bento-icon-box">🏃</div>
+        <span class="blue-update-pill">● Actualizado &bull; Nueva Tarea</span>
         <h3>Educación Física IV</h3>
-        <p>Clave 1409 &bull; Gimnasio 1 (GIM1). Salud física, resistencia, fundamentos de disciplinas deportivas y trabajo en equipo.</p>
+        <p>Clave 1409 &bull; Gimnasio 1 (GIM1). Nueva tarea activa: "¿Qué es la condición física?" y componentes de la actividad física.</p>
         <div class="bento-footer-link">
           <a href="materias/educacion-fisica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
             <span>Ver materia &rarr;</span>

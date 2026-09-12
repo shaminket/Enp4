@@ -419,64 +419,55 @@
   </script>
 </head>
 <body>
-    <!-- BANNER MORADO DE AVISO (10 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
+        <!-- BANNER AZUL REY DE AVISO (10 SEGUNDOS CON BOTÓN DE PAUSA) -->
   <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-purple" style="max-height: 88vh; overflow-y: auto;">
-      <div class="announcement-badge-pill">
+    <div class="announcement-card-blue" style="max-height: 88vh; overflow-y: auto;">
+      <div class="announcement-badge-pill" style="background: rgba(255,255,255,0.2) !important; border-color: #ffffff !important;">
         <span>✨ AVISOS & TAREAS OFICIALES &bull; GRUPO 0415</span>
       </div>
-      <h2 class="announcement-title-big">
+      <h2 class="announcement-title-big" style="color: #ffffff !important;">
         Nuevas Actualizaciones y Tareas del 415
       </h2>
       <p class="announcement-desc-text" style="font-weight: 700; color: #fef08a; margin-bottom: 1rem;">
-        Revisa las nuevas tareas y acuerdos asignados en las materias esta semana:
+        Revisa las tareas vigentes y los avisos urgentes actualizados:
       </p>
 
       <!-- Lista de tareas y avisos -->
-      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 18px; padding: 1.2rem; text-align: left; font-size: 0.88rem; line-height: 1.55; display: flex; flex-direction: column; gap: 0.65rem;">
-        <div>📜 <strong>Historia:</strong> Subir 2 tareas con renombrado obligatorio (<code>Grupo415_ApellidoP_ApellidoM_tarea#</code>) + herramientas PDF en la página.</div>
-        <div>📖 <strong>Español:</strong> Aviso urgente: pasar a papelería <em>La Gomita</em> ($20 MXN) por hoja oficial de la Profra. Vázquez.</div>
-        <div>💻 <strong>Informática:</strong> Rol oficial de fechas para los 9 equipos de exposición + metodología 1+3=1.</div>
-        <div>🌍 <strong>Geografía:</strong> Llevar libro o pedir hojas con nombre ($50 MXN) y tarea de 4 noticias en equipo para el lunes.</div>
+      <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-align: left; font-size: 0.88rem; line-height: 1.55; display: flex; flex-direction: column; gap: 0.65rem; color: #ffffff;">
+        <div>🏃 <strong>Educación Física:</strong> NUEVA TAREA: <em>¿Qué es la condición física?</em> (Componentes de la actividad física).</div>
+        <div>📜 <strong>Historia:</strong> AVISO URGENTE: Cuadernos pendientes se entregan el lunes 14 a las 12:00 en Orientación. ¡Y no olvides tu planisferio con nombres! ¿Lo quieres listo para imprimir? <a href="materias/historia-movil#regalos" onclick="sessionStorage.setItem('openTab_historia', 'regalos')" style="color: #fef08a; font-weight: 900; text-decoration: underline;">Consulta la sección de regalos de Historia &rarr;</a></div>
+        <div>🇬🇧 <strong>Inglés A:</strong> Asistencia el lunes en <strong>Mediateca Salón B-318</strong>. Tareas anteriores archivadas.</div>
+        <div>📖 <strong>Español:</strong> ¿No conseguiste las hojas en La Gomita? ¡Tranquiii!! Ya no son para el lunes, espera indicaciones de la profesora.</div>
+        <div>💻 <strong>Informática:</strong> Rol oficial de fechas para los 9 equipos y metodología 1+3=1.</div>
+        <div>🌍 <strong>Geografía:</strong> 4 noticias en una sola hoja en 4 cuadrantes para el lunes temprano.</div>
         <div>🧠 <strong>Lógica:</strong> 3 tareas (tipos de frases, corrección de clase y casos de Gettier).</div>
-        <div>🎨 <strong>Dibujo A:</strong> Paisaje con líneas en impresión 2 o libro y corrección de puntillismo.</div>
-        <div>🇬🇧 <strong>Inglés A:</strong> Examen próximo (libro/cuaderno/bitácora para 10) y el lunes nos vemos en <strong>Mediateca B-318</strong>.</div>
-        <div>🧭 <strong>Orientación A:</strong> Traer post-it, plumones y carpeta; 2 tareas (datos históricos y 5 personajes UNAM sin Gabino Barreda) con Prompts IA listos.</div>
+        <div>🎨 <strong>Dibujo A:</strong> Paisaje con líneas en impresión 2 o libro, y corrección de puntillismo.</div>
+        <div>🧭 <strong>Orientación A:</strong> Traer post-it, plumones y carpeta de raya; tareas históricas UNAM con Prompts IA listos.</div>
       </div>
 
+      <!-- Temporizador con botón de pausa -->
       <div class="announcement-timer-box" style="margin-top: 1.2rem;">
         <div class="announcement-time-num" id="announcementTimeNum">10.0s</div>
         <div class="announcement-progress-track">
-          <div class="announcement-progress-fill" id="announcementProgressFill"></div>
+          <div class="announcement-progress-fill" id="announcementProgressFill" style="background: #fcd866 !important;"></div>
         </div>
       </div>
 
       <div style="margin-top: 1.2rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
-        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.65rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none;">
+        <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #1e3a8a !important; border-color: #ffffff !important; padding: 0.65rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none;">
           <span>Ir al Centro de Control &rarr;</span>
         </a>
-        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.2); color: #fcd866; font-weight: 800; cursor: pointer;">⏸️ Pausar</button>
-        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.25);">
+        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.25); color: #fcd866; font-weight: 800; cursor: pointer;">
+          ⏸️ Pausar
+        </button>
+        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.3);">
           Omitir aviso
         </button>
       </div>
     </div>
   </div>
 
-      <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
-          <span>Ver Actualizaciones &rarr;</span>
-        </a>
-        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.2); color: #fcd866; font-weight: 800; cursor: pointer;">⏸️ Pausar</button>
-        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
-          Omitir
-        </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
+<!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
   <div class="sticky-top-mobile-group">
     <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
         <div class="mac-header-topbar">
@@ -486,15 +477,7 @@
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
-      <!-- BOTONES DE PRUEBA SIEMPRE VISIBLES EN EL BANNER -->
-      <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto;">
-        <button class="banner-test-btn" onclick="triggerToleranceDemo(195)" title="Probar simulador de tolerancia con sonido en verde, amarillo y rojo">
-          ⏱️ Probar Tolerancia
-        </button>
-        <button class="banner-test-btn" onclick="triggerAnnouncementModal()" title="Ver aviso morado de 5 segundos">
-          📢 Aviso 5s
-        </button>
-      </div>
+      
     </div>
 
     
@@ -1091,9 +1074,10 @@
         // Comprobar tareas y avisos de la materia
         const homeworkSubjects = {
           "Geografía": "📝 4 Noticias",
-          "Historia Universal III": "📝 2 Tareas PDF",
+          "Historia Universal III": "🗺️ Planisferio",
+          "Educación Física IV": "📝 Tarea Condición Física",
           "Lógica": "📝 3 Tareas",
-          "Lengua Española": "🔔 Papelería La Gomita",
+          "Lengua Española": "🔔 Hojas pospuestas",
           "Informática": "💻 Exposiciones"
         };
 
@@ -1106,10 +1090,7 @@
         } else if (sName === 'Dibujo II' && c.section === 'A') {
           isHw = true;
           hwBadge = `<span class="homework-tag-badge">🎨 Paisaje Líneas</span>`;
-        } else if (sName.includes('Inglés') && c.section === 'A') {
-          isHw = true;
-          hwBadge = `<span class="homework-tag-badge" style="background:#ef4444; color:#fff;">🔔 Examen</span>`;
-        } else if (sName.includes('Orientación') && c.section === 'A') {
+        } /* Examen archivado */ else if (sName.includes('Orientación') && c.section === 'A') {
           isHw = true;
           hwBadge = `<span class="homework-tag-badge">📝 Materiales + 2 Tareas</span>`;
         }
