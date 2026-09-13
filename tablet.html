@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuatreros del 415 • Bento Grid Tableta</title>
+  <meta name="description" content="Modo Bento Grid de alta productividad para tableta e iPad del Grupo 0415, Prepa 4 UNAM. Tarjetas Flip modulares in-place y split-view de estudio.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="tablet.css">
+</head>
+<body>
+
+  <!-- HEADER IPAD OS -->
+  <header class="tablet-header">
+    <div class="brand-wrapper">
+      <img src="assets/escudo-unam-original.png" alt="UNAM">
+      <div class="brand-title">
+        <h1>Cuatreros del 415</h1>
+        <span>Prepa 4 UNAM &bull; Modo Bento Grid</span>
+      </div>
+    </div>
+
+    <!-- Segmented Day Switcher -->
+    <div class="tablet-segmented-days">
+      <button class="day-tab-btn active" data-day="1" onclick="renderTabletSchedule(1)">LUN 14</button>
+      <button class="day-tab-btn" data-day="2" onclick="renderTabletSchedule(2)">MAR 15</button>
+      <button class="day-tab-btn" data-day="3" onclick="renderTabletSchedule(3)">MIÉ 16</button>
+      <button class="day-tab-btn" data-day="4" onclick="renderTabletSchedule(4)">JUE 17</button>
+      <button class="day-tab-btn" data-day="5" onclick="renderTabletSchedule(5)">VIE 18</button>
+    </div>
+
+    <div class="tablet-actions-row">
+      <div class="tablet-live-clock" id="tabletClock">--:--:--</div>
+      <button class="btn-tablet-auth" id="btnTabletAuth">👤 Iniciar Sesión</button>
+    </div>
+  </header>
+
+  <!-- BENTO GRID ASIMÉTRICO JAPONÉS -->
+  <main class="bento-master-container">
+
+    <!-- TILE 1: 🔴 SEMÁFORO CARMESÍ (URGENCIA CRÍTICA) -->
+    <section class="bento-tile col-span-2" style="border-color: rgba(255, 59, 48, 0.45); background: linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(8, 18, 38, 0.95) 100%);">
+      <div class="tile-header">
+        <span class="tile-tag tag-crimson">🔴 Semáforo Carmesí &bull; &lt;24 Horas</span>
+        <span style="font-size: 0.78rem; font-weight:900; color:#ff8a84; font-variant-numeric:tabular-nums;" id="tabletCrimsonCounter">Calculando...</span>
+      </div>
+      <h2 class="tile-title">Urgencias Improrrogables</h2>
+      <div class="tile-body-scroll">
+        <!-- Historia -->
+        <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid var(--code-crimson); border-radius: 12px; padding: 0.8rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
+            <strong style="color:#fff; font-size:0.92rem;">📜 Historia Universal III</strong>
+            <span style="background:var(--code-crimson); color:#fff; font-size:0.68rem; font-weight:900; padding:2px 6px; border-radius:4px;">12:50 PM Límite</span>
+          </div>
+          <p style="font-size:0.82rem; color:#cbd5e1; line-height:1.4;">
+            <strong>Entrega de cuadernos pendientes (máx 20 alumnos):</strong> El lunes 14 en hora de Orientación (12:00 a 12:50 puntual, salón B-110). Después de 12:50 no se reciben cuadernos.
+          </p>
+        </div>
+
+        <!-- Geografía -->
+        <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid var(--code-crimson); border-radius: 12px; padding: 0.8rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
+            <strong style="color:#fff; font-size:0.92rem;">🌍 Geografía</strong>
+            <span style="background:var(--code-crimson); color:#fff; font-size:0.68rem; font-weight:900; padding:2px 6px; border-radius:4px;">Lunes 7:00 AM</span>
+          </div>
+          <p style="font-size:0.82rem; color:#cbd5e1; line-height:1.4;">
+            <strong>4 Noticias en Equipo:</strong> 1 hoja dividida en 4 cuadrantes (Social, Económico, Político, Natural). Pluma negra, orden alfabético por apellidos, elige quien empiece más cercano a la A.
+          </p>
+        </div>
+
+        <!-- Orientación A -->
+        <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid var(--code-crimson); border-radius: 12px; padding: 0.8rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.2rem;">
+            <strong style="color:#fff; font-size:0.92rem;">🧭 Orientación IV (Sec. A)</strong>
+            <span style="background:var(--code-crimson); color:#fff; font-size:0.68rem; font-weight:900; padding:2px 6px; border-radius:4px;">Lunes 12:00</span>
+          </div>
+          <p style="font-size:0.82rem; color:#cbd5e1; line-height:1.4;">
+            <strong>Materiales y 2 Tareas UNAM:</strong> Post-it, plumones pintarrón y carpeta de raya. Tarea 1: 10 datos históricos UNAM/ENP. Tarea 2: 5 personajes (sin Gabino Barreda).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TILE 2: 🗺️ PLANISFERIO OFICIAL & DELIVERY -->
+    <section class="bento-tile col-span-2">
+      <div class="tile-header">
+        <span class="tile-tag tag-electric">🗺️ Recurso Oficial &bull; Historia</span>
+        <span style="font-size:0.75rem; color:#94a3b8; font-weight:800;">136 Países Numerados</span>
+      </div>
+      <h2 class="tile-title">Planisferio con Nombres</h2>
+      <div style="display:grid; grid-template-columns: 140px 1fr; gap:1rem; align-items:center;">
+        <img src="assets/planisferio-con-nombres.jpg" alt="Planisferio" style="width:100%; height:auto; border-radius:10px; border:1px solid var(--border-glass);">
+        <div>
+          <p style="font-size:0.82rem; color:#cbd5e1; line-height:1.45; margin-bottom:0.75rem;">
+            Mapa oficial listo para imprimir o pedir con entrega directa en tu aula en Prepa 4:
+          </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <a href="assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" class="tile-tag tag-gold" style="text-decoration:none; cursor:pointer;">
+              📥 Descargar JPG
+            </a>
+            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%201%20planisferio%20con%20nombres%20($5%20MXN)%20para%20Historia" target="_blank" rel="noopener noreferrer" class="tile-tag tag-electric" style="text-decoration:none; cursor:pointer;">
+              🛵 1 por $5 MXN
+            </a>
+            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%203%20planisferios%20con%20nombres%20($10%20MXN)%20para%20Historia" target="_blank" rel="noopener noreferrer" class="tile-tag tag-amber" style="text-decoration:none; cursor:pointer; background:#34C759; color:#fff; border-color:#34C759;">
+              📑 3 por $10 MXN
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TILE 3: 📅 HORARIO & FLIP CARDS MODULARES IN-PLACE -->
+    <section class="bento-tile col-span-4 row-span-2">
+      <div class="tile-header">
+        <span class="tile-tag tag-gold">📅 Horario Interactivo &bull; Tarjetas Flip In-Place</span>
+        <span style="font-size:0.75rem; color:var(--unam-gold-bright); font-weight:800;">Toca una materia para girar la tarjeta y ver sus tareas</span>
+      </div>
+      <h2 class="tile-title">Clases del Día</h2>
+      
+      <!-- Contenedor dinámico de flip cards -->
+      <div class="flip-grid-container" id="tabletFlipGrid">
+        <!-- Renderizado dinámico desde tablet.js -->
+      </div>
+    </section>
+
+    <!-- TILE 4: 🟡 SEMÁFORO ÁMBAR (TAREAS SEMANALES) -->
+    <section class="bento-tile col-span-2">
+      <div class="tile-header">
+        <span class="tile-tag tag-amber">🟡 Entregas de la Semana</span>
+        <span style="font-size:0.75rem; color:#fcd866;">4 Asignaturas</span>
+      </div>
+      <h3 class="tile-title">Seguimiento Semanal</h3>
+      <div class="tile-body-scroll">
+        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--code-amber); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#fff; font-size:0.86rem;">🏃 Educación Física:</strong>
+          <span style="color:#cbd5e1; font-size:0.8rem;"> Tarea componentes de condición física (Viernes 11:10 en GIM1).</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--code-amber); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#fff; font-size:0.86rem;">🧠 Lógica:</strong>
+          <span style="color:#cbd5e1; font-size:0.8rem;"> 3 Tareas (tipos de frases, corrección de clase $30/$70 y casos de Gettier).</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--code-amber); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#fff; font-size:0.86rem;">🎨 Dibujo II (Sec. A):</strong>
+          <span style="color:#cbd5e1; font-size:0.8rem;"> Paisaje con líneas (impresión 2 o libro) y corrección de puntillismo.</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border-left:3px solid var(--code-amber); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#fff; font-size:0.86rem;">💻 Informática:</strong>
+          <span style="color:#cbd5e1; font-size:0.8rem;"> Preparación de exposiciones 1+3=1 (Eq 1 y 2 inician 22 Sep).</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TILE 5: 🔵 SEMÁFORO ELÉCTRICO (LOGÍSTICA & AVISOS) -->
+    <section class="bento-tile col-span-2">
+      <div class="tile-header">
+        <span class="tile-tag tag-electric">🔵 Logística &bull; Salones</span>
+        <span style="font-size:0.75rem; color:#93c5fd;">Avisos Clave</span>
+      </div>
+      <h3 class="tile-title">Operación Escolar</h3>
+      <div class="tile-body-scroll">
+        <div style="background:rgba(0,122,255,0.1); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#93c5fd; font-size:0.86rem;">🇬🇧 Inglés IV Sec. A:</strong>
+          <span style="color:#e2e8f0; font-size:0.8rem;"> El lunes la clase de 9:30 AM es en <strong>Mediateca Salón B-318</strong>. Llevar audífonos.</span>
+        </div>
+        <div style="background:rgba(124,58,237,0.1); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#d8b4fe; font-size:0.86rem;">📖 Lengua Española:</strong>
+          <span style="color:#e2e8f0; font-size:0.8rem;"> Hojas de La Gomita pospuestas; espera indicaciones de la profesora en clase.</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:0.65rem;">
+          <strong style="color:#cbd5e1; font-size:0.86rem;">⚡ Física III:</strong>
+          <span style="color:#e2e8f0; font-size:0.8rem;"> Laboratorio A-302 viernes 12:50 con bata blanca reglamentaria obligatoria.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TILE 6: SPLIT-VIEW DE ALTA PRODUCTIVIDAD (ESTUDIO + MAPA SIMULTÁNEO) -->
+    <section class="bento-tile col-span-4" style="border-color: rgba(124, 58, 237, 0.4);">
+      <div class="tile-header">
+        <span class="tile-tag" style="background: rgba(124, 58, 237, 0.2); color:#d8b4fe; border:1px solid #7C3AED;">
+          ⚡ Split-View Productivo &bull; Pantalla Dividida
+        </span>
+        <span style="font-size:0.75rem; color:#cbd5e1;">Estudia materiales mientras consultas salones de Prepa 4</span>
+      </div>
+      <h2 class="tile-title">Centro de Estudio & Logística Simultáneo</h2>
+
+      <div class="split-view-container">
+        <!-- Panel Izquierdo: Lector de Estudio Encardomy -->
+        <div class="split-panel">
+          <div class="split-panel-title">📚 Apuntes Rápidos & Encardomy</div>
+          <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.82rem; color:#cbd5e1;">
+            <div style="background:rgba(255,255,255,0.04); padding:0.6rem; border-radius:8px;">
+              <strong style="color:var(--unam-gold-bright);">📖 Novela Wyatt (Español):</strong>
+              <p style="margin-top:2px;">Análisis de personajes y tipología textual de la obra asignada por la Profra. Vázquez.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); padding:0.6rem; border-radius:8px;">
+              <strong style="color:#60a5fa;">🧠 Lógica Proposicional:</strong>
+              <p style="margin-top:2px;">Conjunción (&and;), Disyunción (&or;), Condicional (&rarr;) y Bicondicional (&harr;). Cuidado con la falacia de afirmación del consecuente.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); padding:0.6rem; border-radius:8px;">
+              <strong style="color:#34C759;">⚡ Copias e Impresiones HD:</strong>
+              <p style="margin-top:2px;">Entrega en tu salón por WhatsApp: <strong>+52 55 7198 5641</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Derecho: Navegador de Salones Tacubaya -->
+        <div class="split-panel">
+          <div class="split-panel-title">🧭 Directorio de Salones Prepa 4</div>
+          <div class="room-locator-list">
+            <div class="room-locator-item">
+              <span>🏛️ Edificio A (Planta Baja / 3er Piso)</span>
+              <strong style="color:var(--unam-gold-bright);">A-104 (Geo) &bull; Lab A-302</strong>
+            </div>
+            <div class="room-locator-item">
+              <span>🏫 Edificio B (Pisos 1, 2 y 3)</span>
+              <strong style="color:#60a5fa;">B-008, B-108, B-109, B-110, B-112, B-116, B-117, B-318</strong>
+            </div>
+            <div class="room-locator-item">
+              <span>🏢 Edificio C (Idiomas y Talleres)</span>
+              <strong style="color:#34C759;">C-201 (Dibujo B) &bull; C-205 &bull; C-306</strong>
+            </div>
+            <div class="room-locator-item">
+              <span>🏃 Instalaciones Especiales</span>
+              <strong style="color:#fcd866;">GIM1 (Deportes) &bull; I-108 &bull; CC-2</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE AUTENTICACIÓN TABLETA -->
+  <div class="tablet-modal-overlay" id="tabletAuthOverlay">
+    <div class="tablet-modal-card">
+      <button class="btn-modal-close" id="btnCloseTabletAuth">&times;</button>
+      <h3 style="font-size:1.4rem; font-weight:900; color:#fff; margin-bottom:0.4rem;">Acceso Cuatreros 415</h3>
+      <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:1.4rem;">Inicia sesión con tu cuenta UNAM para sincronizar tus materias.</p>
+
+      <button onclick="simulateGoogleLogin()" class="google-auth-btn">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Entrar con Google Workspace UNAM
+      </button>
+
+      <form onsubmit="handleTabletEmailLogin(event)">
+        <input type="email" id="tabEmailInput" class="auth-form-input" placeholder="correo@comunidad.unam.mx" required>
+        <input type="password" class="auth-form-input" placeholder="Contraseña segura" required>
+        <button type="submit" class="btn-primary-auth">Acceder</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="tablet.js"></script>
+</body>
+</html>

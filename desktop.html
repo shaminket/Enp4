@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuatreros del 415 • Comando Espacial Panorámico</title>
+  <meta name="description" content="Dashboard de mando inmersivo y panorámico 100% para escritorio del Grupo 0415, Prepa 4 UNAM. Atajos de teclado, clústeres y líneas de tareas.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="desktop.css">
+</head>
+<body>
+
+  <!-- TOP COMMAND BAR -->
+  <header class="deck-topbar">
+    <div class="deck-identity">
+      <img src="assets/escudo-unam-original.png" alt="UNAM">
+      <img src="assets/logo-enp4.svg" alt="ENP 4">
+      <div class="deck-titles">
+        <h1><span>⚡</span> Cuatreros del 415</h1>
+        <span>Comando Panorámico &bull; Prepa 4 UNAM</span>
+      </div>
+    </div>
+
+    <!-- Cluster Shortcuts Bar -->
+    <div class="cluster-shortcuts-bar">
+      <button class="cluster-btn active" data-cluster="all" onclick="filterByCluster('all')" title="Atajo: Tecla 0 o Esc">
+        Todas <kbd>0</kbd>
+      </button>
+      <button class="cluster-btn" data-cluster="ciencias" onclick="filterByCluster('ciencias')" title="Atajo: Tecla 1">
+        🔬 Ciencias <kbd>1</kbd>
+      </button>
+      <button class="cluster-btn" data-cluster="humanidades" onclick="filterByCluster('humanidades')" title="Atajo: Tecla 2">
+        🏛️ Humanidades <kbd>2</kbd>
+      </button>
+      <button class="cluster-btn" data-cluster="idiomas" onclick="filterByCluster('idiomas')" title="Atajo: Tecla 3">
+        🗣️ Idiomas/Cómputo <kbd>3</kbd>
+      </button>
+      <button class="cluster-btn" data-cluster="arte" onclick="filterByCluster('arte')" title="Atajo: Tecla 4">
+        🎨 Arte/Salud <kbd>4</kbd>
+      </button>
+    </div>
+
+    <div class="deck-telemetry">
+      <div class="telemetry-time" id="desktopLiveTime">--:--:--</div>
+      <button class="btn-cmd-auth" id="btnDeskAuth" onclick="openDesktopAuth()">👤 Iniciar Sesión <kbd style="background:rgba(255,255,255,0.2); font-size:0.7rem; padding:1px 4px; border-radius:3px; margin-left:4px;">L</kbd></button>
+    </div>
+  </header>
+
+  <!-- PANORAMIC LAYOUT -->
+  <main class="deck-main-layout">
+
+    <!-- COLUMNA IZQUIERDA: SEMÁFORO DE URGENCIA & HIGHWAY -->
+    <aside class="deck-left-rail">
+      
+      <!-- Panel Semáforo Carmesí & Ámbar -->
+      <div class="deck-panel-box glow-crimson" id="urgencyHighwayBox" style="flex: 1;">
+        <div class="box-header">
+          <div class="box-title">
+            <span>🚦</span> Línea de Tareas & Urgencias
+          </div>
+          <span style="font-size: 0.72rem; font-weight:900; color:#ff8a84; font-variant-numeric:tabular-nums;" id="desktopCrimsonCountdown">Calculando...</span>
+        </div>
+
+        <div class="box-scrollable">
+          <!-- Carmesí: Historia -->
+          <div class="urgency-highway-item border-crimson">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">📜 Historia Universal III</span>
+              <span class="highway-badge" style="background:var(--code-crimson); color:#fff;">Lunes 12:50 Límite</span>
+            </div>
+            <p class="highway-desc">
+              Entrega estricta de cuadernos atrasados (máx 20 alumnos) en hora de Orientación (12:00 a 12:50 puntual, B-110). Planisferio obligatorio.
+            </p>
+          </div>
+
+          <!-- Carmesí: Geografía -->
+          <div class="urgency-highway-item border-crimson">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">🌍 Geografía</span>
+              <span class="highway-badge" style="background:var(--code-crimson); color:#fff;">Lunes 7:00 AM</span>
+            </div>
+            <p class="highway-desc">
+              4 Noticias en equipo (hoja en 4 cuadrantes: Social, Económico, Político, Natural). Pluma negra, orden alfabético por apellidos.
+            </p>
+          </div>
+
+          <!-- Carmesí: Orientación A -->
+          <div class="urgency-highway-item border-crimson">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">🧭 Orientación IV (Sec. A)</span>
+              <span class="highway-badge" style="background:var(--code-crimson); color:#fff;">Lunes 12:00</span>
+            </div>
+            <p class="highway-desc">
+              Traer post-it, plumones y carpeta de raya. Tarea 1 (10 datos UNAM) y Tarea 2 (5 personajes sin Barreda ni 155 años).
+            </p>
+          </div>
+
+          <!-- Ámbar: Educación Física -->
+          <div class="urgency-highway-item border-amber">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">🏃 Educación Física IV</span>
+              <span class="highway-badge" style="background:rgba(255,149,0,0.2); color:#ffb340;">Viernes 11:10</span>
+            </div>
+            <p class="highway-desc">
+              Tarea condición física (definición, capacidades condicionales y coordinativas en GIM1).
+            </p>
+          </div>
+
+          <!-- Ámbar: Lógica -->
+          <div class="urgency-highway-item border-amber">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">🧠 Lógica</span>
+              <span class="highway-badge" style="background:rgba(255,149,0,0.2); color:#ffb340;">Martes / Mié</span>
+            </div>
+            <p class="highway-desc">
+              3 Tareas: tipos de frases, corrección de clase ($30/$70) y casos de Gettier.
+            </p>
+          </div>
+
+          <!-- Eléctrico: Inglés A -->
+          <div class="urgency-highway-item border-electric">
+            <div class="highway-title-row">
+              <span class="highway-subject-name">🇬🇧 Inglés IV (Sec. A)</span>
+              <span class="highway-badge" style="background:#007AFF; color:#fff;">Mediateca B-318</span>
+            </div>
+            <p class="highway-desc">
+              Asistencia el lunes en Mediateca Salón B-318. Llevar audífonos propios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- COLUMNA CENTRAL: MATRIZ DE HORARIO & CLÚSTERES -->
+    <main class="deck-center-stage">
+      <div class="deck-panel-box schedule-control-deck">
+        <div class="box-header">
+          <div class="box-title">
+            <span>📅</span> Matriz de Horario Panorámica &bull; Grupo 0415
+          </div>
+          <span style="font-size:0.75rem; color:#94a3b8;">Usa los atajos <kbd style="background:rgba(255,255,255,0.15); padding:1px 4px; border-radius:3px;">1</kbd>-<kbd style="background:rgba(255,255,255,0.15); padding:1px 4px; border-radius:3px;">4</kbd> para filtrar bloques</span>
+        </div>
+
+        <!-- Selector de Días -->
+        <div class="day-strip-selector">
+          <button class="day-strip-btn active" data-day="1" onclick="renderDesktopSchedule(1)">Lunes 14</button>
+          <button class="day-strip-btn" data-day="2" onclick="renderDesktopSchedule(2)">Martes 15</button>
+          <button class="day-strip-btn" data-day="3" onclick="renderDesktopSchedule(3)">Miércoles 16</button>
+          <button class="day-strip-btn" data-day="4" onclick="renderDesktopSchedule(4)">Jueves 17</button>
+          <button class="day-strip-btn" data-day="5" onclick="renderDesktopSchedule(5)">Viernes 18</button>
+        </div>
+
+        <!-- Tabla Panorámica de Clases -->
+        <div class="box-scrollable" style="padding-right:0;">
+          <table class="classes-panoramic-table">
+            <thead>
+              <tr>
+                <th>Horario</th>
+                <th>Asignatura &bull; Docente</th>
+                <th>Bloque Funcional</th>
+                <th>Salón Tacubaya</th>
+                <th>Estatus Semáforo</th>
+              </tr>
+            </thead>
+            <tbody id="panoramicTableBody">
+              <!-- Inyectado dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tarjeta de Inspección de Clase Seleccionada -->
+        <div id="selectedClassDetailBox"></div>
+      </div>
+    </main>
+
+    <!-- COLUMNA DERECHA: PLANISFERIO, ENCARDOMY & SALONES -->
+    <aside class="deck-right-rail">
+      
+      <!-- Planisferio con Nombres -->
+      <div class="deck-panel-box glow-gold" style="flex: 0 0 auto;">
+        <div class="box-header">
+          <div class="box-title"><span>🗺️</span> Planisferio Historia</div>
+          <span style="font-size:0.72rem; color:var(--unam-gold-bright); font-weight:900;">136 Países</span>
+        </div>
+        <div style="display:flex; gap:0.8rem; align-items:center;">
+          <img src="assets/planisferio-con-nombres.jpg" alt="Planisferio" style="width:105px; height:auto; border-radius:8px; border:1px solid var(--glass-stroke);">
+          <div style="display:flex; flex-direction:column; gap:0.4rem; flex-grow:1;">
+            <a href="assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" style="background:var(--accent-blue); color:#fff; padding:0.4rem 0.6rem; border-radius:8px; font-size:0.76rem; font-weight:800; text-decoration:none; text-align:center;">
+              📥 Descargar Imagen
+            </a>
+            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%201%20planisferio%20con%20nombres%20($5)%20para%20Historia" target="_blank" rel="noopener noreferrer" style="background:#34C759; color:#fff; padding:0.4rem 0.6rem; border-radius:8px; font-size:0.76rem; font-weight:800; text-decoration:none; text-align:center;">
+              🛵 1x$5 o 3x$10 WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ubicador de Salones Tacubaya -->
+      <div class="deck-panel-box" id="campusMapPanel" style="flex: 1;">
+        <div class="box-header">
+          <div class="box-title"><span>🧭</span> Salones Prepa 4 Tacubaya</div>
+          <kbd style="background:rgba(255,255,255,0.15); font-size:0.7rem; padding:1px 5px; border-radius:4px;">M</kbd>
+        </div>
+
+        <div class="box-scrollable">
+          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:0.75rem;">
+            <strong style="color:var(--unam-gold-bright); font-size:0.85rem; display:block;">🏛️ Edificio A</strong>
+            <span style="font-size:0.78rem; color:#cbd5e1;">A-104 (Geografía) &bull; Lab A-302 (Física con bata)</span>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:0.75rem;">
+            <strong style="color:#60a5fa; font-size:0.85rem; display:block;">🏫 Edificio B</strong>
+            <span style="font-size:0.78rem; color:#cbd5e1;">B-008 (Dibujo A), B-108, B-109, B-110 (Orientación A), B-112, B-115, B-116, B-117, B-206, B-318 (Mediateca Inglés A)</span>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:0.75rem;">
+            <strong style="color:#34C759; font-size:0.85rem; display:block;">🏢 Edificio C</strong>
+            <span style="font-size:0.78rem; color:#cbd5e1;">C-201 (Dibujo B), C-205 (Inglés B), C-306 (Inglés A)</span>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:0.75rem;">
+            <strong style="color:#fcd866; font-size:0.85rem; display:block;">🏃 Deportes & Cómputo</strong>
+            <span style="font-size:0.78rem; color:#cbd5e1;">GIM1 (Ed. Física), I-108 & CC-2 (Informática)</span>
+          </div>
+
+          <!-- Encardomy Banner -->
+          <div style="background:rgba(213,159,15,0.1); border:1px solid var(--unam-gold); border-radius:12px; padding:0.85rem; margin-top:0.4rem; text-align:center;">
+            <strong style="color:var(--unam-gold-bright); font-size:0.88rem; display:block;">⚡ Encardomy By Shaminket</strong>
+            <p style="font-size:0.76rem; color:#cbd5e1; margin:0.3rem 0 0.6rem;">Copias HD, hojas membretadas ($50/10) y apoyo escolar en Prepa 4.</p>
+            <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20copias/tareas%20del%20415" target="_blank" rel="noopener noreferrer" style="background:var(--unam-gold); color:#001628; font-weight:900; padding:0.35rem 0.9rem; border-radius:8px; font-size:0.76rem; text-decoration:none; display:inline-block;">
+              Pedir por WhatsApp &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- AUTH MODAL ESCRITORIO -->
+  <div class="desktop-modal-backdrop" id="desktopAuthModal">
+    <div class="desktop-modal-shell">
+      <button class="modal-close-cross" onclick="closeDesktopAuth()">&times;</button>
+      <h3 style="font-size:1.45rem; font-weight:900; color:#fff; margin-bottom:0.3rem;">Acceso Corporativo 0415</h3>
+      <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:1.4rem;">Autentícate para sincronizar tus recordatorios institucionales.</p>
+
+      <button onclick="simulateDesktopGoogleLogin()" style="width:100%; background:#fff; color:#1f1f1f; border:1px solid #747775; border-radius:12px; padding:0.8rem; display:flex; align-items:center; justify-content:center; gap:0.75rem; font-weight:700; font-size:0.92rem; cursor:pointer; margin-bottom:1.2rem;">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Iniciar con Google Workspace UNAM
+      </button>
+
+      <form onsubmit="handleDeskEmailLogin(event)">
+        <input type="email" id="deskEmailInput" style="width:100%; padding:0.8rem; background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.15); border-radius:12px; color:#fff; font-size:0.9rem; margin-bottom:0.75rem; outline:none;" placeholder="correo@comunidad.unam.mx" required>
+        <input type="password" style="width:100%; padding:0.8rem; background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.15); border-radius:12px; color:#fff; font-size:0.9rem; margin-bottom:0.75rem; outline:none;" placeholder="Contraseña segura" required>
+        <button type="submit" style="width:100%; background:linear-gradient(135deg, var(--accent-blue) 0%, #1e40af 100%); color:#fff; padding:0.8rem; border:none; border-radius:12px; font-weight:800; font-size:0.95rem; cursor:pointer;">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ONBOARDING SPOTLIGHT ESCRITORIO -->
+  <div class="desktop-tour-overlay" id="desktopTourOverlay">
+    <div class="tour-stage-box">
+      <div class="tour-key-badge">Comando Espacial 415 &bull; Atajos de Teclado</div>
+      <h2 style="font-size:1.6rem; font-weight:900; color:#fff; margin-bottom:0.6rem;">Navegación Panorámica Pro</h2>
+      <p style="font-size:0.92rem; color:#cbd5e1; line-height:1.5; margin-bottom:1.5rem;">
+        Controla todo el dashboard sin tocar el mouse con las teclas rápidas:<br><br>
+        <strong>1, 2, 3, 4</strong>: Filtra por Clústeres (Ciencias, Humanidades, Idiomas, Arte).<br>
+        <strong>0 o Esc</strong>: Muestra todas las materias.<br>
+        <strong>T</strong>: Enfoca la Línea de Tareas &bull; <strong>M</strong>: Ubicador de Salones.<br>
+        <strong>L</strong>: Inicia sesión institucional.
+      </p>
+      <button onclick="closeDesktopTour()" style="background:var(--unam-gold); color:#001628; border:none; padding:0.65rem 1.8rem; border-radius:999px; font-weight:900; font-size:0.95rem; cursor:pointer;">
+        ¡Entendido, Iniciar Comando! &rarr;
+      </button>
+    </div>
+  </div>
+
+  <script src="desktop.js"></script>
+</body>
+</html>

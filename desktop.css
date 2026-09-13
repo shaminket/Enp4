@@ -1,0 +1,462 @@
+/* ==========================================================
+   CUATREROS DEL 415 • DESKTOP COMMAND DECK (PANORÁMICO 100%)
+   Ecosistema Escritorio 100% Autónomo
+   ========================================================== */
+
+:root {
+  --unam-navy: #001628;
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #FCD866;
+  --accent-blue: #007AFF;
+  --accent-purple: #7C3AED;
+  --code-crimson: #FF3B30;
+  --code-amber: #FF9500;
+  --code-electric: #007AFF;
+  --bg-space: #010611;
+  --deck-panel: rgba(5, 15, 32, 0.88);
+  --deck-border: rgba(213, 159, 15, 0.35);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--bg-space);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 122, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(213, 159, 15, 0.04) 0%, transparent 60%);
+  color: var(--text-main);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================
+   TOP COMMAND BAR (PANORÁMICA 100%)
+   ========================================================== */
+.deck-topbar {
+  background: rgba(0, 15, 30, 0.95);
+  border-bottom: 1.5px solid var(--deck-border);
+  padding: 0.65rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.deck-identity {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.deck-identity img {
+  height: 48px;
+  width: auto;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+
+.deck-titles h1 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.deck-titles span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--unam-gold-bright);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Clúster Selector Bar (Atajos 1, 2, 3, 4, 0) */
+.cluster-shortcuts-bar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-stroke);
+  padding: 4px;
+  border-radius: 14px;
+  gap: 4px;
+}
+
+.cluster-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.45rem 1rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.cluster-btn kbd {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-family: monospace;
+}
+
+.cluster-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cluster-btn.active {
+  background: var(--accent-blue);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+}
+
+.deck-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.telemetry-time {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 900;
+  color: var(--unam-gold-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-cmd-auth {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   PANORAMIC COMMAND DECK GRID (100% MONITOR)
+   ========================================================== */
+.deck-main-layout {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr 340px;
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
+  overflow: hidden;
+  height: calc(100vh - 75px);
+}
+
+/* Columna Izquierda: Semáforo y Línea de Tareas */
+.deck-left-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+/* Columna Central: Horario de Intersección y Clústeres */
+.deck-center-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+/* Columna Derecha: Encardomy, Planisferio y Salones */
+.deck-right-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   CARDS & MANDO CONTAINERS
+   ========================================================== */
+.deck-panel-box {
+  background: var(--deck-panel);
+  border: 1.5px solid var(--glass-stroke);
+  border-radius: 22px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.deck-panel-box.glow-crimson { border-color: rgba(255, 59, 48, 0.45); }
+.deck-panel-box.glow-gold { border-color: rgba(213, 159, 15, 0.45); }
+.deck-panel-box.glow-blue { border-color: rgba(0, 122, 255, 0.45); }
+
+.box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  flex-shrink: 0;
+}
+
+.box-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.box-scrollable {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 4px;
+}
+
+/* ==========================================================
+   LÍNEAS DE TAREAS PARALELAS & SEMÁFORO 3D
+   ========================================================== */
+.urgency-highway-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 0.9rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+
+.urgency-highway-item:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.urgency-highway-item.border-crimson { border-left: 4px solid var(--code-crimson); }
+.urgency-highway-item.border-amber { border-left: 4px solid var(--code-amber); }
+.urgency-highway-item.border-electric { border-left: 4px solid var(--code-electric); }
+
+.highway-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.highway-subject-name {
+  font-size: 0.94rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.highway-badge {
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.highway-desc {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+/* ==========================================================
+   MATRIZ DE HORARIO CENTRAL & INTERSECCIÓN VISUAL
+   ========================================================== */
+.schedule-control-deck {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.day-strip-selector {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+  flex-shrink: 0;
+}
+
+.day-strip-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-stroke);
+  color: #94a3b8;
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day-strip-btn.active {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #1e40af 100%);
+  color: #ffffff;
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.35);
+}
+
+.classes-panoramic-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.classes-panoramic-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--glass-stroke);
+}
+
+.classes-panoramic-table td {
+  padding: 0.8rem;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.class-row-interactive {
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+
+.class-row-interactive:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.class-row-interactive.has-crimson {
+  background: rgba(255, 59, 48, 0.08);
+}
+
+.cluster-tag-pill {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.cluster-ciencias { background: rgba(52, 199, 89, 0.15); color: #86efac; border: 1px solid #34C759; }
+.cluster-humanidades { background: rgba(255, 149, 0, 0.15); color: #fcd34d; border: 1px solid var(--code-amber); }
+.cluster-idiomas { background: rgba(0, 122, 255, 0.15); color: #93c5fd; border: 1px solid var(--accent-blue); }
+.cluster-arte { background: rgba(124, 58, 237, 0.15); color: #d8b4fe; border: 1px solid var(--accent-purple); }
+
+/* ==========================================================
+   AUTH MODAL EN ESCRITORIO
+   ========================================================== */
+.desktop-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 8, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-modal-backdrop.active {
+  display: flex;
+}
+
+.desktop-modal-shell {
+  background: #051329;
+  border: 2px solid rgba(213, 159, 15, 0.45);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.85);
+  position: relative;
+}
+
+.modal-close-cross {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   ONBOARDING SPOTLIGHT ESCRITORIO
+   ========================================================== */
+.desktop-tour-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 8, 20, 0.9);
+  z-index: 600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-tour-overlay.active {
+  display: flex;
+}
+
+.tour-stage-box {
+  background: #001628;
+  border: 2px solid var(--unam-gold);
+  border-radius: 28px;
+  padding: 2.2rem 2.5rem;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+.tour-key-badge {
+  display: inline-block;
+  background: rgba(213, 159, 15, 0.2);
+  border: 1px solid var(--unam-gold);
+  color: var(--unam-gold-bright);
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cuatreros del 415 • Móvil Pasillo</title>
+  <meta name="description" content="Ecosistema móvil ultra-rápido del Grupo 0415, Prepa 4 UNAM. Flujo dinámico de historias, semáforo de urgencia y ubicador de salones.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+  <!-- 1. TOP BAR PERSISTENTE -->
+  <header class="mobile-top-bar">
+    <div class="brand-pill">
+      <img src="assets/escudo-unam-original.png" alt="UNAM">
+      <div class="brand-info">
+        <h1>Cuatreros 415</h1>
+        <span>Prepa 4 UNAM</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="live-time-chip" id="mobileLiveClock">--:--:--</div>
+      <button class="btn-auth-avatar" id="mobileAuthBtn" title="Cuenta / Iniciar Sesión">👤</button>
+    </div>
+  </header>
+
+  <!-- 2. RADAR DE PRÓXIMO EVENTO (LÍNEA DE TIEMPO VIVA) -->
+  <aside class="live-next-event-banner">
+    <div class="next-event-tag">
+      <div class="pulse-radar-dot"></div>
+      <div class="next-event-text" id="liveRadarText">
+        <strong>Calculando clase en vivo...</strong>
+        <span>Sincronizando horario 0415</span>
+      </div>
+    </div>
+    <div class="next-countdown-badge" id="liveCountdownBadge">En vivo</div>
+  </aside>
+
+  <!-- 3. STORIES / CARD DECK SWIPE VIEWPORT -->
+  <main class="stories-deck-viewport">
+    
+    <!-- Track deslizable horizontalmente -->
+    <div class="stories-track" id="storiesTrack">
+
+      <!-- STORY 1: 🔴 SEMÁFORO CARMESÍ (URGENCIA INMEDIATA <24H) -->
+      <section class="story-card-slide">
+        <div class="story-content-panel" style="border-color: rgba(255, 59, 48, 0.45); box-shadow: 0 16px 50px rgba(255, 59, 48, 0.2);">
+          <div class="stories-progress-bar-row">
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+          </div>
+
+          <div class="story-header">
+            <span class="story-badge badge-crimson">🔴 Urgencia Inmediata &bull; &lt;24h</span>
+            <span class="micro-tag" id="crimsonLiveCountdown">Calculando...</span>
+          </div>
+
+          <h2 class="story-title">Entregas Críticas del 415</h2>
+
+          <div class="story-body-scroll">
+            <!-- Historia Pendientes -->
+            <article class="item-card border-crimson">
+              <div class="item-card-title">
+                <span>📜 Historia Universal III</span>
+                <span class="micro-tag" style="background:#ff3b30; color:#fff;">Lunes 12:50 Límite</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Entrega estricta de cuadernos pendientes (máx 20 alumnos):</strong> El lunes 14 durante la hora de Orientación (12:00 a 12:50 puntual, salón B-110). Después de 12:50 NO se reciben cuadernos por disciplina institucional.
+              </p>
+              <div class="item-card-footer">
+                <span class="micro-tag">B-109 / B-117</span>
+                <a href="javascript:void(0)" onclick="goToStory(1)" class="btn-story-action">Ver Planisferio &rarr;</a>
+              </div>
+            </article>
+
+            <!-- Geografía 4 Noticias -->
+            <article class="item-card border-crimson">
+              <div class="item-card-title">
+                <span>🌍 Geografía</span>
+                <span class="micro-tag" style="background:#ff3b30; color:#fff;">Lunes 7:00 AM</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>4 Noticias en Equipo:</strong> 1 sola hoja dividida en 4 cuadrantes (Social, Económico, Político y Natural). Reglas: pluma negra, orden alfabético por apellidos, elige quien empiece más cercano a la A.
+              </p>
+              <div class="item-card-footer">
+                <span class="micro-tag">Salón A-104</span>
+                <span class="micro-tag" style="color:#fcd866;">Hoja membretada $50</span>
+              </div>
+            </article>
+
+            <!-- Orientación Tareas -->
+            <article class="item-card border-crimson">
+              <div class="item-card-title">
+                <span>🧭 Orientación IV (Sec. A)</span>
+                <span class="micro-tag" style="background:#ff3b30; color:#fff;">Lunes 12:00</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Materiales y 2 Tareas UNAM:</strong> Traer post-it, plumones para pintarrón y carpeta con hojas de raya. Tarea 1: 10 datos históricos UNAM/ENP. Tarea 2: 5 personajes universitarios (sin Gabino Barreda ni 155 años de Prepa 1).
+              </p>
+              <div class="item-card-footer">
+                <span class="micro-tag">Salón B-110</span>
+                <span class="micro-tag" style="color:#34C759;">Prompts IA Listos</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY 2: 🗺️ PLANISFERIO CON NOMBRES & PEDIDOS DIRECTOS -->
+      <section class="story-card-slide">
+        <div class="story-content-panel" style="border-color: rgba(0, 122, 255, 0.45); box-shadow: 0 16px 50px rgba(0, 122, 255, 0.2);">
+          <div class="stories-progress-bar-row">
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+          </div>
+
+          <div class="story-header">
+            <span class="story-badge badge-electric">🗺️ Recurso Oficial &bull; Historia</span>
+            <span class="micro-tag">Alta Resolución</span>
+          </div>
+
+          <h2 class="story-title">Planisferio con Nombres</h2>
+
+          <div class="story-body-scroll">
+            <div style="text-align: center; background: rgba(0,0,0,0.4); border-radius: 14px; padding: 0.5rem; border: 1px solid var(--border-glass);">
+              <img src="assets/planisferio-con-nombres.jpg" alt="Planisferio con nombres" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto;">
+              <span style="font-size: 0.72rem; color: #94a3b8; margin-top: 0.35rem; display: block;">136 Países y Territorios Numerados</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.6rem;">
+              <!-- Descargar -->
+              <button onclick="downloadPlanisferioDirect()" class="btn-story-action" style="justify-content: center; padding: 0.7rem; font-size: 0.88rem;">
+                📥 Descargar Imagen Automáticamente
+              </button>
+              
+              <!-- Yo te lo llevo -->
+              <div style="background: rgba(213, 159, 15, 0.12); border: 1.5px solid var(--unam-gold); border-radius: 14px; padding: 0.8rem; text-align: center;">
+                <strong style="color: var(--unam-gold-bright); font-size: 0.84rem; display: block; margin-bottom: 0.3rem;">🛵 ¿No puedes llevarlo? Yo te lo llevo</strong>
+                <p style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 0.6rem;">Te lo entrego impreso directamente en tu salón en Prepa 4:</p>
+                <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                  <button onclick="orderPlanisferio(1)" class="micro-tag" style="background: var(--accent-blue); color: #fff; border: none; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.78rem;">
+                    1 por $5 MXN
+                  </button>
+                  <button onclick="orderPlanisferio(3)" class="micro-tag" style="background: #34C759; color: #fff; border: none; padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.78rem;">
+                    3 por $10 MXN
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY 3: 🟡 SEMÁFORO ÁMBAR (TAREAS DE LA SEMANA) -->
+      <section class="story-card-slide">
+        <div class="story-content-panel" style="border-color: rgba(255, 149, 0, 0.45); box-shadow: 0 16px 50px rgba(255, 149, 0, 0.2);">
+          <div class="stories-progress-bar-row">
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+          </div>
+
+          <div class="story-header">
+            <span class="story-badge badge-amber">🟡 Entregas de la Semana</span>
+            <span class="micro-tag">Semana en Curso</span>
+          </div>
+
+          <h2 class="story-title">Tareas y Evaluaciones</h2>
+
+          <div class="story-body-scroll">
+            <!-- Educación Física -->
+            <article class="item-card border-amber">
+              <div class="item-card-title">
+                <span>🏃 Educación Física IV</span>
+                <span class="micro-tag">Viernes 11:10</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Tema: Componentes de la Actividad Física:</strong> Responder en cuaderno: 1) Definición de condición física, 2) Capacidades condicionales (Fuerza, Resistencia, Velocidad, Flexibilidad) y 3) Capacidades coordinativas (Equilibrio, ritmo, orientación).
+              </p>
+              <div class="item-card-footer">
+                <span class="micro-tag">Gimnasio 1 (GIM1)</span>
+                <span class="micro-tag" style="color:#fcd866;">Uniforme puntual</span>
+              </div>
+            </article>
+
+            <!-- Lógica -->
+            <article class="item-card border-amber">
+              <div class="item-card-title">
+                <span>🧠 Lógica</span>
+                <span class="micro-tag">B-108 / B-206</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>3 Tareas Activas:</strong> 1) Tipos de frases y oraciones, 2) Corrección de ejercicios de clase ($30 revisión / $70 corrección si está mal), y 3) Ejemplo de casos de Gettier en epistemología.
+              </p>
+            </article>
+
+            <!-- Dibujo II -->
+            <article class="item-card border-amber">
+              <div class="item-card-title">
+                <span>🎨 Dibujo II (Sec. A)</span>
+                <span class="micro-tag">Martes 8:40 &bull; B-008</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Láminas:</strong> 1) Paisaje con líneas (en impresión 2 o en el libro oficial) y 2) Corrección de lámina de puntillismo según observaciones de la profesora.
+              </p>
+            </article>
+
+            <!-- Informática -->
+            <article class="item-card border-amber">
+              <div class="item-card-title">
+                <span>💻 Informática</span>
+                <span class="micro-tag">I-108 / CC-2</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Exposiciones 1+3=1:</strong> Preparación de diapositivas por equipos. Rol oficial: Eq 1 y 2 (22 Sep), Eq 3 y 4 (29 Sep), Eq 5 y 6 (06 Oct), Eq 7 y 8 (13 Oct), Eq 9 (20 Oct).
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY 4: 🔵 AZUL ELÉCTRICO (LOGÍSTICA & TRASLADOS) -->
+      <section class="story-card-slide">
+        <div class="story-content-panel" style="border-color: rgba(0, 122, 255, 0.45); box-shadow: 0 16px 50px rgba(0, 122, 255, 0.2);">
+          <div class="stories-progress-bar-row">
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment"><div class="story-bar-fill"></div></div>
+          </div>
+
+          <div class="story-header">
+            <span class="story-badge badge-electric">🔵 Logística &bull; Salones</span>
+            <span class="micro-tag">Cambios de Aula</span>
+          </div>
+
+          <h2 class="story-title">Avisos Operativos</h2>
+
+          <div class="story-body-scroll">
+            <!-- Inglés Mediateca -->
+            <article class="item-card border-electric">
+              <div class="item-card-title">
+                <span>🇬🇧 Inglés IV (Sec. A)</span>
+                <span class="micro-tag" style="background:#007AFF; color:#fff;">Mediateca B-318</span>
+              </div>
+              <p class="item-card-desc">
+                <strong>Cambio de salón para el lunes:</strong> La clase de 9:30 AM es en la <strong>Mediateca (Salón B-318)</strong>, no en C-306. Asistir con audífonos. Tareas de examen anteriores archivadas.
+              </p>
+            </article>
+
+            <!-- Español Hojas pospuestas -->
+            <article class="item-card border-electric">
+              <div class="item-card-title">
+                <span>📖 Lengua Española</span>
+                <span class="micro-tag" style="color:#7C3AED;">Hojas Pospuestas</span>
+              </div>
+              <p class="item-card-desc">
+                ¿No conseguiste las hojas en La Gomita? ¡<span style="color:#A855F7; font-weight:900;">Tranquiii!!</span> Ya no son para el lunes, espera indicaciones de la profesora Vázquez en el aula. Buzón escolar de dudas habilitado.
+              </p>
+            </article>
+
+            <!-- Física Bata -->
+            <article class="item-card border-electric">
+              <div class="item-card-title">
+                <span>⚡ Física III (Lab)</span>
+                <span class="micro-tag">Viernes 12:50</span>
+              </div>
+              <p class="item-card-desc">
+                Práctica en <strong>Laboratorio A-302</strong> los viernes de 12:50 a 13:40. Uso estricto y obligatorio de bata blanca reglamentaria.
+              </p>
+            </article>
+
+            <!-- Prevención de Violencias -->
+            <article class="item-card border-electric">
+              <div class="item-card-title">
+                <span>🛡️ Prevención Violencias</span>
+                <span class="micro-tag">Clave 8000</span>
+              </div>
+              <p class="item-card-desc">
+                Materia curricular en Salones B-109 (Martes 12:00) y B-108 (Viernes 10:20). Cultura de paz, violentómetro y protocolos institucionales UNAM.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY 5: ⚡ ENCARDOMY EXPRESS -->
+      <section class="story-card-slide">
+        <div class="story-content-panel" style="border-color: rgba(213, 159, 15, 0.45); box-shadow: 0 16px 50px rgba(213, 159, 15, 0.2);">
+          <div class="stories-progress-bar-row">
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+            <div class="story-bar-segment active"><div class="story-bar-fill"></div></div>
+          </div>
+
+          <div class="story-header">
+            <span class="story-badge badge-gold">⚡ Encardomy By Shaminket</span>
+            <span class="micro-tag">Prepa 4 Tacubaya</span>
+          </div>
+
+          <h2 class="story-title">Copias, Tareas & Apoyo Express</h2>
+
+          <div class="story-body-scroll">
+            <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 0.8rem;">
+              ¿Te agarraron las prisas? Encardomy te respalda con impresiones, paquetes de hojas membretadas y revisión de ejercicios directamente en tu salón:
+            </p>
+
+            <article class="item-card" style="background: rgba(213, 159, 15, 0.08); border-color: rgba(213, 159, 15, 0.3);">
+              <strong style="color: var(--unam-gold-bright); font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">📋 Paquete Geografía ($50 MXN)</strong>
+              <span style="font-size: 0.82rem; color: #e2e8f0;">Diseño de tus hojas membretadas oficiales con tu nombre + 10 impresiones nítidas listas para entrega.</span>
+            </article>
+
+            <article class="item-card" style="background: rgba(0, 122, 255, 0.08); border-color: rgba(0, 122, 255, 0.3);">
+              <strong style="color: #60a5fa; font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">🗺️ Planisferio Historia ($5 o 3 por $10)</strong>
+              <span style="font-size: 0.82rem; color: #e2e8f0;">Planisferio con nombres numerado 1 a 136 llevado a tu aula antes de clase.</span>
+            </article>
+
+            <article class="item-card" style="background: rgba(124, 58, 237, 0.08); border-color: rgba(124, 58, 237, 0.3);">
+              <strong style="color: #c084fc; font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">🧠 Revisión de Lógica ($30 / $70)</strong>
+              <span style="font-size: 0.82rem; color: #e2e8f0;">Revisión de ejercicios de clase y corrección de falacias y formalización lógica.</span>
+            </article>
+
+            <div style="margin-top: 0.8rem; text-align: center;">
+              <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20apoyo%20con%20materiales/tareas%20del%20Grupo%200415" target="_blank" rel="noopener noreferrer" class="btn-story-action" style="padding: 0.85rem 1.6rem; font-size: 0.95rem; justify-content: center; width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);">
+                💬 Contactar por WhatsApp (+52 55 7198 5641)
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 4. DOCK GESTUAL INFERIOR (SWIPE UP SALONES) -->
+  <nav class="gesture-dock-bar" id="gestureDockTrigger">
+    <div class="dock-drag-handle"></div>
+    <div class="dock-content-label">
+      <span>▲ Deslizar para Ubicador de Salones Tacubaya</span>
+    </div>
+  </nav>
+
+  <!-- 5. DRAWER GESTUAL (MAPA DE SALONES PREPA 4) -->
+  <div class="rooms-drawer-overlay" id="roomsDrawerOverlay">
+    <div class="rooms-drawer-body">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Salones Grupo 0415 • Prepa 4</h3>
+        <button class="btn-close-drawer" id="btnCloseDrawer">&times;</button>
+      </div>
+
+      <div class="campus-grid">
+        <!-- Edificio A -->
+        <div class="building-block">
+          <div class="building-header">🏛️ Edificio A (Planta Baja y 3er Piso)</div>
+          <div class="rooms-pills-row">
+            <span class="room-pill-chip">A-104: Geografía</span>
+            <span class="room-pill-chip">Lab A-302: Física III</span>
+          </div>
+        </div>
+
+        <!-- Edificio B -->
+        <div class="building-block">
+          <div class="building-header">🏫 Edificio B (Plantas 1, 2 y 3)</div>
+          <div class="rooms-pills-row">
+            <span class="room-pill-chip">B-008: Dibujo II Sec. A</span>
+            <span class="room-pill-chip">B-108: Lógica / Género</span>
+            <span class="room-pill-chip">B-109: Historia / Física / Género</span>
+            <span class="room-pill-chip">B-110: Orientación A / Español</span>
+            <span class="room-pill-chip">B-112: Matemáticas / Español / Orientación B</span>
+            <span class="room-pill-chip">B-115: Física III</span>
+            <span class="room-pill-chip">B-116: Física III</span>
+            <span class="room-pill-chip">B-117: Historia / Matemáticas</span>
+            <span class="room-pill-chip">B-206: Lógica</span>
+            <span class="room-pill-chip" style="border-color:#ef4444; color:#fca5a5;">B-318: Mediateca Inglés A</span>
+          </div>
+        </div>
+
+        <!-- Edificio C -->
+        <div class="building-block">
+          <div class="building-header">🏢 Edificio C (2do y 3er Piso)</div>
+          <div class="rooms-pills-row">
+            <span class="room-pill-chip">C-201: Dibujo II Sec. B</span>
+            <span class="room-pill-chip">C-205: Inglés IV Sec. B</span>
+            <span class="room-pill-chip">C-306: Inglés IV Sec. A</span>
+          </div>
+        </div>
+
+        <!-- Gimnasio & Cómputo -->
+        <div class="building-block">
+          <div class="building-header">🏃 Deportes y Cómputo</div>
+          <div class="rooms-pills-row">
+            <span class="room-pill-chip">GIM1: Educación Física</span>
+            <span class="room-pill-chip">I-108: Informática</span>
+            <span class="room-pill-chip">CC-2: Laboratorio Cómputo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. MODAL DE AUTENTICACIÓN CORPORATIVA (MÓDULO SEGURO) -->
+  <div class="auth-modal-overlay" id="authModalOverlay">
+    <div class="auth-modal-card">
+      <button class="auth-close-btn" id="btnAuthClose">&times;</button>
+      
+      <!-- Paso: Login -->
+      <div id="authView_login" class="auth-step-pane">
+        <h3 style="font-size: 1.3rem; font-weight:900; color:#fff; margin-bottom: 0.4rem;">Acceso Cuatrero</h3>
+        <p style="font-size: 0.82rem; color:#94a3b8; margin-bottom: 1.2rem;">Inicia sesión con tu cuenta UNAM o correo registrado.</p>
+        
+        <!-- Botón oficial Google Identity (Branding Guidelines) -->
+        <button onclick="simulateGoogleLogin()" class="google-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Continuar con Google UNAM
+        </button>
+
+        <div class="divider-or">O INGRESA CON CORREO</div>
+
+        <form onsubmit="handleEmailLogin(event)">
+          <input type="email" id="authEmailInput" class="auth-form-input" placeholder="correo@comunidad.unam.mx" required>
+          <input type="password" id="authPassInput" class="auth-form-input" placeholder="Contraseña segura" required>
+          <button type="submit" class="btn-primary-auth">Entrar a la Plataforma</button>
+        </form>
+
+        <div class="auth-switch-links">
+          <p><a href="javascript:void(0)" onclick="switchAuthView('recovery')">¿Olvidaste tu contraseña?</a></p>
+          <p style="margin-top: 0.5rem;">¿No tienes cuenta? <a href="javascript:void(0)" onclick="switchAuthView('register')">Regístrate aquí</a></p>
+        </div>
+      </div>
+
+      <!-- Paso: Registro -->
+      <div id="authView_register" class="auth-step-pane" style="display:none;">
+        <h3 style="font-size: 1.3rem; font-weight:900; color:#fff; margin-bottom: 0.4rem;">Registro de Alumno</h3>
+        <p style="font-size: 0.82rem; color:#94a3b8; margin-bottom: 1rem;">Ingresa tus datos institucionales para darte de alta en el 0415.</p>
+        <form onsubmit="handleRegisterSubmit(event)">
+          <input type="text" class="auth-form-input" placeholder="Nombre completo" required>
+          <input type="email" id="regEmailInput" class="auth-form-input" placeholder="tu_correo@unam.mx" required>
+          <input type="password" class="auth-form-input" placeholder="Crea tu contraseña" required>
+          <button type="submit" class="btn-primary-auth">Solicitar Token de Verificación</button>
+        </form>
+        <div class="auth-switch-links">
+          <p><a href="javascript:void(0)" onclick="switchAuthView('login')">&larr; Volver al inicio de sesión</a></p>
+        </div>
+      </div>
+
+      <!-- Paso: Token -->
+      <div id="authView_token" class="auth-step-pane" style="display:none;">
+        <h3 style="font-size: 1.3rem; font-weight:900; color:#fff; margin-bottom: 0.4rem;">Validar Token</h3>
+        <p style="font-size: 0.82rem; color:#94a3b8; margin-bottom: 1rem;">Ingresa el código de 6 dígitos que enviamos a tu correo.</p>
+        <form onsubmit="handleTokenSubmit(event)">
+          <input type="text" class="auth-form-input" placeholder="Ej. 415892" maxlength="6" style="text-align:center; letter-spacing:4px; font-size:1.2rem; font-weight:900;" required>
+          <button type="submit" class="btn-primary-auth">Confirmar y Activar Cuenta</button>
+        </form>
+        <div class="auth-switch-links">
+          <p><a href="javascript:void(0)" onclick="switchAuthView('login')">Cancelar</a></p>
+        </div>
+      </div>
+
+      <!-- Paso: Recuperación -->
+      <div id="authView_recovery" class="auth-step-pane" style="display:none;">
+        <h3 style="font-size: 1.3rem; font-weight:900; color:#fff; margin-bottom: 0.4rem;">Restablecer Contraseña</h3>
+        <p style="font-size: 0.82rem; color:#94a3b8; margin-bottom: 1rem;">Te enviaremos un enlace seguro para generar una nueva clave.</p>
+        <form onsubmit="handleRecoverySubmit(event)">
+          <input type="email" class="auth-form-input" placeholder="correo_registrado@unam.mx" required>
+          <button type="submit" class="btn-primary-auth">Enviar Instrucciones</button>
+        </form>
+        <div class="auth-switch-links">
+          <p><a href="javascript:void(0)" onclick="switchAuthView('login')">&larr; Volver al inicio de sesión</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 7. ONBOARDING SPOTLIGHT TOUR -->
+  <div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="onboarding-pop-card">
+      <div class="onboarding-step-count" id="tourStepBadge">Paso 1 de 4</div>
+      <h3 class="onboarding-title" id="tourStepTitle">Bienvenido a Cuatreros 415</h3>
+      <p class="onboarding-desc" id="tourStepDesc">
+        El ecosistema celular diseñado en formato de historias para que consultes tus salones y tareas en segundos sin scroll eterno.
+      </p>
+      <div class="onboarding-nav-row">
+        <button onclick="closeTourModal()" class="btn-skip-tour">Omitir Tour</button>
+        <button onclick="nextTourStep()" class="btn-next-tour" id="btnTourNext">Siguiente &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+/* ==========================================================
+   CUATREROS DEL 415 • TABLET BENTO GRID (ALTA PRODUCTIVIDAD)
+   Ecosistema Tableta 100% Autónomo
+   ========================================================== */
+
+:root {
+  --unam-navy: #001628;
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #FCD866;
+  --accent-blue: #007AFF;
+  --accent-purple: #7C3AED;
+  --code-crimson: #FF3B30;
+  --code-amber: #FF9500;
+  --code-electric: #007AFF;
+  --bg-dark: #020712;
+  --card-dark: #081226;
+  --card-glass: rgba(8, 18, 38, 0.85);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================
+   HEADER SUPERIOR ESTILO IPAD OS
+   ========================================================== */
+.tablet-header {
+  background: rgba(0, 22, 40, 0.92);
+  border-bottom: 1.5px solid rgba(213, 159, 15, 0.35);
+  padding: 0.8rem 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-wrapper img {
+  height: 42px;
+  width: auto;
+}
+
+.brand-title h1 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.brand-title span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--unam-gold-bright);
+  text-transform: uppercase;
+}
+
+.tablet-segmented-days {
+  display: flex;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px;
+  border-radius: 12px;
+  gap: 2px;
+}
+
+.day-tab-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day-tab-btn.active {
+  background: var(--accent-blue);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.4);
+}
+
+.tablet-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.tablet-live-clock {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--unam-gold-bright);
+}
+
+.btn-tablet-auth {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.45rem 1rem;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   BENTO GRID ASIMÉTRICO JAPONÉS
+   ========================================================== */
+.bento-master-container {
+  max-width: 1180px;
+  margin: 1.2rem auto 2.5rem;
+  padding: 0 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.bento-tile {
+  background: var(--card-glass);
+  border: 1.5px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 1.4rem;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.bento-tile:hover {
+  border-color: rgba(213, 159, 15, 0.45);
+}
+
+.bento-tile.col-span-2 { grid-column: span 2; }
+.bento-tile.col-span-4 { grid-column: span 4; }
+.bento-tile.row-span-2 { grid-row: span 2; }
+
+.tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.tile-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tag-crimson { background: rgba(255, 59, 48, 0.2); color: #ff6961; border: 1px solid var(--code-crimson); }
+.tag-amber { background: rgba(255, 149, 0, 0.2); color: #ffb340; border: 1px solid var(--code-amber); }
+.tag-electric { background: rgba(0, 122, 255, 0.2); color: #60a5fa; border: 1px solid var(--code-electric); }
+.tag-gold { background: rgba(213, 159, 15, 0.2); color: var(--unam-gold-bright); border: 1px solid var(--unam-gold); }
+
+.tile-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  margin-bottom: 0.4rem;
+}
+
+.tile-body-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-right: 4px;
+}
+
+/* ==========================================================
+   FLIP CARD MODULAR IN-PLACE (SIN RECARGAR PÁGINA)
+   ========================================================== */
+.flip-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.flip-card-wrapper {
+  perspective: 1000px;
+  min-height: 155px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-card-front {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.flip-card-front.has-hw {
+  border-left: 5px solid var(--code-crimson);
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.08) 0%, rgba(10, 20, 40, 0.6) 100%);
+}
+
+.flip-card-back {
+  background: #002B7A;
+  border: 1.5px solid var(--unam-gold);
+  transform: rotateY(180deg);
+  color: #ffffff;
+}
+
+.flip-hint-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--unam-gold-bright);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================
+   SPLIT-VIEW PRODUCTIVITY DECK (ESTUDIO + MAPA SIMULTÁNEO)
+   ========================================================== */
+.split-view-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  flex-grow: 1;
+  min-height: 280px;
+}
+
+.split-panel {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.split-panel-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--unam-gold-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.4rem;
+}
+
+/* Map items */
+.room-locator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.room-locator-item {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================================
+   AUTH MODAL & ONBOARDING EN TABLETA
+   ========================================================== */
+.tablet-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 8, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.tablet-modal-overlay.active {
+  display: flex;
+}
+
+.tablet-modal-card {
+  background: #051329;
+  border: 2px solid rgba(213, 159, 15, 0.4);
+  border-radius: 28px;
+  padding: 2.2rem 1.8rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+.btn-modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.google-auth-btn {
+  width: 100%;
+  background: #ffffff;
+  color: #1f1f1f;
+  border: 1px solid #747775;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.92rem;
+  margin-bottom: 0.85rem;
+  outline: none;
+}
+
+.auth-form-input:focus {
+  border-color: var(--accent-blue);
+}
+
+.btn-primary-auth {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #1e40af 100%);
+  color: #ffffff;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.96rem;
+  font-weight: 800;
+  cursor: pointer;
+}

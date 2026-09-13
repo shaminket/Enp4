@@ -2,960 +2,184 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grupo 0415 Prepa 4 UNAM | shaminket</title>
-  <meta name="description" content="Consulta el horario en vivo, salones, avisos y tareas del grupo 415 en la Prepa 4 UNAM. La plataforma escolar creada en shaminket para salvar tu semestre.">
-  <link rel="canonical" href="https://shaminket.com/">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, horario prepa 4, tareas prepa 4, enp 4, salones tacubaya">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Grupo 0415 Prepa 4 UNAM | shaminket">
-  <meta property="og:description" content="Consulta el horario en vivo, salones, avisos y tareas del grupo 415 en la Prepa 4 UNAM. La plataforma escolar creada en shaminket para salvar tu semestre.">
-  <meta property="og:url" content="https://shaminket.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
-  
-  <link rel="stylesheet" href="css/styles.css">
-    
-    <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cuatreros del 415 • Prepa 4 UNAM | Ecosistema Digital</title>
+  <meta name="description" content="Portal oficial ultra-disruptivo del Grupo 0415, Escuela Nacional Preparatoria Plantel 4 'Vidal Castañeda y Nájera' UNAM. Horarios en vivo, tareas, avisos y Encardomy.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; }
+    body {
+      background: radial-gradient(ellipse at center, #001628 0%, #000a14 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
     }
-    function checkResponsiveLayout() {
-      if (window.location.search.includes("force=desktop")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("index-movil"));
-      }
+    .dispatch-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(213, 159, 15, 0.4);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.6), 0 0 40px rgba(0, 122, 255, 0.2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      animation: pulseGlow 3s infinite alternate ease-in-out;
     }
-    checkResponsiveLayout();
-    window.addEventListener("resize", checkResponsiveLayout);
-  </script>
-  <!-- GOOGLE IDENTITY SERVICES (GIS / OAUTH 2.0) OFICIAL -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+    @keyframes pulseGlow {
+      from { border-color: rgba(213, 159, 15, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+      to { border-color: rgba(0, 122, 255, 0.6); box-shadow: 0 25px 70px rgba(0, 122, 255, 0.35); }
+    }
+    .crest-cluster {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .crest-cluster img {
+      height: 64px;
+      width: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 40%, #fcd866 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.sub {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    .spinner-ring {
+      width: 48px;
+      height: 48px;
+      border: 3.5px solid rgba(255, 255, 255, 0.1);
+      border-top-color: #fcd866;
+      border-right-color: #007AFF;
+      border-radius: 50%;
+      animation: spin 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+      margin: 0 auto 1.8rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(0, 122, 255, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      margin-bottom: 2rem;
+    }
+    .manual-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+    }
+    .manual-links span {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 0.3rem;
+    }
+    .btn-row {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-dev {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #cbd5e1;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-dev:hover {
+      background: #007AFF;
+      color: #ffffff;
+      border-color: #007AFF;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
-        <!-- BANNER AZUL REY DE AVISO (10 SEGUNDOS CON BOTÓN DE PAUSA) -->
-  <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-blue" style="max-height: 88vh; overflow-y: auto;">
-      <div class="announcement-badge-pill" style="background: rgba(255,255,255,0.2) !important; border-color: #ffffff !important;">
-        <span>✨ AVISOS & TAREAS OFICIALES &bull; GRUPO 0415</span>
-      </div>
-      <h2 class="announcement-title-big" style="color: #ffffff !important;">
-        Nuevas Actualizaciones y Tareas del 415
-      </h2>
-      <p class="announcement-desc-text" style="font-weight: 700; color: #fef08a; margin-bottom: 1rem;">
-        Revisa las tareas vigentes y los avisos urgentes actualizados:
-      </p>
-
-      <!-- Lista de tareas y avisos -->
-      <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-align: left; font-size: 0.88rem; line-height: 1.55; display: flex; flex-direction: column; gap: 0.65rem; color: #ffffff;">
-        <div>🏃 <strong>Educación Física:</strong> NUEVA TAREA: <em>¿Qué es la condición física?</em> (Componentes de la actividad física).</div>
-        <div>📜 <strong>Historia:</strong> AVISO URGENTE: Cuadernos pendientes se entregan el lunes 14 a las 12:00 en Orientación. ¡Y no olvides tu planisferio con nombres! ¿Lo quieres listo para imprimir? <a href="materias/historia#regalos" onclick="sessionStorage.setItem('openTab_historia', 'regalos')" style="color: #fef08a; font-weight: 900; text-decoration: underline;">Consulta la sección de regalos de Historia &rarr;</a></div>
-        <div>🇬🇧 <strong>Inglés A:</strong> Asistencia el lunes en <strong>Mediateca Salón B-318</strong>. Tareas anteriores archivadas.</div>
-        <div>📖 <strong>Español:</strong> ¿No conseguiste las hojas en La Gomita? ¡Tranquiii!! Ya no son para el lunes, espera indicaciones de la profesora.</div>
-        <div>💻 <strong>Informática:</strong> Rol oficial de fechas para los 9 equipos y metodología 1+3=1.</div>
-        <div>🌍 <strong>Geografía:</strong> 4 noticias en una sola hoja en 4 cuadrantes para el lunes temprano.</div>
-        <div>🧠 <strong>Lógica:</strong> 3 tareas (tipos de frases, corrección de clase y casos de Gettier).</div>
-        <div>🎨 <strong>Dibujo A:</strong> Paisaje con líneas en impresión 2 o libro, y corrección de puntillismo.</div>
-        <div>🧭 <strong>Orientación A:</strong> Traer post-it, plumones y carpeta de raya; tareas históricas UNAM con Prompts IA listos.</div>
-      </div>
-
-      <!-- Temporizador con botón de pausa -->
-      <div class="announcement-timer-box" style="margin-top: 1.2rem;">
-        <div class="announcement-time-num" id="announcementTimeNum">10.0s</div>
-        <div class="announcement-progress-track">
-          <div class="announcement-progress-fill" id="announcementProgressFill" style="background: #fcd866 !important;"></div>
-        </div>
-      </div>
-
-      <div style="margin-top: 1.2rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
-        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #1e3a8a !important; border-color: #ffffff !important; padding: 0.65rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none;">
-          <span>Ir al Centro de Control &rarr;</span>
-        </a>
-        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.25); color: #fcd866; font-weight: 800; cursor: pointer;">
-          ⏸️ Pausar
-        </button>
-        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.3);">
-          Omitir aviso
-        </button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
+  <div class="dispatch-card">
+    <div class="crest-cluster">
+      <img src="assets/escudo-unam-original.png" alt="UNAM">
+      <img src="assets/logo-enp4.svg" alt="ENP 4">
     </div>
-  </div>
-
-<!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
-  <div class="sticky-top-group">
-    <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-        <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-      <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
-      
-    </div>
-
+    <h1>Cuatreros del 415</h1>
+    <p class="sub">Iniciando ecosistema ultra-disruptivo adaptado a tu dispositivo...</p>
     
+    <div class="spinner-ring"></div>
+    <div class="status-badge" id="dispatchStatus">Calibrando pantalla...</div>
 
-    <!-- BARRA DE NAVEGACIÓN ULTRA-GLASS -->
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="./" class="nav-brand">
-          <img src="assets/escudo-unam-original.png" alt="Escudo Oficial UNAM" class="unam-header-crest" style="width: 52px; height: 60px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); flex-shrink: 0;">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.7rem;">
-              <span>Cuatreros</span> del 415
-              <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="width: 28px; height: 28px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-            </div>
-            <div class="brand-subline">Universidad Nacional Autónoma de México &bull; ENP 4</div>
-          </div>
-        </a>
-
-        <nav class="nav-links-menu">
-          <a href="centro-control" class="nav-link-item">Materias</a>
-          <a href="#horario" class="nav-link-item">Horario</a>
-          <a href="artisticas" class="nav-link-item">Artísticas</a>
-          <a href="ayuda" class="nav-link-item">Ayuda &bull; Guía</a>
-          <!-- Botón a Shaminket (Morado) -->
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">
-            Conoce Shaminket
-          </a>
-                  <!-- CONTENEDOR OFICIAL GOOGLE SIGN-IN & PERFIL DE USUARIO (GIS) -->
-          <div id="authNavContainer" class="google-auth-nav-cluster">
-            <div id="g_id_signin" class="google-signin-btn-box"></div>
-            <div id="googleUserProfileBar" class="google-user-profile-bar" style="display: none;"></div>
-          </div>
-        </nav>
-      </div>
-    </header>
-  </div>
-
-  <!-- HERO CINEÁTICO -->
-  <section class="hero-cinematic">
-    <div class="ambient-glow-1"></div>
-    <div class="hero-content">
-      <!-- ESCAPARATE INSTITUCIONAL OFICIAL UNAM Y ENP 4 (ALTA VISIBILIDAD) -->
-      <div class="hero-emblems-floating-stage">
-        <!-- Escudo Oficial UNAM Auténtico Transparente -->
-        <img src="assets/escudo-unam-original.png" alt="Escudo Oficial UNAM" style="height: 115px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
-        
-        <!-- ENP4unam en Letras Grandes Oficiales -->
-        <img src="assets/enp4-unam-wordmark.svg" alt="ENP4 unam" style="height: 95px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
-        
-        <!-- Logotipo Oficial ENP 4 Tacubaya Transparente -->
-        <img src="assets/logo-enp4.svg" alt="Logotipo Oficial ENP 4" style="height: 105px; width: auto; filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));">
-      </div>
-      <h1 class="hero-heading">Cuatreros del 415</h1>
-      <p class="hero-description">
-        El espacio creado por y para la comunidad del 415 en la Prepa 4. Tu punto de apoyo para checar tu horario al día, resolver cualquier duda y respaldarte con tus tareas y copias al instante con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket. Cualquier bronca que tengas en el semestre, aquí estamos para hacer equipo.
-      </p>
-      <div class="hero-btn-row">
-        <!-- Botón a Shaminket (Morado) -->
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
-          <span>Conoce Shaminket</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <!-- Botón a Encardomy (Azul Eléctrico Oficial) -->
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 1rem 2.2rem; font-size: 1.05rem;">
-          <span>Pedir Tareas y Copias</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENEDOR MAESTRO -->
-  <main class="master-container">
-
-    <!-- ACCESO DESTACADO AL CENTRO DE CONTROL ACADÉMICO (MATERIAS Y TAREAS) -->
-    <section style="background: #ffffff; border: 2px solid var(--unam-blue); border-radius: 24px; padding: 1.6rem 2.2rem; color: var(--text-main); margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; box-shadow: var(--shadow-md);">
-      <div style="display: flex; align-items: center; gap: 1.2rem;">
-        <span style="font-size: 2.2rem; background: rgba(0, 43, 122, 0.08); width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--unam-blue);">📚</span>
-        <div>
-          <span style="background: var(--unam-gold); color: #001628; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 6px;">Portal Académico &bull; Todas las materias</span>
-          <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 0.25rem; color: var(--unam-blue); letter-spacing: -0.3px;">Centro de Control de Materias del 415</h2>
-          <p style="color: #475569; font-size: 0.94rem; margin-top: 0.15rem;">Consulta avisos, resúmenes, programas oficiales y tareas de Español, Matemáticas, Física y las 12 asignaturas.</p>
-        </div>
-      </div>
-      <a href="centro-control" class="btn-encardomy" style="background: var(--unam-blue) !important; border-color: var(--unam-blue) !important; padding: 0.8rem 1.6rem; font-size: 0.92rem; white-space: nowrap;">
-        <span>Explorar Centro de Control &rarr;</span>
-      </a>
-    </section>
-
-
-    <!-- BANNER PUBLICITARIO ENCARDOMY (EXCLUSIVO PARA TAREAS Y COPIAS) -->
-    <section class="promo-apple-card">
-      <div class="promo-text-wrap">
-        <div class="promo-badge-tag">⚡ Servicio de Tareas y Copias &bull; Encardomy</div>
-        <h2 class="promo-card-title">¡Te ayudamos con tus tareas! Sacamos tus copias e impresiones</h2>
-        <p class="promo-card-desc">
-          ¿Entrega urgente a primera hora? En <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy">Encardomy</a> By Shaminket te respaldamos con copias de alta fidelidad, preparación de trabajos y servicio prioritario para el Grupo 415.
-        </p>
-        <div class="promo-features-grid">
-          <span class="promo-feature-pill">📄 Copias e Impresiones HD</span>
-          <span class="promo-feature-pill">✍️ Apoyo en Tareas y Reportes</span>
-          <span class="promo-feature-pill">⚡ Entrega Inmediata en Prepa 4</span>
-        </div>
-      </div>
-      <div class="promo-action-wrap">
-        <!-- Botón Encardomy Azul Eléctrico -->
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 1.15rem 2.4rem; font-size: 1.12rem;">
-          <span>Pedir con Encardomy</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- HORARIO DIGITALIZADO GRUPO 0415 (ESCRITORIO) -->
-    <section id="horario" class="schedule-master-card">
-      <!-- Barra de ventana con los 3 botones interactivos -->
-      <div class="window-titlebar">
-        <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir al inicio"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-        </div>
-        <span class="win-titlebar-text">Horario de Clases &bull; Grupo 0415 &bull; ENP 4 Vidal Castañeda y Nájera</span>
-      </div>
-
-      <div class="schedule-card-body">
-                
-
-        <div class="schedule-header-box">
-        <div class="schedule-title-area">
-          <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-            <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 78px; width: auto; filter: drop-shadow(0 4px 10px rgba(0,43,73,0.15));">
-            <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 72px; width: auto; filter: drop-shadow(0 4px 10px rgba(0,43,73,0.15));">
-            <div>
-              <span style="font-size: 0.8rem; font-weight: 800; color: #D59F0F; text-transform: uppercase; letter-spacing: 1px;">Escuela Nacional Preparatoria &bull; UNAM</span>
-              <h2 style="margin: 0.2rem 0; line-height: 1.1; font-size: 2.1rem; color: #002B7A;">Horario de Clases &bull; Grupo 0415</h2>
-              <p style="color: var(--apple-text-sec); font-size: 0.95rem; margin: 0;">Plantel 4 "Vidal Castañeda y Nájera" &bull; Ciclo Escolar 2026 - 2027</p>
-            </div>
-          </div>
-        </div>
-        <span class="badge-prepa4">Plantel 4 Tacubaya</span>
-      </div>
-
-      <!-- Consola de Filtros -->
-      <div class="filters-console">
-        <!-- BARRA DE SELECCIÓN DE VISTA EN MAC: SEMANA O MES -->
-        <div class="filter-line" style="background: #f1f5f9; padding: 0.8rem 1.2rem; border-radius: 16px; margin-bottom: 1.2rem;">
-          <span class="filter-tag-title">Modo Calendario:</span>
-          <div class="filter-pills-row">
-            <button id="btnViewWeek" class="f-pill-btn active" onclick="setCalendarView('week')">📅 Vista Semana (Horario)</button>
-            <button id="btnViewMonth" class="f-pill-btn" onclick="setCalendarView('month')">🗓️ Vista Mes (Calendario Escolar)</button>
-          </div>
-          <span style="font-size: 0.82rem; color: #1d4ed8; font-weight: 800; margin-left: auto;">
-            🟦 Azul Rey = Asignaturas con Tarea Activa
-          </span>
-        </div>
-
-        <div class="filter-line">
-          <span class="filter-tag-title">Sección:</span>
-          <div class="filter-pills-row">
-            <button class="f-pill-btn active" onclick="filterBySection('all', this)">Todas</button>
-            <button class="f-pill-btn" onclick="filterBySection('A', this)">Sección A</button>
-            <button class="f-pill-btn" onclick="filterBySection('B', this)">Sección B</button>
-          </div>
-        </div>
-
-        <div class="filter-line">
-          <span class="filter-tag-title">Materia:</span>
-          <select id="materiaFilterSelect" class="select-subject-styled" onchange="filterAll()">
-            <option value="all">Todas las asignaturas</option>
-            <option value="Lengua Española">Lengua Española (Profra. Vázquez)</option>
-            <option value="Matemáticas IV">Matemáticas IV (Prof. Quintana)</option>
-            <option value="Física III">Física III (Profra. Reyna)</option>
-            <option value="Geografía">Geografía</option>
-            <option value="Lengua extranjera Inglés IV">Lengua extranjera Inglés IV</option>
-            <option value="Lógica">Lógica</option>
-            <option value="Dibujo II">Dibujo II</option>
-            <option value="Historia Universal III">Historia Universal III</option>
-            <option value="Informática">Informática</option>
-            <option value="Orientación Educativa IV">Orientación Educativa IV</option>
-            <option value="Género y Prevención de las Violencias">Género y Prevención de Violencias</option>
-            <option value="Educación Física IV">Educación Física IV</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- CONTENEDOR DE VISTA MENSUAL (CALENDARIO AGOSTO 2026 - ABRIL 2027) -->
-      <div id="calendarMonthViewContainer" class="calendar-month-view"></div>
-
-      <!-- CONTENEDOR DE LA TABLA SEMANAL -->
-      <div id="mainTimetableContainer" class="table-viewport">
-        <table class="timetable-grid" id="mainTimetable">
-          <thead>
-            <tr>
-              <th class="th-time">Hora</th>
-              <th>Lunes 14</th>
-              <th>Martes 15</th>
-              <th>Miércoles 16</th>
-              <th>Jueves 17</th>
-              <th>Viernes 18</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- 7:00 - 7:50 -->
-            <tr>
-              <td class="time-cell">7:00 - 7:50</td>
-              <td>
-                <a href="materias/geografia" class="class-item class-item-link has-homework" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía <span class="homework-tag-badge">📝 Tarea 4 Noticias</span></div>
-                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-prof-name">Prof. Saúl Quintana</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/geografia" class="class-item class-item-link has-homework" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía <span class="homework-tag-badge">📝 Tarea</span></div>
-                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-prof-name">Prof. Saúl Quintana</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/dibujo-b" class="class-item class-item-link" data-subj="Dibujo II" data-sec="B">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-prof-name">Taller Sec. B</div>
-                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 7:50 - 8:40 -->
-            <tr>
-              <td class="time-cell">7:50 - 8:40</td>
-              <td>
-                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
-                  <div class="class-details"><span class="class-room-badge">B-116</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-prof-name">Prof. Saúl Quintana</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/logica" class="class-item class-item-link has-homework" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica <span class="homework-tag-badge">📝 3 Tareas</span></div>
-                  <div class="class-prof-name">Colegio de Filosofía</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-prof-name">Prof. Saúl Quintana</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/historia" class="class-item class-item-link has-homework" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III <span class="homework-tag-badge">🗺️ Planisferio</span></div>
-                  <div class="class-prof-name">Colegio de Historia</div>
-                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 8:40 - 9:30 -->
-            <tr>
-              <td class="time-cell">8:40 - 9:30</td>
-              <td>
-                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/dibujo-a" class="class-item class-item-link has-homework" data-subj="Dibujo II" data-sec="A">
-                  <div class="class-name">Dibujo II <span class="homework-tag-badge">🎨 Paisaje Líneas</span></div>
-                  <div class="class-prof-name">Taller Sec. A</div>
-                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/logica" class="class-item class-item-link" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica</div>
-                  <div class="class-prof-name">Colegio de Filosofía</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/espanol" class="class-item class-item-link has-homework" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española <span class="homework-tag-badge">🔔 Hojas pospuestas</span></div>
-                  <div class="class-prof-name">Profra. María Vázquez</div>
-                  <div class="class-details"><span class="class-room-badge">B-110</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/matematicas" class="class-item class-item-link" data-subj="Matemáticas IV" data-sec="both">
-                  <div class="class-name">Matemáticas IV</div>
-                  <div class="class-prof-name">Prof. Saúl Quintana</div>
-                  <div class="class-details"><span class="class-room-badge">B-117</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 9:30 - 10:20 -->
-            <tr>
-              <td class="time-cell">9:30 - 10:20</td>
-              <td>
-                <!-- INGLÉS SEC. A: LUNES EN MEDIATECA B-318 -->
-                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A" style="border: 2px solid #ef4444 !important;">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. A (Profra. Idiomas)</div>
-                  <div class="class-details">
-                    <span class="class-room-badge" style="background:#fee2e2; color:#b91c1c; font-weight:900;">B-318</span>
-                    <span class="sec-tag sec-a-badge">Sec. A</span>
-                  </div>
-                  <span class="mediateca-alert-badge">📍 En Mediateca B-318</span>
-                </a>
-                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. B (Profra. Idiomas)</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/informatica" class="class-item class-item-link has-homework" data-subj="Informática" data-sec="both">
-                  <div class="class-name">Informática <span class="homework-tag-badge">💻 Exposiciones</span></div>
-                  <div class="class-prof-name">Taller I-108</div>
-                  <div class="class-details"><span class="class-room-badge">I-108</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. A</div>
-                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </a>
-                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. B</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/geografia" class="class-item class-item-link has-homework" data-subj="Geografía" data-sec="both">
-                  <div class="class-name">Geografía <span class="homework-tag-badge">📝 Tarea</span></div>
-                  <div class="class-prof-name">Profra. Silvia Mendoza</div>
-                  <div class="class-details"><span class="class-room-badge">A-104</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/ingles-a" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="A">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. A</div>
-                  <div class="class-details"><span class="class-room-badge">C-306</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </a>
-                <a href="materias/ingles-b" class="class-item class-item-link" data-subj="Lengua extranjera Inglés IV" data-sec="B">
-                  <div class="class-name">Inglés IV</div>
-                  <div class="class-prof-name">Sec. B</div>
-                  <div class="class-details"><span class="class-room-badge">C-205</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 10:20 - 11:10 -->
-            <tr>
-              <td class="time-cell">10:20 - 11:10</td>
-              <td>
-                <a href="materias/espanol" class="class-item class-item-link has-homework" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española <span class="homework-tag-badge">🔔 Hojas pospuestas</span></div>
-                  <div class="class-prof-name">Profra. María Vázquez</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/logica" class="class-item class-item-link has-homework" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica <span class="homework-tag-badge">📝 Tarea</span></div>
-                  <div class="class-prof-name">Colegio de Filosofía</div>
-                  <div class="class-details"><span class="class-room-badge">B-206</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/dibujo-a" class="class-item class-item-link has-homework" data-subj="Dibujo II" data-sec="A">
-                  <div class="class-name">Dibujo II <span class="homework-tag-badge">🎨 Paisaje</span></div>
-                  <div class="class-prof-name">Taller Sec. A</div>
-                  <div class="class-details"><span class="class-room-badge">B-008</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </a>
-                <a href="materias/dibujo-b" class="class-item class-item-link" data-subj="Dibujo II" data-sec="B">
-                  <div class="class-name">Dibujo II</div>
-                  <div class="class-prof-name">Taller Sec. B</div>
-                  <div class="class-details"><span class="class-room-badge">C-201</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/historia" class="class-item class-item-link has-homework" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III <span class="homework-tag-badge">🗺️ Planisferio</span></div>
-                  <div class="class-prof-name">Colegio de Historia</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/genero" class="class-item class-item-link" data-subj="Género y Prevención de las Violencias" data-sec="both">
-                  <div class="class-name">Género y Prevención</div>
-                  <div class="class-prof-name">Cultura de Paz</div>
-                  <div class="class-details"><span class="class-room-badge">B-108</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 11:10 - 12:00 -->
-            <tr>
-              <td class="time-cell">11:10 - 12:00</td>
-              <td>
-                <a href="materias/espanol" class="class-item class-item-link has-homework" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española <span class="homework-tag-badge">🔔 Hojas pospuestas</span></div>
-                  <div class="class-prof-name">Profra. María Vázquez</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/informatica" class="class-item class-item-link has-homework" data-subj="Informática" data-sec="both">
-                  <div class="class-name">Informática <span class="homework-tag-badge">💻 CC-2</span></div>
-                  <div class="class-prof-name">Laboratorio CC-2</div>
-                  <div class="class-details"><span class="class-room-badge">CC-2</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/espanol" class="class-item class-item-link has-homework" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española <span class="homework-tag-badge">🔔 Hojas pospuestas</span></div>
-                  <div class="class-prof-name">Profra. María Vázquez</div>
-                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/historia" class="class-item class-item-link has-homework" data-subj="Historia Universal III" data-sec="both">
-                  <div class="class-name">Historia Universal III <span class="homework-tag-badge">🗺️ Planisferio</span></div>
-                  <div class="class-prof-name">Colegio de Historia</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/educacion-fisica" class="class-item class-item-link has-homework" data-subj="Educación Física IV" data-sec="both">
-                  <div class="class-name">Educación Física IV <span class="homework-tag-badge">📝 Nueva Tarea</span></div>
-                  <div class="class-prof-name">Gimnasio 1 (GIM1)</div>
-                  <div class="class-details"><span class="class-room-badge">GIM1</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 12:00 - 12:50 -->
-            <tr>
-              <td class="time-cell">12:00 - 12:50</td>
-              <td>
-                <a href="materias/orientacion-a" class="class-item class-item-link has-homework" data-subj="Orientación Educativa IV" data-sec="A">
-                  <div class="class-name">Orientación Educativa <span class="homework-tag-badge">📝 2 Tareas</span></div>
-                  <div class="class-prof-name">Sec. A (Tutoría)</div>
-                  <div class="class-details"><span class="class-room-badge">B-110</span><span class="sec-tag sec-a-badge">Sec. A</span></div>
-                </a>
-                <a href="materias/orientacion-b" class="class-item class-item-link" data-subj="Orientación Educativa IV" data-sec="B">
-                  <div class="class-name">Orientación Educativa</div>
-                  <div class="class-prof-name">Sec. B (Tutoría)</div>
-                  <div class="class-details"><span class="class-room-badge">B-112</span><span class="sec-tag sec-b-badge">Sec. B</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/genero" class="class-item class-item-link" data-subj="Género y Prevención de las Violencias" data-sec="both">
-                  <div class="class-name">Género y Prevención</div>
-                  <div class="class-prof-name">Cultura de Paz</div>
-                  <div class="class-details"><span class="class-room-badge">B-109</span></div>
-                </a>
-              </td>
-              <td>
-                <a href="materias/espanol" class="class-item class-item-link has-homework" data-subj="Lengua Española" data-sec="both">
-                  <div class="class-name">Lengua Española <span class="homework-tag-badge">🔔 Hojas pospuestas</span></div>
-                  <div class="class-prof-name">Profra. María Vázquez</div>
-                  <div class="class-details"><span class="class-room-badge">B-113</span></div>
-                </a>
-              </td>
-              <td class="free-cell">Libre / Estudio</td>
-              <td>
-                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III</div>
-                  <div class="class-prof-name">Profra. Gabriela Reyna</div>
-                  <div class="class-details"><span class="class-room-badge">B-115</span></div>
-                </a>
-              </td>
-            </tr>
-
-            <!-- 12:50 - 13:40 -->
-            <tr>
-              <td class="time-cell">12:50 - 13:40</td>
-              <td class="free-cell">Libre</td>
-              <td class="free-cell">Libre</td>
-              <td class="free-cell">Libre</td>
-              <td class="free-cell">Libre</td>
-              <td>
-                <a href="materias/fisica" class="class-item class-item-link" data-subj="Física III" data-sec="both">
-                  <div class="class-name">Física III (Laboratorio)</div>
-                  <div class="class-prof-name">Laboratorio A-302</div>
-                  <div class="class-details"><span class="class-room-badge">A-302</span></div>
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      </div>
-    </section>
-
-
-    <!-- GUÍA DE SUPERVIVENCIA Y SALONES DEL 415 EN PREPA 4 -->
-    <section class="prepa4-guide-card">
-      <div class="window-titlebar">
-        <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-        </div>
-        <span class="win-titlebar-text">Guía Rápida de Salones y Ubicación &bull; Plantel 4 Tacubaya</span>
-      </div>
-      <div class="guide-body">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1.5px solid #edf2f7; padding-bottom: 1.2rem;">
-          <div>
-            <h2 style="font-size: 1.8rem; font-weight: 900; color: #002B7A; margin-bottom: 0.3rem;">
-              🗺️ Ubicador de Salones del 415 en Plantel 4
-            </h2>
-            <p style="color: var(--text-sec); font-size: 0.95rem;">
-              Para que nadie de nuestro grupo se pierda entre los edificios ni llegue tarde a clase.
-            </p>
-          </div>
-          <span class="badge-prepa4">Av. Observatorio 170 &bull; Tacubaya</span>
-        </div>
-
-        <div class="buildings-grid">
-          <!-- Edificio A -->
-          <details class="building-accordion">
-            <summary class="building-accordion-header">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span class="building-tag">Edificio A</span>
-                <span class="building-title-preview">A-104 y Laboratorio A-302</span>
-              </div>
-              <span class="accordion-chevron">▾</span>
-            </summary>
-            <div class="building-accordion-body">
-              <strong>A-104 (Piso 1):</strong> Geografía (Lun, Mié y Jue).<br>
-              <strong>A-302 (Piso 3):</strong> Laboratorio de Física III (Viernes 12:50). Recuerda llevar tu bata blanca.
-            </div>
-          </details>
-
-          <!-- Edificio B -->
-          <details class="building-accordion">
-            <summary class="building-accordion-header">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span class="building-tag">Edificio B (Nuestra base)</span>
-                <span class="building-title-preview">Salones B-108 a B-117 y B-206</span>
-              </div>
-              <span class="accordion-chevron">▾</span>
-            </summary>
-            <div class="building-accordion-body">
-              <strong>Piso 1:</strong> B-108 (Lógica / Violencias), B-109 (Historia / Física / Matemáticas), B-110 (Español / Orientación A), B-112 (Español / Matemáticas / Orientación B), B-113 (Español), B-115 y B-116 (Física), B-117 (Historia / Matemáticas).<br>
-              <strong>Piso 2:</strong> B-206 (Lógica).
-            </div>
-          </details>
-
-          <!-- Edificio C -->
-          <details class="building-accordion">
-            <summary class="building-accordion-header">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span class="building-tag">Edificio C (Idiomas y Dibujo)</span>
-                <span class="building-title-preview">Salones C-201, C-205, C-306 y Mediateca B-318</span>
-              </div>
-              <span class="accordion-chevron">▾</span>
-            </summary>
-            <div class="building-accordion-body">
-              <strong>C-201 (Piso 2):</strong> Dibujo II Sección B.<br>
-              <strong>C-205 (Piso 2):</strong> Inglés IV Sección B.<br>
-              <strong>C-306 (Piso 3):</strong> Inglés IV Sección A (Miércoles y Viernes).<br>
-              <strong>B-318 (Edificio B, Piso 3):</strong> Mediateca de Idiomas (Inglés Sec. A, Lunes 9:30).
-            </div>
-          </details>
-
-          <!-- Gimnasio y Cómputo -->
-          <details class="building-accordion">
-            <summary class="building-accordion-header">
-              <div style="display: flex; align-items: center; gap: 0.6rem;">
-                <span class="building-tag">Gimnasio y Cómputo</span>
-                <span class="building-title-preview">GIM1, I-108 y Laboratorio CC-2</span>
-              </div>
-              <span class="accordion-chevron">▾</span>
-            </summary>
-            <div class="building-accordion-body">
-              <strong>GIM1:</strong> Educación Física IV (Viernes 11:10 a 12:00). Asistir con ropa deportiva.<br>
-              <strong>I-108:</strong> Taller de Informática (Martes 9:30 a 10:20).<br>
-              <strong>CC-2:</strong> Centro de Cómputo (Martes 11:10 a 12:00).
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- BENTO GRID: SERVICIOS CON ENLACES CORREGIDOS -->
-    <section id="servicios">
-      <div class="bento-section-title">
-        <h2>Espacio Académico & Apoyo al 415</h2>
-        <p>Servicios, asesorías y soporte directo para los alumnos del grupo</p>
-      </div>
-
-      <div class="bento-grid">
-        <!-- Tarjeta 1: Actualizaciones de Lengua Española (Abre soporte / WhatsApp) -->
-        <div class="bento-card">
-          <div class="bento-icon-box">📢</div>
-          <h3>Actualizaciones de Lengua Española</h3>
-          <p>
-            Consulta avisos sobre temarios, criterios y acuerdos de la materia. Si tienes dudas sobre los avisos dados en clase, comunícate al canal oficial.
-          </p>
-          <div class="bento-footer-link">
-            <button onclick="openSupportDialog()" class="btn-support-trigger" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
-              <span>Consultar en WhatsApp &rarr;</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Tarjeta 2: Preguntas y Dudas de Español (Directo a WhatsApp) -->
-        <div class="bento-card">
-          <div class="bento-icon-box" style="color: #25D366; background: rgba(37, 211, 102, 0.12);">💬</div>
-          <h3>Preguntas & Dudas de Español</h3>
-          <p>
-            ¿Complicaciones con sintaxis, redacción o análisis literario? Envía tus preguntas directamente por WhatsApp para resolverlas de inmediato.
-          </p>
-          <div class="bento-footer-link">
-            <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20de%20Lengua%20Espa%C3%B1ola%20en%20el%20Grupo%20415" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-support-trigger" 
-               style="padding: 0.5rem 1.1rem; font-size: 0.85rem; text-decoration: none;">
-              <span>Preguntar por WhatsApp &rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Tarjeta 3: Copias, Tareas e Impresiones (EXCLUSIVO ENCARDOMY - AZUL ELÉCTRICO) -->
-        <div class="bento-card" style="border: 1.5px solid var(--enc-azul-electrico);">
-          <div class="bento-icon-box" style="color: var(--enc-azul-electrico); background: var(--enc-azul-tint);">🖨️</div>
-          <h3>Copias, Tareas e Impresiones</h3>
-          <p>
-            Gestiona tus solicitudes de copias, impresiones de emergencia y preparación de trabajos exclusivamente en la plataforma de Encardomy.
-          </p>
-          <div class="bento-footer-link">
-            <!-- Botón Encardomy Azul Eléctrico Oficial -->
-            <a href="https://encardomy.shaminket.com" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-encardomy" 
-               style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">
-              <span>Pedir en Encardomy &rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Tarjeta 4: Educación Estética y Artística (Artísticas de Prepa 4) -->
-        <div class="bento-card" style="border: 1.5px solid #D59F0F;">
-          <div class="bento-icon-box" style="color: #D59F0F; background: rgba(213, 159, 15, 0.15);">🎭</div>
-          <h3>Educación Estética y Artística</h3>
-          <p>
-            Explora las 6 disciplinas en Prepa 4 (Teatro, Danza Folclórica, Contemporánea, Música, Artes Plásticas y Fotografía) y consulta profesores y horarios.
-          </p>
-          <div class="bento-footer-link">
-            <a href="artisticas" 
-               class="btn-encardomy" 
-               style="padding: 0.55rem 1.25rem; font-size: 0.88rem; text-decoration: none;">
-              <span>Ver Artísticas &rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Tarjeta 5: Guía de Uso y Accesibilidad -->
-        <div class="bento-card">
-          <div class="bento-icon-box" style="color: #002B7A; background: rgba(0, 43, 122, 0.1);">📖</div>
-          <h3>Guía de Uso & Accesibilidad</h3>
-          <p>
-            Aprende a sacarle el 100% al horario inteligente, el ubicador de salones de Tacubaya y activa herramientas de alto contraste y tamaño de letra.
-          </p>
-          <div class="bento-footer-link">
-            <a href="ayuda" 
-               class="btn-encardomy" 
-               style="padding: 0.55rem 1.25rem; font-size: 0.88rem; text-decoration: none;">
-              <span>Abrir Guía &rarr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ==========================================================
-         SECCIÓN DE FEEDBACK: ¿CREES QUE LE FALTA ALGO A ESTA PÁGINA?
-         ========================================================== -->
-    <section style="background: #ffffff; border-radius: 28px; border: 2px solid #D59F0F; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 4rem;">
-      <div class="window-titlebar">
-        <div class="window-dots">
-          <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-          <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-          <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-        </div>
-        <span class="win-titlebar-text">Buzón de Ideas y Necesidades &bull; Grupo 0415</span>
-      </div>
-
-      <div style="padding: 3rem 2.8rem; text-align: center;">
-        <span style="display: inline-block; background: rgba(213, 159, 15, 0.15); border: 1px solid #D59F0F; color: #b38205; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.35rem 1rem; border-radius: 980px; margin-bottom: 1.2rem;">
-          Tu opinión importa
-        </span>
-        <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #002B7A; letter-spacing: -0.8px; margin-bottom: 1rem; line-height: 1.15;">
-          ¿Crees que le falta algo a esta página? ¿Qué es?
-        </h2>
-        <p style="color: var(--text-sec); font-size: 1.1rem; max-width: 720px; margin: 0 auto 2.5rem; line-height: 1.6;">
-          Esta página está hecha por y para nosotros los alumnos del 415. Si tienes una idea, necesitas una herramienta especial para alguna materia, o crees que falta algo, dínoslo aquí y lo agregamos.
-        </p>
-
-        <!-- Formulario dentro de la misma página -->
-        <div style="max-width: 680px; margin: 0 auto; text-align: left; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 2rem 2.2rem; box-shadow: var(--shadow-sm);">
-          <div style="margin-bottom: 1.4rem;">
-            <label for="feedbackAuthor" style="display: block; font-weight: 800; font-size: 0.9rem; color: #002B7A; margin-bottom: 0.4rem;">
-              Tu nombre o apodo (opcional):
-            </label>
-            <input type="text" id="feedbackAuthor" placeholder="Ej. Diego, Sofía, Alumno del 415..." style="width: 100%; padding: 0.85rem 1.1rem; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 1rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#D59F0F'" onblur="this.style.borderColor='#cbd5e1'">
-          </div>
-
-          <div style="margin-bottom: 1.8rem;">
-            <label for="feedbackContent" style="display: block; font-weight: 800; font-size: 0.9rem; color: #002B7A; margin-bottom: 0.4rem;">
-              ¿Qué le falta o qué te gustaría que agreguemos? <span style="color: #ef4444;">*</span>
-            </label>
-            <textarea id="feedbackContent" rows="4" placeholder="Escribe aquí tu sugerencia, duda o necesidad escolar (ej. calculadora de faltas, guías para el examen de Mate, más apuntes de Español...)" style="width: 100%; padding: 0.85rem 1.1rem; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 1rem; outline: none; transition: border-color 0.2s; resize: vertical;" onfocus="this.style.borderColor='#D59F0F'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
-          </div>
-
-          <button onclick="submitPageFeedback()" style="width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; border: none; padding: 1.1rem 1.6rem; border-radius: 14px; font-size: 1.08rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); transition: transform 0.2s ease;">
-            <span>💬 Enviar sugerencia al WhatsApp del Grupo 415</span>
-          </button>
-          <p style="font-size: 0.78rem; color: #94a3b8; text-align: center; margin-top: 0.8rem;">
-            Al enviar, se abrirá WhatsApp con tu mensaje listo para que llegue al soporte del 415.
-          </p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- BOTÓN FLOTANTE DE SOPORTE WHATSAPP -->
-  <div class="floating-support-container">
-    <div class="radar-pulse-ring"></div>
-    <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.77.813 2.796.814h.005c3.18 0 5.767-2.586 5.768-5.766 0-1.54-.6-2.988-1.69-4.077a5.72 5.72 0 0 0-4.083-1.923zm0-2.172c4.418 0 8 3.582 8 8 0 1.766-.575 3.398-1.554 4.725l1.523 5.568-5.733-1.504c-1.309.84-2.857 1.211-4.236 1.211-4.418 0-8-3.582-8-8 0-4.418 3.582-8 8-8z"/>
-      </svg>
-      <span>¿Dudas? Soporte</span>
-    </button>
-  </div>
-
-  <!-- MODAL EN 2 PASOS DE WHATSAPP -->
-  <div id="supportModalBackdrop" class="modal-backdrop" onclick="onBackdropClick(event)">
-    <div class="modal-apple-card">
-      <div class="modal-top-bar">
-        <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
-        <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-      <div class="modal-main-body">
-        <div class="step-track-bar">
-          <div id="trackDot1" class="track-dot active"></div>
-          <div id="trackDot2" class="track-dot"></div>
-        </div>
-
-        <div id="dialogStep1" class="step-view active">
-          <p>
-            ¿Tienes dudas sobre Lengua Española o alguna tarea del 415? Puedes contactar directamente con el soporte del grupo para resolverla rápidamente.
-          </p>
-          <button class="btn-step-action" style="background: var(--unam-blue);" onclick="goToStep2()">
-            Continuar al paso 2 &rarr;
-          </button>
-        </div>
-
-        <div id="dialogStep2" class="step-view">
-          <p>
-            <strong>Paso 2 de 2:</strong> Serás redirigido al WhatsApp oficial para alumnos del Grupo 415 al número <strong>+52 55 7198 5641</strong>.
-          </p>
-          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="btn-step-action">
-            💬 Abrir WhatsApp (+52 55 7198 5641)
-          </a>
-          <button class="btn-step-back" onclick="goToStep1()">
-            &larr; Volver al paso anterior
-          </button>
-        </div>
+    <div class="manual-links">
+      <span>¿Deseas forzar una versión específica?</span>
+      <div class="btn-row">
+        <a href="mobile.html?force=1" class="btn-dev">📱 Móvil</a>
+        <a href="tablet.html?force=1" class="btn-dev">📟 Tableta</a>
+        <a href="desktop.html?force=1" class="btn-dev">🖥️ Escritorio</a>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div style="display: flex; align-items: center; gap: 1.2rem;">
-          <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 38px;">
-          <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 34px; filter: brightness(0) invert(1);">
-          <div>
-            <strong style="color: #ffffff; font-size: 1rem;">Cuatreros del 415</strong><br>
-            <span style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Universidad Nacional Autónoma de México &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</span>
-          </div>
-        </div>
-        <div class="footer-links-list">
-          <a href="centro-control">Centro de Control</a>
-          <a href="artisticas">Artísticas</a>
-          <a href="ayuda">Guía de Ayuda</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
-      </p>
-    </div>
-  </footer>
+  <script>
+    (function dispatchEnvironment() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const forced = urlParams.get('view');
+      if (forced === 'mobile') { window.location.replace('mobile.html'); return; }
+      if (forced === 'tablet') { window.location.replace('tablet.html'); return; }
+      if (forced === 'desktop') { window.location.replace('desktop.html'); return; }
 
-  <script src="js/calendar.js"></script>
-  <script src="js/main.js"></script>
-  <script>initCalendarSystem("week");</script>
-  <!-- SISTEMA DE AUTENTICACIÓN GOOGLE & FIRESTORE (MODULAR) -->
-  <!-- MÓDULO OFICIAL DE AUTENTICACIÓN GOOGLE OAUTH 2.0 (GIS) -->
-  <script src="js/google-auth.js"></script>
+      const w = window.innerWidth;
+      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      const isMobileUA = /Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isTabletUA = /iPad|Tablet|PlayBook/i.test(navigator.userAgent) || (isTouch && w >= 768 && w <= 1024);
+
+      let target = 'desktop.html';
+      let label = 'Despachando a Escritorio...';
+
+      if (isMobileUA || (w < 768 && isTouch) || w < 768) {
+        target = 'mobile.html';
+        label = 'Despachando a Móvil (Modo Flujo Pasillo)...';
+      } else if (isTabletUA || (w >= 768 && w <= 1024)) {
+        target = 'tablet.html';
+        label = 'Despachando a Tableta (Bento Grid)...';
+      } else {
+        target = 'desktop.html';
+        label = 'Despachando a Escritorio (Comando Espacial)...';
+      }
+
+      document.getElementById('dispatchStatus').textContent = label;
+      setTimeout(() => {
+        window.location.replace(target + window.location.search);
+      }, 350);
+    })();
+  </script>
 </body>
 </html>
