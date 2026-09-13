@@ -25,6 +25,7 @@ let selectedCalDateStr = "2026-09-14"; // Día seleccionado por defecto para el 
 const calendarSpecialEvents = {
   // Lunes 14 de septiembre 2026: Mediateca y Tareas
   "2026-09-14": [
+    { title: "🧭 Orientación Sec. A: Traer post-it, plumones y 2 Tareas UNAM (12:00)", type: "blue", href: "materias/orientacion-a" },
     { title: "🇬🇧 Inglés Sec. A: En Mediateca Salón B-318 (Examen)", type: "red", href: "materias/ingles-a" },
     { title: "🗺️ Historia: Planisferio con nombres & entrega pendientes", type: "blue", href: "materias/historia" },
     { title: "📝 Geografía: 4 Noticias en equipo (hoja en 4)", type: "blue", href: "materias/geografia" },
@@ -43,7 +44,7 @@ const calendarSpecialEvents = {
   ],
   "2026-09-18": [
     { title: "🎨 Dibujo A: Entrega paisaje y revisión puntillismo", type: "blue", href: "materias/dibujo-a" },
-    { title: "🧭 Orientación A: Traer post-it, plumones y 2 tareas UNAM", type: "blue", href: "materias/orientacion-a" }
+    
   ],
   "2026-09-22": [
     { title: "🎤 Informática: Exposición Equipo 1 (Dana) y Equipo 2 (Rodrigo)", type: "blue", href: "materias/informatica-exposiciones" }
@@ -158,7 +159,7 @@ function renderDayDetailsDrawer(dateStr, year, month, day, dayOfWeekIdx) {
         { t: "Física III (7:50 - 9:30 AM &bull; B-116 / B-109)", h: "materias/fisica" + ext },
         { t: "Inglés IV (9:30 AM &bull; Sec. A C-306 / Sec. B C-205)", h: "materias/ingles" + ext },
         { t: "Lengua Española (10:20 - 12:00 &bull; B-112)", h: "materias/espanol" + ext },
-        { t: "Orientación Educativa IV (12:00 &bull; B-110 / B-112)", h: "materias/orientacion" + ext }
+        { t: "🧭 Orientación Educativa IV (12:00 &bull; 📝 2 Tareas &bull; B-110/B-112)", h: "materias/orientacion-a" + ext }
       ],
       2: [
         { t: "Matemáticas IV (7:00 - 8:40 AM &bull; B-112)", h: "materias/matematicas" + ext },

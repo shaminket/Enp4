@@ -2691,3 +2691,263 @@ main.master-container {
     padding: 8px 10px !important;
   }
 }
+
+/* ==========================================================
+   SISTEMA DE SEMÁFORO DE URGENCIA WCAG AA (>= 4.5:1)
+   ========================================================== */
+:root {
+  /* Rojo Urgente (Exámenes o entrega en <= 24h) */
+  --rojo-urgente: #b91c1c;         /* 5.9:1 sobre fondo claro */
+  --rojo-urgente-bg: #fef2f2;
+  --rojo-urgente-border: #ef4444;
+  --rojo-urgente-text: #7f1d1d;    /* 8.2:1 sobre #fef2f2 */
+
+  /* Amarillo Alerta (Entrega vigente en la semana) */
+  --amarillo-alerta: #b45309;      /* 4.6:1 sobre fondo claro */
+  --amarillo-alerta-bg: #fffbeb;
+  --amarillo-alerta-border: #f59e0b;
+  --amarillo-alerta-text: #78350f; /* 7.9:1 sobre #fffbeb */
+
+  /* Azul Informativo (Avisos, recordatorios, nula urgencia) */
+  --azul-brill: #1d4ed8;           /* 4.6:1 sobre fondo claro */
+  --azul-brill-bg: #eff6ff;
+  --azul-brill-border: #3b82f6;
+  --azul-brill-text: #1e3a8a;      /* 8.5:1 sobre #eff6ff */
+
+  /* Corrección estricta de contraste dorado UNAM (Texto oscuro 7.2:1) */
+  --gold-high-contrast-text: #001628;
+}
+
+/* Badges del Semáforo de Urgencia */
+.badge-urgencia-rojo {
+  background: var(--rojo-urgente-bg) !important;
+  color: var(--rojo-urgente-text) !important;
+  border: 1.5px solid var(--rojo-urgente-border) !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-shadow: 0 1px 4px rgba(185, 28, 28, 0.15) !important;
+}
+
+.badge-urgencia-amarillo {
+  background: var(--amarillo-alerta-bg) !important;
+  color: var(--amarillo-alerta-text) !important;
+  border: 1.5px solid var(--amarillo-alerta-border) !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-shadow: 0 1px 4px rgba(180, 83, 9, 0.15) !important;
+}
+
+.badge-urgencia-azul {
+  background: var(--azul-brill-bg) !important;
+  color: var(--azul-brill-text) !important;
+  border: 1.5px solid var(--azul-brill-border) !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  box-shadow: 0 1px 4px rgba(29, 78, 216, 0.15) !important;
+}
+
+/* ==========================================================
+   BREAKPOINTS RESPONSIVOS GLOBALES
+   ========================================================== */
+
+/* 1. Ultra-Wide / Monitores Grandes (> 1440px): Dashboard de alta densidad */
+@media (min-width: 1441px) {
+  .master-container {
+    max-width: 1600px !important;
+    margin: -2.5rem auto 4rem !important;
+    padding: 0 2rem !important;
+  }
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* 2. Escritorio Estándar (1025px a 1440px): 3 Columnas */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .master-container {
+    max-width: 1280px !important;
+    margin: -2rem auto 3.5rem !important;
+    padding: 0 1.5rem !important;
+  }
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* 3. Tablets / Pantallas Medianas (481px a 1024px): 2 Columnas */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .master-container {
+    max-width: 100% !important;
+    margin: -1.5rem auto 2.5rem !important;
+    padding: 0 1rem !important;
+  }
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* 4. Pantallas Pequeñas / Móviles (hasta 480px): 1 Columna Limpia */
+@media (max-width: 480px) {
+  .master-container {
+    max-width: 100% !important;
+    margin: -1rem 0 5rem 0 !important;
+    padding: 0 12px !important;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+  .bento-card {
+    padding: 1.1rem 1rem !important;
+  }
+  /* Reposicionar botón WhatsApp flotante para no traslapar dock */
+  .floating-support-container {
+    bottom: 84px !important;
+    right: 16px !important;
+  }
+}
+
+/* ==========================================================
+   ACORDEONES PARA LA GUÍA DE SALONES (CERRADOS POR DEFECTO)
+   ========================================================== */
+.building-accordion {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.building-accordion[open] {
+  border-color: #1d4ed8;
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.1);
+}
+
+.building-accordion-header {
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #f8fafc;
+  font-weight: 800;
+  color: #002B7A;
+  user-select: none;
+  list-style: none;
+}
+
+.building-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-chevron {
+  font-size: 1.1rem;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.building-accordion[open] .accordion-chevron {
+  transform: rotate(180deg);
+  color: #1d4ed8;
+}
+
+.building-accordion-body {
+  padding: 1rem 1.2rem 1.2rem;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+/* ==========================================================
+   DOCK INFERIOR MÓVIL: TOUCH TARGETS ESTRICTOS 48x48PX
+   ========================================================== */
+.dock-item {
+  min-width: 48px !important;
+  min-height: 48px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 6px 8px !important;
+  border-radius: 10px !important;
+  color: #94a3b8 !important;
+}
+
+/* ==========================================================
+   REDISEÑO CELDA HORARIO DESKTOP: JERARQUÍA Y DOBLE SECCIÓN
+   ========================================================== */
+.class-item {
+  padding: 0.45rem 0.6rem !important;
+  margin-bottom: 0.35rem !important;
+  border-radius: 8px !important;
+}
+
+.class-name {
+  font-size: 0.84rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.2rem !important;
+  color: #001628 !important;
+}
+
+.class-prof-name {
+  font-size: 0.72rem !important;
+  color: #64748b !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+
+/* ==========================================================
+   MODAL DE AVISOS: BOTONES STICKY Y PREFERENCIA DIARIA
+   ========================================================== */
+.announcement-card-blue {
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 86vh !important;
+}
+
+.announcement-scrollable-content {
+  flex-grow: 1 !important;
+  overflow-y: auto !important;
+  max-height: 42vh !important;
+  padding-right: 4px !important;
+}
+
+.announcement-actions-pinned {
+  flex-shrink: 0 !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  margin-top: 0.8rem !important;
+}
+
+.announcement-suppress-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin-top: 0.8rem !important;
+  font-size: 0.8rem !important;
+  color: #fef08a !important;
+  user-select: none !important;
+}

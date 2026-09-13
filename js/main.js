@@ -860,3 +860,61 @@ window.triggerToleranceDemo = triggerToleranceDemo;
 window.toggleToleranceAudio = toggleToleranceAudio;
 
 window.togglePauseAnnouncement = togglePauseAnnouncement;
+
+/* ==========================================================
+   ENHANCEMENTS SENIOR FRONTEND & UX
+   ========================================================== */
+
+// 1. Supresión del modal de avisos si el usuario marcó "no volver a mostrar hoy"
+function isAnnouncementSuppressedToday() {
+  try {
+    const suppressDate = localStorage.getItem('announcement_suppress_date');
+    const today = new Date().toISOString().slice(0, 10);
+    return suppressDate === today;
+  } catch (e) {
+    return false;
+  }
+}
+
+function setAnnouncementSuppressedToday(suppress) {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    if (suppress) {
+      localStorage.setItem('announcement_suppress_date', today);
+    } else {
+      localStorage.removeItem('announcement_suppress_date');
+    }
+  } catch (e) {}
+}
+
+// Sobrescribir triggerAnnouncementModal para respetar supresión diaria sin alterar lógica de datos
+const _origTriggerAnnouncement = window.triggerAnnouncementModal;
+window.triggerAnnouncementModal = function(force = false) {
+  if (!force && isAnnouncementSuppressedToday()) {
+    return; // Respetar preferencia visual del usuario
+  }
+  if (typeof _origTriggerAnnouncement === 'function') {
+    _origTriggerAnnouncement();
+  }
+};
+
+// 2. Transición instantánea y sin parpadeos en resize (Debounce + persistencia de scroll)
+let resizeDebounceTimer = null;
+window.addEventListener('resize', () => {
+  if (resizeDebounceTimer) clearTimeout(resizeDebounceTimer);
+  resizeDebounceTimer = setTimeout(() => {
+    try {
+      sessionStorage.setItem('lastScrollY', window.scrollY);
+    } catch(e) {}
+  }, 200);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  try {
+    const savedScroll = sessionStorage.getItem('lastScrollY');
+    if (savedScroll) {
+      window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+      sessionStorage.removeItem('lastScrollY');
+    }
+  } catch(e) {}
+});
