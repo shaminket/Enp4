@@ -918,3 +918,161 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   } catch(e) {}
 });
+
+
+/* ==========================================================
+   SISTEMA DE AUTENTICACIÓN, INICIO DE SESIÓN Y SELECCIÓN DE SECCIÓN
+   ========================================================== */
+
+function handleLoginClick() {
+  if (window.enp4Auth && typeof window.enp4Auth.loginWithGoogle === 'function') {
+    window.enp4Auth.loginWithGoogle();
+  } else {
+    showLoginFallbackModal();
+  }
+}
+
+function showLoginFallbackModal() {
+  let modal = document.getElementById('loginFallbackModal');
+  if (!modal) {
+    const div = document.createElement('div');
+    div.id = 'loginFallbackModal';
+    div.className = 'onboarding-overlay';
+    div.innerHTML = `
+      <div class="onboarding-card">
+        <span class="onboarding-badge">Portal Cuatreros 415</span>
+        <h3 class="onboarding-title">Iniciar Sesión / Personalizar</h3>
+        <p class="onboarding-subtitle">
+          Configura tu perfil para adaptar automáticamente tu horario, materias y tareas a tu sección:
+        </p>
+
+        <div style="margin-bottom: 1.4rem; text-align: left;">
+          <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #1e3a8a; margin-bottom: 0.35rem;">Tu Nombre de Estudiante:</label>
+          <input type="text" id="inputUserName" placeholder="Ej. Diego, Sofía, Alumno 415..." style="width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; outline: none;">
+        </div>
+
+        <div class="onboarding-sections-grid">
+          <button type="button" onclick="saveUserSectionLocal('A')" class="btn-select-section-card sec-a-card">
+            <span class="section-card-icon">🔵</span>
+            <span class="section-card-name">Sección A</span>
+            <span class="section-card-details">Dibujo B-008 &bull; Inglés C-306<br>Orientación B-110</span>
+          </button>
+
+          <button type="button" onclick="saveUserSectionLocal('B')" class="btn-select-section-card sec-b-card">
+            <span class="section-card-icon">🟡</span>
+            <span class="section-card-name">Sección B</span>
+            <span class="section-card-details">Dibujo C-201 &bull; Inglés C-205<br>Orientación B-112</span>
+          </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 0.8rem;">
+          <button type="button" onclick="saveUserSectionLocal('all')" class="onboarding-skip-btn" style="margin: 0;">
+            Ver ambas secciones (Completo)
+          </button>
+          <button type="button" onclick="closeLoginFallbackModal()" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(div);
+    modal = div;
+  }
+  modal.style.display = 'flex';
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function closeLoginFallbackModal() {
+  const modal = document.getElementById('loginFallbackModal');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => modal.style.display = 'none', 250);
+  }
+}
+
+function saveUserSectionLocal(sec) {
+  const input = document.getElementById('inputUserName');
+  const name = input && input.value.trim() ? input.value.trim() : (localStorage.getItem('enp4_user_name') || 'Estudiante');
+  localStorage.setItem('enp4_user_name', name);
+  localStorage.setItem('enp4_user_section', sec);
+  closeLoginFallbackModal();
+  renderUserNavbarAuth();
+
+  if (typeof window.filterBySection === 'function') {
+    const targetBtn = document.querySelector(`.f-pill-btn[onclick*="${sec}"]`);
+    window.filterBySection(sec, targetBtn);
+  }
+  if (typeof window.renderSchedule === 'function') {
+    window.activeSectionFilter = sec;
+    window.renderSchedule();
+  }
+  if (window.enp4Auth && typeof window.enp4Auth.applyDynamicSectionFilter === 'function') {
+    window.enp4Auth.applyDynamicSectionFilter(sec);
+  }
+}
+
+function logoutUserLocal() {
+  localStorage.removeItem('enp4_user_section');
+  localStorage.removeItem('enp4_user_name');
+  renderUserNavbarAuth();
+  if (typeof window.filterBySection === 'function') {
+    const allBtn = document.querySelector('.f-pill-btn[onclick*="all"]');
+    window.filterBySection('all', allBtn);
+  }
+  if (typeof window.renderSchedule === 'function') {
+    window.activeSectionFilter = 'all';
+    window.renderSchedule();
+  }
+  if (window.enp4Auth && typeof window.enp4Auth.applyDynamicSectionFilter === 'function') {
+    window.enp4Auth.applyDynamicSectionFilter('all');
+  }
+}
+
+function renderUserNavbarAuth() {
+  const sec = localStorage.getItem('enp4_user_section');
+  const name = localStorage.getItem('enp4_user_name') || 'Estudiante';
+  const containers = [
+    document.getElementById('authNavContainer'),
+    document.getElementById('authNavContainerMobile')
+  ].filter(Boolean);
+
+  containers.forEach(container => {
+    if (sec) {
+      const secBadge = sec === 'all' 
+        ? '<span class="user-sec-pill" style="background:#475569; color:#ffffff; font-weight:800; padding:2px 8px; border-radius:980px; font-size:0.75rem;">Ambas</span>' 
+        : `<span class="user-sec-pill" style="background:${sec==='A'?'#1d4ed8':'#b45309'}; color:#ffffff; font-weight:800; padding:2px 8px; border-radius:980px; font-size:0.75rem;">Sec. ${sec}</span>`;
+
+      container.innerHTML = `
+        <div class="user-auth-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(0,43,122,0.08); border:1.5px solid #2D7FF9; padding:4px 10px; border-radius:980px;">
+          <span style="font-size:0.85rem; font-weight:700; color:#002B7A;">¡Hola, <strong>${name}</strong>!</span>
+          ${secBadge}
+          <button type="button" onclick="showLoginFallbackModal()" class="btn-change-sec" title="Cambiar sección" style="margin-left:4px; font-size:0.75rem; padding:2px 6px; border-radius:6px; cursor:pointer;">Cambiar</button>
+          <button type="button" onclick="logoutUserLocal()" class="btn-auth-logout" title="Cerrar sesión" style="background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; padding:2px 6px; border-radius:6px; font-size:0.72rem; cursor:pointer; font-weight:700;">Salir</button>
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <button type="button" onclick="handleLoginClick()" class="btn-google-login">
+          <svg viewBox="0 0 24 24" style="width:18px; height:18px;">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Iniciar Sesión</span>
+        </button>
+      `;
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderUserNavbarAuth();
+});
+
+window.handleLoginClick = handleLoginClick;
+window.showLoginFallbackModal = showLoginFallbackModal;
+window.closeLoginFallbackModal = closeLoginFallbackModal;
+window.saveUserSectionLocal = saveUserSectionLocal;
+window.logoutUserLocal = logoutUserLocal;
+window.renderUserNavbarAuth = renderUserNavbarAuth;

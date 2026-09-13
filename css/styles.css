@@ -2951,3 +2951,266 @@ main.master-container {
   color: #fef08a !important;
   user-select: none !important;
 }
+
+/* ==========================================================
+   SISTEMA DE AUTENTICACIÓN GOOGLE & ONBOARDING SECCIÓN A/B
+   ========================================================== */
+
+/* Botón de Iniciar Sesión con Google */
+.btn-google-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1.5px solid #cbd5e1;
+  padding: 0.45rem 1rem;
+  border-radius: 980px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.btn-google-login:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.btn-google-login svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Barra de Perfil Autenticado */
+.user-auth-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 980px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.user-avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #fcd866;
+}
+
+.user-sec-pill {
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-sec-pill.sec-a {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.user-sec-pill.sec-b {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.btn-auth-logout {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.btn-auth-logout:hover {
+  color: #ef4444;
+}
+
+.btn-change-sec {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-change-sec:hover {
+  background: #fcd866;
+  color: #001628;
+  border-color: #fcd866;
+}
+
+/* Modal de Onboarding / Selección de Sección */
+.onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 14, 26, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.onboarding-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.onboarding-card {
+  background: #ffffff;
+  border: 2.5px solid #1d4ed8;
+  border-radius: 24px;
+  padding: 2.4rem 2rem;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 22, 40, 0.45);
+  animation: onboardingSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes onboardingSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.onboarding-badge {
+  display: inline-block;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.85rem;
+  border-radius: 980px;
+  margin-bottom: 0.8rem;
+}
+
+.onboarding-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #002B7A;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.onboarding-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+.onboarding-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-select-section-card {
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-select-section-card:hover {
+  transform: translateY(-3px);
+  border-color: #1d4ed8;
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.18);
+  background: #eff6ff;
+}
+
+.btn-select-section-card.sec-a-card:hover {
+  border-color: #0369a1;
+  background: #f0f9ff;
+}
+
+.btn-select-section-card.sec-b-card:hover {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.section-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.section-card-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #001628;
+}
+
+.section-card-details {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+.onboarding-skip-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.onboarding-skip-btn:hover {
+  color: #002B7A;
+}
+
+/* Clases utilitarias de filtrado dinámico */
+.user-filtered-out {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .onboarding-sections-grid {
+    grid-template-columns: 1fr;
+  }
+  .onboarding-card {
+    padding: 1.8rem 1.2rem;
+  }
+}
