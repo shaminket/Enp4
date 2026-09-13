@@ -81,6 +81,10 @@
         <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.3);">
           Omitir aviso
         </button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
     </div>
   </div>
@@ -93,6 +97,10 @@
         <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
         <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
       <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
       
@@ -165,16 +173,16 @@
   <main class="master-container">
 
     <!-- ACCESO DESTACADO AL CENTRO DE CONTROL ACADÉMICO (MATERIAS Y TAREAS) -->
-    <section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #002B7A 100%); border: 2px solid #D59F0F; border-radius: 24px; padding: 1.8rem 2.4rem; color: #ffffff; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.8rem; flex-wrap: wrap; box-shadow: var(--shadow-md);">
+    <section style="background: #ffffff; border: 2px solid var(--unam-blue); border-radius: 24px; padding: 1.6rem 2.2rem; color: var(--text-main); margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; box-shadow: var(--shadow-md);">
       <div style="display: flex; align-items: center; gap: 1.2rem;">
-        <span style="font-size: 2.4rem; background: rgba(213, 159, 15, 0.2); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1.5px solid #D59F0F;">📚</span>
+        <span style="font-size: 2.2rem; background: rgba(0, 43, 122, 0.08); width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--unam-blue);">📚</span>
         <div>
-          <span style="background: #D59F0F; color: #001628; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 6px;">Nuevo &bull; Todas las materias</span>
-          <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 0.25rem; color: #ffffff; letter-spacing: -0.3px;">Centro de Control de Materias del 415</h2>
-          <p style="color: #cbd5e1; font-size: 0.94rem; margin-top: 0.15rem;">Consulta avisos, resúmenes, programas oficiales y tareas de Español, Matemáticas, Física y las 12 asignaturas.</p>
+          <span style="background: var(--unam-gold); color: #001628; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 6px;">Portal Académico &bull; Todas las materias</span>
+          <h2 style="font-size: 1.5rem; font-weight: 900; margin-top: 0.25rem; color: var(--unam-blue); letter-spacing: -0.3px;">Centro de Control de Materias del 415</h2>
+          <p style="color: #475569; font-size: 0.94rem; margin-top: 0.15rem;">Consulta avisos, resúmenes, programas oficiales y tareas de Español, Matemáticas, Física y las 12 asignaturas.</p>
         </div>
       </div>
-      <a href="centro-control" class="btn-encardomy" style="padding: 0.85rem 1.8rem; font-size: 0.95rem; white-space: nowrap;">
+      <a href="centro-control" class="btn-encardomy" style="background: var(--unam-blue) !important; border-color: var(--unam-blue) !important; padding: 0.8rem 1.6rem; font-size: 0.92rem; white-space: nowrap;">
         <span>Explorar Centro de Control &rarr;</span>
       </a>
     </section>
@@ -391,8 +399,8 @@
                 </a>
               </td>
               <td>
-                <a href="materias/logica" class="class-item class-item-link has-homework" data-subj="Lógica" data-sec="both">
-                  <div class="class-name">Lógica <span class="homework-tag-badge">📝 Tarea</span></div>
+                <a href="materias/logica" class="class-item class-item-link" data-subj="Lógica" data-sec="both">
+                  <div class="class-name">Lógica</div>
                   <div class="class-prof-name">Colegio de Filosofía</div>
                   <div class="class-details"><span class="class-room-badge">B-108</span></div>
                 </a>
@@ -644,59 +652,67 @@
 
         <div class="buildings-grid">
           <!-- Edificio A -->
-          <div class="building-pill-card">
-            <span class="building-tag">Edificio A</span>
-            <div class="building-title">A-104 y Laboratorio A-302</div>
-            <div class="building-desc">
+          <details class="building-accordion">
+            <summary class="building-accordion-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span class="building-tag">Edificio A</span>
+                <span class="building-title-preview">A-104 y Laboratorio A-302</span>
+              </div>
+              <span class="accordion-chevron">▾</span>
+            </summary>
+            <div class="building-accordion-body">
               <strong>A-104 (Piso 1):</strong> Geografía (Lun, Mié y Jue).<br>
               <strong>A-302 (Piso 3):</strong> Laboratorio de Física III (Viernes 12:50). Recuerda llevar tu bata blanca.
             </div>
-          </div>
+          </details>
 
           <!-- Edificio B -->
-          <div class="building-pill-card">
-            <span class="building-tag">Edificio B (Nuestra base)</span>
-            <div class="building-title">Salones B-108 a B-117 y B-206</div>
-            <div class="building-desc">
-              <strong>Piso 1:</strong> B-108 (Lógica / Género), B-109 (Mate / Física / Historia), B-110 (Español / Orientación A), B-112 (Español / Mate / Orientación B), B-113 (Español), B-116 y B-117.<br>
-              <strong>Piso 2:</strong> B-206 (Lógica Mar).
+          <details class="building-accordion">
+            <summary class="building-accordion-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span class="building-tag">Edificio B (Nuestra base)</span>
+                <span class="building-title-preview">Salones B-108 a B-117 y B-206</span>
+              </div>
+              <span class="accordion-chevron">▾</span>
+            </summary>
+            <div class="building-accordion-body">
+              <strong>Piso 1:</strong> B-108 (Lógica / Violencias), B-109 (Historia / Física / Matemáticas), B-110 (Español / Orientación A), B-112 (Español / Matemáticas / Orientación B), B-113 (Español), B-115 y B-116 (Física), B-117 (Historia / Matemáticas).<br>
+              <strong>Piso 2:</strong> B-206 (Lógica).
             </div>
-          </div>
+          </details>
 
           <!-- Edificio C -->
-          <div class="building-pill-card">
-            <span class="building-tag">Edificio C</span>
-            <div class="building-title">Dibujo e Idiomas</div>
-            <div class="building-desc">
-              <strong>C-201 (Piso 2):</strong> Dibujo II (Sec. B, Mié y Vie).<br>
-              <strong>C-205 (Piso 2):</strong> Inglés IV (Sec. B, Lun, Mié y Vie).<br>
-              <strong>C-306 (Piso 3):</strong> Inglés IV (Sec. A, Lun, Mié y Vie).
+          <details class="building-accordion">
+            <summary class="building-accordion-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span class="building-tag">Edificio C (Idiomas y Dibujo)</span>
+                <span class="building-title-preview">Salones C-201, C-205, C-306 y Mediateca B-318</span>
+              </div>
+              <span class="accordion-chevron">▾</span>
+            </summary>
+            <div class="building-accordion-body">
+              <strong>C-201 (Piso 2):</strong> Dibujo II Sección B.<br>
+              <strong>C-205 (Piso 2):</strong> Inglés IV Sección B.<br>
+              <strong>C-306 (Piso 3):</strong> Inglés IV Sección A (Miércoles y Viernes).<br>
+              <strong>B-318 (Edificio B, Piso 3):</strong> Mediateca de Idiomas (Inglés Sec. A, Lunes 9:30).
             </div>
-          </div>
+          </details>
 
-          <!-- Cómputo y Deportes -->
-          <div class="building-pill-card">
-            <span class="building-tag">Cómputo & Deportes</span>
-            <div class="building-title">Informática y Gimnasio</div>
-            <div class="building-desc">
-              <strong>Edificio I (I-108):</strong> Informática (Martes 9:30).<br>
-              <strong>Centro Cómputo (CC-2):</strong> Informática (Martes 11:10).<br>
-              <strong>GIM1:</strong> Educación Física IV (Viernes 11:10). Entrada puntual con tenis.
+          <!-- Gimnasio y Cómputo -->
+          <details class="building-accordion">
+            <summary class="building-accordion-header">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span class="building-tag">Gimnasio y Cómputo</span>
+                <span class="building-title-preview">GIM1, I-108 y Laboratorio CC-2</span>
+              </div>
+              <span class="accordion-chevron">▾</span>
+            </summary>
+            <div class="building-accordion-body">
+              <strong>GIM1:</strong> Educación Física IV (Viernes 11:10 a 12:00). Asistir con ropa deportiva.<br>
+              <strong>I-108:</strong> Taller de Informática (Martes 9:30 a 10:20).<br>
+              <strong>CC-2:</strong> Centro de Cómputo (Martes 11:10 a 12:00).
             </div>
-          </div>
-        </div>
-
-        <!-- Tips de Supervivencia para el 415 -->
-        <div style="margin-top: 1.8rem; background: #fffdf5; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 1rem;">
-          <span style="font-size: 1.8rem;">💡</span>
-          <div>
-            <strong style="color: #002B7A; font-size: 0.98rem;">Tips clave para pasar 4to año en la Prepa 4:</strong>
-            <p style="color: #78350f; font-size: 0.88rem; margin-top: 0.25rem; line-height: 1.5;">
-              &bull; <strong>Asistencia:</strong> La UNAM pide mínimo 85% de asistencias para tener derecho a examen ordinario. ¡No faltes!<br>
-              &bull; <strong>Copias y Tareas exprés:</strong> Si tienes entrega a las 7:00 am, pide tus copias con anticipación en <strong>Encardomy</strong> para evitar filas.<br>
-              &bull; <strong>Dudas de Español o del grupo:</strong> Si te atoras con la tarea, manda WhatsApp al número de soporte del 415.
-            </p>
-          </div>
+          </details>
         </div>
       </div>
     </section>
@@ -864,6 +880,10 @@
       <div class="modal-top-bar">
         <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
         <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
       <div class="modal-main-body">
         <div class="step-track-bar">

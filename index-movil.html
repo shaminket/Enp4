@@ -463,6 +463,10 @@
         <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.3);">
           Omitir aviso
         </button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
     </div>
   </div>
@@ -475,6 +479,10 @@
         <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
         <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
       <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
       
@@ -538,6 +546,10 @@
       <div style="display: flex; gap: 0.4rem;">
         <button id="btnViewDay" class="sec-pill-btn active" onclick="setCalendarView('day')">🗓️ Vista Día</button>
         <button id="btnViewMonth" class="sec-pill-btn" onclick="setCalendarView('month')">📅 Vista Mes</button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
     </div>
 
@@ -554,6 +566,10 @@
         <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
         <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
         <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Ampliar"></button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
       <span class="win-titlebar-text">Grupo 0415 &bull; ENP 4</span>
     </div>
@@ -613,14 +629,14 @@
       </button>
     </div>
 
-    <!-- Filtro de Sección (A, B o Ambas) -->
-    <div class="section-selector-row">
-      <span class="section-selector-label">Filtrar Sección:</span>
-      <div class="section-pills-cluster">
-        <button id="secAllBtn" class="sec-pill-btn active" onclick="setMobileSection('all')">Todas</button>
-        <button id="secABtn" class="sec-pill-btn" onclick="setMobileSection('A')">Sec. A</button>
-        <button id="secBBtn" class="sec-pill-btn" onclick="setMobileSection('B')">Sec. B</button>
-      </div>
+    <!-- Filtro de Sección Compacto en Dropdown -->
+    <div class="mobile-compact-filter-bar" style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.5rem 0.8rem; margin: 0 0 1rem 0;">
+      <span style="font-size: 0.82rem; font-weight: 800; color: #002B7A;">Filtrar Sección:</span>
+      <select id="mobileSectionSelect" class="select-subject-styled" style="min-width: 140px; padding: 0.4rem 0.8rem; font-size: 0.85rem; border-radius: 8px;" onchange="setMobileSection(this.value)">
+        <option value="all">Todas las secciones</option>
+        <option value="A">Sección A (B-110 / C-306)</option>
+        <option value="B">Sección B (B-112 / C-205)</option>
+      </select>
     </div>
 
     <!-- Timeline vertical de clases del día -->
@@ -730,6 +746,10 @@
       <div class="modal-top-bar">
         <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
         <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
       <div class="modal-main-body">
         <div class="step-track-bar">
@@ -792,6 +812,10 @@
         <button onclick="submitPageFeedback()" style="width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; border: none; padding: 0.85rem; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer;">
           💬 Enviar sugerencia por WhatsApp
         </button>
+        <label class="announcement-suppress-row">
+          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
+          <span>No volver a mostrar hoy</span>
+        </label>
       </div>
     </div>
   </div>
@@ -967,6 +991,8 @@
     }
 
     function setMobileSection(sec) {
+      const selectEl = document.getElementById('mobileSectionSelect');
+      if (selectEl && selectEl.value !== sec) selectEl.value = sec;
       selectedSection = sec;
       document.getElementById('secAllBtn').classList.toggle('active', sec === 'all');
       document.getElementById('secABtn').classList.toggle('active', sec === 'A');
@@ -1086,13 +1112,22 @@
         const sName = c.subject;
         if (homeworkSubjects[sName]) {
           isHw = true;
-          hwBadge = `<span class="homework-tag-badge">${homeworkSubjects[sName]}</span>`;
+          if (!seenHomeworkInDay.has(sName)) {
+            hwBadge = `<span class="homework-tag-badge">${homeworkSubjects[sName]}</span>`;
+            seenHomeworkInDay.add(sName);
+          }
         } else if (sName === 'Dibujo II' && c.section === 'A') {
           isHw = true;
-          hwBadge = `<span class="homework-tag-badge">🎨 Paisaje Líneas</span>`;
+          if (!seenHomeworkInDay.has(sName)) {
+            hwBadge = `<span class="homework-tag-badge">🎨 Paisaje Líneas</span>`;
+            seenHomeworkInDay.add(sName);
+          }
         } /* Examen archivado */ else if (sName.includes('Orientación') && c.section === 'A') {
           isHw = true;
-          hwBadge = `<span class="homework-tag-badge">📝 Materiales + 2 Tareas</span>`;
+          if (!seenHomeworkInDay.has('Orientación')) {
+            hwBadge = `<span class="homework-tag-badge">📝 Materiales + 2 Tareas</span>`;
+            seenHomeworkInDay.add('Orientación');
+          }
         }
 
         const hwModifier = isHw ? ' has-homework' : '';
