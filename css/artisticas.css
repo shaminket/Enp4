@@ -1,0 +1,116 @@
+/* ==========================================================
+   ARTÍSTICAS UNICORNIO • ESTILOS DEDICADOS
+   css/artisticas.css - Exclusivo para artisticas.html
+   ========================================================== */
+
+:root {
+  --bg-space: #000c18;
+  --bg-deep: #001628;
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #fcd866;
+  --unam-blue-electric: #1d4ed8;
+  --unam-blue-bright: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.art-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 12, 24, 0.88);
+  backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-stroke);
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.art-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.art-container {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.art-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.art-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--unam-gold);
+}
+
+.art-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.art-card h3 {
+  color: var(--unam-gold-bright);
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.4rem;
+}
+
+.art-card p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.art-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+.btn-art-select {
+  background: linear-gradient(135deg, var(--unam-blue-electric) 0%, #1e40af 100%);
+  color: #fff;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}

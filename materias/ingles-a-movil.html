@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lengua Extranjera Inglés IV Sección A | Prepa 4 UNAM</title>
   <meta name="description" content="Avisos, cambio de salón a Mediateca B-318 y recursos de Inglés IV Sección A del grupo 415 en la Prepa 4 UNAM.">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/materia.css">
   <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
       return (isFile || hasHtml) ? (target + '.html') : target;
     }
-    function checkDesktopSwitch() {
-      if (window.location.search.includes("force=mobile")) return;
+    function checkResponsiveLayout() {
+      if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth > 920 && !isMobileUA) {
-        window.location.replace(resolveTargetUrl("ingles-a"));
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("ingles-a-movil"));
       }
     }
-    checkDesktopSwitch();
-    window.addEventListener("resize", checkDesktopSwitch);
+    checkResponsiveLayout();
+    window.addEventListener("resize", checkResponsiveLayout);
   </script>
 </head>
 <body>
@@ -35,8 +35,8 @@
           </div>
         </a>
         <nav class="nav-links-menu">
-          <a href="ingles-movil" class="nav-link-item">Cambiar Sección</a>
-          <a href="../centro-control-movil" class="nav-link-item">Centro de Control</a>
+          <a href="ingles" class="nav-link-item">Cambiar Sección</a>
+          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
           <a href="../#horario" class="nav-link-item">Horario</a>
         </nav>
       </div>
@@ -62,24 +62,24 @@
         
         <!-- BARRA DE LAS 3 OPCIONES -->
         <div class="subject-three-options-bar">
-          <button id="ingBtnTareas" class="opt-pill-btn opt-white-empty" onclick="showIngOption('tareas')">
+          <button id="btnTab_tareas" class="opt-pill-btn opt-white-empty" onclick="showTab('tareas')">
             <span>📝 1. Tareas</span>
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente &bull; Archivadas)</span>
           </button>
 
-          <button id="ingBtnAvisos" class="opt-pill-btn opt-blue-active" onclick="showIngOption('avisos')">
+          <button id="btnTab_avisos" class="opt-pill-btn opt-blue-active" onclick="showTab('avisos')">
             <span>🔔 2. Avisos</span>
             <span style="background: #ef4444; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">MEDIATECA B-318</span>
           </button>
 
-          <button id="ingBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showIngOption('regalos')">
+          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
             <span>🎁 3. Regalos</span>
             <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Recursos A2/B1)</span>
           </button>
         </div></div></div>
 
         <!-- SECCIÓN 1: TAREAS (ARCHIVADAS) -->
-        <div id="ingSecTareas" style="display: none;" class="seamless-section-pane color-block-tareas-clean">
+        <div id="pane_tareas" style="display: none;" class="seamless-section-pane color-block-tareas-clean">
         <div class="color-block-inner">
           <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
             <span style="font-size: 2.2rem;">✅</span>
@@ -87,7 +87,7 @@
             <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.2rem;">
               Las pautas de evaluación y firmas de examen anteriores han sido resguardadas en el histórico de la materia.
             </p>
-            <a href="ingles-archivo-movil" class="btn-encardomy" style="padding: 0.65rem 1.5rem; font-size: 0.9rem; text-decoration: none;">
+            <a href="ingles-archivo" class="btn-encardomy" style="padding: 0.65rem 1.5rem; font-size: 0.9rem; text-decoration: none;">
               <span>📁 Ver Archivo de Tareas de Inglés &rarr;</span>
             </a>
           </div>
@@ -95,7 +95,7 @@
 
         </div>
         <!-- SECCIÓN 2: AVISOS (CLASE EN MEDIATECA SALÓN B-318) -->
-        <div id="ingSecAvisos" style="display: block;" class="seamless-section-pane color-block-avisos-active">
+        <div id="pane_avisos" style="display: block;" class="seamless-section-pane color-block-avisos-active">
         <div class="color-block-inner">
           <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
             <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
@@ -110,7 +110,7 @@
               Recuerda que el próximo lunes <strong>no nos veremos en el salón convencional (C-306)</strong>, sino en la <strong>Mediateca (Salón B-318)</strong>, a la hora habitual de inglés (9:30 AM). ¡Que no se te pase!
             </p>
             <div style="text-align: right;">
-              <a href="ingles-archivo-movil" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
+              <a href="ingles-archivo" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
                 Ver historial de avisos archivados &rarr;
               </a>
             </div>
@@ -119,7 +119,7 @@
 
         </div>
         <!-- SECCIÓN 3: REGALOS Y RECURSOS -->
-        <div id="ingSecRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
+        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
         <div class="color-block-inner">
           <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 1.8rem;">
             <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.6rem;">🎁 Recursos para tu Examen y Nivel A2/B1</h4>
@@ -135,7 +135,7 @@
         </div>
 
         </div>
-        <div class="seamless-bottom-nav"><a href="../centro-control-movil" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
+        <div class="seamless-bottom-nav"><a href="../centro-control" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
       </div>
     </div>
   </main>

@@ -1,0 +1,452 @@
+/* ==========================================================
+   CENTRO DE CONTROL UNICORNIO • ESTILOS DEDICADOS
+   css/centro-control.css - Exclusivo para centro-control.html
+   ========================================================== */
+
+:root {
+  --bg-space: #000c18;
+  --bg-deep: #001628;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --glass-stroke-blue: rgba(59, 130, 246, 0.35);
+
+  --unam-blue: #002B7A;
+  --unam-blue-electric: #1d4ed8;
+  --unam-blue-bright: #3b82f6;
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #fcd866;
+
+  --code-crimson: #ef4444;
+  --code-amber: #f59e0b;
+  --code-emerald: #22c55e;
+  --code-purple: #7C3AED;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   CABECERA DEDICADA DE CENTRO DE CONTROL
+   ========================================================== */
+.cc-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 12, 24, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-stroke);
+}
+
+.cc-topbar-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cc-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.cc-brand img {
+  height: 38px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.cc-brand-text h1 {
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.cc-brand-text span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--unam-gold-bright);
+  text-transform: uppercase;
+}
+
+.cc-nav-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text-secondary);
+  padding: 0.42rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cc-nav-btn:hover {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  border-color: var(--unam-blue-bright);
+}
+
+/* ==========================================================
+   HERO CINEÁTICO CENTRO DE CONTROL
+   ========================================================== */
+.cc-hero {
+  padding: 2.5rem 1rem 1.8rem;
+  text-align: center;
+}
+
+.cc-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cc-hero-badge {
+  display: inline-block;
+  background: rgba(213, 159, 15, 0.15);
+  border: 1px solid var(--unam-gold);
+  color: var(--unam-gold-bright);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.8rem;
+}
+
+.cc-hero h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 40%, #fcd866 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cc-hero p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   BARRA DE BÚSQUEDA INTERACTIVA & FILTROS POR CLÚSTER
+   ========================================================== */
+.cc-controls-stage {
+  max-width: 1300px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+}
+
+.cc-search-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1.5px solid var(--glass-stroke-blue);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 1rem;
+}
+
+.cc-search-icon {
+  font-size: 1.2rem;
+}
+
+.cc-search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cc-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.cc-filter-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cc-cluster-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.cc-cluster-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.cc-cluster-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.cc-cluster-btn.active {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  border-color: var(--unam-blue-bright);
+  box-shadow: 0 2px 10px rgba(29, 78, 216, 0.4);
+}
+
+.cc-sort-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cc-sort-btn {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text-muted);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.cc-sort-btn.active {
+  background: rgba(213, 159, 15, 0.2);
+  color: var(--unam-gold-bright);
+  border-color: var(--unam-gold);
+}
+
+/* ==========================================================
+   BENTO GRID DE MATERIAS (REINVENTADO)
+   ========================================================== */
+.cc-grid-stage {
+  max-width: 1300px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.cc-subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
+.cc-subject-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition-smooth);
+}
+
+.cc-subject-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--unam-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cc-subject-card.has-active-update {
+  border: 1.5px solid var(--unam-blue-bright);
+  background: rgba(29, 78, 216, 0.08);
+  box-shadow: 0 10px 30px rgba(29, 78, 216, 0.25);
+}
+
+.cc-subject-card.featured-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(0, 43, 122, 0.25) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border: 2px solid var(--unam-blue-bright);
+}
+
+.cc-card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.cc-card-icon {
+  font-size: 2.2rem;
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-stroke);
+}
+
+.cc-card-pill-update {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cc-card-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-top: 0.4rem;
+  line-height: 1.2;
+}
+
+.cc-card-meta {
+  font-size: 0.78rem;
+  color: var(--unam-gold-bright);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.cc-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.cc-card-chips-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.cc-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-stroke);
+  color: #cbd5e1;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.cc-chip:hover {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+}
+
+.cc-card-footer-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+.btn-open-subject {
+  background: linear-gradient(135deg, var(--unam-blue-electric) 0%, #1e40af 100%);
+  color: #ffffff;
+  border: 1px solid var(--unam-blue-bright);
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.btn-open-subject:hover {
+  background: #2563eb;
+  color: #ffffff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
+}
+
+/* ==========================================================
+   RESPONSIVIDAD MÓVIL (MÁRGENES CERO)
+   ========================================================== */
+@media (max-width: 768px) {
+  .cc-topbar-inner {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .cc-controls-stage,
+  .cc-grid-stage {
+    padding: 0 0.5rem;
+  }
+
+  .cc-subjects-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .cc-subject-card {
+    padding: 1.1rem 0.9rem;
+    border-radius: var(--radius-md);
+  }
+}

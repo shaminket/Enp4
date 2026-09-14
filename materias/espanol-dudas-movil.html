@@ -18,31 +18,32 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
+  
     <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
       return (isFile || hasHtml) ? (target + '.html') : target;
     }
-    function checkDesktopSwitch() {
-      if (window.location.search.includes("force=mobile")) return;
+    function checkResponsiveLayout() {
+      if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth > 920 && !isMobileUA) {
-        window.location.replace(resolveTargetUrl("espanol-dudas"));
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("espanol-dudas-movil"));
       }
     }
-    checkDesktopSwitch();
-    window.addEventListener("resize", checkDesktopSwitch);
+    checkResponsiveLayout();
+    window.addEventListener("resize", checkResponsiveLayout);
   </script>
 </head>
 <body>
 
   <div class="sticky-top-group">
-    <div class="mac-header-topbar" style="padding: 10px 16px;">
-      <div class="mac-header-dots" style="gap: 12px;">
-        <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+    <div class="mac-header-topbar">
+      <div class="mac-header-dots">
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
+        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Lengua Española &bull; Buzón de Dudas &bull; Grupo 0415</span>
     </div>
@@ -98,9 +99,9 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         </div>

@@ -16,7 +16,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="shaminket">
   
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/materia.css">
   
   <script>
     function resolveTargetUrl(target) {
@@ -85,24 +85,24 @@
         
         <!-- BARRA DE LAS 3 OPCIONES -->
         <div class="subject-three-options-bar">
-          <button id="ingBBtnTareas" class="opt-pill-btn opt-white-empty" onclick="showIngBOption('tareas')">
+          <button id="btnTab_tareas" class="opt-pill-btn opt-white-empty" onclick="showTab('tareas')">
             <span>📝 1. Tareas</span>
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente)</span>
           </button>
 
-          <button id="ingBBtnAvisos" class="opt-pill-btn opt-white-empty" onclick="showIngBOption('avisos')">
+          <button id="btnTab_avisos" class="opt-pill-btn opt-white-empty" onclick="showTab('avisos')">
             <span>🔔 2. Avisos</span>
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Salón C-205)</span>
           </button>
 
-          <button id="ingBBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showIngBOption('regalos')">
+          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
             <span>🎁 3. Regalos</span>
             <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Vocabulario A2)</span>
           </button>
         </div></div></div>
 
         <!-- SECCIÓN 1: TAREAS -->
-        <div id="ingBSecTareas" style="display: block;" class="seamless-section-pane color-block-tareas-clean">
+        <div id="pane_tareas" style="display: block;" class="seamless-section-pane color-block-tareas-clean">
         <div class="color-block-inner">
           <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
             <span style="font-size: 2.2rem;">✅</span>
@@ -115,7 +115,7 @@
 
         </div>
         <!-- SECCIÓN 2: AVISOS -->
-        <div id="ingBSecAvisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
+        <div id="pane_avisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
         <div class="color-block-inner">
           <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; text-align: center;">
             <p style="color: #334155; font-size: 0.95rem; margin: 0;">
@@ -126,7 +126,7 @@
 
         </div>
         <!-- SECCIÓN 3: REGALOS -->
-        <div id="ingBSecRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
+        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
         <div class="color-block-inner">
           <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
             <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Herramientas para Inglés B</h4>
@@ -171,7 +171,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  <script src="../js/materia.js"></script>
   <script>
     function showIngBOption(opt) {
       document.getElementById('ingBSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';

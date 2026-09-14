@@ -18,31 +18,32 @@
   
   
   <link rel="stylesheet" href="../css/styles.css">
+  
     <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
       return (isFile || hasHtml) ? (target + '.html') : target;
     }
-    function checkDesktopSwitch() {
-      if (window.location.search.includes("force=mobile")) return;
+    function checkResponsiveLayout() {
+      if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth > 920 && !isMobileUA) {
-        window.location.replace(resolveTargetUrl("equipo-2"));
+      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
+        window.location.replace(resolveTargetUrl("equipo-2-movil"));
       }
     }
-    checkDesktopSwitch();
-    window.addEventListener("resize", checkDesktopSwitch);
+    checkResponsiveLayout();
+    window.addEventListener("resize", checkResponsiveLayout);
   </script>
 </head>
 <body>
 
   <div class="sticky-top-group">
-    <div class="mac-header-topbar" style="padding: 10px 16px;">
-      <div class="mac-header-dots" style="gap: 12px;">
-        <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+    <div class="mac-header-topbar">
+      <div class="mac-header-dots">
+        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
+        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
       </div>
       <span class="mac-header-title">Equipo 2 &bull; Informática &bull; Grupo 0415</span>
     </div>
@@ -70,8 +71,8 @@
         </a>
 
         <nav class="nav-links-menu">
-          <a href="informatica-exposiciones-movil" class="nav-link-item">Todos los Equipos</a>
-          <a href="metodologia-exposicion-movil" class="nav-link-item">Metodología 1+3=1</a>
+          <a href="informatica-exposiciones" class="nav-link-item">Todos los Equipos</a>
+          <a href="metodologia-exposicion" class="nav-link-item">Metodología 1+3=1</a>
           <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
             Shaminket
           </a>
@@ -101,9 +102,9 @@
       <div class="window-titlebar">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <div class="window-dots">
-            <button class="win-dot win-dot-close" style="width: 20px; height: 20px;" onclick="window.history.back()" title="Cerrar / Volver"></button>
-            <button class="win-dot win-dot-minimize" style="width: 20px; height: 20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
-            <button class="win-dot win-dot-maximize" style="width: 20px; height: 20px;" onclick="toggleFullscreen()" title="Pantalla completa"></button>
+            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
+            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Arriba"></button>
+            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
           </div>
           <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
         </div>
@@ -128,17 +129,17 @@
             💡 Recomendaciones para tu equipo:
           </strong>
           <ul style="color: #475569; font-size: 0.92rem; line-height: 1.6; padding-left: 1.2rem; margin: 0;">
-            <li>Prepara tus diapositivas con anticipación usando la <a href="metodologia-exposicion-movil" style="color: #2D7FF9; font-weight: 700;">Metodología 1 + 3 = 1</a>.</li>
+            <li>Prepara tus diapositivas con anticipación usando la <a href="metodologia-exposicion" style="color: #2D7FF9; font-weight: 700;">Metodología 1 + 3 = 1</a>.</li>
             <li>Si necesitas apoyo con diapositivas limpias o impresiones de tus notas, pide en <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" style="color: #2D7FF9; font-weight: 700;">Encardomy</a>.</li>
             <li>Practica el tiempo para que no te cortes a la mitad de la clase.</li>
           </ul>
         </div>
 
         <div style="display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;">
-          <a href="metodologia-exposicion-movil" class="btn-encardomy" style="padding: 0.85rem 1.8rem; text-decoration: none;">
+          <a href="metodologia-exposicion" class="btn-encardomy" style="padding: 0.85rem 1.8rem; text-decoration: none;">
             <span>Aprender metodología 1+3=1 &rarr;</span>
           </a>
-          <a href="informatica-exposiciones-movil" class="mac-nav-back-btn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
+          <a href="informatica-exposiciones" class="mac-nav-back-btn" style="padding: 0.85rem 1.8rem; font-size: 0.95rem;">
             &larr; Ver todos los equipos
           </a>
         </div>
@@ -153,7 +154,7 @@
           <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
         </div>
         <div class="footer-links-list">
-          <a href="informatica-exposiciones-movil">Equipos</a>
+          <a href="informatica-exposiciones">Equipos</a>
           <a href="../centro-control">Materias</a>
           <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
         </div>

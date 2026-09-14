@@ -1,0 +1,96 @@
+/* ==========================================================
+   GUÍA & AYUDA UNICORNIO • ESTILOS DEDICADOS
+   css/ayuda.css - Exclusivo para ayuda.html
+   ========================================================== */
+
+:root {
+  --bg-space: #000c18;
+  --bg-deep: #001628;
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #fcd866;
+  --unam-blue-electric: #1d4ed8;
+  --unam-blue-bright: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.ayuda-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 12, 24, 0.88);
+  backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-stroke);
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ayuda-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.ayuda-container {
+  max-width: 960px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ayuda-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  backdrop-filter: blur(16px);
+}
+
+.ayuda-card h3 {
+  color: var(--unam-gold-bright);
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ayuda-item {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--glass-stroke);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.ayuda-item strong {
+  color: #60a5fa;
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.ayuda-item p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}

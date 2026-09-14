@@ -1,0 +1,839 @@
+/* ==========================================================
+   PORTAL UNICORNIO 0415 • ESTILOS DEDICADOS DEL PORTAL PRINCIPAL
+   css/portal.css - Exclusivo para index.html
+   ========================================================== */
+
+:root {
+  --bg-space: #000c18;
+  --bg-deep: #001628;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --glass-stroke-gold: rgba(213, 159, 15, 0.35);
+
+  --unam-blue: #002B7A;
+  --unam-blue-electric: #1d4ed8;
+  --unam-blue-bright: #3b82f6;
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #fcd866;
+  --unam-gold-glow: rgba(213, 159, 15, 0.35);
+
+  --code-crimson: #ef4444;
+  --code-amber: #f59e0b;
+  --code-emerald: #22c55e;
+  --code-purple: #7C3AED;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   TOP BAR PERSISTENTE & CONTROLES MAC
+   ========================================================== */
+.portal-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 12, 24, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-stroke);
+}
+
+.portal-topbar-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.portal-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.portal-brand-crests {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portal-brand-crests img {
+  height: 38px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.portal-brand-text h1 {
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.portal-brand-text h1 span.gold {
+  color: var(--unam-gold-bright);
+}
+
+.portal-brand-text span.sub {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.portal-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.portal-nav-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text-secondary);
+  padding: 0.42rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.portal-nav-btn:hover {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  border-color: var(--unam-blue-bright);
+  transform: translateY(-1px);
+}
+
+.portal-nav-btn.primary {
+  background: linear-gradient(135deg, #1d4ed8 0%, #002B7A 100%);
+  border-color: var(--unam-blue-bright);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
+}
+
+.portal-nav-btn.gold {
+  background: linear-gradient(135deg, #fcd866 0%, #D59F0F 100%);
+  color: #001628;
+  border-color: #fcd866;
+  font-weight: 900;
+}
+
+/* ==========================================================
+   RADAR EN VIVO & CLASE ACTUAL (HERO STREAMLINED)
+   ========================================================== */
+.live-telemetry-banner {
+  background: linear-gradient(90deg, rgba(0, 43, 122, 0.4) 0%, rgba(29, 78, 216, 0.3) 50%, rgba(0, 12, 24, 0.6) 100%);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.84rem;
+}
+
+.telemetry-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pulse-radar-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: radarPulse 1.8s infinite;
+}
+
+@keyframes radarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.telemetry-clock {
+  font-family: monospace;
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: var(--unam-gold-bright);
+}
+
+/* ==========================================================
+   AVISOS CRÍTICOS STREAMLINED "PICA AQUÍ" (CERO SATURACIÓN)
+   ========================================================== */
+.action-highway-strip {
+  max-width: 1300px;
+  margin: 1.2rem auto;
+  padding: 0 1rem;
+}
+
+.highway-container {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.highway-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.highway-title {
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--unam-gold-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.highway-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.65rem;
+}
+
+.highway-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  transition: var(--transition-fast);
+}
+
+.highway-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--unam-blue-bright);
+  transform: translateY(-2px);
+}
+
+.highway-card.critical {
+  border-left: 3.5px solid var(--code-crimson);
+}
+
+.highway-card.warning {
+  border-left: 3.5px solid var(--code-amber);
+}
+
+.highway-card.info {
+  border-left: 3.5px solid var(--unam-blue-electric);
+}
+
+.hw-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.hw-subject-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hw-action-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-pica-aqui {
+  background: linear-gradient(135deg, var(--unam-blue-electric) 0%, #1e3a8a 100%);
+  color: #ffffff;
+  border: 1px solid var(--unam-blue-bright);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.btn-pica-aqui:hover {
+  background: #2563eb;
+  color: #ffffff;
+  transform: scale(1.04);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+}
+
+/* ==========================================================
+   ÁREA MAESTRA: HORARIO & CALENDARIO INTEGRADO
+   ========================================================== */
+.portal-main-stage {
+  max-width: 1300px;
+  margin: 1.5rem auto 4rem;
+  padding: 0 1rem;
+}
+
+.portal-deck-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.deck-panel-header {
+  background: rgba(0, 14, 28, 0.75);
+  border-bottom: 1px solid var(--glass-stroke);
+  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.deck-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.deck-panel-title span.badge {
+  background: rgba(213, 159, 15, 0.2);
+  color: var(--unam-gold-bright);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--unam-gold);
+  text-transform: uppercase;
+}
+
+/* Controles de Vista: Semana vs Mes */
+.view-switch-cluster {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 3px;
+}
+
+.view-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.view-btn.active {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(29, 78, 216, 0.4);
+}
+
+/* ==========================================================
+   MATRIZ SEMANAL DE HORARIO (PANORÁMICA & RESPONSIVA)
+   ========================================================== */
+.schedule-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+.portal-schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+  min-width: 860px;
+}
+
+.portal-schedule-table th {
+  background: rgba(0, 22, 40, 0.85);
+  color: var(--unam-gold-bright);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.85rem 0.6rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-stroke);
+  text-align: center;
+}
+
+.portal-schedule-table td {
+  padding: 0;
+  vertical-align: top;
+  height: 82px;
+}
+
+.portal-schedule-table td.time-col {
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--unam-gold-bright);
+  font-weight: 900;
+  font-size: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-stroke);
+  width: 110px;
+  font-family: monospace;
+}
+
+.class-card-cell {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  padding: 0.55rem 0.7rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+.class-card-cell:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--unam-gold);
+  transform: translateY(-2px);
+}
+
+.class-card-cell.has-homework {
+  border: 1.5px solid var(--unam-blue-bright);
+  background: rgba(29, 78, 216, 0.12);
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.2);
+}
+
+.class-card-cell.is-live {
+  border: 2px solid var(--code-emerald) !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.35) !important;
+}
+
+.cell-subject-name {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.cell-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+}
+
+.cell-room-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--unam-gold-bright);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.cell-hw-tag {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 0.68rem;
+}
+
+/* ==========================================================
+   VISTA DE CALENDARIO ESCOLAR (AGOSTO 2026 - ABRIL 2027)
+   ========================================================== */
+.calendar-view-container {
+  padding: 1.2rem;
+  display: none;
+}
+
+.calendar-view-container.active {
+  display: block;
+}
+
+.cal-month-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.cal-month-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--unam-gold-bright);
+  letter-spacing: -0.3px;
+}
+
+.cal-month-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cal-step-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-stroke);
+  color: #ffffff;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.cal-step-btn:hover {
+  background: var(--unam-blue-electric);
+  border-color: var(--unam-blue-bright);
+}
+
+.cal-grid-month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day-header {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding: 0.4rem 0;
+}
+
+.cal-day-cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.5rem;
+  min-height: 72px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cal-day-cell:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--unam-gold);
+  transform: translateY(-2px);
+}
+
+.cal-day-cell.other-month {
+  opacity: 0.3;
+}
+
+.cal-day-cell.is-today {
+  border-color: var(--unam-gold);
+  background: rgba(213, 159, 15, 0.12);
+}
+
+.cal-day-cell.has-events {
+  border-color: rgba(59, 130, 246, 0.45);
+}
+
+.cal-cell-num {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.cal-dots-row {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+
+.cal-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.cal-dot.blue { background: #3b82f6; }
+.cal-dot.red { background: #ef4444; }
+.cal-dot.gold { background: #fcd866; }
+
+/* CAJÓN INFERIOR DE DETALLES DEL DÍA */
+.cal-drawer-panel {
+  margin-top: 1.2rem;
+  background: rgba(0, 22, 40, 0.7);
+  border: 1.5px solid var(--unam-blue-bright);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  display: none;
+}
+
+.cal-drawer-panel.open {
+  display: block;
+  animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   UBICADOR DE SALONES PREPA 4 & ENCARDOMY BANNER
+   ========================================================== */
+.bottom-services-cluster {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.rooms-quick-guide {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+}
+
+.rooms-guide-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--unam-gold-bright);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rooms-bldgs-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.7rem;
+}
+
+.bldg-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+}
+
+.bldg-box strong {
+  font-size: 0.82rem;
+  color: var(--unam-gold-bright);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.bldg-box span {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+  display: block;
+}
+
+.encardomy-side-card {
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.25) 0%, rgba(213, 159, 15, 0.15) 100%);
+  border: 1.5px solid var(--unam-gold);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.encardomy-side-card h3 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.encardomy-side-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+}
+
+.btn-enc-wa {
+  background: #22c55e;
+  color: #ffffff;
+  font-weight: 900;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.btn-enc-wa:hover {
+  background: #16a34a;
+  transform: scale(1.03);
+}
+
+/* ==========================================================
+   FOOTER MINIMALISTA
+   ========================================================== */
+.portal-footer {
+  border-top: 1px solid var(--glass-stroke);
+  background: rgba(0, 10, 20, 0.9);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.portal-footer a {
+  color: var(--unam-gold-bright);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   RESPONSIVIDAD MÓVIL Y TABLETA (MÁRGENES CERO, FLUIDEZ TOTAL)
+   ========================================================== */
+@media (max-width: 960px) {
+  .bottom-services-cluster {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-topbar-inner {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .portal-brand-text h1 {
+    font-size: 0.95rem;
+  }
+
+  .portal-brand-text span.sub {
+    display: none;
+  }
+
+  .portal-nav-links {
+    gap: 0.35rem;
+  }
+
+  .portal-nav-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .action-highway-strip,
+  .portal-main-stage {
+    padding: 0 0.5rem;
+  }
+
+  .highway-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cal-grid-month {
+    gap: 3px;
+  }
+
+  .cal-day-cell {
+    min-height: 52px;
+    padding: 0.4rem 0.25rem;
+  }
+
+  .cal-cell-num {
+    font-size: 0.78rem;
+  }
+
+  .portal-deck-panel {
+    border-radius: var(--radius-md);
+  }
+}

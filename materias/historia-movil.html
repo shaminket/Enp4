@@ -2,343 +2,209 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historia Universal III Grupo 0415 | Prepa 4 UNAM</title>
-  <meta name="description" content="Planisferio con nombres, entrega de pendientes y herramientas de PDF para Historia Universal III del grupo 415 en la Prepa 4 UNAM.">
-  <link rel="stylesheet" href="../css/styles.css">
-  <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
-    }
-    function checkDesktopSwitch() {
-      if (window.location.search.includes("force=mobile")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth > 920 && !isMobileUA) {
-        window.location.replace(resolveTargetUrl("historia"));
-      }
-    }
-    checkDesktopSwitch();
-    window.addEventListener("resize", checkDesktopSwitch);
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Historia Universal III • Grupo 0415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Planisferio con nombres, entrega de cuadernos pendientes y herramientas de PDF para Historia Universal III del grupo 415 en la Prepa 4 UNAM.">
+  <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="../css/materia.css">
 </head>
 <body>
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="../" class="nav-brand">
-          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto;">
-          <div class="brand-text-cluster">
-            <div class="brand-name"><span>Cuatreros</span> del 415</div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4</div>
-          </div>
-        </a>
-        <nav class="nav-links-menu">
-          <a href="../centro-control-movil" class="nav-link-item">Centro de Control</a>
-          <a href="../#horario" class="nav-link-item">Horario</a>
-        </nav>
-      </div>
-    </header>
-  </div>
 
-  <section class="hero-cinematic" style="padding: 2.6rem 1rem 3.2rem;">
-    <div class="hero-content">
-      <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🏛️</div>
-      <h1 class="hero-heading" style="font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: 0.4rem;">Historia Universal III</h1>
-      <p style="color: #fcd866; font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem;">Clave 1403 &bull; Salones B-109 y B-117 &bull; Grupo 0415</p>
-      <p class="hero-description" style="max-width: 760px; font-size: 0.98rem; margin: 0 auto; line-height: 1.5;">
-        Transformaciones capitalistas, orden geopolítico mundial, mapas temáticos y herramientas para el Grupo 0415.
+  <!-- CABECERA DE LA MATERIA -->
+  <header class="mat-topbar">
+    <div class="mat-topbar-inner">
+      <a href="../centro-control.html" class="mat-brand">
+        <img src="../assets/escudo-unam-original.png" alt="UNAM">
+        <div class="mat-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Historia Universal III</span>
+        </div>
+      </a>
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../" class="mat-nav-btn">Horario</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO DE LA MATERIA -->
+  <section class="mat-hero">
+    <div class="mat-hero-inner">
+      <div class="mat-hero-icon">🏛️</div>
+      <h2>Historia Universal III</h2>
+      <div class="mat-hero-sub">Clave 1403 &bull; 12 créditos &bull; Salones B-109 y B-117 &bull; Grupo 0415</div>
+      <p class="mat-hero-desc">
+        Procesos mundiales contemporáneos, dinámicas geopolíticas, mapas temáticos y entrega de actividades escolares.
       </p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL SIN MÁRGENES MUERTOS -->
-  <main class="master-container seamless-subject-container">
-    <div class="schedule-master-card seamless-subject-card">
-      <div class="window-titlebar">
-        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
-        <span class="win-titlebar-text">Historia Universal III &bull; Panel de Asignatura</span>
-      </div>
+  <!-- BARRA DE LAS 3 OPCIONES -->
+  <nav class="mat-tabs-bar-wrap">
+    <div class="mat-tabs-inner">
+      <button id="btnTab_tareas" class="mat-tab-btn active-blue" onclick="showTab('tareas')">
+        <span>📝 1. Tareas</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">PLANISFERIO CON NOMBRES</span>
+      </button>
+      <button id="btnTab_avisos" class="mat-tab-btn empty-white" onclick="showTab('avisos')">
+        <span>🔔 2. Avisos</span>
+        <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">URGENTE LUNES 14</span>
+      </button>
+      <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
+        <span>🎁 3. Regalos</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Planisferio & PDF24)</span>
+      </button>
+    </div>
+  </nav>
 
-      <div class="schedule-card-body" style="padding: 0; margin: 0;">
-        
-        <div class="seamless-tabs-holder">
-          <div class="seamless-tabs-inner">
-            <!-- BARRA DE LAS 3 OPCIONES -->
-            <div class="subject-three-options-bar">
-              <!-- Opción 1: Tareas (AZUL REY BRILLANTE POR EL PLANISFERIO) -->
-              <button id="tabBtnTareas" class="opt-pill-btn opt-blue-active" onclick="showOption('tareas')">
-                <span>📝 1. Tareas</span>
-                <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">PLANISFERIO CON NOMBRES</span>
-              </button>
-
-              <!-- Opción 2: Avisos (AZUL REY BRILLANTE) -->
-              <button id="tabBtnAvisos" class="opt-pill-btn opt-blue-active" onclick="showOption('avisos')">
-                <span>🔔 2. Avisos</span>
-                <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">URGENTE LUNES 14</span>
-              </button>
-
-              <!-- Opción 3: Regalos -->
-              <button id="tabBtnRegalos" class="opt-pill-btn opt-white-gift" onclick="showOption('regalos')">
-                <span>🎁 3. Regalos</span>
-                <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Planisferio & PDF24)</span>
-              </button>
-            </div>
-          </div>
+  <!-- 1. SECCIÓN TAREAS -->
+  <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
+    <div class="mat-pane-inner">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Material de Clase Obligatorio</span>
+        <h3 class="mat-box-title">¡No olvides tu planisferio con nombres!</h3>
+        <p class="mat-box-desc">
+          Es indispensable llevarlo para las actividades y mapas temáticos de Historia Universal III. Debe ser con división política y nombres legibles de países y territorios.
+        </p>
+        <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; font-size: 0.92rem; color: #1e40af;">
+          ¿Lo quieres listo para descargar e imprimir? Ve a la sección de <strong>Regalos</strong>, donde tienes la imagen en alta calidad y la opción de entrega en tu salón.
         </div>
-
-        <!-- SECCIÓN 1: TAREAS (RECORDATORIO DEL PLANISFERIO CON NOMBRES) -->
-        <div id="secTareas" style="display: block;" class="seamless-section-pane color-block-tareas-active">
-          <div class="color-block-inner">
-            <div style="background: #ffffff; border-radius: 16px; padding: 1.6rem 1.4rem; box-shadow: 0 4px 20px rgba(0, 22, 40, 0.05); margin-bottom: 1rem;">
-              <span style="background: #1d4ed8; color: #ffffff; font-size: 0.76rem; font-weight: 900; padding: 0.25rem 0.7rem; border-radius: 6px; text-transform: uppercase;">
-                Material de Clase Obligatorio &bull; Historia Universal III
-              </span>
-              
-              <div style="display: flex; align-items: center; gap: 0.8rem; margin: 0.8rem 0 0.5rem;">
-                <span style="font-size: 2.4rem;">🗺️</span>
-                <div>
-                  <h3 style="color: #002B7A; font-size: 1.4rem; font-weight: 900; margin: 0;">
-                    ¡No olvides tu planisferio con nombres!
-                  </h3>
-                  <p style="color: #475569; font-size: 0.94rem; margin: 0.2rem 0 0;">
-                    Es indispensable llevarlo para las actividades y mapas temáticos de Historia.
-                  </p>
-                </div>
-              </div>
-
-              <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 1.1rem; margin: 1rem 0; font-size: 0.92rem; line-height: 1.55; color: #1e3a8a;">
-                ¿Lo quieres listo para descargar e imprimir? Consulta la <strong>sección de regalos</strong> de Historia, donde encontrarás la imagen en alta calidad y la opción de que te lo lleven a tu salón.
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
-                <button onclick="showOption('regalos')" class="btn-encardomy" style="padding: 0.65rem 1.4rem; font-size: 0.9rem; cursor: pointer; border: none;">
-                  <span>Ir a Regalos de Historia &bull; Ver Planisferio &rarr;</span>
-                </button>
-                <a href="historia-archivo-movil" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
-                  📁 Ver tareas anteriores archivadas &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+          <button onclick="showTab('regalos')" class="mat-tab-btn active-blue" style="font-size: 0.88rem; padding: 0.6rem 1.2rem;">
+            <span>Ir a Regalos &bull; Ver Planisferio &rarr;</span>
+          </button>
+          <a href="historia-archivo.html" style="font-size: 0.85rem; color: #1d4ed8; font-weight: 800; text-decoration: none;">
+            📁 Ver tareas anteriores archivadas &rarr;
+          </a>
         </div>
-
-        <!-- SECCIÓN 2: AVISOS (AVISO URGENTE LUNES 14) -->
-        <div id="secAvisos" style="display: none;" class="seamless-section-pane color-block-avisos-active">
-          <div class="color-block-inner">
-            <div style="background: #ffffff; border-radius: 16px; padding: 1.6rem 1.4rem; box-shadow: 0 4px 20px rgba(0, 22, 40, 0.05);">
-              <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
-                <span style="background: #1d4ed8; color: #ffffff; font-size: 0.78rem; font-weight: 900; padding: 0.25rem 0.75rem; border-radius: 6px; text-transform: uppercase;">
-                  Aviso Oficial de Entrega &bull; Grupo 0415
-                </span>
-              </div>
-              <h3 style="color: #1e3a8a; font-size: 1.45rem; font-weight: 900; margin: 0 0 0.8rem;">
-                Entrega de Cuadernos Pendientes &bull; Lunes 14 de Septiembre
-              </h3>
-              
-              <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.4rem; font-size: 1rem; line-height: 1.65; color: #001628; margin-bottom: 1.2rem;">
-                <p style="margin: 0 0 0.8rem;">
-                  ⚠️ <strong>TODOS los alumnos (máximo 20)</strong> que tengan algo pendiente o entrega atrasada, deben presentarse el <strong>lunes 14 de septiembre de 2026</strong> en la <strong>hora de Orientación Educativa (12:00 a 12:50)</strong>.
-                </p>
-                <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 0.85rem 1rem; border-radius: 6px; color: #991b1b; font-weight: 700; font-size: 0.92rem;">
-                  Sí, SOLO durante esa hora. Después de esa hora NO recibo cuadernos, ya que yo tengo que entregar los cuadernos puntualmente a las 12:50, NO después. La verdad no es por mala onda, es por puntualidad y disciplina.
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
-                <span style="font-size: 0.84rem; color: #64748b;">Límite estricto: 12:50 PM en salón de Orientación</span>
-                <a href="historia-archivo-movil" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
-                  Ver historial de archivo &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECCIÓN 3: REGALOS (PLANISFERIO CON NOMBRES + HERRAMIENTAS PDF24) -->
-        <div id="secRegalos" style="display: none;" class="seamless-section-pane color-block-regalos">
-          <div class="color-block-inner">
-            <div style="background: #ffffff; border-radius: 16px; padding: 1.6rem 1.4rem; box-shadow: 0 4px 20px rgba(0, 22, 40, 0.05); margin-bottom: 1.5rem;">
-              <span style="background: #1d4ed8; color: #ffffff; font-size: 0.76rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">
-                🎁 Regalo para Historia &bull; Planisferio Oficial
-              </span>
-              <h4 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0.4rem 0 0.2rem;">
-                Planisferio con Nombres y División Política
-              </h4>
-              <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">
-                Listo en alta calidad con numeración y división política para los mapas históricos.
-              </p>
-
-              <!-- IMAGEN DEL PLANISFERIO -->
-              <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.75rem; text-align: center; margin-bottom: 1.2rem;">
-                <img src="../assets/planisferio-con-nombres.jpg" alt="Planisferio con nombres y división política" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: block; margin: 0 auto;">
-                <span style="display: block; font-size: 0.8rem; color: #64748b; margin-top: 0.5rem; font-weight: 600;">
-                  Planisferio con nombres de los 136 países para Historia Universal III
-                </span>
-              </div>
-
-              <!-- BOTONES: DESCARGAR Y YO TE LO LLEVO -->
-              <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem;">
-                <!-- Botón 1: Descarga automática -->
-                <a href="../assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" class="btn-encardomy" style="padding: 0.75rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
-                  <span>📥 Descargar Planisferio Automáticamente</span>
-                </a>
-
-                <!-- Botón 2: Yo te lo llevo -->
-                <button onclick="openPlanisferioModal()" class="opt-pill-btn opt-blue-active" style="padding: 0.75rem 1.4rem; font-size: 0.92rem; font-weight: 900; border-radius: 980px; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; border: none;">
-                  <span>🛵 ¿No puedes llevarlo? Yo te lo llevo (1 por $5 o 3 por $10)</span>
-                </button>
-              </div>
-
-              <hr style="border: none; border-top: 1.5px solid #e2e8f0; margin: 1.5rem 0;">
-
-              <!-- HERRAMIENTAS PDF24 -->
-              <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
-                <span style="font-size: 2rem;">📄</span>
-                <div>
-                  <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin: 0;">Herramientas Gratuitas de PDF</h4>
-                  <p style="color: #64748b; font-size: 0.88rem; margin: 0.2rem 0 0;">Une varios archivos o convierte tus fotos a PDF.</p>
-                </div>
-              </div>
-
-              <!-- Widget 1: Unir PDF -->
-              <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.2rem;">
-                <h5 style="color: #002B7A; font-size: 1rem; font-weight: 900; margin-bottom: 0.3rem;">Herramienta 1: Unir 2 o más archivos en un solo PDF</h5>
-                <script src="https://tools.pdf24.org/static/js/widget.js"></script>
-                <div id="mergePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 240px;"></div>
-                <script>
-                  if (window.pdf24) {
-                    pdf24.loadWidget('merge-pdf', {
-                      containerId: 'mergePdfWidgetContainer',
-                      langCode: 'es',
-                      readyCallback : function() { console.log('Merge ready'); },
-                      widgetConfig : { theme: 'lightTheme' }
-                    });
-                  }
-                </script>
-              </div>
-
-              <!-- Widget 2: Convertir a PDF -->
-              <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.2rem;">
-                <h5 style="color: #002B7A; font-size: 1rem; font-weight: 900; margin-bottom: 0.3rem;">Herramienta 2: Convertir fotos o documentos a PDF</h5>
-                <div id="convertToPdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 240px;"></div>
-                <script>
-                  if (window.pdf24) {
-                    pdf24.loadWidget('convert-to-pdf', {
-                      containerId: 'convertToPdfWidgetContainer',
-                      langCode: 'es',
-                      readyCallback : function() { console.log('Convert ready'); },
-                      widgetConfig : { theme: 'lightTheme' }
-                    });
-                  }
-                </script>
-              </div>
-
-              <!-- Apoyo Encardomy -->
-              <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
-                <span style="font-size: 0.88rem; color: #1e40af;">¿De plano se te complica? Por $2 USD ($40 MXN) te unifico y renombro tus archivos.</span>
-                <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20para%20unir%20y%20renombrar%20mis%20archivos%20de%20Historia" target="_blank" rel="noopener noreferrer" class="btn-encardomy" style="padding: 0.45rem 1rem; font-size: 0.82rem; text-decoration: none;">
-                  Pedir ayuda por WhatsApp &rarr;
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="seamless-bottom-nav">
-          <a href="../centro-control-movil" style="color: #002B7A; font-weight: 800; text-decoration: none; font-size: 0.95rem;">&larr; Volver al Centro de Control de Materias</a>
-        </div>
-
       </div>
     </div>
-  </main>
+  </section>
 
-  <!-- MODAL INTERACTIVO PARA HISTORIA (1 POR $5 O 3 POR $10) -->
-  <div id="planisferioModal" class="announcement-overlay" style="display: none; justify-content: center; align-items: center; background: rgba(0, 22, 40, 0.75); z-index: 99999; padding: 1rem;">
-    <div style="background: #ffffff; border: 2.5px solid #1d4ed8; border-radius: 22px; padding: 1.8rem 1.6rem; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 25px 70px rgba(0,0,0,0.45);">
-      <span style="font-size: 2.4rem; display: block; margin-bottom: 0.4rem;">🛵</span>
-      <h3 style="color: #002B7A; font-size: 1.3rem; font-weight: 900; margin: 0 0 0.3rem;">¿Cuántos planisferios quieres que te lleve?</h3>
-      <p style="color: #64748b; font-size: 0.9rem; line-height: 1.45; margin-bottom: 1.3rem;">
+  <!-- 2. SECCIÓN AVISOS -->
+  <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
+    <div class="mat-pane-inner">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-crimson">Aviso Oficial de Entrega</span>
+        <h3 class="mat-box-title">Entrega de Cuadernos Pendientes &bull; Lunes 14 de Septiembre</h3>
+        <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; font-size: 0.95rem; color: #78350f; line-height: 1.6;">
+          ⚠️ <strong>TODOS los alumnos (máximo 20)</strong> que tengan algo pendiente o entrega atrasada, deben presentarse el <strong>lunes 14 de septiembre de 2026</strong> en la <strong>hora de Orientación Educativa (12:00 a 12:50 puntual, salón B-110)</strong>.<br><br>
+          <em>Después de las 12:50 NO se reciben cuadernos</em>, ya que deben ser entregados puntualmente a la profesora. Es por puntualidad y disciplina formativa.
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+          <span style="font-size: 0.82rem; color: #64748b;">Límite estricto: 12:50 PM en salón de Orientación (B-110)</span>
+          <a href="historia-archivo.html" style="font-size: 0.85rem; color: #1d4ed8; font-weight: 800; text-decoration: none;">Historial de archivo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SECCIÓN REGALOS -->
+  <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active">
+    <div class="mat-pane-inner">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Regalo Escolar Oficial &bull; Historia 415</span>
+        <h3 class="mat-box-title">Planisferio con Nombres y División Política</h3>
+        <p class="mat-box-desc">
+          Formato numerado nítido con los 136 países y territorios para tus mapas y prácticas históricas.
+        </p>
+
+        <!-- Preview Imagen -->
+        <div style="text-align: center; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.8rem; margin-bottom: 1.2rem;">
+          <img src="../assets/planisferio-con-nombres.jpg" alt="Planisferio con nombres" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+          <span style="font-size: 0.78rem; color: #64748b; margin-top: 0.4rem; display: block; font-weight: 600;">Planisferio oficial con división política y lista de 136 países</span>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem;">
+          <a href="../assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" class="mat-tab-btn active-blue" style="text-decoration: none; font-size: 0.9rem;">
+            <span>📥 Descargar Imagen Automáticamente</span>
+          </a>
+          <button onclick="openOrderModal()" class="mat-tab-btn gift-purple" style="font-size: 0.9rem;">
+            <span>🛵 ¿No puedes llevarlo? Yo te lo llevo (1 por $5 o 3 por $10)</span>
+          </button>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+        <!-- Widgets PDF24 -->
+        <h4 style="color: #002B7A; font-size: 1.15rem; font-weight: 900; margin-bottom: 0.4rem;">Herramientas Gratuitas de PDF</h4>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Une varios archivos o convierte tus fotos a PDF sin salir de la plataforma:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
+          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
+            <strong style="color: #1e40af; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Herramienta 1: Unir archivos a 1 PDF</strong>
+            <script src="https://tools.pdf24.org/static/js/widget.js"></script>
+            <div id="mergePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 220px;"></div>
+            <script>
+              if (window.pdf24) {
+                pdf24.loadWidget('merge-pdf', {
+                  containerId: 'mergePdfWidgetContainer',
+                  langCode: 'es',
+                  readyCallback: function() {},
+                  widgetConfig: { theme: 'lightTheme' }
+                });
+              }
+            </script>
+          </div>
+
+          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
+            <strong style="color: #1e40af; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Herramienta 2: Convertir fotos o docs a PDF</strong>
+            <div id="convertToPdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 220px;"></div>
+            <script>
+              if (window.pdf24) {
+                pdf24.loadWidget('convert-to-pdf', {
+                  containerId: 'convertToPdfWidgetContainer',
+                  langCode: 'es',
+                  readyCallback: function() {},
+                  widgetConfig: { theme: 'lightTheme' }
+                });
+              }
+            </script>
+          </div>
+        </div>
+
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 0.9rem 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+          <span style="font-size: 0.85rem; color: #1e40af;">¿De plano se te complica? Por $2 USD ($40 MXN) te unifico y renombro tus archivos en Encardomy.</span>
+          <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20para%20unir%20y%20renombrar%20mis%20archivos%20de%20Historia" target="_blank" rel="noopener noreferrer" style="background: #1d4ed8; color: #fff; padding: 0.45rem 1rem; border-radius: 999px; text-decoration: none; font-size: 0.82rem; font-weight: 800;">
+            Pedir por WhatsApp &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE PEDIDO DE PLANISFERIO -->
+  <div id="orderModal" class="mat-modal-overlay">
+    <div class="mat-modal-shell">
+      <span style="font-size: 2.2rem; display: block; margin-bottom: 0.3rem;">🛵</span>
+      <h3 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.3rem;">¿Cuántos planisferios necesitas?</h3>
+      <p style="color: #64748b; font-size: 0.88rem; line-height: 1.45; margin-bottom: 1.2rem;">
         Te lo imprimo en calidad nítida y te lo entrego directamente en tu salón para Historia en Prepa 4:
       </p>
-
-      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.2rem;">
-        <button onclick="sendPlanisferioWa(1)" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #1d4ed8; background: #eff6ff; color: #1e40af; font-size: 0.95rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.2rem;">
+        <button onclick="sendOrderWa('planisferio con nombres para Historia', 1, '$5 MXN')" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #1d4ed8; background: #eff6ff; color: #1e40af; font-size: 0.92rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
           <span>📄 1 Planisferio con nombres</span>
-          <span style="background: #1d4ed8; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.82rem;">$5 MXN</span>
+          <span style="background: #1d4ed8; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem;">$5 MXN</span>
         </button>
-
-        <button onclick="sendPlanisferioWa(3)" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #22c55e; background: #f0fdf4; color: #166534; font-size: 0.95rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+        <button onclick="sendOrderWa('planisferios con nombres para Historia', 3, '$10 MXN')" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #22c55e; background: #f0fdf4; color: #166534; font-size: 0.92rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
           <span>📑 3 Planisferios (Paquete de 3)</span>
-          <span style="background: #22c55e; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.82rem;">$10 MXN (Ahorras $5)</span>
+          <span style="background: #22c55e; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem;">$10 MXN (Ahorras $5)</span>
         </button>
       </div>
-
-      <button onclick="closePlanisferioModal()" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+      <button onclick="closeOrderModal()" style="background: none; border: none; color: #64748b; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
         Cancelar
       </button>
     </div>
   </div>
 
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="../centro-control-movil">Todas las materias</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
-      </p>
-    </div>
+  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.82rem;">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="../centro-control.html" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">&larr; Volver al Centro de Control</a> &bull; <a href="../" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">Horario</a>
+    </p>
   </footer>
 
-  <script src="../js/main.js"></script>
-  <script>
-    function showOption(opt) {
-      document.getElementById('secTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
-      document.getElementById('secAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
-      document.getElementById('secRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
-
-      const btnT = document.getElementById('tabBtnTareas');
-      const btnA = document.getElementById('tabBtnAvisos');
-      const btnR = document.getElementById('tabBtnRegalos');
-
-      btnT.style.opacity = (opt === 'tareas') ? '1' : '0.85';
-      btnA.style.opacity = (opt === 'avisos') ? '1' : '0.85';
-      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
-    }
-
-    function openPlanisferioModal() {
-      document.getElementById('planisferioModal').style.display = 'flex';
-    }
-
-    function closePlanisferioModal() {
-      document.getElementById('planisferioModal').style.display = 'none';
-    }
-
-    function sendPlanisferioWa(qty) {
-      closePlanisferioModal();
-      var phone = "525571985641";
-      var price = (qty === 1) ? "$5 MXN" : "$10 MXN";
-      var text = "Hola, ocupo que me lleves " + qty + " planisferio" + (qty > 1 ? "s" : "") + " con nombres (" + price + ") para Historia del Grupo 0415.";
-      var url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
-      window.open(url, '_blank');
-    }
-
-    window.addEventListener('DOMContentLoaded', function() {
-      if (window.location.hash === '#regalos' || window.location.search.includes('tab=regalos') || sessionStorage.getItem('openTab_historia') === 'regalos') {
-        sessionStorage.removeItem('openTab_historia');
-        showOption('regalos');
-      }
-    });
-  </script>
+  <script src="../js/materia.js"></script>
 </body>
 </html>

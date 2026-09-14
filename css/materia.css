@@ -1,0 +1,493 @@
+/* ==========================================================
+   MATERIAS UNICORNIO • ESTILOS DEDICADOS PARA ASIGNATURAS
+   css/materia.css - Exclusivo para páginas de materias
+   ========================================================== */
+
+:root {
+  --bg-space: #000c18;
+  --bg-deep: #001628;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+
+  --unam-blue: #002B7A;
+  --unam-blue-electric: #1d4ed8;
+  --unam-blue-bright: #3b82f6;
+  --unam-gold: #D59F0F;
+  --unam-gold-bright: #fcd866;
+
+  --code-crimson: #ef4444;
+  --code-amber: #f59e0b;
+  --code-emerald: #22c55e;
+  --code-purple: #7C3AED;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   CABECERA DEDICADA DE LA MATERIA
+   ========================================================== */
+.mat-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 12, 24, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid var(--glass-stroke);
+}
+
+.mat-topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mat-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.mat-brand img {
+  height: 36px;
+  width: auto;
+}
+
+.mat-brand-text h1 {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.mat-brand-text span {
+  font-size: 0.68rem;
+  color: var(--unam-gold-bright);
+}
+
+.mat-nav-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-stroke);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.mat-nav-btn:hover {
+  background: var(--unam-blue-electric);
+  color: #ffffff;
+}
+
+/* ==========================================================
+   HERO DE LA MATERIA
+   ========================================================== */
+.mat-hero {
+  padding: 2.5rem 1rem 2rem;
+  text-align: center;
+}
+
+.mat-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mat-hero-icon {
+  font-size: 3.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.mat-hero h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, #ffffff 40%, #fcd866 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mat-hero-sub {
+  color: var(--unam-gold-bright);
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.mat-hero-desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================
+   BARRA DE LAS 3 OPCIONES (TABS)
+   ========================================================== */
+.mat-tabs-bar-wrap {
+  background: #ffffff;
+  border-bottom: 1.5px solid #cbd5e1;
+  padding: 1rem 1.2rem;
+  width: 100%;
+}
+
+.mat-tabs-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mat-tab-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+  border: 1.5px solid transparent;
+}
+
+.mat-tab-btn.active-blue {
+  background: linear-gradient(135deg, #002B7A 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
+}
+
+.mat-tab-btn.empty-white {
+  background: #f8fafc;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.mat-tab-btn.empty-white:hover {
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+.mat-tab-btn.gift-purple {
+  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  color: #6b21a8;
+  border-color: #c084fc;
+}
+
+.mat-tab-btn.gift-purple:hover {
+  background: #f3e8ff;
+}
+
+/* ==========================================================
+   BLOQUES DE COLOR DE SECCIÓN (FULL-WIDTH SEAMLESS)
+   ========================================================== */
+.mat-section-pane {
+  width: 100%;
+  padding: 2.2rem 1.2rem;
+  display: none;
+}
+
+.mat-section-pane.active {
+  display: block;
+}
+
+.mat-pane-blue-active {
+  background: #eff6ff;
+  border-top: 3px solid #1d4ed8;
+  border-bottom: 2px solid #bfdbfe;
+}
+
+.mat-pane-gold-active {
+  background: #fffdf5;
+  border-top: 3px solid #D59F0F;
+  border-bottom: 2px solid #fde047;
+}
+
+.mat-pane-purple-active {
+  background: #fcfaff;
+  border-top: 3px solid #7C3AED;
+  border-bottom: 2px solid #ddd6fe;
+}
+
+.mat-pane-clean-white {
+  background: #f8fafc;
+  border-top: 2px solid #e2e8f0;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.mat-pane-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.mat-card-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.4rem;
+  box-shadow: 0 4px 20px rgba(0, 22, 40, 0.05);
+  color: #1e293b;
+}
+
+.mat-badge-tag {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 900;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.mat-badge-crimson { background: #ef4444; color: #ffffff; }
+.mat-badge-blue { background: #1d4ed8; color: #ffffff; }
+.mat-badge-gold { background: #D59F0F; color: #001628; }
+
+.mat-box-title {
+  color: #002B7A;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.mat-box-desc {
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Modal interactivo */
+.mat-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 22, 40, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.mat-modal-overlay.active {
+  display: flex;
+}
+
+.mat-modal-shell {
+  background: #ffffff;
+  border: 2.5px solid #1d4ed8;
+  border-radius: 22px;
+  padding: 1.8rem 1.6rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  color: #1e293b;
+}
+
+/* ==========================================================
+   RESPONSIVIDAD MÓVIL
+   ========================================================== */
+@media (max-width: 768px) {
+  .mat-topbar-inner {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .mat-tabs-bar-wrap {
+    padding: 0.7rem 0.5rem;
+  }
+
+  .mat-tab-btn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.82rem;
+  }
+
+  .mat-section-pane {
+    padding: 1.2rem 0.65rem;
+  }
+
+  .mat-card-box {
+    padding: 1.2rem 0.9rem;
+    border-radius: var(--radius-md);
+  }
+}
+
+/* COMPATIBILIDAD CON ESTRUCTURA ANTERIOR Y CLASES LEGACY */
+.seamless-subject-container,
+.master-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.seamless-subject-card,
+.schedule-master-card {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.window-titlebar {
+  background: rgba(0, 14, 28, 0.8) !important;
+  border-bottom: 1px solid var(--glass-stroke) !important;
+  padding: 10px 1.5rem !important;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mac-nav-back-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-stroke);
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mac-nav-back-btn:hover {
+  background: var(--unam-blue-electric);
+}
+
+.seamless-tabs-holder {
+  background: #ffffff;
+  border-bottom: 1.5px solid #cbd5e1;
+  padding: 1rem 1.2rem;
+  width: 100%;
+}
+
+.seamless-tabs-inner,
+.subject-three-options-bar {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.opt-pill-btn {
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.opt-blue-active {
+  background: linear-gradient(135deg, #002B7A 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: 1.5px solid #3b82f6;
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
+}
+
+.opt-white-empty {
+  background: #f8fafc;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+}
+
+.opt-white-gift {
+  background: #ffffff;
+  color: #6b21a8;
+  border: 1.5px solid #c084fc;
+}
+
+.seamless-section-pane {
+  width: 100%;
+  padding: 2.2rem 1.2rem;
+}
+
+.color-block-tareas-active {
+  background: #eff6ff;
+  border-top: 3px solid #1d4ed8;
+  border-bottom: 2px solid #bfdbfe;
+}
+
+.color-block-tareas-clean {
+  background: #f8fafc;
+  border-top: 2px solid #e2e8f0;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.color-block-avisos-active {
+  background: #fffdf5;
+  border-top: 3px solid #D59F0F;
+  border-bottom: 2px solid #fde047;
+}
+
+.color-block-avisos-clean {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.color-block-regalos {
+  background: #fcfaff;
+  border-top: 3px solid #7C3AED;
+  border-bottom: 2px solid #ddd6fe;
+}
+
+.color-block-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.seamless-bottom-nav {
+  background: rgba(0, 14, 28, 0.9);
+  border-top: 1px solid var(--glass-stroke);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.seamless-bottom-nav a {
+  color: var(--unam-gold-bright);
+  font-weight: 800;
+  text-decoration: none;
+}
