@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Educación Física IV Grupo 0415 | Prepa 4 UNAM</title>
-  <meta name="description" content="Tareas, acondicionamiento y lineamientos de Educación Física IV para el grupo 415 en la Prepa 4 UNAM. Consulta salud escolar en shaminket.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Educación Física IV • Grupo 0415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Acondicionamiento físico, capacidades condicionales, coordinación motriz y salud deportiva.">
+  <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
   <script>
     function resolveTargetUrl(target) {
@@ -16,7 +17,7 @@
       if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("educacion-fisica-movil"));
+        window.location.replace(resolveTargetUrl('educacion-fisica-movil'));
       }
     }
     checkResponsiveLayout();
@@ -24,134 +25,108 @@
   </script>
 </head>
 <body>
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="../" class="nav-brand">
-          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto;">
-          <div class="brand-text-cluster">
-            <div class="brand-name"><span>Cuatreros</span> del 415</div>
-            <div class="brand-subline">Educación Física IV &bull; GIM1</div>
-          </div>
-        </a>
-        <nav class="nav-links-menu">
-          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
-          <a href="../#horario" class="nav-link-item">Horario</a>
-        </nav>
-      </div>
-    </header>
-  </div>
 
-  <section class="hero-cinematic" style="padding: 3.5rem 1.5rem 4.5rem;">
-    <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">🏃</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Educación Física IV</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem;">Clave 1409 &bull; Gimnasio 1 (GIM1) &bull; Grupo 0415</p>
+  <!-- CABECERA DE LA MATERIA -->
+  <header class="mat-topbar">
+    <div class="mat-topbar-inner">
+      <a href="../centro-control.html" class="mat-brand">
+        <img src="../assets/escudo-unam-original.png" alt="UNAM">
+        <div class="mat-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Educación Física IV</span>
+        </div>
+      </a>
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../" class="mat-nav-btn">Horario</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
+  <section class="mat-hero">
+    <div class="mat-hero-inner">
+      <div class="mat-hero-icon">🏃</div>
+      <h2>Educación Física IV</h2>
+      <div class="mat-hero-sub">Clave 1409 • Gimnasio 1 (GIM1) • Viernes 11:10 AM • Grupo 0415</div>
+      <p class="mat-hero-desc">Acondicionamiento físico, capacidades condicionales, coordinación motriz y salud deportiva.</p>
     </div>
   </section>
 
-  <main class="master-container seamless-subject-container">
-    <div class="schedule-master-card seamless-subject-card">
-      <div class="window-titlebar">
-        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
-        <span class="win-titlebar-text">Educación Física IV &bull; Tareas y Avisos</span>
-      </div>
-
-      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
-        
-        <!-- BARRA DE LAS 3 OPCIONES -->
-        <div class="subject-three-options-bar">
-          <!-- Opción 1: Tareas (AZUL REY BRILLANTE - ACTIVA) -->
-          <button id="btnTab_tareas" class="opt-pill-btn opt-blue-active" onclick="showTab('tareas')">
-            <span>📝 1. Tareas</span>
-            <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">NUEVA TAREA</span>
-          </button>
-
-          <!-- Opción 2: Avisos (Blanco) -->
-          <button id="btnTab_avisos" class="opt-pill-btn opt-white-empty" onclick="showTab('avisos')">
-            <span>🔔 2. Avisos</span>
-            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente)</span>
-          </button>
-
-          <!-- Opción 3: Regalos y Cosas Útiles -->
-          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
-            <span>🎁 3. Regalos</span>
-            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Guía y Calentamiento)</span>
-          </button>
-        </div></div></div>
-
-        <!-- SECCIÓN 1: NUEVA TAREA DE EDUCACIÓN FÍSICA -->
-        <div id="pane_tareas" style="display: block;" class="seamless-section-pane color-block-tareas-active">
-        <div class="color-block-inner">
-          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
-            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
-              <span style="background: #1d4ed8; color: #ffffff; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 6px;">
-                Tarea Oficial &bull; Viernes en GIM1
-              </span>
-            </div>
-
-            <h3 style="color: #1e3a8a; font-size: 1.55rem; font-weight: 900; margin: 0 0 0.5rem;">
-              Tema: Componentes de la Actividad Física
-            </h3>
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 800; margin-bottom: 1.2rem;">
-              Pregunta central: <em>¿Qué es la condición física?</em>
-            </h4>
-
-            <div style="background: #ffffff; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.4rem; color: #1e293b; font-size: 0.98rem; line-height: 1.65; margin-bottom: 1.2rem;">
-              <strong>Puntos que debes responder en tu cuaderno:</strong>
-              <ol style="margin: 0.6rem 0 0; padding-left: 1.3rem;">
-                <li><strong>Definición:</strong> Explica qué es la condición física (conjunto de cualidades y estado fisiológico que permite a una persona realizar esfuerzo físico vigoroso y diario sin fatiga excesiva).</li>
-                <li><strong>Capacidades Condicionales:</strong> Define brevemente las 4 capacidades (Fuerza, Resistencia, Velocidad y Flexibilidad).</li>
-                <li><strong>Capacidades Coordinativas:</strong> Explica cómo intervienen el equilibrio, ritmo y coordinación motriz en tus ejercicios de calentamiento.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 2: AVISOS -->
-        <div id="pane_avisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; text-align: center;">
-            <p style="color: #64748b; font-size: 0.95rem; margin: 0;">Asistir puntuales con uniforme reglamentario al Gimnasio 1 (GIM1) los viernes a las 11:10 AM.</p>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 3: REGALOS Y COSAS ÚTILES -->
-        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 1.8rem;">
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem;">🎁 Guía de Frecuencia Cardíaca y Calentamiento</h4>
-            <p style="color: #475569; font-size: 0.92rem; line-height: 1.55;">Recuerda medir tu pulso en reposo antes de iniciar la clase y realizar 10 minutos de movilidad articular.</p>
-          </div>
-        </div>
-
-        </div>
-        <div class="seamless-bottom-nav"><a href="../centro-control" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
-      </div>
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
+  <nav class="mat-tabs-bar-wrap">
+    <div class="mat-tabs-inner">
+      <button id="btnTab_tareas" class="mat-tab-btn active-blue" onclick="showTab('tareas')">
+        <span>📝 1. Tareas</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">NUEVA TAREA</span>
+      </button>
+      <button id="btnTab_avisos" class="mat-tab-btn empty-white" onclick="showTab('avisos')">
+        <span>🔔 2. Avisos</span>
+        <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">(Al corriente)</span>
+      </button>
+      <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
+        <span>🎁 3. Regalos</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Guía y Calentamiento)</span>
+      </button>
     </div>
+  </nav>
+
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Tarea Oficial • Viernes en GIM1</span>
+        <h3 class="mat-box-title">Tema: Componentes de la Actividad Física</h3>
+        <h4 style="color: #002B7A; font-size: 1.15rem; font-weight: 800; margin-bottom: 0.9rem;">
+          Pregunta central: <em>¿Qué es la condición física?</em>
+        </h4>
+        <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; border-radius: 14px; padding: 1.2rem; font-size: 0.93rem; line-height: 1.6; color: #1e293b;">
+          <strong>Puntos a responder en tu cuaderno:</strong>
+          <ol style="margin: 0.5rem 0 0; padding-left: 1.2rem;">
+            <li><strong>Definición:</strong> Explica qué es la condición física (conjunto de cualidades y estado fisiológico que permite realizar esfuerzo físico sin fatiga excesiva).</li>
+            <li><strong>Capacidades Condicionales:</strong> Fuerza, Resistencia, Velocidad y Flexibilidad.</li>
+            <li><strong>Capacidades Coordinativas:</strong> Equilibrio, ritmo y coordinación motriz en tus rutinas.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-clean-white">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Aviso de Asistencia</span>
+        <h3 class="mat-box-title">Asistencia y Puntualidad en GIM1</h3>
+        <p class="mat-box-desc">
+          Asistir puntuales con uniforme reglamentario al Gimnasio 1 (GIM1) los viernes a las 11:10 AM. Lleva agua e hidratación adecuada.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Guía de Frecuencia Cardíaca y Calentamiento</h3>
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
+          ❤️ <strong>Frecuencia Cardíaca:</strong> Recuerda medir tu pulso en reposo antes de iniciar y realizar 10 minutos de movilidad articular progresiva.
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    function showEfOption(opt) {
-      document.getElementById('efSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
-      document.getElementById('efSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
-      document.getElementById('efSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
 
-      const btnT = document.getElementById('efBtnTareas');
-      const btnA = document.getElementById('efBtnAvisos');
-      const btnR = document.getElementById('efBtnRegalos');
 
-      btnT.className = (opt === 'tareas') ? 'opt-pill-btn opt-blue-active' : 'opt-pill-btn opt-blue-active';
-      btnT.style.opacity = (opt === 'tareas') ? '1' : '0.85';
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="../centro-control.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
+    </p>
+  </footer>
 
-      btnA.className = (opt === 'avisos') ? 'opt-pill-btn opt-white-empty' : 'opt-pill-btn opt-white-empty';
-      btnA.style.background = (opt === 'avisos') ? '#f1f5f9' : '#ffffff';
-
-      btnR.className = (opt === 'regalos') ? 'opt-pill-btn opt-white-gift' : 'opt-pill-btn opt-white-gift';
-      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
-    }
-  </script>
+  <script src="../js/materia.js"></script>
 </body>
 </html>

@@ -4,16 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Historia Universal III • Grupo 0415 | Prepa 4 UNAM</title>
-  <meta name="description" content="Planisferio con nombres, entrega de cuadernos pendientes y herramientas de PDF para Historia Universal III del grupo 415 en la Prepa 4 UNAM.">
+  <meta name="description" content="Procesos mundiales contemporáneos, dinámicas geopolíticas, mapas temáticos y entrega de actividades escolares.">
   <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
+  <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl('historia'));
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
   <!-- CABECERA DE LA MATERIA -->
   <header class="mat-topbar">
     <div class="mat-topbar-inner">
-      <a href="../centro-control.html" class="mat-brand">
+      <a href="../centro-control-movil.html" class="mat-brand">
         <img src="../assets/escudo-unam-original.png" alt="UNAM">
         <div class="mat-brand-text">
           <h1>Cuatreros 415</h1>
@@ -21,32 +37,30 @@
         </div>
       </a>
       <div style="display: flex; gap: 0.5rem;">
-        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../centro-control-movil.html" class="mat-nav-btn">&larr; Centro de Control</a>
         <a href="../" class="mat-nav-btn">Horario</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO DE LA MATERIA -->
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
   <section class="mat-hero">
     <div class="mat-hero-inner">
       <div class="mat-hero-icon">🏛️</div>
       <h2>Historia Universal III</h2>
-      <div class="mat-hero-sub">Clave 1403 &bull; 12 créditos &bull; Salones B-109 y B-117 &bull; Grupo 0415</div>
-      <p class="mat-hero-desc">
-        Procesos mundiales contemporáneos, dinámicas geopolíticas, mapas temáticos y entrega de actividades escolares.
-      </p>
+      <div class="mat-hero-sub">Clave 1403 • 12 créditos • Salones B-109 y B-117 • Grupo 0415</div>
+      <p class="mat-hero-desc">Procesos mundiales contemporáneos, dinámicas geopolíticas, mapas temáticos y entrega de actividades escolares.</p>
     </div>
   </section>
 
-  <!-- BARRA DE LAS 3 OPCIONES -->
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
   <nav class="mat-tabs-bar-wrap">
     <div class="mat-tabs-inner">
       <button id="btnTab_tareas" class="mat-tab-btn active-blue" onclick="showTab('tareas')">
         <span>📝 1. Tareas</span>
         <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">PLANISFERIO CON NOMBRES</span>
       </button>
-      <button id="btnTab_avisos" class="mat-tab-btn empty-white" onclick="showTab('avisos')">
+      <button id="btnTab_avisos" class="mat-tab-btn active-blue" onclick="showTab('avisos')">
         <span>🔔 2. Avisos</span>
         <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">URGENTE LUNES 14</span>
       </button>
@@ -57,9 +71,11 @@
     </div>
   </nav>
 
-  <!-- 1. SECCIÓN TAREAS -->
-  <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
-    <div class="mat-pane-inner">
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
       <div class="mat-card-box">
         <span class="mat-badge-tag mat-badge-blue">Material de Clase Obligatorio</span>
         <h3 class="mat-box-title">¡No olvides tu planisferio con nombres!</h3>
@@ -67,26 +83,24 @@
           Es indispensable llevarlo para las actividades y mapas temáticos de Historia Universal III. Debe ser con división política y nombres legibles de países y territorios.
         </p>
         <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; font-size: 0.92rem; color: #1e40af;">
-          ¿Lo quieres listo para descargar e imprimir? Ve a la sección de <strong>Regalos</strong>, donde tienes la imagen en alta calidad y la opción de entrega en tu salón.
+          ¿Lo quieres listo para descargar e imprimir? Ve a la sección de <strong>Regalos</strong>, donde tienes la imagen en alta resolución y la opción de entrega en tu salón.
         </div>
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-          <button onclick="showTab('regalos')" class="mat-tab-btn active-blue" style="font-size: 0.88rem; padding: 0.6rem 1.2rem;">
-            <span>Ir a Regalos &bull; Ver Planisferio &rarr;</span>
+          <button onclick="showTab('regalos')" class="mat-tab-btn active-blue" style="font-size: 0.88rem; padding: 0.6rem 1.2rem; cursor: pointer;">
+            <span>Ir a Regalos • Ver Planisferio &rarr;</span>
           </button>
           <a href="historia-archivo.html" style="font-size: 0.85rem; color: #1d4ed8; font-weight: 800; text-decoration: none;">
             📁 Ver tareas anteriores archivadas &rarr;
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 2. SECCIÓN AVISOS -->
-  <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
-    <div class="mat-pane-inner">
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
       <div class="mat-card-box">
         <span class="mat-badge-tag mat-badge-crimson">Aviso Oficial de Entrega</span>
-        <h3 class="mat-box-title">Entrega de Cuadernos Pendientes &bull; Lunes 14 de Septiembre</h3>
+        <h3 class="mat-box-title">Entrega de Cuadernos Pendientes • Lunes 14 de Septiembre</h3>
         <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; font-size: 0.95rem; color: #78350f; line-height: 1.6;">
           ⚠️ <strong>TODOS los alumnos (máximo 20)</strong> que tengan algo pendiente o entrega atrasada, deben presentarse el <strong>lunes 14 de septiembre de 2026</strong> en la <strong>hora de Orientación Educativa (12:00 a 12:50 puntual, salón B-110)</strong>.<br><br>
           <em>Después de las 12:50 NO se reciben cuadernos</em>, ya que deben ser entregados puntualmente a la profesora. Es por puntualidad y disciplina formativa.
@@ -96,85 +110,58 @@
           <a href="historia-archivo.html" style="font-size: 0.85rem; color: #1d4ed8; font-weight: 800; text-decoration: none;">Historial de archivo &rarr;</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. SECCIÓN REGALOS -->
-  <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active">
-    <div class="mat-pane-inner">
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
       <div class="mat-card-box">
-        <span class="mat-badge-tag mat-badge-blue">Regalo Escolar Oficial &bull; Historia 415</span>
-        <h3 class="mat-box-title">Planisferio con Nombres y División Política</h3>
-        <p class="mat-box-desc">
-          Formato numerado nítido con los 136 países y territorios para tus mapas y prácticas históricas.
-        </p>
-
-        <!-- Preview Imagen -->
-        <div style="text-align: center; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.8rem; margin-bottom: 1.2rem;">
-          <img src="../assets/planisferio-con-nombres.jpg" alt="Planisferio con nombres" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-          <span style="font-size: 0.78rem; color: #64748b; margin-top: 0.4rem; display: block; font-weight: 600;">Planisferio oficial con división política y lista de 136 países</span>
-        </div>
-
-        <!-- Botones de Acción -->
-        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem;">
-          <a href="../assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" class="mat-tab-btn active-blue" style="text-decoration: none; font-size: 0.9rem;">
-            <span>📥 Descargar Imagen Automáticamente</span>
-          </a>
-          <button onclick="openOrderModal()" class="mat-tab-btn gift-purple" style="font-size: 0.9rem;">
-            <span>🛵 ¿No puedes llevarlo? Yo te lo llevo (1 por $5 o 3 por $10)</span>
-          </button>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
-
-        <!-- Widgets PDF24 -->
-        <h4 style="color: #002B7A; font-size: 1.15rem; font-weight: 900; margin-bottom: 0.4rem;">Herramientas Gratuitas de PDF</h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Une varios archivos o convierte tus fotos a PDF sin salir de la plataforma:</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
-          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
-            <strong style="color: #1e40af; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Herramienta 1: Unir archivos a 1 PDF</strong>
-            <script src="https://tools.pdf24.org/static/js/widget.js"></script>
-            <div id="mergePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 220px;"></div>
-            <script>
-              if (window.pdf24) {
-                pdf24.loadWidget('merge-pdf', {
-                  containerId: 'mergePdfWidgetContainer',
-                  langCode: 'es',
-                  readyCallback: function() {},
-                  widgetConfig: { theme: 'lightTheme' }
-                });
-              }
-            </script>
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Planisferio Oficial y Herramientas PDF24</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem;">
+          <!-- Planisferio Card -->
+          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem; text-align: center;">
+            <strong style="color: #002B7A; font-size: 1.05rem; display: block; margin-bottom: 0.4rem;">Planisferio con Nombres y División Política</strong>
+            <img src="../assets/planisferio-con-nombres.jpg" alt="Planisferio con nombres" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 0.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+            <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;">
+              <a href="../assets/planisferio-con-nombres.jpg" download="Planisferio-con-nombres-Historia-Grupo0415.jpg" class="mat-tab-btn active-blue" style="text-decoration: none; font-size: 0.82rem; padding: 0.5rem 1rem;">
+                <span>📥 Descargar Imagen</span>
+              </a>
+              <button onclick="openOrderModal('orderModal')" class="mat-tab-btn gift-purple" style="font-size: 0.82rem; padding: 0.5rem 1rem; cursor: pointer;">
+                <span>🛵 Yo te lo llevo ($5/$10)</span>
+              </button>
+            </div>
           </div>
-
-          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
-            <strong style="color: #1e40af; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Herramienta 2: Convertir fotos o docs a PDF</strong>
-            <div id="convertToPdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 220px;"></div>
-            <script>
-              if (window.pdf24) {
-                pdf24.loadWidget('convert-to-pdf', {
-                  containerId: 'convertToPdfWidgetContainer',
-                  langCode: 'es',
-                  readyCallback: function() {},
-                  widgetConfig: { theme: 'lightTheme' }
-                });
-              }
-            </script>
+          <!-- PDF24 Tools -->
+          <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+            <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem;">
+              <strong style="color: #1e40af; font-size: 0.95rem; display: block; margin-bottom: 0.4rem;">Unir varios archivos a 1 PDF</strong>
+              <div id="mergePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height: 180px;"></div>
+              <script src="https://tools.pdf24.org/static/js/widget.js"></script>
+              <script>
+                if (window.pdf24) {
+                  pdf24.loadWidget('merge-pdf', {
+                    containerId: 'mergePdfWidgetContainer',
+                    langCode: 'es',
+                    readyCallback: function() {},
+                    widgetConfig: { theme: 'lightTheme' }
+                  });
+                }
+              </script>
+            </div>
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;">
+              <span style="font-size: 0.82rem; color: #1e40af;">¿Ocupas ayuda para unificar y renombrar? Por $40 MXN te apoyo en Encardomy.</span>
+              <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20para%20unir%20y%20renombrar%20mis%20archivos%20de%20Historia" target="_blank" rel="noopener noreferrer" style="background: #1d4ed8; color: #fff; padding: 0.4rem 0.9rem; border-radius: 999px; text-decoration: none; font-size: 0.8rem; font-weight: 800;">
+                WhatsApp &rarr;
+              </a>
+            </div>
           </div>
-        </div>
-
-        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 0.9rem 1.1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
-          <span style="font-size: 0.85rem; color: #1e40af;">¿De plano se te complica? Por $2 USD ($40 MXN) te unifico y renombro tus archivos en Encardomy.</span>
-          <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20para%20unir%20y%20renombrar%20mis%20archivos%20de%20Historia" target="_blank" rel="noopener noreferrer" style="background: #1d4ed8; color: #fff; padding: 0.45rem 1rem; border-radius: 999px; text-decoration: none; font-size: 0.82rem; font-weight: 800;">
-            Pedir por WhatsApp &rarr;
-          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MODAL DE PEDIDO DE PLANISFERIO -->
+  </main>
+
+  <!-- MODAL DE PEDIDO -->
   <div id="orderModal" class="mat-modal-overlay">
     <div class="mat-modal-shell">
       <span style="font-size: 2.2rem; display: block; margin-bottom: 0.3rem;">🛵</span>
@@ -187,21 +174,22 @@
           <span>📄 1 Planisferio con nombres</span>
           <span style="background: #1d4ed8; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem;">$5 MXN</span>
         </button>
-        <button onclick="sendOrderWa('planisferios con nombres para Historia', 3, '$10 MXN')" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #22c55e; background: #f0fdf4; color: #166534; font-size: 0.92rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+        <button onclick="sendOrderWa('planisferio con nombres para Historia', 3, '$10 MXN')" style="padding: 0.85rem 1rem; border-radius: 12px; border: 2px solid #22c55e; background: #f0fdf4; color: #166534; font-size: 0.92rem; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
           <span>📑 3 Planisferios (Paquete de 3)</span>
           <span style="background: #22c55e; color: #ffffff; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem;">$10 MXN (Ahorras $5)</span>
         </button>
       </div>
-      <button onclick="closeOrderModal()" style="background: none; border: none; color: #64748b; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+      <button onclick="closeOrderModal('orderModal')" style="background: none; border: none; color: #64748b; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
         Cancelar
       </button>
     </div>
   </div>
 
-  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.82rem;">
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
     <p>
       Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
-      <a href="../centro-control.html" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">&larr; Volver al Centro de Control</a> &bull; <a href="../" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">Horario</a>
+      <a href="../centro-control-movil.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
     </p>
   </footer>
 

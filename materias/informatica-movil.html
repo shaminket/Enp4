@@ -2,220 +2,140 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informática Grupo 0415 Prepa 4 UNAM | shaminket</title>
-  <meta name="description" content="Fechas de exposición, temarios de equipo y laboratorios I-108 y CC-2 de Informática para el grupo 415 en la Prepa 4 UNAM. Guías escolares en shaminket.">
-  <link rel="canonical" href="https://shaminket.com/materias/informatica">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, informatica, exposiciones informatica, cc2 prepa 4, tareas informatica">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Informática Grupo 0415 Prepa 4 UNAM | shaminket">
-  <meta property="og:description" content="Fechas de exposición, temarios de equipo y laboratorios I-108 y CC-2 de Informática para el grupo 415 en la Prepa 4 UNAM. Guías escolares en shaminket.">
-  <meta property="og:url" content="https://shaminket.com/materias/informatica">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Informática • Grupo 0415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Procesamiento de datos, hojas de cálculo avanzadas, lógica algorítmica y rol de exposiciones.">
+  <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
-  
   <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
       const hasHtml = window.location.pathname.endsWith('.html');
       return (isFile || hasHtml) ? (target + '.html') : target;
     }
-    function checkResponsiveLayout() {
-      if (window.location.search.includes("force=desktop")) return;
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("informatica-movil"));
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl('informatica'));
       }
     }
-    checkResponsiveLayout();
-    window.addEventListener("resize", checkResponsiveLayout);
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
   </script>
 </head>
 <body>
 
-  <!-- CABECERA SUPERIOR PERSISTENTE -->
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="../" class="nav-brand">
-          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
-              <span>Cuatreros</span> del 415
-              <img src="../assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
-            </div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
-          </div>
-        </a>
-
-        <nav class="nav-links-menu">
-          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
-          <a href="../#horario" class="nav-link-item">Horario 0415</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
-        </nav>
+  <!-- CABECERA DE LA MATERIA -->
+  <header class="mat-topbar">
+    <div class="mat-topbar-inner">
+      <a href="../centro-control-movil.html" class="mat-brand">
+        <img src="../assets/escudo-unam-original.png" alt="UNAM">
+        <div class="mat-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Informática</span>
+        </div>
+      </a>
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="../centro-control-movil.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../" class="mat-nav-btn">Horario</a>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 
-  <!-- HERO DE LA MATERIA -->
-  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
-    <div class="ambient-glow-1"></div>
-    <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">💻</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Informática</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
-        Clave 1408 &bull; 10 créditos &bull; Salón I-108 y Laboratorio CC-2 &bull; Grupo 0415
-      </p>
-      <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Procesamiento de datos, hojas de cálculo avanzadas, lógica de programación y rol de exposiciones semestrales.
-      </p>
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
+  <section class="mat-hero">
+    <div class="mat-hero-inner">
+      <div class="mat-hero-icon">💻</div>
+      <h2>Informática</h2>
+      <div class="mat-hero-sub">Clave 1408 • 10 créditos • Salón I-108 y CC-2 • Grupo 0415</div>
+      <p class="mat-hero-desc">Procesamiento de datos, hojas de cálculo avanzadas, lógica algorítmica y rol de exposiciones.</p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <main class="master-container seamless-subject-container">
-    <div class="schedule-master-card seamless-subject-card">
-      <div class="window-titlebar">
-        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
-        <span class="win-titlebar-text">Informática &bull; Grupo 0415</span>
-      </div>
-
-      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
-        
-        <!-- BARRA DE LAS 3 OPCIONES -->
-        <div class="subject-three-options-bar">
-          <!-- Opción 1: Tareas -->
-          <button id="btnTab_tareas" class="opt-pill-btn opt-blue-active" onclick="showTab('tareas')">
-            <span>📝 1. Tareas</span>
-            <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">PREPARAR EXPO</span>
-          </button>
-
-          <!-- Opción 2: Avisos -->
-          <button id="btnTab_avisos" class="opt-pill-btn opt-blue-active" onclick="showTab('avisos')">
-            <span>🔔 2. Avisos</span>
-            <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">ROL 9 EQUIPOS</span>
-          </button>
-
-          <!-- Opción 3: Regalos -->
-          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
-            <span>🎁 3. Regalos</span>
-            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Metodología 1+3=1)</span>
-          </button>
-        </div></div></div>
-
-        <!-- SECCIÓN 1: TAREAS -->
-        <div id="pane_tareas" style="display: block;" class="seamless-section-pane color-block-tareas-clean">
-        <div class="color-block-inner">
-          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
-            <h3 style="color: #1e3a8a; font-size: 1.45rem; font-weight: 900; margin: 0 0 0.8rem;">
-              Preparación de Exposición y Prácticas en CC-2
-            </h3>
-            <p style="color: #334155; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.2rem;">
-              Cada equipo debe preparar su presentación digital bajo la metodología de evaluación <strong>1+3=1</strong> y ensayar los tiempos para la sesión en el laboratorio.
-            </p>
-            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-              <a href="informatica-exposiciones" class="btn-encardomy" style="padding: 0.65rem 1.4rem; font-size: 0.9rem; text-decoration: none;">
-                <span>Ver Calendario Completo de los 9 Equipos &rarr;</span>
-              </a>
-              <a href="metodologia-exposicion" class="mac-nav-back-btn" style="padding: 0.65rem 1.2rem; font-size: 0.9rem; text-decoration: none;">
-                <span>Consultar Metodología 1+3=1 &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 2: AVISOS (ROL DE FECHAS) -->
-        <div id="pane_avisos" style="display: none;" class="seamless-section-pane color-block-avisos-active">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">
-              📅 Calendario Oficial de Exposiciones en Cómputo
-            </h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem;">
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.9rem;">
-                <strong style="color: #1d4ed8;">22 Sep 2026:</strong> Equipos 1 y 2
-              </div>
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.9rem;">
-                <strong style="color: #1d4ed8;">29 Sep 2026:</strong> Equipos 3 y 4
-              </div>
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.9rem;">
-                <strong style="color: #1d4ed8;">06 Oct 2026:</strong> Equipos 5 y 6
-              </div>
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.9rem;">
-                <strong style="color: #1d4ed8;">13 Oct 2026:</strong> Equipos 7 y 8
-              </div>
-              <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.9rem;">
-                <strong style="color: #1d4ed8;">20 Oct 2026:</strong> Equipo 9
-              </div>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 3: REGALOS Y COSAS ÚTILES -->
-        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Herramientas de Cómputo</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
-                📊 <strong>Plantillas de Hojas de Cálculo:</strong> Fórmulas lógicas SI, CONTAR.SI, BUSCARV y tablas dinámicas para las prácticas en CC-2.
-              </div>
-              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
-                📐 <strong>Estructura de la Presentación 1+3=1:</strong> 1 Introductor + 3 Expositores principales = 1 Conclusión grupal integrada.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- BOTÓN REGRESO -->
-        <div class="seamless-bottom-nav"><a href="../centro-control" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
-
-      </div>
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
+  <nav class="mat-tabs-bar-wrap">
+    <div class="mat-tabs-inner">
+      <button id="btnTab_tareas" class="mat-tab-btn active-blue" onclick="showTab('tareas')">
+        <span>📝 1. Tareas</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">PREPARAR EXPO</span>
+      </button>
+      <button id="btnTab_avisos" class="mat-tab-btn active-blue" onclick="showTab('avisos')">
+        <span>🔔 2. Avisos</span>
+        <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">ROL 9 EQUIPOS</span>
+      </button>
+      <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
+        <span>🎁 3. Regalos</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Metodología 1+3=1)</span>
+      </button>
     </div>
+  </nav>
+
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Exposiciones Semestrales</span>
+        <h3 class="mat-box-title">Preparación de Exposición 1+3=1</h3>
+        <p class="mat-box-desc">
+          Cada equipo debe preparar su presentación digital bajo la metodología de evaluación <strong>1+3=1</strong> (1 introductor + 3 expositores = 1 conclusión).
+        </p>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <a href="informatica-exposiciones.html" class="mat-tab-btn active-blue" style="text-decoration: none; font-size: 0.85rem; padding: 0.5rem 1rem;">
+            Ver Calendario de los 9 Equipos &rarr;
+          </a>
+          <a href="metodologia-exposicion.html" class="mat-tab-btn empty-white" style="text-decoration: none; font-size: 0.85rem; padding: 0.5rem 1rem;">
+            Metodología 1+3=1 &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-crimson">Rol de Cómputo</span>
+        <h3 class="mat-box-title">Calendario Oficial de Exposiciones</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; font-size: 0.85rem;">
+          <div style="background: #f8fafc; padding: 0.6rem; border-radius: 8px; border: 1px solid #e2e8f0;"><strong>22 Sep:</strong> Eq. 1 y 2</div>
+          <div style="background: #f8fafc; padding: 0.6rem; border-radius: 8px; border: 1px solid #e2e8f0;"><strong>29 Sep:</strong> Eq. 3 y 4</div>
+          <div style="background: #f8fafc; padding: 0.6rem; border-radius: 8px; border: 1px solid #e2e8f0;"><strong>06 Oct:</strong> Eq. 5 y 6</div>
+          <div style="background: #f8fafc; padding: 0.6rem; border-radius: 8px; border: 1px solid #e2e8f0;"><strong>13 Oct:</strong> Eq. 7 y 8</div>
+          <div style="background: #f8fafc; padding: 0.6rem; border-radius: 8px; border: 1px solid #e2e8f0;"><strong>20 Oct:</strong> Eq. 9</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Herramientas de Cómputo y Presentación</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            📊 <strong>Hojas de Cálculo:</strong> Fórmulas SI, CONTAR.SI, BUSCARV y tablas dinámicas para las prácticas en CC-2.
+          </div>
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            📐 <strong>Estructura 1+3=1:</strong> Distribución óptima de diapositivas y guion para obtener calificación aprobatoria.
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="../centro-control">Todas las materias</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
-      </p>
-    </div>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="../centro-control-movil.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
+    </p>
   </footer>
 
   <script src="../js/materia.js"></script>
-  <script>
-    function showInfOption(opt) {
-      document.getElementById('infSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
-      document.getElementById('infSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
-      document.getElementById('infSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
-
-      const btnT = document.getElementById('infBtnTareas');
-      const btnA = document.getElementById('infBtnAvisos');
-      const btnR = document.getElementById('infBtnRegalos');
-
-      btnT.style.opacity = (opt === 'tareas') ? '1' : '0.85';
-      btnA.style.opacity = (opt === 'avisos') ? '1' : '0.85';
-      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
-    }
-  </script>
 </body>
 </html>

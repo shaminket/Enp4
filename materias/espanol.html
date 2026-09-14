@@ -2,22 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lengua Española Grupo 0415 Prepa 4 | shaminket</title>
-  <meta name="description" content="Programa, salones, avisos y tareas de Lengua Española para el grupo 415 en la Prepa 4 UNAM con la Profra. Vázquez. Resuelve tus dudas en shaminket.">
-  <link rel="canonical" href="https://shaminket.com/materias/espanol">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, lengua espanola, clave 1402, salon b112, tareas espanol">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Lengua Española Grupo 0415 Prepa 4 | shaminket">
-  <meta property="og:description" content="Programa, salones, avisos y tareas de Lengua Española para el grupo 415 en la Prepa 4 UNAM con la Profra. Vázquez. Resuelve tus dudas en shaminket.">
-  <meta property="og:url" content="https://shaminket.com/materias/espanol">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Lengua Española • Grupo 0415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Tipología textual, análisis literario de textos españoles, sintaxis y redacción académica para el Grupo 0415.">
+  <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
-  
   <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
@@ -28,7 +17,7 @@
       if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("espanol-movil"));
+        window.location.replace(resolveTargetUrl('espanol-movil'));
       }
     }
     checkResponsiveLayout();
@@ -37,216 +26,119 @@
 </head>
 <body>
 
-  <!-- CABECERA SUPERIOR PERSISTENTE -->
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="../" class="nav-brand">
-          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
-              <span>Cuatreros</span> del 415
-              <img src="../assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
-            </div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
-          </div>
-        </a>
-
-        <nav class="nav-links-menu">
-          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
-          <a href="../#horario" class="nav-link-item">Horario 0415</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
-        </nav>
+  <!-- CABECERA DE LA MATERIA -->
+  <header class="mat-topbar">
+    <div class="mat-topbar-inner">
+      <a href="../centro-control.html" class="mat-brand">
+        <img src="../assets/escudo-unam-original.png" alt="UNAM">
+        <div class="mat-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Lengua Española</span>
+        </div>
+      </a>
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../" class="mat-nav-btn">Horario</a>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 
-  <!-- HERO DE LA MATERIA -->
-  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
-    <div class="ambient-glow-1"></div>
-    <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">📖</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Lengua Española</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
-        Clave 1402 &bull; 20 créditos &bull; Profra. Vázquez González María
-      </p>
-      <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Tipología textual, análisis literario de textos españoles, sintaxis y redacción académica para el Grupo 0415 en los salones B-110, B-112 y B-113.
-      </p>
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
+  <section class="mat-hero">
+    <div class="mat-hero-inner">
+      <div class="mat-hero-icon">📖</div>
+      <h2>Lengua Española</h2>
+      <div class="mat-hero-sub">Clave 1402 • 20 créditos • Profra. Vázquez González María • Salones B-110, B-112, B-113</div>
+      <p class="mat-hero-desc">Tipología textual, análisis literario de textos españoles, sintaxis y redacción académica para el Grupo 0415.</p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <main class="master-container seamless-subject-container">
-    <div class="schedule-master-card seamless-subject-card">
-      <div class="window-titlebar">
-        <div style="display: flex; align-items: center; gap: 0.8rem;">
-          <button class="mac-nav-back-btn" onclick="window.history.back()">
-            &larr; Volver
-          </button>
-        </div>
-        <span class="win-titlebar-text">Lengua Española &bull; Grupo 0415</span>
-      </div>
-
-      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
-        
-        <!-- BARRA DE LAS 3 OPCIONES -->
-        <div class="subject-three-options-bar">
-          <!-- Opción 1: Tareas -->
-          <button id="btnTab_tareas" class="opt-pill-btn opt-white-empty" onclick="showTab('tareas')">
-            <span>📝 1. Tareas</span>
-            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente &bull; Sin tareas)</span>
-          </button>
-
-          <!-- Opción 2: Avisos (Azul Rey brillante por el nuevo aviso) -->
-          <button id="btnTab_avisos" class="opt-pill-btn opt-blue-active" onclick="showTab('avisos')">
-            <span>🔔 2. Avisos</span>
-            <span style="background: #fcd866; color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">HOJAS POSPUESTAS</span>
-          </button>
-
-          <!-- Opción 3: Regalos y Cosas que te sirven -->
-          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
-            <span>🎁 3. Regalos</span>
-            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Novela Wyatt & Buzón)</span>
-          </button>
-        </div></div></div>
-
-        <!-- SECCIÓN 1: TAREAS (ESTADO AL CORRIENTE) -->
-        <div id="pane_tareas" style="display: none;" class="seamless-section-pane color-block-tareas-clean">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
-            <span style="font-size: 2.2rem;">✅</span>
-            <h3 style="color: #002B7A; font-size: 1.3rem; margin: 0.5rem 0 0.3rem;">Sin tareas activas pendientes en este momento</h3>
-            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.2rem;">
-              Las actividades de redacción y firmas de clase se encuentran al corriente.
-            </p>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 2: AVISOS (NUEVO AVISO OFICIAL: HOJAS POSPUESTAS) -->
-        <div id="pane_avisos" style="display: block;" class="seamless-section-pane color-block-avisos-active">
-        <div class="color-block-inner">
-          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: none; border-radius: 20px; padding: 1.4rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(29, 78, 216, 0.15);">
-            <div style="display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1rem;">
-              <span style="font-size: 2.4rem;">📄</span>
-              <div>
-                <span style="background: #1d4ed8; color: #ffffff; font-size: 0.78rem; font-weight: 900; padding: 0.25rem 0.75rem; border-radius: 6px; text-transform: uppercase;">
-                  Aviso Oficial de Clase &bull; Grupo 0415
-                </span>
-                <h3 style="color: #1e3a8a; font-size: 1.5rem; font-weight: 900; margin: 0.4rem 0 0.2rem;">
-                  ¿No conseguiste las hojas en La Gomita?
-                </h3>
-                <p style="color: #475569; font-size: 0.92rem; margin: 0;">Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113</p>
-              </div>
-            </div>
-
-            <!-- Recuadro del Mensaje de Calma -->
-            <div style="background: #ffffff; border: 2px solid #60a5fa; border-radius: 14px; padding: 1.4rem 1.6rem; margin-bottom: 1.2rem; font-size: 1.05rem; line-height: 1.65; color: #001628;">
-              ¡<span class="tranqui-brand" style="color: #7C3AED; font-weight: 900;">Tranquiii!!</span> <strong>No te apures, ya no son para el lunes.</strong><br>
-              <span style="color: #1e40af; font-size: 0.96rem; display: block; margin-top: 0.4rem;">
-                Espera indicaciones de la profesora directamente en el aula durante la próxima sesión de clase.
-              </span>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
-              <span style="font-size: 0.84rem; color: #64748b;">Estado: Entrega pospuesta por la profesora</span>
-              <a href="espanol-archivo" style="font-size: 0.88rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
-                📁 Ver aviso anterior archivado de La Gomita &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 3: REGALOS Y COSAS ÚTILES -->
-        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 1.8rem;">
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Herramientas y Recursos de Lengua Española</h4>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
-              <a href="../plan-estudios" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
-                📚 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Novela Wyatt y Copias</strong>
-                <span style="font-size: 0.82rem; color: #64748b;">Información sobre las 18 hojas y libro de lectura.</span>
-              </a>
-
-              <a href="../forma-trabajo" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
-                📝 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Forma de Trabajo</strong>
-                <span style="font-size: 0.82rem; color: #64748b;">Firma de tutor y lineamientos de evaluación.</span>
-              </a>
-
-              <a href="espanol-dudas" style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit; display: block;">
-                ✉️ <strong style="color: #1d4ed8; display: block; margin-top: 0.2rem;">Buzón de Dudas Activo</strong>
-                <span style="font-size: 0.82rem; color: #3b82f6;">Formularios oficiales para enviar tus preguntas.</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- CUADRO: ENVIAR TUS DUDAS -->
-        <div style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1.4rem 1.6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
-          <div>
-            <div style="font-size: 0.78rem; font-weight: 900; color: #15803d; text-transform: uppercase; letter-spacing: 1px;">Buzón Habilitado</div>
-            <strong style="color: #002B7A; font-size: 1.12rem; display: block; margin-top: 0.2rem;">¿Tienes dudas sobre Lengua Española?</strong>
-            <p style="color: #64748b; font-size: 0.88rem; margin-top: 0.2rem; margin-bottom: 0;">Envía tus dudas y preguntas directamente a través de los dos formularios oficiales.</p>
-          </div>
-          <a href="espanol-dudas" class="btn-encardomy" style="padding: 0.75rem 1.5rem; font-size: 0.92rem; text-decoration: none;">
-            <span>Llenar formularios de dudas &rarr;</span>
-          </a>
-        </div>
-
-        <!-- BOTÓN PARA REGRESAR AL CENTRO DE CONTROL -->
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="../centro-control" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #002B7A; font-weight: 800; text-decoration: none; font-size: 1rem;">
-            &larr; Volver al Centro de Control de Materias
-          </a>
-        </div>
-
-      </div>
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
+  <nav class="mat-tabs-bar-wrap">
+    <div class="mat-tabs-inner">
+      <button id="btnTab_tareas" class="mat-tab-btn empty-white" onclick="showTab('tareas')">
+        <span>📝 1. Tareas</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">(Al corriente • Sin tareas)</span>
+      </button>
+      <button id="btnTab_avisos" class="mat-tab-btn active-blue" onclick="showTab('avisos')">
+        <span>🔔 2. Avisos</span>
+        <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">HOJAS POSPUESTAS</span>
+      </button>
+      <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
+        <span>🎁 3. Regalos</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Novela Wyatt & Buzón)</span>
+      </button>
     </div>
+  </nav>
+
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-clean-white active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-gold">Estado: Al Corriente</span>
+        <h3 class="mat-box-title">Sin tareas activas pendientes</h3>
+        <p class="mat-box-desc">
+          Las actividades de redacción y firmas de clase se encuentran al corriente. Mantén tu cuaderno con los apuntes y textos al día.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-crimson">Aviso Oficial de Clase</span>
+        <h3 class="mat-box-title">¿No conseguiste las hojas en La Gomita?</h3>
+        <div style="background: #ffffff; border: 2px solid #60a5fa; border-radius: 14px; padding: 1.2rem; margin-bottom: 0.9rem; font-size: 1rem; line-height: 1.6; color: #001628;">
+          ¡<span class="tranqui-brand" style="color: #7C3AED; font-weight: 900;">Tranquiii!!</span> <strong>No te apures, ya no son para el lunes.</strong><br>
+          <span style="color: #1e40af; font-size: 0.94rem; display: block; margin-top: 0.35rem;">
+            Espera indicaciones de la profesora directamente en el aula durante la próxima sesión de clase.
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;">
+          <span style="font-size: 0.82rem; color: #64748b;">Estado: Entrega pospuesta</span>
+          <a href="espanol-archivo.html" style="font-size: 0.85rem; color: #1d4ed8; font-weight: 800; text-decoration: none;">
+            📁 Ver aviso anterior archivado de La Gomita &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Herramientas y Recursos de Lengua Española</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin-bottom: 1rem;">
+          <a href="../plan-estudios.html" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.9rem; text-decoration: none; color: inherit; display: block;">
+            📚 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Novela Wyatt y Copias</strong>
+            <span style="font-size: 0.8rem; color: #64748b;">Información sobre las 18 hojas y libro.</span>
+          </a>
+          <a href="../forma-trabajo.html" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.9rem; text-decoration: none; color: inherit; display: block;">
+            📝 <strong style="color: #002B7A; display: block; margin-top: 0.2rem;">Forma de Trabajo</strong>
+            <span style="font-size: 0.8rem; color: #64748b;">Firma de tutor y lineamientos.</span>
+          </a>
+          <a href="espanol-dudas.html" style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 12px; padding: 0.9rem; text-decoration: none; color: inherit; display: block;">
+            ✉️ <strong style="color: #1d4ed8; display: block; margin-top: 0.2rem;">Buzón de Dudas Activo</strong>
+            <span style="font-size: 0.8rem; color: #3b82f6;">Formularios oficiales de dudas.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="../centro-control">Todas las materias</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
-      </p>
-    </div>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="../centro-control.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
+    </p>
   </footer>
 
   <script src="../js/materia.js"></script>
-  <script>
-    function showEspOption(opt) {
-      document.getElementById('espSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
-      document.getElementById('espSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
-      document.getElementById('espSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
-
-      const btnT = document.getElementById('espBtnTareas');
-      const btnA = document.getElementById('espBtnAvisos');
-      const btnR = document.getElementById('espBtnRegalos');
-
-      btnT.className = (opt === 'tareas') ? 'opt-pill-btn opt-white-empty' : 'opt-pill-btn opt-white-empty';
-      btnT.style.background = (opt === 'tareas') ? '#f1f5f9' : '#ffffff';
-
-      btnA.className = (opt === 'avisos') ? 'opt-pill-btn opt-blue-active' : 'opt-pill-btn opt-blue-active';
-      btnA.style.opacity = (opt === 'avisos') ? '1' : '0.85';
-
-      btnR.className = (opt === 'regalos') ? 'opt-pill-btn opt-white-gift' : 'opt-pill-btn opt-white-gift';
-      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
-    }
-  </script>
 </body>
 </html>

@@ -4,141 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Geografía • Grupo 0415 | Prepa 4 UNAM</title>
-  <meta name="description" content="Tareas, 4 noticias en equipo y avisos de Geografía para el grupo 415 en la Prepa 4 UNAM. Salón A-104.">
+  <meta name="description" content="Espacio geográfico, dinámicas socioeconómicas, recursos naturales y geopolítica contemporánea.">
   <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
+  <script>
+    function resolveTargetUrl(target) {
+      const isFile = window.location.protocol === 'file:';
+      const hasHtml = window.location.pathname.endsWith('.html');
+      return (isFile || hasHtml) ? (target + '.html') : target;
+    }
+    function checkDesktopSwitch() {
+      if (window.location.search.includes("force=mobile")) return;
+      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (window.innerWidth > 920 && !isMobileUA) {
+        window.location.replace(resolveTargetUrl('geografia'));
+      }
+    }
+    checkDesktopSwitch();
+    window.addEventListener("resize", checkDesktopSwitch);
+  </script>
 </head>
 <body>
 
   <!-- CABECERA DE LA MATERIA -->
   <header class="mat-topbar">
     <div class="mat-topbar-inner">
-      <a href="../centro-control.html" class="mat-brand">
+      <a href="../centro-control-movil.html" class="mat-brand">
         <img src="../assets/escudo-unam-original.png" alt="UNAM">
         <div class="mat-brand-text">
           <h1>Cuatreros 415</h1>
-          <span>Geografía &bull; Clave 1405</span>
+          <span>Geografía</span>
         </div>
       </a>
       <div style="display: flex; gap: 0.5rem;">
-        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../centro-control-movil.html" class="mat-nav-btn">&larr; Centro de Control</a>
         <a href="../" class="mat-nav-btn">Horario</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO DE LA MATERIA -->
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
   <section class="mat-hero">
     <div class="mat-hero-inner">
       <div class="mat-hero-icon">🌍</div>
       <h2>Geografía</h2>
-      <div class="mat-hero-sub">Clave 1405 &bull; 12 créditos &bull; Profra. Silvia Mendoza Morales &bull; Salón A-104</div>
-      <p class="mat-hero-desc">
-        Espacio geográfico, dinámicas socioeconómicas, recursos naturales y cartografía aplicada para el Grupo 0415.
-      </p>
+      <div class="mat-hero-sub">Clave 1405 • 12 créditos • Profra. Silvia Mendoza Morales • Salón A-104</div>
+      <p class="mat-hero-desc">Espacio geográfico, dinámicas socioeconómicas, recursos naturales y geopolítica contemporánea.</p>
     </div>
   </section>
 
-  <!-- BARRA DE LAS 3 OPCIONES -->
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
   <nav class="mat-tabs-bar-wrap">
     <div class="mat-tabs-inner">
       <button id="btnTab_tareas" class="mat-tab-btn active-blue" onclick="showTab('tareas')">
         <span>📝 1. Tareas</span>
-        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">4 NOTICIAS LUNES</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">4 NOTICIAS EN EQUIPO</span>
       </button>
-      <button id="btnTab_avisos" class="mat-tab-btn empty-white" onclick="showTab('avisos')">
+      <button id="btnTab_avisos" class="mat-tab-btn active-blue" onclick="showTab('avisos')">
         <span>🔔 2. Avisos</span>
         <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">LIBRO / HOJAS $50</span>
       </button>
       <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
         <span>🎁 3. Regalos</span>
-        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Husos & México)</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Mapas & Husos)</span>
       </button>
     </div>
   </nav>
 
-  <!-- 1. SECCIÓN TAREAS -->
-  <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
-    <div class="mat-pane-inner">
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-blue-active active">
       <div class="mat-card-box">
-        <span class="mat-badge-tag mat-badge-crimson">Entrega: Lunes a primera hora (7:00 AM)</span>
-        <h3 class="mat-box-title">Tarea en equipo: 4 Noticias en una sola hoja</h3>
+        <span class="mat-badge-tag mat-badge-blue">Entrega: Lunes 7:00 AM</span>
+        <h3 class="mat-box-title">Tarea en equipo: 4 Noticias en hoja dividida en 4</h3>
         <p class="mat-box-desc">
-          Entregar en equipo una <strong>sola hoja dividida en 4 cuadrantes</strong> con 4 noticias de actualidad, abordando un fenómeno de cada tipo:
+          Entregar en equipo una <strong>sola hoja dividida en 4 cuadrantes</strong> con 4 noticias de actualidad sobre fenómenos sociales, económicos, políticos y naturales.
         </p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; margin-bottom: 1.2rem;">
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 0.75rem; border-radius: 10px;">
-            <strong style="color: #1d4ed8; font-size: 0.9rem;">1. Fenómeno Social</strong>
-          </div>
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 0.75rem; border-radius: 10px;">
-            <strong style="color: #1d4ed8; font-size: 0.9rem;">2. Fenómeno Económico</strong>
-          </div>
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 0.75rem; border-radius: 10px;">
-            <strong style="color: #1d4ed8; font-size: 0.9rem;">3. Fenómeno Político</strong>
-          </div>
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 0.75rem; border-radius: 10px;">
-            <strong style="color: #1d4ed8; font-size: 0.9rem;">4. Fenómeno Natural</strong>
-          </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; margin-bottom: 0.9rem;">
+          <div style="background: #eff6ff; padding: 0.6rem; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 0.85rem; font-weight: 700; color: #1d4ed8;">1. Social</div>
+          <div style="background: #eff6ff; padding: 0.6rem; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 0.85rem; font-weight: 700; color: #1d4ed8;">2. Económico</div>
+          <div style="background: #eff6ff; padding: 0.6rem; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 0.85rem; font-weight: 700; color: #1d4ed8;">3. Político</div>
+          <div style="background: #eff6ff; padding: 0.6rem; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 0.85rem; font-weight: 700; color: #1d4ed8;">4. Natural</div>
         </div>
-
-        <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 12px; padding: 1.1rem; font-size: 0.9rem; color: #78350f; line-height: 1.55;">
-          <strong>📋 Reglas estrictas de entrega en equipo:</strong>
-          <ul style="margin: 0.4rem 0 0; padding-left: 1.3rem;">
-            <li>Se realiza en <strong>hojas blancas con nombre</strong>.</li>
-            <li>La hoja la elige el integrante cuyo apellido sea el <strong>más cercano a la letra A</strong>.</li>
-            <li>Los demás integrantes escriben sus nombres con <strong>pluma negra</strong>, en <strong>estricto orden alfabético</strong> y empezando obligatoriamente por <strong>apellidos</strong>.</li>
-          </ul>
+        <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 12px; padding: 0.9rem; font-size: 0.88rem; color: #78350f; line-height: 1.5;">
+          <strong>Reglas:</strong> En hojas blancas con nombre. La hoja la elige el integrante cuyo apellido sea más cercano a la 'A'. Los demás con pluma negra en estricto orden alfabético por apellidos.
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 2. SECCIÓN AVISOS -->
-  <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
-    <div class="mat-pane-inner">
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-gold-active">
       <div class="mat-card-box">
-        <span class="mat-badge-tag mat-badge-gold">Material Requerido</span>
-        <h3 class="mat-box-title">Lleva tu libro oficial o tus hojas membretadas con nombre</h3>
+        <span class="mat-badge-tag mat-badge-crimson">Material Oficial Requerido</span>
+        <h3 class="mat-box-title">Lleva tu libro oficial o tus hojas membretadas</h3>
         <p class="mat-box-desc">
-          Si ya tienes tu libro de texto de Geografía, llévalo a todas las sesiones. De lo contrario, lleva tus hojas con membrete oficial para los trabajos individuales y en equipo.
+          Si ya cuentas con tu libro oficial, llévalo a todas las sesiones. De lo contrario, no olvides llevar tus hojas con membrete oficial con nombre para tus actividades.
         </p>
-        <div style="background: #eff6ff; border-left: 4px solid #7C3AED; border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.92rem; color: #1e3a8a; margin-bottom: 1.2rem;">
-          ¿No las tienes listas? ¡<strong style="color: #7C3AED;">Tranquiii!!</strong> En Encardomy te ayudamos: por <strong>$50 MXN</strong> te incluye el diseño con tu nombre y la impresión de <strong>10 ejemplares</strong> listos para entregar.
+        <div style="background: #f8fafc; border-left: 4px solid #7C3AED; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.9rem; color: #475569; margin-bottom: 0.9rem;">
+          ¿No las tienes listas? ¡<span class="tranqui-brand" style="color: #7C3AED; font-weight: 900;">Tranqui!!</span> Por <strong>$50 MXN</strong> te realizo tus hojas membretadas y te entrego <strong>10 ejemplares impresos</strong>.
         </div>
         <div style="text-align: right;">
-          <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20paquete%20de%20hojas%20membretadas%20de%20Geografia%20($50)" target="_blank" rel="noopener noreferrer" class="mat-tab-btn active-blue" style="font-size: 0.88rem; padding: 0.6rem 1.3rem; text-decoration: none;">
-            Pedir paquete por WhatsApp &rarr;
+          <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20ayuda%20con%20las%20hojas%20de%20Geografia%20del%20415" target="_blank" rel="noopener noreferrer" class="mat-tab-btn active-blue" style="text-decoration: none; font-size: 0.84rem; padding: 0.45rem 1rem;">
+            Pedir hojas por WhatsApp &rarr;
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. SECCIÓN REGALOS -->
-  <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active">
-    <div class="mat-pane-inner">
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
       <div class="mat-card-box">
-        <span class="mat-badge-tag mat-badge-blue">Recursos Cartográficos</span>
-        <h3 class="mat-box-title">Herramientas Gratuitas de Geografía</h3>
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 1rem 1.2rem; border-radius: 12px;">
-            <strong style="color: #1e40af; font-size: 0.95rem; display: block; margin-bottom: 0.2rem;">🗺️ Planisferio de Husos Horarios</strong>
-            <span style="font-size: 0.85rem; color: #475569;">Consulta las 24 franjas horarias y la fórmula de cálculo GMT para ejercicios de examen.</span>
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Materiales y Recursos Cartográficos</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            🗺️ <strong>Planisferio de Husos Horarios:</strong> Consulta las 24 zonas horarias mundiales y la fórmula de cálculo GMT.
           </div>
-          <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; padding: 1rem 1.2rem; border-radius: 12px;">
-            <strong style="color: #1e40af; font-size: 0.95rem; display: block; margin-bottom: 0.2rem;">🧭 Mapas Base de México</strong>
-            <span style="font-size: 0.85rem; color: #475569;">División política con y sin nombres y relieve continental de la República Mexicana.</span>
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            🧭 <strong>Mapas Base de México:</strong> División política con nombres, división muda y relieve continental.
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.82rem;">
+  </main>
+
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
     <p>
       Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
-      <a href="../centro-control.html" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">&larr; Volver al Centro de Control</a> &bull; <a href="../" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">Horario</a>
+      <a href="../centro-control-movil.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
     </p>
   </footer>
 

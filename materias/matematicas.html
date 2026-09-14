@@ -2,22 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matemáticas IV Grupo 0415 Prepa 4 UNAM | shaminket</title>
-  <meta name="description" content="Salones B-112, B-109 y B-117 de Matemáticas IV para el grupo 415 con el Prof. Quintana en la Prepa 4 UNAM. Ejercicios y guías de estudio en shaminket.">
-  <link rel="canonical" href="https://shaminket.com/materias/matematicas">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, matematicas iv, clave 1400, saul quintana, tareas matematicas">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Matemáticas IV Grupo 0415 Prepa 4 UNAM | shaminket">
-  <meta property="og:description" content="Salones B-112, B-109 y B-117 de Matemáticas IV para el grupo 415 con el Prof. Quintana en la Prepa 4 UNAM. Ejercicios y guías de estudio en shaminket.">
-  <meta property="og:url" content="https://shaminket.com/materias/matematicas">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Matemáticas IV • Grupo 0415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Álgebra, funciones reales, modelación matemática y resolución de sistemas de ecuaciones.">
+  <link rel="icon" href="../assets/escudo-unam-original.png" type="image/png">
   <link rel="stylesheet" href="../css/materia.css">
-  
   <script>
     function resolveTargetUrl(target) {
       const isFile = window.location.protocol === 'file:';
@@ -28,7 +17,7 @@
       if (window.location.search.includes("force=desktop")) return;
       const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("matematicas-movil"));
+        window.location.replace(resolveTargetUrl('matematicas-movil'));
       }
     }
     checkResponsiveLayout();
@@ -37,159 +26,104 @@
 </head>
 <body>
 
-  <!-- CABECERA SUPERIOR PERSISTENTE -->
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="../" class="nav-brand">
-          <img src="../assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
-              <span>Cuatreros</span> del 415
-              <img src="../assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
-            </div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
-          </div>
-        </a>
-
-        <nav class="nav-links-menu">
-          <a href="../centro-control" class="nav-link-item">Centro de Control</a>
-          <a href="../#horario" class="nav-link-item">Horario 0415</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
-        </nav>
+  <!-- CABECERA DE LA MATERIA -->
+  <header class="mat-topbar">
+    <div class="mat-topbar-inner">
+      <a href="../centro-control.html" class="mat-brand">
+        <img src="../assets/escudo-unam-original.png" alt="UNAM">
+        <div class="mat-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Matemáticas IV</span>
+        </div>
+      </a>
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="../centro-control.html" class="mat-nav-btn">&larr; Centro de Control</a>
+        <a href="../" class="mat-nav-btn">Horario</a>
       </div>
-    </header>
-  </div>
+    </div>
+  </header>
 
-  <!-- HERO DE LA MATERIA -->
-  <section class="hero-cinematic" style="padding: 3.8rem 1.5rem 4.5rem;">
-    <div class="ambient-glow-1"></div>
-    <div class="hero-content">
-      <div style="font-size: 3.5rem; margin-bottom: 0.8rem;">📐</div>
-      <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 0.6rem;">Matemáticas IV</h1>
-      <p style="color: #fcd866; font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem;">
-        Clave 1400 &bull; 20 créditos &bull; Prof. Quintana Mejía Saúl &bull; Grupo 0415
-      </p>
-      <p class="hero-description" style="max-width: 760px; font-size: 1.05rem;">
-        Álgebra, sistemas de ecuaciones lineales, funciones reales y modelación matemática en los salones B-112, B-109 y B-117.
-      </p>
+  <!-- HERO DE LA MATERIA (ESPACIO OPTIMIZADO) -->
+  <section class="mat-hero">
+    <div class="mat-hero-inner">
+      <div class="mat-hero-icon">📐</div>
+      <h2>Matemáticas IV</h2>
+      <div class="mat-hero-sub">Clave 1400 • 20 créditos • Prof. Quintana Mejía Saúl • Salones B-112, B-109, B-117</div>
+      <p class="mat-hero-desc">Álgebra, funciones reales, modelación matemática y resolución de sistemas de ecuaciones.</p>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <main class="master-container seamless-subject-container">
-    <div class="schedule-master-card seamless-subject-card">
-      <div class="window-titlebar">
-        <button class="mac-nav-back-btn" onclick="window.history.back()">&larr; Volver</button>
-        <span class="win-titlebar-text">Matemáticas IV &bull; Grupo 0415</span>
-      </div>
-
-      <div class="schedule-card-body" style="padding: 0; margin: 0;"><div class="seamless-tabs-holder"><div class="seamless-tabs-inner">
-        
-        <!-- BARRA DE LAS 3 OPCIONES -->
-        <div class="subject-three-options-bar">
-          <!-- Opción 1: Tareas -->
-          <button id="btnTab_tareas" class="opt-pill-btn opt-white-empty" onclick="showTab('tareas')">
-            <span>📝 1. Tareas</span>
-            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Al corriente)</span>
-          </button>
-
-          <!-- Opción 2: Avisos -->
-          <button id="btnTab_avisos" class="opt-pill-btn opt-white-empty" onclick="showTab('avisos')">
-            <span>🔔 2. Avisos</span>
-            <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">(Clases regulares)</span>
-          </button>
-
-          <!-- Opción 3: Regalos -->
-          <button id="btnTab_regalos" class="opt-pill-btn opt-white-gift" onclick="showTab('regalos')">
-            <span>🎁 3. Regalos</span>
-            <span style="font-size: 0.75rem; color: #2D7FF9; font-weight: 700;">(Formularios & Álgebra)</span>
-          </button>
-        </div></div></div>
-
-        <!-- SECCIÓN 1: TAREAS -->
-        <div id="pane_tareas" style="display: block;" class="seamless-section-pane color-block-tareas-clean">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem;">
-            <span style="font-size: 2.2rem;">✅</span>
-            <h3 style="color: #002B7A; font-size: 1.3rem; margin: 0.5rem 0 0.3rem;">Sin tareas pendientes registradas</h3>
-            <p style="color: #64748b; font-size: 0.95rem; margin: 0;">
-              Mantén tus apuntes al corriente y resuelve los ejercicios de práctica vistos en las sesiones del profesor Quintana.
-            </p>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 2: AVISOS -->
-        <div id="pane_avisos" style="display: none;" class="seamless-section-pane color-block-avisos-clean">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.8rem; text-align: center;">
-            <p style="color: #334155; font-size: 0.95rem; margin: 0;">
-              Clases habituales: Martes (B-112), Jueves (B-109) y Viernes (B-117). Asistir puntuales con libreta de cuadros y calculadora científica.
-            </p>
-          </div>
-        </div>
-
-        </div>
-        <!-- SECCIÓN 3: REGALOS Y FORMULARIOS -->
-        <div id="pane_regalos" style="display: none;" class="seamless-section-pane color-block-regalos">
-        <div class="color-block-inner">
-          <div style="background: #ffffff; border: 2px solid #2D7FF9; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem;">
-            <h4 style="color: #002B7A; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem;">🎁 Recursos de Apoyo para Matemáticas IV</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
-                📐 <strong>Compendio de Factorización:</strong> Factor común, diferencia de cuadrados, trinomio cuadrado perfecto y suma/diferencia de cubos con ejemplos paso a paso.
-              </div>
-              <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.9rem 1.1rem; border-radius: 12px; font-size: 0.92rem; color: #1e40af;">
-                📈 <strong>Leyes de Exponentes y Radicales:</strong> Tabla de propiedades algebraicas esenciales para simplificación de expresiones complejas.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- BOTÓN REGRESO -->
-        <div class="seamless-bottom-nav"><a href="../centro-control" style="color: #002B7A; font-weight: 800; text-decoration: none;">&larr; Volver al Centro de Control de Materias</a></div>
-
-      </div>
+  <!-- BARRA DE ESTADO / PESTAÑAS (EN DESKTOP INDICADOR, EN MÓVIL PESTAÑAS) -->
+  <nav class="mat-tabs-bar-wrap">
+    <div class="mat-tabs-inner">
+      <button id="btnTab_tareas" class="mat-tab-btn empty-white" onclick="showTab('tareas')">
+        <span>📝 1. Tareas</span>
+        <span style="background: var(--unam-gold-bright); color: #001628; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">(Al corriente)</span>
+      </button>
+      <button id="btnTab_avisos" class="mat-tab-btn empty-white" onclick="showTab('avisos')">
+        <span>🔔 2. Avisos</span>
+        <span style="background: #bfdbfe; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 900;">(Clases regulares)</span>
+      </button>
+      <button id="btnTab_regalos" class="mat-tab-btn gift-purple" onclick="showTab('regalos')">
+        <span>🎁 3. Regalos</span>
+        <span style="font-size: 0.75rem; color: #7C3AED; font-weight: 800;">(Formularios & Álgebra)</span>
+      </button>
     </div>
+  </nav>
+
+  <!-- CONTENEDOR DASHBOARD MULTI-PANEL (EN MAC Y TABLETA HORIZONTAL LOS 3 SE VEN SIMULTÁNEAMENTE) -->
+  <main class="mat-dashboard-layout">
+
+    <!-- RECUADRO 1: TAREAS -->
+    <section id="pane_tareas" class="mat-section-pane mat-pane-clean-white active">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-gold">Estado: Al Corriente</span>
+        <h3 class="mat-box-title">Sin tareas pendientes registradas</h3>
+        <p class="mat-box-desc">
+          Mantén tus apuntes al corriente y resuelve los ejercicios de práctica vistos en las sesiones del profesor Quintana.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECUADRO 2: AVISOS -->
+    <section id="pane_avisos" class="mat-section-pane mat-pane-clean-white">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">Salones y Horarios</span>
+        <h3 class="mat-box-title">Sesiones Semanales</h3>
+        <p class="mat-box-desc">
+          Martes (B-112), Jueves (B-109) y Viernes (B-117). Asistir con libreta de cuadros grandes y calculadora científica.
+        </p>
+      </div>
+    </section>
+
+    <!-- RECUADRO 3: REGALOS Y HERRAMIENTAS (ANCHO COMPLETO INFERIOR) -->
+    <section id="pane_regalos" class="mat-section-pane mat-pane-purple-active mat-pane-fullwidth">
+      <div class="mat-card-box">
+        <span class="mat-badge-tag mat-badge-blue">🎁 Regalos & Herramientas Oficiales</span>
+        <h3 class="mat-box-title">Recursos de Apoyo para Matemáticas IV</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            📐 <strong>Factorización Esencial:</strong> Factor común, diferencia de cuadrados y trinomios cuadrados perfectos con ejemplos.
+          </div>
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.9rem; color: #1e40af;">
+            📈 <strong>Leyes de Exponentes:</strong> Tabla de propiedades de radicales y potencias fraccionarias.
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="../centro-control">Todas las materias</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
-      </p>
-    </div>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="mat-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="../centro-control.html">&larr; Volver al Centro de Control</a> &bull; <a href="../">Horario</a>
+    </p>
   </footer>
 
   <script src="../js/materia.js"></script>
-  <script>
-    function showMatOption(opt) {
-      document.getElementById('matSecTareas').style.display = (opt === 'tareas') ? 'block' : 'none';
-      document.getElementById('matSecAvisos').style.display = (opt === 'avisos') ? 'block' : 'none';
-      document.getElementById('matSecRegalos').style.display = (opt === 'regalos') ? 'block' : 'none';
-
-      const btnT = document.getElementById('matBtnTareas');
-      const btnA = document.getElementById('matBtnAvisos');
-      const btnR = document.getElementById('matBtnRegalos');
-
-      btnT.style.background = (opt === 'tareas') ? '#f1f5f9' : '#ffffff';
-      btnA.style.background = (opt === 'avisos') ? '#f1f5f9' : '#ffffff';
-      btnR.style.background = (opt === 'regalos') ? '#f1f5f9' : '#ffffff';
-    }
-  </script>
 </body>
 </html>
