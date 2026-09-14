@@ -1,13 +1,14 @@
 /* ==========================================================
-   MATERIAS UNICORNIO • ESTILOS DEDICADOS PARA ASIGNATURAS
+   MATERIAS UNICORNIO • SISTEMA DASHBOARD MULTI-PANEL
    css/materia.css - Exclusivo para páginas de materias
+   UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
    ========================================================== */
 
 :root {
   --bg-space: #000c18;
   --bg-deep: #001628;
   --bg-card: rgba(255, 255, 255, 0.04);
-  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --glass-stroke: rgba(255, 255, 255, 0.14);
 
   --unam-blue: #002B7A;
   --unam-blue-electric: #1d4ed8;
@@ -27,23 +28,27 @@
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001222 45%, #000814 100%);
+  background: radial-gradient(ellipse at 50% 0%, #001f3f 0%, #001426 40%, #000914 100%);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* ==========================================================
@@ -53,16 +58,16 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(0, 12, 24, 0.88);
+  background: rgba(0, 12, 24, 0.92);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border-bottom: 1px solid var(--glass-stroke);
+  border-bottom: 1.5px solid var(--glass-stroke);
 }
 
 .mat-topbar-inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0.65rem 1.2rem;
+  padding: 0.65rem 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,33 +76,38 @@ body {
 .mat-brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   text-decoration: none;
   color: #ffffff;
 }
 
 .mat-brand img {
-  height: 36px;
+  height: 38px;
   width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
 }
 
 .mat-brand-text h1 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 900;
+  letter-spacing: -0.3px;
 }
 
 .mat-brand-text span {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: var(--unam-gold-bright);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .mat-nav-btn {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--glass-stroke);
   color: var(--text-secondary);
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 1rem;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 700;
   text-decoration: none;
   transition: var(--transition-fast);
@@ -106,30 +116,34 @@ body {
 .mat-nav-btn:hover {
   background: var(--unam-blue-electric);
   color: #ffffff;
+  border-color: var(--unam-blue-bright);
 }
 
 /* ==========================================================
-   HERO DE LA MATERIA
+   HERO DE LA MATERIA (ESPACIO COMPACTO Y ELEGANTE)
    ========================================================== */
 .mat-hero {
-  padding: 2.5rem 1rem 2rem;
+  padding: 2.5rem 1.2rem 2rem;
   text-align: center;
+  position: relative;
 }
 
 .mat-hero-inner {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .mat-hero-icon {
   font-size: 3.2rem;
   margin-bottom: 0.4rem;
+  filter: drop-shadow(0 4px 15px rgba(213, 159, 15, 0.3));
 }
 
 .mat-hero h2 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.8vw, 3.4rem);
   font-weight: 900;
-  margin-bottom: 0.3rem;
+  letter-spacing: -1px;
+  margin-bottom: 0.35rem;
   background: linear-gradient(135deg, #ffffff 40%, #fcd866 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -137,40 +151,43 @@ body {
 
 .mat-hero-sub {
   color: var(--unam-gold-bright);
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   font-weight: 800;
+  letter-spacing: 0.5px;
   margin-bottom: 0.6rem;
 }
 
 .mat-hero-desc {
   color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 740px;
+  margin: 0 auto;
 }
 
 /* ==========================================================
-   BARRA DE LAS 3 OPCIONES (TABS)
+   BARRA DE ESTADO / TABS SEGMENTADOS
    ========================================================== */
 .mat-tabs-bar-wrap {
   background: #ffffff;
   border-bottom: 1.5px solid #cbd5e1;
-  padding: 1rem 1.2rem;
+  padding: 0.85rem 1.2rem;
   width: 100%;
 }
 
 .mat-tabs-inner {
-  max-width: 1060px;
+  max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  gap: 0.8rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .mat-tab-btn {
-  padding: 0.75rem 1.4rem;
+  padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 900;
   cursor: pointer;
   display: inline-flex;
@@ -193,79 +210,43 @@ body {
   border-color: #cbd5e1;
 }
 
-.mat-tab-btn.empty-white:hover {
-  background: #eff6ff;
-  color: #1e3a8a;
-}
-
 .mat-tab-btn.gift-purple {
-  background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+  background: #ffffff;
   color: #6b21a8;
   border-color: #c084fc;
 }
 
-.mat-tab-btn.gift-purple:hover {
-  background: #f3e8ff;
-}
-
 /* ==========================================================
-   BLOQUES DE COLOR DE SECCIÓN (FULL-WIDTH SEAMLESS)
+   CONTENEDOR DASHBOARD MULTI-PANEL (MAC Y TABLETA HORIZONTAL)
    ========================================================== */
-.mat-section-pane {
+.mat-dashboard-layout {
   width: 100%;
-  padding: 2.2rem 1.2rem;
-  display: none;
-}
-
-.mat-section-pane.active {
-  display: block;
-}
-
-.mat-pane-blue-active {
-  background: #eff6ff;
-  border-top: 3px solid #1d4ed8;
-  border-bottom: 2px solid #bfdbfe;
-}
-
-.mat-pane-gold-active {
-  background: #fffdf5;
-  border-top: 3px solid #D59F0F;
-  border-bottom: 2px solid #fde047;
-}
-
-.mat-pane-purple-active {
-  background: #fcfaff;
-  border-top: 3px solid #7C3AED;
-  border-bottom: 2px solid #ddd6fe;
-}
-
-.mat-pane-clean-white {
-  background: #f8fafc;
-  border-top: 2px solid #e2e8f0;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.mat-pane-inner {
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 1.5rem 1.2rem 3.5rem;
 }
 
+/* TARJETAS DENTRO DEL DASHBOARD */
 .mat-card-box {
   background: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 1.6rem 1.4rem;
-  box-shadow: 0 4px 20px rgba(0, 22, 40, 0.05);
+  border-radius: var(--radius-xl);
+  padding: 1.8rem 1.6rem;
   color: #1e293b;
+  box-shadow: 0 12px 40px rgba(0, 10, 25, 0.25);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .mat-badge-tag {
   display: inline-block;
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 900;
-  padding: 0.25rem 0.7rem;
+  padding: 0.25rem 0.75rem;
   border-radius: 6px;
   text-transform: uppercase;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+  align-self: flex-start;
 }
 
 .mat-badge-crimson { background: #ef4444; color: #ffffff; }
@@ -274,27 +255,164 @@ body {
 
 .mat-box-title {
   color: #002B7A;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 900;
-  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
 }
 
 .mat-box-desc {
   color: #334155;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-/* Modal interactivo */
+/* ==========================================================
+   COMPORTAMIENTO SEGÚN TAMAÑO DE PANTALLA
+   ========================================================== */
+
+/* 1. EN MAC Y TABLETA HORIZONTAL (>= 900px):
+   LOS 3 RECUADROS APARECEN SIMULTÁNEAMENTE (CERO ESPACIO DESPERDICIADO) */
+@media (min-width: 900px) {
+  .mat-dashboard-layout {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .mat-section-pane {
+    display: block !important; /* VISIBLES SIMULTÁNEAMENTE */
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* Recuadro 1: Tareas (Columna Izquierda) */
+  #pane_tareas {
+    grid-column: 1 / 2;
+  }
+
+  /* Recuadro 2: Avisos (Columna Derecha) */
+  #pane_avisos {
+    grid-column: 2 / 3;
+  }
+
+  /* Recuadro 3: Regalos y Herramientas (Ancho Completo Abajo) */
+  #pane_regalos,
+  .mat-pane-fullwidth {
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+  }
+
+  /* Bordes distintivos luminosos para los recuadros simultáneos */
+  .mat-pane-blue-active .mat-card-box {
+    border: 2.5px solid #1d4ed8;
+    box-shadow: 0 12px 35px rgba(29, 78, 216, 0.22);
+  }
+
+  .mat-pane-gold-active .mat-card-box {
+    border: 2.5px solid #D59F0F;
+    box-shadow: 0 12px 35px rgba(213, 159, 15, 0.22);
+  }
+
+  .mat-pane-purple-active .mat-card-box {
+    border: 2.5px solid #7C3AED;
+    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.2);
+  }
+
+  .mat-pane-clean-white .mat-card-box {
+    border: 1.5px solid #cbd5e1;
+  }
+
+  /* La barra superior en Mac funciona como indicador de estado general */
+  .mat-tabs-bar-wrap {
+    background: rgba(0, 14, 28, 0.82);
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--glass-stroke);
+    padding: 0.75rem 1.4rem;
+  }
+
+  .mat-tabs-inner {
+    justify-content: flex-start;
+    gap: 0.9rem;
+  }
+
+  .mat-tab-btn {
+    cursor: default;
+    pointer-events: none;
+    box-shadow: none;
+    padding: 0.45rem 1rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* 2. EN CELULAR Y TABLETA VERTICAL (< 900px):
+   PESTAÑAS INTERACTIVAS PARA NO SATURAR Y MÁRGENES MÍNIMOS */
+@media (max-width: 899px) {
+  .mat-topbar-inner {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .mat-hero {
+    padding: 1.8rem 0.8rem 1.4rem;
+  }
+
+  .mat-dashboard-layout {
+    display: block;
+    padding: 0;
+  }
+
+  .mat-section-pane {
+    display: none;
+    width: 100%;
+    padding: 1.1rem 0.65rem;
+  }
+
+  .mat-section-pane.active {
+    display: block !important;
+    animation: paneFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes paneFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mat-tabs-bar-wrap {
+    padding: 0.65rem 0.4rem;
+  }
+
+  .mat-tabs-inner {
+    gap: 0.45rem;
+  }
+
+  .mat-tab-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .mat-card-box {
+    padding: 1.3rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ==========================================================
+   MODAL DE PEDIDOS
+   ========================================================== */
 .mat-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 22, 40, 0.75);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 16, 32, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 99999;
   display: none;
   align-items: center;
@@ -309,185 +427,30 @@ body {
 .mat-modal-shell {
   background: #ffffff;
   border: 2.5px solid #1d4ed8;
-  border-radius: 22px;
-  padding: 1.8rem 1.6rem;
-  max-width: 440px;
+  border-radius: 24px;
+  padding: 2rem 1.6rem;
+  max-width: 450px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
   color: #1e293b;
 }
 
 /* ==========================================================
-   RESPONSIVIDAD MÓVIL
+   PIE DE PÁGINA
    ========================================================== */
-@media (max-width: 768px) {
-  .mat-topbar-inner {
-    padding: 0.5rem 0.8rem;
-  }
-
-  .mat-tabs-bar-wrap {
-    padding: 0.7rem 0.5rem;
-  }
-
-  .mat-tab-btn {
-    padding: 0.55rem 0.95rem;
-    font-size: 0.82rem;
-  }
-
-  .mat-section-pane {
-    padding: 1.2rem 0.65rem;
-  }
-
-  .mat-card-box {
-    padding: 1.2rem 0.9rem;
-    border-radius: var(--radius-md);
-  }
-}
-
-/* COMPATIBILIDAD CON ESTRUCTURA ANTERIOR Y CLASES LEGACY */
-.seamless-subject-container,
-.master-container {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.seamless-subject-card,
-.schedule-master-card {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100% !important;
-}
-
-.window-titlebar {
-  background: rgba(0, 14, 28, 0.8) !important;
-  border-bottom: 1px solid var(--glass-stroke) !important;
-  padding: 10px 1.5rem !important;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.mac-nav-back-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--glass-stroke);
-  color: #ffffff;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.mac-nav-back-btn:hover {
-  background: var(--unam-blue-electric);
-}
-
-.seamless-tabs-holder {
-  background: #ffffff;
-  border-bottom: 1.5px solid #cbd5e1;
-  padding: 1rem 1.2rem;
-  width: 100%;
-}
-
-.seamless-tabs-inner,
-.subject-three-options-bar {
-  max-width: 1060px;
-  margin: 0 auto;
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.opt-pill-btn {
-  padding: 0.7rem 1.3rem;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 900;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: var(--transition-fast);
-}
-
-.opt-blue-active {
-  background: linear-gradient(135deg, #002B7A 0%, #1d4ed8 100%);
-  color: #ffffff;
-  border: 1.5px solid #3b82f6;
-  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.35);
-}
-
-.opt-white-empty {
-  background: #f8fafc;
-  color: #475569;
-  border: 1.5px solid #cbd5e1;
-}
-
-.opt-white-gift {
-  background: #ffffff;
-  color: #6b21a8;
-  border: 1.5px solid #c084fc;
-}
-
-.seamless-section-pane {
-  width: 100%;
-  padding: 2.2rem 1.2rem;
-}
-
-.color-block-tareas-active {
-  background: #eff6ff;
-  border-top: 3px solid #1d4ed8;
-  border-bottom: 2px solid #bfdbfe;
-}
-
-.color-block-tareas-clean {
-  background: #f8fafc;
-  border-top: 2px solid #e2e8f0;
-  border-bottom: 2px solid #e2e8f0;
-}
-
-.color-block-avisos-active {
-  background: #fffdf5;
-  border-top: 3px solid #D59F0F;
-  border-bottom: 2px solid #fde047;
-}
-
-.color-block-avisos-clean {
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.color-block-regalos {
-  background: #fcfaff;
-  border-top: 3px solid #7C3AED;
-  border-bottom: 2px solid #ddd6fe;
-}
-
-.color-block-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.seamless-bottom-nav {
-  background: rgba(0, 14, 28, 0.9);
+.mat-footer {
   border-top: 1px solid var(--glass-stroke);
-  padding: 1.5rem 1rem;
+  background: rgba(0, 10, 20, 0.95);
+  padding: 2.2rem 1rem;
   text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 2rem;
 }
 
-.seamless-bottom-nav a {
+.mat-footer a {
   color: var(--unam-gold-bright);
-  font-weight: 800;
   text-decoration: none;
+  font-weight: 700;
 }
