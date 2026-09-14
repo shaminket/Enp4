@@ -460,3 +460,52 @@ body {
   border-radius: 999px;
   margin-bottom: 1rem;
 }
+
+/* ==========================================================
+   ADAPTABILIDAD DINÁMICA DE PANTALLA EN MAC (AUTO-REFLOW)
+   ========================================================== */
+@media (max-width: 1280px) {
+  .deck-main-layout {
+    grid-template-columns: 290px 1fr 300px;
+    gap: 0.9rem;
+    padding: 0.9rem 1.2rem;
+  }
+  .deck-identity img {
+    height: 40px;
+  }
+  .cluster-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1080px) {
+  body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  .deck-topbar {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+  }
+  .deck-main-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0.9rem 1rem 2rem !important;
+    gap: 1.2rem !important;
+  }
+  .deck-left-rail, .deck-center-stage, .deck-right-rail {
+    width: 100% !important;
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+  }
+  .box-scrollable {
+    max-height: 450px !important;
+    overflow-y: auto !important;
+  }
+}

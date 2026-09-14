@@ -418,3 +418,34 @@ body {
   font-weight: 800;
   cursor: pointer;
 }
+
+/* ==========================================================
+   ADAPTABILIDAD DINÁMICA EN TABLET / VENTANA MAC REDIMENSIONADA
+   ========================================================== */
+@media (max-width: 960px) {
+  .bento-master-container {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+    padding: 0 0.8rem !important;
+  }
+  .bento-tile.col-span-4 {
+    grid-column: span 2 !important;
+  }
+  .split-view-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .bento-master-container {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-tile.col-span-2,
+  .bento-tile.col-span-4 {
+    grid-column: span 1 !important;
+  }
+  .tablet-segmented-days {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}

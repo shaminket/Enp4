@@ -2,376 +2,447 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro de Control Grupo 0415 Prepa 4 | shaminket</title>
-  <meta name="description" content="Accede al centro de control del grupo 415 en la Prepa 4 UNAM. Avisos de clase, tareas, programas y guías escolares reunidos en un solo lugar en shaminket.">
-  <link rel="canonical" href="https://shaminket.com/centro-control">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, materias prepa 4, centro de control, tareas 415, enp 4">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Centro de Control Grupo 0415 Prepa 4 | shaminket">
-  <meta property="og:description" content="Accede al centro de control del grupo 415 en la Prepa 4 UNAM. Avisos de clase, tareas, programas y guías escolares reunidos en un solo lugar en shaminket.">
-  <meta property="og:url" content="https://shaminket.com/centro-control">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
-  
-  <link rel="stylesheet" href="css/styles.css">
-  
-    <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
-    }
-    function checkResponsiveLayout() {
-      if (window.location.search.includes("force=desktop")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("centro-control-movil"));
-      }
-    }
-    checkResponsiveLayout();
-    window.addEventListener("resize", checkResponsiveLayout);
-  </script>
-  <!-- GOOGLE IDENTITY SERVICES (GIS / OAUTH 2.0) OFICIAL -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Centro de Control • Cuatreros del 415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Dashboard académico unificado del Grupo 0415, Prepa 4 UNAM. Salones, acuerdos escolares, tareas activas y guías oficiales por asignatura.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="css/centro-control.css">
 </head>
 <body>
-  <!-- BANNER MORADO DE AVISO (5 SEGUNDOS) CON ENTRADA Y SALIDA LATERAL -->
-  <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-blue">
-      <div class="announcement-badge-pill">
-        <span>✨ AVISO DE LA PLATAFORMA</span>
-      </div>
-      <h2 class="announcement-title-big">
-        Si el recuadro es color AZUL REY, está actualizado
-      </h2>
-      <p class="announcement-desc-text">
-        Las asignaturas con borde azul rey tienen nuevas tareas, materiales, cambios de salón o acuerdos escolares. ¡Te recomendamos revisarlas!
-      </p>
-
-      <div class="announcement-timer-box">
-        <div class="announcement-time-num" id="announcementTimeNum">10.0s</div>
-        <div class="announcement-progress-track">
-          <div class="announcement-progress-fill" id="announcementProgressFill"></div>
-        </div>
-      </div>
-
-      <div style="margin-top: 1.6rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #4c1d95 !important; border-color: #ffffff !important; padding: 0.75rem 1.6rem; font-size: 0.95rem; font-weight: 900; text-decoration: none;">
-          <span>Ver Actualizaciones &rarr;</span>
-        </a>
-        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.2); color: #fcd866; font-weight: 800; cursor: pointer;">⏸️ Pausar</button>
-        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.75rem 1.2rem; font-size: 0.92rem; background: rgba(0,0,0,0.25);">
-          Omitir
-        </button>
-      </div>
-    </div>
-  </div>
-
 
   <!-- CABECERA SUPERIOR PERSISTENTE -->
-  <div class="sticky-top-group">
-    <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-        <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-      </div>
-      <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
-      
-    </div>
-    <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">✨ CENTRO DE CONTROL</span>
-        <span class="rebrand-text-main">
-          <strong>Materias, Avisos y Tareas</strong> &bull; Grupo 0415 Vidal Castañeda y Nájera
-        </span>
-      </div>
-    </aside>
+  <header class="cc-topbar">
+    <div class="cc-topbar-inner">
+      <a href="./" class="cc-brand">
+        <img src="assets/escudo-unam-original.png" alt="UNAM">
+        <img src="assets/logo-enp4.svg" alt="ENP 4">
+        <div class="cc-brand-text">
+          <h1>Cuatreros 415</h1>
+          <span>Centro de Control</span>
+        </div>
+      </a>
 
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="./" class="nav-brand">
-          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
-              <span>Cuatreros</span> del 415
-              <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
-            </div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
-          </div>
+      <nav style="display: flex; align-items: center; gap: 0.6rem;">
+        <a href="./" class="cc-nav-btn">
+          <span>&larr; Horario y Portal</span>
         </a>
-
-        <nav class="nav-links-menu">
-          <a href="./" class="nav-link-item">Inicio</a>
-          <a href="./#horario" class="nav-link-item">Horario</a>
-          <a href="artisticas" class="nav-link-item">Artísticas</a>
-          <a href="ayuda" class="nav-link-item">Ayuda &bull; Guía</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
-                  <!-- Botón de Iniciar Sesión / Perfil Estático -->
-                    <!-- CONTENEDOR OFICIAL GOOGLE SIGN-IN & PERFIL DE USUARIO (GIS) -->
-          <div id="authNavContainer" class="google-auth-nav-cluster">
-            <div id="g_id_signin" class="google-signin-btn-box"></div>
-            <div id="googleUserProfileBar" class="google-user-profile-bar" style="display: none;"></div>
-          </div>
-
-
-    
-
-    <!-- ==========================================================
-         GRID DE LAS DEMÁS MATERIAS DEL GRUPO 0415
-         ========================================================== -->
-        <!-- BARRA DE BÚSQUEDA INTERACTIVA Y ORDENAMIENTO -->
-    <div class="control-search-wrapper">
-      <div class="control-search-input-box">
-        <span class="control-search-icon">🔍</span>
-        <input type="text" id="subjectSearchInput" class="control-search-input" placeholder="Buscar materia por nombre, clave o salón (ej. Geografía, 1405, B-110)..." oninput="filterSubjects(this.value)">
-      </div>
-      <div class="control-filter-actions">
-        <div class="control-sort-pills">
-          <button id="btnSortDefault" class="control-sort-btn active" onclick="setSortMode('default')">⚡ Actualizadas Primero</button>
-          <button id="btnSortAlpha" class="control-sort-btn" onclick="setSortMode('alpha')">🔤 Orden Alfabético (A - Z)</button>
-          <button id="btnStackToggle" class="control-sort-btn" onclick="toggleCardStackMode()">🃏 Modo Cartas Apiladas</button>
-        </div>
-        <span id="subjectCountBadge" class="control-count-tag">13 materias disponibles</span>
-      </div>
+        <a href="ayuda.html" class="cc-nav-btn">
+          <span>Guía</span>
+        </a>
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="cc-nav-btn" style="background: rgba(213, 159, 15, 0.2); color: var(--unam-gold-bright); border-color: var(--unam-gold);">
+          <span>⚡ Encardomy</span>
+        </a>
+      </nav>
     </div>
+  </header>
 
-    <div class="bento-section-title">
-      <h2>Todas las Asignaturas del 415</h2>
-      <p>Selecciona una materia para consultar su programa, salón y estado de apuntes</p>
-    </div>
-
-    <div id="bentoSubjectsGrid" class="bento-grid">
-      <!-- Lengua Española (Mismo formato bento-card pero destacado y más grande) -->
-      <div class="bento-card bento-card-featured card-updated-blue">
-        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <div class="bento-icon-box" style="font-size: 2.2rem; width: 62px; height: 62px;">📖</div>
-            <div>
-              <span class="blue-update-pill">● Actualizado &bull; Hojas pospuestas (Espera indicaciones) &bull; Buzón Habilitado</span>
-              <h3 style="font-size: 1.85rem; margin-top: 0.2rem; color: #002B7A; font-weight: 900;">Lengua Española</h3>
-            </div>
-          </div>
-          <span style="background: rgba(0, 43, 122, 0.08); color: #002B7A; font-weight: 800; font-size: 0.78rem; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px;">
-            Materia Troncal &bull; Clave 1402
-          </span>
-        </div>
-
-        <p style="font-size: 0.98rem; line-height: 1.6; color: #334155; margin-bottom: 1.2rem;">
-          <strong>Profra. Vázquez González María &bull; Salones B-110, B-112 y B-113.</strong> Curso de tipología textual, análisis literario, sintaxis y redacción de trabajos de investigación. Revisa el nuevo aviso sobre las hojas de trabajo (pospuestas, ya no son para el lunes; espera indicaciones en el aula) y los formularios del buzón escolar de dudas.
-        </p>
-
-        <!-- Accesos directos rápidos de Español en formato chips -->
-        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-          <a href="actualizaciones" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
-            📢 Avisos Oficiales
-          </a>
-          <a href="forma-trabajo" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
-            📝 Forma de Trabajo
-          </a>
-          <a href="plan-estudios" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #002B7A; text-decoration: none;">
-            📚 Novela Wyatt
-          </a>
-          <a href="materias/espanol-dudas" style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 800; color: #1d4ed8; text-decoration: none;">
-            ✉️ Buzón de Dudas Activo
-          </a>
-        </div>
-
-        <div class="bento-footer-link" style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-          <a href="materias/espanol" class="btn-encardomy" style="padding: 0.65rem 1.6rem; font-size: 0.92rem; text-decoration: none;">
-            <span>Abrir Módulo de Español &rarr;</span>
-          </a>
-          <a href="materias/espanol-dudas" class="mac-nav-back-btn" style="padding: 0.65rem 1.2rem; font-size: 0.92rem; text-decoration: none;">
-            <span>Llenar Formulario de Dudas &rarr;</span>
-          </a>
-        </div>
-      </div>
-      <!-- Matemáticas IV -->
-      <div class="bento-card">
-        <div class="bento-icon-box">📐</div>
-        <h3>Matemáticas IV</h3>
-        <p>Prof. Quintana Mejía Saúl &bull; Clave 1400 (20 créditos). Álgebra, funciones, sistemas de ecuaciones lineales y modelación matemática.</p>
-        <div class="bento-footer-link">
-          <a href="materias/matematicas" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Física III -->
-      <div class="bento-card">
-        <div class="bento-icon-box">⚡</div>
-        <h3>Física III</h3>
-        <p>Profra. Reyna García Gabriela &bull; Clave 1401 (14 créditos). Movimiento de satélites, energía eléctrica y prácticas en Laboratorio A-302.</p>
-        <div class="bento-footer-link">
-          <a href="materias/fisica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Geografía -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🌍</div>
-        <span class="blue-update-pill">● Actualizado &bull; Tarea 4 Noticias</span>
-        <h3>Geografía</h3>
-        <p>Clave 1405 (12 créditos) &bull; Salón A-104. Espacio geográfico, recursos naturales, dinámica poblacional y geopolítica contemporánea.</p>
-        <div class="bento-footer-link">
-          <a href="materias/geografia" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Historia Universal III -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🏛️</div>
-        <span class="blue-update-pill">● Actualizado &bull; Aviso Lunes 14 & Planisferio</span>
-        <h3>Historia Universal III</h3>
-        <p>Clave 1403 (12 créditos) &bull; Salones B-109 y B-117. Industrialización, transformaciones capitalistas y movimientos del siglo XX y XXI.</p>
-        <div class="bento-footer-link">
-          <a href="materias/historia" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Inglés IV -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🗣️</div>
-        <span class="blue-update-pill">● Actualizado &bull; Mediateca B-318</span>
-        <h3>Lengua Extranjera Inglés IV</h3>
-        <p>Clave 1407 (12 créditos) &bull; Salones C-306 (Sec. A) y C-205 (Sec. B). Competencias comunicativas A2/B1 MCERL y comprensión de textos.</p>
-        <div class="bento-footer-link">
-          <a href="materias/ingles" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Lógica -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🧠</div>
-        <span class="blue-update-pill">● Actualizado &bull; Tarea</span>
-        <h3>Lógica</h3>
-        <p>Clave 1404 (12 créditos) &bull; Salones B-108 y B-206. Análisis de argumentos, identificación de falacias y formalización lógica.</p>
-        <div class="bento-footer-link">
-          <a href="materias/logica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Dibujo II -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🎨</div>
-        <span class="blue-update-pill">● Actualizado &bull; Paisaje y Líneas</span>
-        <h3>Dibujo II</h3>
-        <p>Clave 1406 (08 créditos) &bull; Salones B-008 (Sec. A) y C-201 (Sec. B). Lenguaje visual, proporción, técnicas de color y composición.</p>
-        <div class="bento-footer-link">
-          <a href="materias/dibujo" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Informática -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">💻</div>
-        <span class="blue-update-pill">● Actualizado &bull; Exposiciones</span>
-        <h3>Informática</h3>
-        <p>Clave 1408 (10 créditos) &bull; I-108 y CC-2. Hojas de cálculo avanzadas, procesamiento de datos, lógica algorítmica y seguridad en la red.</p>
-        <div class="bento-footer-link">
-          <a href="materias/informatica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Orientación Educativa IV -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🧭</div>
-        <span class="blue-update-pill">● Actualizado &bull; 2 Tareas + Prompts</span>
-        <h3>Orientación Educativa IV</h3>
-        <p>Clave 1410 &bull; Salones B-110 (Sec. A) y B-112 (Sec. B). Adaptación al bachillerato UNAM, hábitos de estudio y proyecto de vida.</p>
-        <div class="bento-footer-link">
-          <a href="materias/orientacion" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-            <!-- Prevención de las Violencias -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🛡️</div>
-        <span class="blue-update-pill">● Actualizado &bull; Cultura de Paz</span>
-        <h3>Prevención de las Violencias</h3>
-        <p><strong>Género y Prevención de las Violencias</strong> &bull; Clave 8000 &bull; Salones B-108 y B-109. Cultura comunitaria de paz, derechos humanos, equidad de género y convivencia escolar libre de violencia.</p>
-        <div class="bento-footer-link">
-          <a href="materias/genero" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Educación Estética y Artística (Artísticas) -->
-      <div class="bento-card" style="border: 2px solid #D59F0F;">
-        <div class="bento-icon-box" style="color: #D59F0F; background: rgba(213, 159, 15, 0.15);">🎭</div>
-        <h3>Educación Estética y Artística</h3>
-        <p>Obligatoria de 4° año. Teatro, Danza Folclórica, Contemporánea, Música, Artes Plásticas y Fotografía. Consulta profesores, salones y horarios disponibles en SiHo.</p>
-        <div class="bento-footer-link">
-          <span style="font-size: 0.82rem; font-weight: 800; color: #002B7A;">6 disciplinas &bull; Prepa 4</span>
-          <a href="artisticas" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; text-decoration: none;">
-            <span>Elegir artística &rarr;</span>
-          </a>
-        </div>
-      </div>
-
-            <!-- Educación Física IV -->
-      <div class="bento-card card-updated-blue">
-        <div class="bento-icon-box">🏃</div>
-        <span class="blue-update-pill">● Actualizado &bull; Nueva Tarea</span>
-        <h3>Educación Física IV</h3>
-        <p>Clave 1409 &bull; Gimnasio 1 (GIM1). Nueva tarea activa: "¿Qué es la condición física?" y componentes de la actividad física.</p>
-        <div class="bento-footer-link">
-          <a href="materias/educacion-fisica" class="btn-encardomy" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-            <span>Ver materia &rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="./">Inicio</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
+  <!-- HERO CINEÁTICO -->
+  <section class="cc-hero">
+    <div class="cc-hero-inner">
+      <span class="cc-hero-badge">Plataforma Académica Oficial &bull; Grupo 0415</span>
+      <h2>Centro de Control de Materias</h2>
       <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
+        Accede directamente a cada asignatura del 415: tareas vigentes, salones en Tacubaya, fechas de entrega y recursos de apoyo con Encardomy.
       </p>
     </div>
+  </section>
+
+  <!-- CONTROLES: BÚSQUEDA Y CLÚSTERES -->
+  <section class="cc-controls-stage">
+    <div class="cc-search-box">
+      <span class="cc-search-icon">🔍</span>
+      <input type="text" id="subjectSearchInput" class="cc-search-input" placeholder="Buscar materia por nombre, profesor, clave o salón (ej. Geografía, 1405, B-110)..." oninput="filterSubjects(this.value)">
+    </div>
+
+    <div class="cc-filter-actions-bar">
+      <!-- Filtros por Clúster Funcional -->
+      <div class="cc-cluster-pills">
+        <button class="cc-cluster-btn active" data-cluster="all" onclick="filterByCluster('all')">
+          Todas <kbd>0</kbd>
+        </button>
+        <button class="cc-cluster-btn" data-cluster="ciencias" onclick="filterByCluster('ciencias')">
+          🔬 Ciencias <kbd>1</kbd>
+        </button>
+        <button class="cc-cluster-btn" data-cluster="humanidades" onclick="filterByCluster('humanidades')">
+          🏛️ Humanidades <kbd>2</kbd>
+        </button>
+        <button class="cc-cluster-btn" data-cluster="idiomas" onclick="filterByCluster('idiomas')">
+          🗣️ Idiomas / Cómputo <kbd>3</kbd>
+        </button>
+        <button class="cc-cluster-btn" data-cluster="arte" onclick="filterByCluster('arte')">
+          🎨 Arte / Salud <kbd>4</kbd>
+        </button>
+      </div>
+
+      <!-- Ordenamiento -->
+      <div class="cc-sort-cluster">
+        <button id="btnSortDefault" class="cc-sort-btn active" onclick="setSortMode('default')">
+          ⚡ Con Novedades
+        </button>
+        <button id="btnSortAlpha" class="cc-sort-btn" onclick="setSortMode('alpha')">
+          🔤 Orden A - Z
+        </button>
+        <span id="subjectCountBadge" style="font-size: 0.74rem; color: var(--text-muted); margin-left: 0.4rem;">13 materias</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO GRID DE ASIGNATURAS -->
+  <main class="cc-grid-stage">
+    <div class="cc-subjects-grid" id="subjectsGrid">
+      
+      <!-- 1. LENGUA ESPAÑOLA (FEATURED) -->
+      <article class="cc-subject-card featured-card has-active-update" data-cluster="humanidades">
+        <div>
+          <div class="cc-card-top-row">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div class="cc-card-icon">📖</div>
+              <div>
+                <span class="cc-card-pill-update">● Actualizado &bull; Hojas pospuestas (espera indicaciones)</span>
+                <h3 class="cc-card-title">Lengua Española</h3>
+              </div>
+            </div>
+            <span style="background: rgba(255,255,255,0.08); color: var(--unam-gold-bright); font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 999px;">
+              Clave 1402 &bull; Troncal
+            </span>
+          </div>
+          <div class="cc-card-meta">
+            Profra. Vázquez González María &bull; Salones B-110 y B-112
+          </div>
+          <p class="cc-card-desc">
+            Curso de tipología textual, análisis literario, sintaxis y redacción de investigación. Aviso urgente: las hojas membretadas de La Gomita se posponen, no son para el lunes; espera indicaciones en clase.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">📢 Avisos Oficiales</span>
+            <span class="cc-chip">📝 Forma de Trabajo</span>
+            <span class="cc-chip">📚 Novela Wyatt</span>
+            <span class="cc-chip" style="color: #60a5fa; border-color: rgba(96, 165, 250, 0.4);">✉️ Buzón de Dudas</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Materia Troncal de 4° Año</span>
+          <a href="materias/espanol.html" class="btn-open-subject">
+            <span>Abrir Módulo de Español &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. HISTORIA UNIVERSAL III -->
+      <article class="cc-subject-card has-active-update" data-cluster="humanidades">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🏛️</div>
+            <span class="cc-card-pill-update" style="background: #ef4444;">● Entrega Pendientes &bull; Planisferio</span>
+          </div>
+          <h3 class="cc-card-title">Historia Universal III</h3>
+          <div class="cc-card-meta">Clave 1403 &bull; Salones B-109 y B-117</div>
+          <p class="cc-card-desc">
+            Entrega estricta de cuadernos atrasados el lunes 14 a las 12:00 en Orientación (B-110, máx 20 alumnos). Obligatorio llevar planisferio con nombres (descárgalo o pídelo en regalos).
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🗺️ Planisferio 136 Países</span>
+            <span class="cc-chip">📄 Convertidor PDF24</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--code-crimson); font-weight: 800;">Lunes 12:00 B-110</span>
+          <a href="materias/historia.html" class="btn-open-subject">
+            <span>Ver Historia &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. GEOGRAFÍA -->
+      <article class="cc-subject-card has-active-update" data-cluster="ciencias">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🌍</div>
+            <span class="cc-card-pill-update">● Tarea 4 Noticias en Equipo</span>
+          </div>
+          <h3 class="cc-card-title">Geografía</h3>
+          <div class="cc-card-meta">Clave 1405 &bull; Salón A-104 &bull; Profra. Silvia Mendoza</div>
+          <p class="cc-card-desc">
+            4 Noticias en equipo en una sola hoja dividida en 4 cuadrantes (Social, Económico, Político, Natural). Pluma negra, orden alfabético por apellidos. Paquete de hojas con nombre disponible por $50.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">📝 4 Noticias Lunes</span>
+            <span class="cc-chip">📖 Libro Oficial</span>
+            <span class="cc-chip">🧭 Mapas de México</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--unam-gold-bright); font-weight: 800;">Entrega: Lun 7:00 AM</span>
+          <a href="materias/geografia.html" class="btn-open-subject">
+            <span>Ver Geografía &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 4. EDUCACIÓN FÍSICA IV -->
+      <article class="cc-subject-card has-active-update" data-cluster="arte">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🏃</div>
+            <span class="cc-card-pill-update" style="background: #f59e0b;">● Nueva Tarea en Cuaderno</span>
+          </div>
+          <h3 class="cc-card-title">Educación Física IV</h3>
+          <div class="cc-card-meta">Clave 1409 &bull; Gimnasio 1 (GIM1)</div>
+          <p class="cc-card-desc">
+            Nueva tarea activa sobre Componentes de la Actividad Física: responder definición de condición física, 4 capacidades condicionales y coordinativas. Asistir puntual con uniforme reglamentario.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">📝 Tarea Condición Física</span>
+            <span class="cc-chip">🏃 GIM1 Viernes 11:10</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--code-amber); font-weight: 800;">Viernes 11:10 AM</span>
+          <a href="materias/educacion-fisica.html" class="btn-open-subject">
+            <span>Ver Educación Física &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5. ORIENTACIÓN EDUCATIVA IV -->
+      <article class="cc-subject-card has-active-update" data-cluster="humanidades">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🧭</div>
+            <span class="cc-card-pill-update">● 2 Tareas UNAM &bull; Sec. A</span>
+          </div>
+          <h3 class="cc-card-title">Orientación Educativa IV</h3>
+          <div class="cc-card-meta">Clave 1410 &bull; B-110 (Sec. A) y B-112 (Sec. B)</div>
+          <p class="cc-card-desc">
+            Sección A: Traer post-it, plumones y carpeta de raya; entregar 10 datos históricos UNAM y 5 personajes (sin Barreda ni 155 años). Prompts IA listos para copiar. Sección B al corriente.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🅰️ Sec. A (Salón B-110)</span>
+            <span class="cc-chip">🅱️ Sec. B (Salón B-112)</span>
+            <span class="cc-chip">🤖 Prompts IA</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: #60a5fa; font-weight: 800;">Lunes 12:00 - 12:50</span>
+          <a href="materias/orientacion.html" class="btn-open-subject">
+            <span>Elegir Sección &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 6. INGLÉS IV -->
+      <article class="cc-subject-card has-active-update" data-cluster="idiomas">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🇬🇧</div>
+            <span class="cc-card-pill-update" style="background: #ef4444;">● Mediateca Salón B-318</span>
+          </div>
+          <h3 class="cc-card-title">Lengua Extranjera Inglés IV</h3>
+          <div class="cc-card-meta">Clave 1407 &bull; Salón C-306 (Sec. A) / C-205 (Sec. B)</div>
+          <p class="cc-card-desc">
+            Sección A: Asistencia obligatoria el lunes en la Mediateca (Salón B-318) con audífonos propios. Tareas de examen anteriores archivadas.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🅰️ Sec. A: Mediateca B-318</span>
+            <span class="cc-chip">🅱️ Sec. B: Salón C-205</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--code-crimson); font-weight: 800;">Lunes 9:30 AM</span>
+          <a href="materias/ingles.html" class="btn-open-subject">
+            <span>Ver Inglés &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 7. LÓGICA -->
+      <article class="cc-subject-card has-active-update" data-cluster="humanidades">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🧠</div>
+            <span class="cc-card-pill-update" style="background: #f59e0b;">● 3 Tareas Activas</span>
+          </div>
+          <h3 class="cc-card-title">Lógica</h3>
+          <div class="cc-card-meta">Clave 1404 &bull; Salones B-108 y B-206</div>
+          <p class="cc-card-desc">
+            3 tareas vigentes: 1) Tipos de frases y oraciones, 2) Corrección de clase ($30/$70 revisión), y 3) Casos de Gettier en epistemología.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">📝 3 Tareas</span>
+            <span class="cc-chip">💡 Casos Gettier</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--code-amber); font-weight: 800;">Martes y Miércoles</span>
+          <a href="materias/logica.html" class="btn-open-subject">
+            <span>Ver Lógica &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 8. DIBUJO II -->
+      <article class="cc-subject-card has-active-update" data-cluster="arte">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🎨</div>
+            <span class="cc-card-pill-update" style="background: #f59e0b;">● Paisaje y Puntillismo</span>
+          </div>
+          <h3 class="cc-card-title">Dibujo II</h3>
+          <div class="cc-card-meta">Clave 1406 &bull; Salones B-008 (Sec. A) y C-201 (Sec. B)</div>
+          <p class="cc-card-desc">
+            Sección A: Lámina Paisaje con líneas (impresión 2 o libro) y corrección de lámina de puntillismo según observaciones.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🅰️ Sec. A: Salón B-008</span>
+            <span class="cc-chip">🅱️ Sec. B: Salón C-201</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--code-amber); font-weight: 800;">Martes 8:40 AM</span>
+          <a href="materias/dibujo.html" class="btn-open-subject">
+            <span>Ver Dibujo &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 9. INFORMÁTICA -->
+      <article class="cc-subject-card has-active-update" data-cluster="idiomas">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">💻</div>
+            <span class="cc-card-pill-update">● Rol Oficial 9 Equipos</span>
+          </div>
+          <h3 class="cc-card-title">Informática</h3>
+          <div class="cc-card-meta">Clave 1408 &bull; Talleres I-108 y CC-2</div>
+          <p class="cc-card-desc">
+            Metodología de exposición 1+3=1. Rol oficial de fechas: Equipos 1 y 2 (22 Sep), Equipos 3 y 4 (29 Sep), Equipos 5 y 6 (06 Oct), Equipos 7 y 8 (13 Oct), Equipo 9 (20 Oct).
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">👥 Lista 9 Equipos</span>
+            <span class="cc-chip">📊 Metodología 1+3=1</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: #60a5fa; font-weight: 800;">Inician 22 Sep</span>
+          <a href="materias/informatica.html" class="btn-open-subject">
+            <span>Ver Informática &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 10. MATEMÁTICAS IV -->
+      <article class="cc-subject-card" data-cluster="ciencias">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">📐</div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">20 Créditos</span>
+          </div>
+          <h3 class="cc-card-title">Matemáticas IV</h3>
+          <div class="cc-card-meta">Clave 1400 &bull; Prof. Saúl Quintana Mejía</div>
+          <p class="cc-card-desc">
+            Álgebra, sistemas de ecuaciones lineales, funciones y modelación matemática en salones B-112, B-109 y B-117.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">📐 Álgebra</span>
+            <span class="cc-chip">📈 Funciones</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--text-muted);">Al corriente</span>
+          <a href="materias/matematicas.html" class="btn-open-subject">
+            <span>Ver Matemáticas &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 11. FÍSICA III -->
+      <article class="cc-subject-card" data-cluster="ciencias">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">⚡</div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">14 Créditos</span>
+          </div>
+          <h3 class="cc-card-title">Física III</h3>
+          <div class="cc-card-meta">Clave 1401 &bull; Profra. Gabriela Reyna García</div>
+          <p class="cc-card-desc">
+            Cinemática, gravitación y prácticas los viernes en Laboratorio A-302 de 12:50 a 13:40 (uso estricto de bata blanca reglamentaria).
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">⚡ Teoría B-116/B-109</span>
+            <span class="cc-chip">🥼 Lab A-302 (Bata)</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--text-muted);">Al corriente</span>
+          <a href="materias/fisica.html" class="btn-open-subject">
+            <span>Ver Física &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 12. GÉNERO Y PREVENCIÓN -->
+      <article class="cc-subject-card" data-cluster="humanidades">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon">🛡️</div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Clave 8000</span>
+          </div>
+          <h3 class="cc-card-title">Prevención de las Violencias</h3>
+          <div class="cc-card-meta">Salones B-109 (Martes) y B-108 (Viernes)</div>
+          <p class="cc-card-desc">
+            Cultura comunitaria de paz, derechos humanos, equidad de género, protocolos UNAM y convivencia escolar libre de violencia.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🤝 Cultura de Paz</span>
+            <span class="cc-chip">📜 Violentómetro</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--text-muted);">Al corriente</span>
+          <a href="materias/genero.html" class="btn-open-subject">
+            <span>Ver Materia &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 13. ARTÍSTICAS -->
+      <article class="cc-subject-card" data-cluster="arte" style="border: 1.5px solid var(--unam-gold);">
+        <div>
+          <div class="cc-card-top-row">
+            <div class="cc-card-icon" style="color: var(--unam-gold-bright);">🎭</div>
+            <span style="background: rgba(213,159,15,0.2); color: var(--unam-gold-bright); font-size: 0.74rem; font-weight: 900; padding: 0.2rem 0.6rem; border-radius: 999px;">
+              6 Disciplinas
+            </span>
+          </div>
+          <h3 class="cc-card-title">Educación Estética y Artística</h3>
+          <div class="cc-card-meta">Obligatoria de 4° Año &bull; Prepa 4</div>
+          <p class="cc-card-desc">
+            Teatro, Danza Folclórica, Danza Contemporánea, Música, Artes Plásticas y Fotografía. Consulta horarios, salones y profesores disponibles.
+          </p>
+          <div class="cc-card-chips-row">
+            <span class="cc-chip">🎭 Teatro</span>
+            <span class="cc-chip">💃 Danza</span>
+            <span class="cc-chip">🎵 Música</span>
+            <span class="cc-chip">📸 Foto</span>
+          </div>
+        </div>
+        <div class="cc-card-footer-action">
+          <span style="font-size: 0.76rem; color: var(--unam-gold-bright); font-weight: 800;">Catálogo Completo</span>
+          <a href="artisticas.html" class="btn-open-subject" style="background: linear-gradient(135deg, #D59F0F 0%, #92400e 100%); border-color: var(--unam-gold);">
+            <span>Elegir Artística &rarr;</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.82rem;">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"<br>
+      <a href="./" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">&larr; Volver al Horario y Portal</a> &bull; <a href="artisticas.html" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">Artísticas</a> &bull; <a href="ayuda.html" style="color: var(--unam-gold-bright); text-decoration: none; font-weight: 700;">Guía</a>
+    </p>
   </footer>
 
-  <script src="js/main.js"></script>
-  <!-- SISTEMA DE AUTENTICACIÓN GOOGLE & FIRESTORE (MODULAR) -->
-  <script type="module" src="js/firebase-auth.js"></script>
-  <!-- MÓDULO OFICIAL DE AUTENTICACIÓN GOOGLE OAUTH 2.0 (GIS) -->
-  <script src="js/google-auth.js"></script>
+  <script src="js/centro-control.js"></script>
 </body>
 </html>

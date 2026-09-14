@@ -2,209 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visita Guiada y Manual de Uso | Grupo 0415 Prepa 4</title>
-  <meta name="description" content="Visita guiada interactiva por el portal del Grupo 0415 Prepa 4 UNAM. Conoce qué significa cada color, las 3 opciones por materia y el uso del calendario.">
-  <link rel="stylesheet" href="css/styles.css">
-  <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
-    }
-    function checkResponsiveLayout() {
-      if (window.location.search.includes("force=desktop")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("ayuda-movil"));
-      }
-    }
-    checkResponsiveLayout();
-    window.addEventListener("resize", checkResponsiveLayout);
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Guía y Ayuda • Cuatreros del 415 | Prepa 4 UNAM</title>
+  <meta name="description" content="Guía interactiva de uso del portal del Grupo 0415: código de colores, tolerancia de clases, centro de control y atajos.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="css/ayuda.css">
 </head>
 <body>
-  <div class="sticky-top-group">
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="./" class="nav-brand">
-          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto;">
-          <div class="brand-text-cluster">
-            <div class="brand-name"><span>Cuatreros</span> del 415</div>
-            <div class="brand-subline">Visita Guiada y Manual de la Plataforma</div>
-          </div>
-        </a>
-        <nav class="nav-links-menu">
-          <a href="./" class="nav-link-item">Inicio</a>
-          <a href="centro-control" class="nav-link-item">Centro de Control</a>
-        </nav>
-      </div>
-    </header>
-  </div>
 
-  <section class="hero-cinematic" style="padding: 3.5rem 1.5rem 4rem;">
-    <div class="hero-content">
-      <div style="font-size: 3.2rem; margin-bottom: 0.6rem;">🗺️</div>
-      <h1 class="hero-heading" style="font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 0.4rem;">Visita Guiada por la Plataforma</h1>
-      <p style="color: #fcd866; font-weight: 800; font-size: 1.05rem;">Aprende qué significa cada color, cómo revisar tus tareas y cómo funciona el calendario escolar.</p>
-    </div>
+  <header class="ayuda-topbar">
+    <a href="./" style="display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: #fff;">
+      <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 36px; width: auto;">
+      <strong>Cuatreros 415 &bull; Guía del Portal</strong>
+    </a>
+    <a href="./" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.4rem 0.9rem; border-radius: 999px; text-decoration: none; font-size: 0.8rem; font-weight: 700;">
+      &larr; Volver al Portal
+    </a>
+  </header>
+
+  <section class="ayuda-hero">
+    <span style="background: rgba(213,159,15,0.2); color: var(--unam-gold-bright); font-size: 0.78rem; font-weight: 800; padding: 0.25rem 0.8rem; border-radius: 999px; border: 1px solid var(--unam-gold); text-transform: uppercase;">Manual Operativo</span>
+    <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-top: 0.5rem;">¿Cómo sacarle el 100% a la plataforma?</h2>
+    <p style="color: var(--text-secondary); max-width: 650px; margin: 0.4rem auto 0; font-size: 0.92rem;">
+      Diseñada con arquitectura unicornio para que no pierdas clases, entregues a tiempo y tengas todos los salones a la mano.
+    </p>
   </section>
 
-  <main class="master-container" style="max-width: 960px; margin-top: -2.5rem;">
-    <div class="schedule-master-card" style="padding: 2.2rem 2.4rem;">
-
-      <!-- PASO 1: CÓDIGO DE COLORES -->
-      <div style="background: #ffffff; border: 2px solid #1d4ed8; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
-        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem;">
-          <span style="background: #1d4ed8; color: #ffffff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;">1</span>
-          <h3 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0;">
-            Código de Colores Oficial del Portal
-          </h3>
-        </div>
-        <p style="color: #64748b; font-size: 0.92rem; margin-bottom: 1.2rem;">
-          Cada color en el portal tiene un significado específico para que identifiques tus prioridades de un vistazo:
-        </p>
-        
-        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
-          <!-- Azul Rey -->
-          <div style="display: flex; align-items: flex-start; gap: 0.8rem; background: #eff6ff; border: 1.5px solid #60a5fa; border-radius: 12px; padding: 0.9rem 1.1rem;">
-            <span style="width: 22px; height: 22px; background: #1d4ed8; border-radius: 6px; display: inline-block; flex-shrink: 0; margin-top: 2px;"></span>
-            <div>
-              <strong style="color: #1e3a8a; font-size: 0.96rem;">Azul Rey (Color Indicador Oficial):</strong>
-              <span style="display: block; font-size: 0.88rem; color: #334155; line-height: 1.5; margin-top: 0.2rem;">
-                Señala asignaturas que tienen <strong>tareas vigentes activas</strong> o <strong>avisos urgentes</strong> (como en Educación Física, Lógica, Geografía o el aviso de entrega de Historia). Se destaca en el horario, en el calendario y en el Centro de Control.
-              </span>
-            </div>
-          </div>
-
-          <!-- Rojo -->
-          <div style="display: flex; align-items: flex-start; gap: 0.8rem; background: #fef2f2; border: 1.5px solid #f87171; border-radius: 12px; padding: 0.9rem 1.1rem;">
-            <span style="width: 22px; height: 22px; background: #ef4444; border-radius: 6px; display: inline-block; flex-shrink: 0; margin-top: 2px;"></span>
-            <div>
-              <strong style="color: #991b1b; font-size: 0.96rem;">Rojo (Alerta Máxima y Cambios de Salón):</strong>
-              <span style="display: block; font-size: 0.88rem; color: #7f1d1d; line-height: 1.5; margin-top: 0.2rem;">
-                Fechas límite de entrega, exámenes próximos y cambios inmediatos de salón (por ejemplo, la clase de Inglés en la <strong>Mediateca Salón B-318</strong> el lunes).
-              </span>
-            </div>
-          </div>
-
-          <!-- Verde -->
-          <div style="display: flex; align-items: flex-start; gap: 0.8rem; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.9rem 1.1rem;">
-            <span style="width: 22px; height: 22px; background: #22c55e; border-radius: 6px; display: inline-block; flex-shrink: 0; margin-top: 2px;"></span>
-            <div>
-              <strong style="color: #166534; font-size: 0.96rem;">Verde (En Vivo &bull; Tolerancia Activa):</strong>
-              <span style="display: block; font-size: 0.88rem; color: #14532d; line-height: 1.5; margin-top: 0.2rem;">
-                Indica la materia que se está impartiendo en este preciso momento y que cuentas con más de 180 segundos para ingresar al aula sin retardo.
-              </span>
-            </div>
-          </div>
-
-          <!-- Amarillo -->
-          <div style="display: flex; align-items: flex-start; gap: 0.8rem; background: #fffbeb; border: 1.5px solid #fde047; border-radius: 12px; padding: 0.9rem 1.1rem;">
-            <span style="width: 22px; height: 22px; background: #f59e0b; border-radius: 6px; display: inline-block; flex-shrink: 0; margin-top: 2px;"></span>
-            <div>
-              <strong style="color: #854d0e; font-size: 0.96rem;">Amarillo (Tolerancia por Agotarse):</strong>
-              <span style="display: block; font-size: 0.88rem; color: #713f12; line-height: 1.5; margin-top: 0.2rem;">
-                Quedan 180 segundos o menos de tolerancia para entrar al salón. El ritmo del sonido auditivo se acelera para alertarte.
-              </span>
-            </div>
-          </div>
-
-          <!-- Blanco -->
-          <div style="display: flex; align-items: flex-start; gap: 0.8rem; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.9rem 1.1rem;">
-            <span style="width: 22px; height: 22px; background: #ffffff; border: 1.5px solid #94a3b8; border-radius: 6px; display: inline-block; flex-shrink: 0; margin-top: 2px;"></span>
-            <div>
-              <strong style="color: #002B7A; font-size: 0.96rem;">Blanco (Al Corriente):</strong>
-              <span style="display: block; font-size: 0.88rem; color: #64748b; line-height: 1.5; margin-top: 0.2rem;">
-                Materias sin tareas pendientes por entregar o cuyas tareas previas ya fueron archivadas en el historial.
-              </span>
-            </div>
-          </div>
-        </div>
+  <main class="ayuda-container">
+    <div class="ayuda-card">
+      <h3>🚦 1. Semáforo de Tolerancia y Alertas</h3>
+      <div class="ayuda-item">
+        <strong>🟢 Verde (> 3 min):</strong>
+        <p>Tienes tiempo de sobra para llegar al salón caminando con calma.</p>
       </div>
-
-      <!-- PASO 2: LAS 3 OPCIONES POR MATERIA -->
-      <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
-        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem;">
-          <span style="background: #002B7A; color: #ffffff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;">2</span>
-          <h3 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0;">
-            Las 3 Opciones dentro de cada Asignatura
-          </h3>
-        </div>
-        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.2rem;">
-          Al ingresar a la página de cualquier materia encontrarás 3 pestañas principales:
-        </p>
-
-        <div style="display: flex; flex-direction: column; gap: 0.9rem;">
-          <div style="background: #f8fafc; border-left: 4px solid #1d4ed8; padding: 1rem 1.2rem; border-radius: 10px;">
-            <strong style="color: #002B7A; font-size: 1rem;">📝 1. Tareas:</strong>
-            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #334155;">
-              Si hay tarea activa, la pestaña se ilumina en <strong>Azul Rey brillante</strong> con la indicación exacta de lo que debes hacer. Si estás al corriente, se muestra con fondo blanco limpio.
-            </p>
-          </div>
-
-          <div style="background: #f8fafc; border-left: 4px solid #1d4ed8; padding: 1rem 1.2rem; border-radius: 10px;">
-            <strong style="color: #002B7A; font-size: 1rem;">🔔 2. Avisos y Archivo:</strong>
-            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #334155;">
-              Comunicados urgentes de los profesores y acceso directo al <strong>Archivo Histórico</strong> de la materia para consultar tareas concluidas sin perder el registro.
-            </p>
-          </div>
-
-          <div style="background: #f8fafc; border-left: 4px solid #D59F0F; padding: 1rem 1.2rem; border-radius: 10px;">
-            <strong style="color: #002B7A; font-size: 1rem;">🎁 3. Regalos y Cosas que te sirven:</strong>
-            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: #334155;">
-              Herramientas de apoyo prácticas integradas en la web: los <strong>2 convertidores de PDF24</strong> en Historia, los <strong>Prompts de Inteligencia Artificial</strong> en Orientación, la guía de la novela Wyatt en Español y el rol de los 9 equipos en Informática.
-            </p>
-          </div>
-        </div>
+      <div class="ayuda-item">
+        <strong>🟡 Amarillo (≤ 3 min):</strong>
+        <p>La tolerancia está por cerrarse. El portal emitirá pulsos de sonido para avisarte.</p>
       </div>
-
-      <!-- PASO 3: HORARIO Y CALENDARIO -->
-      <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
-        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem;">
-          <span style="background: #002B7A; color: #ffffff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;">3</span>
-          <h3 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0;">
-            Horario y Calendario Escolar Interactivo
-          </h3>
-        </div>
-        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
-          Tu horario ahora funciona como un calendario integral que cubre de <strong>Agosto 2026 a Abril 2027</strong>:
-        </p>
-
-        <ul style="color: #1e293b; font-size: 0.92rem; line-height: 1.7; padding-left: 1.3rem;">
-          <li><strong>Vistas adaptadas al dispositivo:</strong> En computadora puedes alternar entre vista de <em>Semana</em> y <em>Mes</em>; en celular entre vista de <em>Día</em> y <em>Mes</em>.</li>
-          <li><strong>En Celular (Comprimido con toques):</strong> La vista mensual muestra únicamente los números de los días con puntos de color. Al presionar cualquier casilla, se despliega el cajón con los detalles exactos de las clases y tareas de ese día.</li>
-          <li><strong>Inclusión de fin de semana:</strong> Puedes consultar actividades tanto de lunes a viernes como de sábado y domingo.</li>
-          <li><strong>Cronómetro en la hora de clase:</strong> El tiempo de tolerancia y los pulsos sonoros se muestran directamente dentro de la tarjeta de la materia que está en curso.</li>
-        </ul>
+      <div class="ayuda-item">
+        <strong>🔴 Rojo (Clase en curso):</strong>
+        <p>El profesor ya inició la sesión en el aula. Entra con discreción.</p>
       </div>
+    </div>
 
-      <!-- PASO 4: CONTROLES MAC Y CELULAR -->
-      <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
-        <div style="display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem;">
-          <span style="background: #002B7A; color: #ffffff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem;">4</span>
-          <h3 style="color: #002B7A; font-size: 1.35rem; font-weight: 900; margin: 0;">
-            Botones de Ventana y Barra Flotante
-          </h3>
-        </div>
-        <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
-          Controles directos para navegar rápido en cualquier pantalla:
-        </p>
-        <ul style="color: #1e293b; font-size: 0.92rem; line-height: 1.7; padding-left: 1.3rem;">
-          <li>🔴 <strong>Botón Rojo:</strong> Regresar / Volver a la página anterior (`history.back()`).</li>
-          <li>🟡 <strong>Botón Amarillo:</strong> Subir suavemente al inicio de la página (`Scroll to top`).</li>
-          <li>🟢 <strong>Botón Verde:</strong> Activar o salir de la pantalla completa (`Fullscreen`).</li>
-          <li>⏸️ <strong>Botón de Pausa en Avisos:</strong> Permite pausar y reanudar la cuenta regresiva de 10 segundos en las ventanas emergentes.</li>
-          <li>📱 <strong>Barra Inferior (Dock Celular):</strong> Accesos rápidos fijos a Horario, Materias, Artísticas, Copias y Dudas.</li>
-        </ul>
+    <div class="ayuda-card">
+      <h3>📅 2. Horario y Calendario Escolar</h3>
+      <div class="ayuda-item">
+        <strong>Vista Semanal vs Mensual:</strong>
+        <p>Alterna entre la cuadrícula de lunes a viernes o el calendario mensual de Agosto 2026 a Abril 2027.</p>
       </div>
+      <div class="ayuda-item">
+        <strong>Cajón de Detalles:</strong>
+        <p>Toca cualquier día del calendario para ver la agenda exacta de tareas y salones con enlaces directos.</p>
+      </div>
+    </div>
 
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="./" class="btn-encardomy" style="padding: 0.8rem 2.2rem; font-size: 0.98rem; text-decoration: none;">
-          <span>Ir al Horario y Calendario &rarr;</span>
-        </a>
+    <div class="ayuda-card">
+      <h3>📚 3. Centro de Control y Materias</h3>
+      <div class="ayuda-item">
+        <strong>Buscador Instantáneo:</strong>
+        <p>Filtra por nombre, clave o salón escribiendo en la barra superior.</p>
+      </div>
+      <div class="ayuda-item">
+        <strong>Las 3 Opciones por Materia:</strong>
+        <p>Cada materia cuenta con: 1. Tareas oficiales, 2. Avisos y acuerdos de clase, 3. Regalos, mapas y herramientas.</p>
       </div>
     </div>
   </main>
+
+  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-secondary); font-size: 0.82rem;">
+    <p>Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"</p>
+  </footer>
+
+  <script src="js/ayuda.js"></script>
 </body>
 </html>

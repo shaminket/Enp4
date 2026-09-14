@@ -2,1191 +2,280 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Grupo 0415 Prepa 4 UNAM | shaminket</title>
-  <meta name="description" content="Consulta el horario en vivo, salones, avisos y tareas del grupo 415 en la Prepa 4 UNAM. La plataforma escolar creada en shaminket para salvar tu semestre.">
-  <link rel="canonical" href="https://shaminket.com/">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, horario prepa 4, tareas prepa 4, enp 4, salones tacubaya">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Grupo 0415 Prepa 4 UNAM | shaminket">
-  <meta property="og:description" content="Consulta el horario en vivo, salones, avisos y tareas del grupo 415 en la Prepa 4 UNAM. La plataforma escolar creada en shaminket para salvar tu semestre.">
-  <meta property="og:url" content="https://shaminket.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
-  
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* Estilos de la versión móvil */
-    body {
-      padding-bottom: 95px;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .sticky-top-mobile-group {
-      position: sticky;
-      top: 0;
-      z-index: 1005;
-      width: 100%;
-    }
-
-    .rebrand-mobile-banner {
-      background: linear-gradient(135deg, #090a0f 0%, #001f3f 40%, #581c87 85%, #3b0764 100%);
-      color: #ffffff;
-      padding: 0.75rem 1rem;
-      border-bottom: 2px solid #a855f7;
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.45);
-    }
-
-    .rebrand-mobile-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 0.6rem;
-    }
-
-    .rebrand-sparkle-icon {
-      font-size: 1.2rem;
-      line-height: 1;
-    }
-
-    .rebrand-mobile-title {
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: -0.2px;
-      line-height: 1.25;
-    }
-
-    .rebrand-mobile-title span {
-      color: #e9d5ff;
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 500;
-      margin-top: 0.1rem;
-    }
-
-    .mobile-header {
-      background: rgba(0, 22, 40, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1.5px solid var(--unam-gold);
-      padding: 0.65rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .mobile-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-
-    .mobile-crest {
-      width: 34px;
-      height: 34px;
-    }
-
-    .mobile-brand-title {
-      color: #ffffff;
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      line-height: 1.1;
-    }
-
-    .mobile-brand-title span {
-      background: var(--unam-gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .mobile-hero {
-      background: radial-gradient(circle at 50% 10%, #003d6b 0%, var(--unam-blue) 55%, var(--unam-blue-dark) 100%);
-      color: #ffffff;
-      padding: 2.2rem 1.2rem 2.6rem;
-      text-align: center;
-    }
-
-    
-
-    .mobile-hero-h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 0.75rem;
-    }
-
-    .mobile-hero-desc {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.86);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Tarjeta del Horario Diario */
-    .mobile-schedule-card {
-      background: #ffffff;
-      border-radius: 20px;
-      margin: -1.5rem 1rem 2rem;
-      padding: 1.4rem 1.1rem;
-      box-shadow: 0 15px 35px rgba(0, 22, 40, 0.12);
-      border: 1px solid #e2e8f0;
-      position: relative;
-      z-index: 10;
-    }
-
-    .schedule-header-mobile {
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .schedule-tag-pill {
-      display: inline-block;
-      background: rgba(0, 43, 73, 0.08);
-      color: var(--unam-blue);
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 0.25rem 0.7rem;
-      border-radius: var(--radius-full);
-      margin-bottom: 0.4rem;
-    }
-
-    .current-day-title {
-      font-size: 1.45rem;
-      font-weight: 900;
-      color: var(--unam-blue-dark);
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .schedule-date-badge {
-      font-size: 0.82rem;
-      color: var(--apple-text-sec);
-      font-weight: 600;
-      margin-top: 0.2rem;
-    }
-
-    .days-segmented-bar {
-      display: flex;
-      background: #f1f5f9;
-      padding: 0.3rem;
-      border-radius: 14px;
-      gap: 0.25rem;
-      margin-bottom: 1rem;
-    }
-
-    .day-tab-btn {
-      flex: 1;
-      border: none;
-      background: transparent;
-      padding: 0.6rem 0.2rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #64748b;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.1rem;
-    }
-
-    .day-tab-btn span.tab-sub {
-      font-size: 0.68rem;
-      font-weight: 500;
-      opacity: 0.85;
-    }
-
-    .day-tab-btn.active {
-      background: var(--unam-blue);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 43, 73, 0.25);
-    }
-
-    .day-tab-btn.active span.tab-sub {
-      color: var(--unam-gold-light);
-    }
-
-    .day-arrows-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .btn-day-arrow {
-      background: #f8fafc;
-      border: 1.5px solid #cbd5e1;
-      padding: 0.55rem 1rem;
-      border-radius: 12px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--unam-blue);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      flex: 1;
-      justify-content: center;
-    }
-
-    .section-selector-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fafafa;
-      padding: 0.6rem 0.8rem;
-      border-radius: 12px;
-      border: 1px solid #edf2f7;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-selector-label {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--unam-blue);
-      text-transform: uppercase;
-    }
-
-    .section-pills-cluster {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .sec-pill-btn {
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      color: var(--apple-text);
-      padding: 0.3rem 0.65rem;
-      border-radius: var(--radius-full);
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .sec-pill-btn.active {
-      background: var(--unam-gold);
-      color: var(--unam-blue-dark);
-      border-color: var(--unam-gold);
-      font-weight: 900;
-    }
-
-    .timeline-classes-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .timeline-class-card {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-left: 5px solid var(--unam-blue);
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-
-    .timeline-time-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.4rem;
-    }
-
-    .class-time-text {
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--unam-blue);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .badge-room-mobile {
-      background: #e0f2fe;
-      color: #0369a1;
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-    }
-
-    .class-name-mobile {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--unam-blue-dark);
-      line-height: 1.3;
-      margin-bottom: 0.35rem;
-    }
-
-    .class-prof-mobile {
-      font-size: 0.78rem;
-      color: var(--apple-text-sec);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .badge-sec-mobile {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 0.15rem 0.45rem;
-      border-radius: 5px;
-      margin-left: 0.3rem;
-    }
-
-    .free-hour-card {
-      background: #f8fafc;
-      border: 1px dashed #cbd5e1;
-      border-radius: 14px;
-      padding: 0.85rem;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    /* Tarjeta de Tareas y Copias (Encardomy) */
-    .mobile-section-wrap {
-      padding: 0 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .mobile-promo-box {
-      background: linear-gradient(135deg, #0a1f3d 0%, var(--enc-azul-marino) 60%, #0d3868 100%);
-      border: 2px solid var(--enc-azul-electrico);
-      border-radius: 18px;
-      padding: 1.6rem 1.3rem;
-      color: #ffffff;
-      box-shadow: 0 10px 25px rgba(18, 59, 106, 0.25);
-    }
-
-    .btn-mobile-encardomy {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: var(--enc-btn-gradient);
-      color: #ffffff;
-      border: 1.5px solid var(--enc-azul-tint);
-      padding: 0.85rem 1rem;
-      border-radius: var(--radius-full);
-      font-size: 0.95rem;
-      font-weight: 900;
-      text-decoration: none;
-      margin-top: 1.1rem;
-      box-shadow: var(--shadow-encardomy);
-    }
-
-    /* Tarjeta de Dudas (WhatsApp) */
-    .mobile-dudas-box {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 1.6rem 1.3rem;
-      box-shadow: var(--shadow-sm);
-    }
-  </style>
-    
-    <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
-    }
-    function checkDesktopSwitch() {
-      if (window.location.search.includes("force=mobile")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth > 920 && !isMobileUA) {
-        window.location.replace(resolveTargetUrl("index"));
-      }
-    }
-    checkDesktopSwitch();
-    window.addEventListener("resize", checkDesktopSwitch);
-  </script>
-  <!-- GOOGLE IDENTITY SERVICES (GIS / OAUTH 2.0) OFICIAL -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cuatreros del 415 • Prepa 4 UNAM | Portal Oficial</title>
+  <meta name="description" content="Portal oficial del Grupo 0415, Escuela Nacional Preparatoria Plantel 4 'Vidal Castañeda y Nájera' UNAM. Horarios en vivo, tareas, avisos desaturados y Encardomy.">
+  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
+  <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
-        <!-- BANNER AZUL REY DE AVISO (10 SEGUNDOS CON BOTÓN DE PAUSA) -->
-  <div id="announcementOverlay" class="announcement-overlay">
-    <div class="announcement-card-blue" style="max-height: 88vh; overflow-y: auto;">
-      <div class="announcement-badge-pill" style="background: rgba(255,255,255,0.2) !important; border-color: #ffffff !important;">
-        <span>✨ AVISOS & TAREAS OFICIALES &bull; GRUPO 0415</span>
-      </div>
-      <h2 class="announcement-title-big" style="color: #ffffff !important;">
-        Nuevas Actualizaciones y Tareas del 415
-      </h2>
-      <p class="announcement-desc-text" style="font-weight: 700; color: #fef08a; margin-bottom: 1rem;">
-        Revisa las tareas vigentes y los avisos urgentes actualizados:
-      </p>
 
-      <!-- Lista de tareas y avisos -->
-      <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 1.2rem; text-align: left; font-size: 0.88rem; line-height: 1.55; display: flex; flex-direction: column; gap: 0.65rem; color: #ffffff;">
-        <div>🏃 <strong>Educación Física:</strong> NUEVA TAREA: <em>¿Qué es la condición física?</em> (Componentes de la actividad física).</div>
-        <div>📜 <strong>Historia:</strong> AVISO URGENTE: Cuadernos pendientes se entregan el lunes 14 a las 12:00 en Orientación. ¡Y no olvides tu planisferio con nombres! ¿Lo quieres listo para imprimir? <a href="materias/historia-movil#regalos" onclick="sessionStorage.setItem('openTab_historia', 'regalos')" style="color: #fef08a; font-weight: 900; text-decoration: underline;">Consulta la sección de regalos de Historia &rarr;</a></div>
-        <div>🇬🇧 <strong>Inglés A:</strong> Asistencia el lunes en <strong>Mediateca Salón B-318</strong>. Tareas anteriores archivadas.</div>
-        <div>📖 <strong>Español:</strong> ¿No conseguiste las hojas en La Gomita? ¡Tranquiii!! Ya no son para el lunes, espera indicaciones de la profesora.</div>
-        <div>💻 <strong>Informática:</strong> Rol oficial de fechas para los 9 equipos y metodología 1+3=1.</div>
-        <div>🌍 <strong>Geografía:</strong> 4 noticias en una sola hoja en 4 cuadrantes para el lunes temprano.</div>
-        <div>🧠 <strong>Lógica:</strong> 3 tareas (tipos de frases, corrección de clase y casos de Gettier).</div>
-        <div>🎨 <strong>Dibujo A:</strong> Paisaje con líneas en impresión 2 o libro, y corrección de puntillismo.</div>
-        <div>🧭 <strong>Orientación A:</strong> Traer post-it, plumones y carpeta de raya; tareas históricas UNAM con Prompts IA listos.</div>
-      </div>
-
-      <!-- Temporizador con botón de pausa -->
-      <div class="announcement-timer-box" style="margin-top: 1.2rem;">
-        <div class="announcement-time-num" id="announcementTimeNum">10.0s</div>
-        <div class="announcement-progress-track">
-          <div class="announcement-progress-fill" id="announcementProgressFill" style="background: #fcd866 !important;"></div>
+  <!-- 1. TOP COMMAND BAR -->
+  <header class="portal-topbar">
+    <div class="portal-topbar-inner">
+      <a href="./" class="portal-brand">
+        <div class="portal-brand-crests">
+          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM">
+          <img src="assets/logo-enp4.svg" alt="Logo ENP 4">
         </div>
-      </div>
+        <div class="portal-brand-text">
+          <h1>Cuatreros <span class="gold">0415</span></h1>
+          <span class="sub">Prepa 4 UNAM &bull; Tacubaya</span>
+        </div>
+      </a>
 
-      <div style="margin-top: 1.2rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
-        <a href="centro-control-movil" onclick="dismissAnnouncementModal()" class="btn-encardomy" style="background: #ffffff !important; color: #1e3a8a !important; border-color: #ffffff !important; padding: 0.65rem 1.4rem; font-size: 0.92rem; font-weight: 900; text-decoration: none;">
-          <span>Ir al Centro de Control &rarr;</span>
+      <nav class="portal-nav-links">
+        <a href="centro-control.html" class="portal-nav-btn primary">
+          <span>📚 Centro de Control</span>
         </a>
-        <button id="announcementPauseBtn" onclick="togglePauseAnnouncement()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(255,255,255,0.25); color: #fcd866; font-weight: 800; cursor: pointer;">
-          ⏸️ Pausar
-        </button>
-        <button onclick="dismissAnnouncementModal()" class="banner-test-btn" style="padding: 0.65rem 1.1rem; font-size: 0.88rem; background: rgba(0,0,0,0.3);">
-          Omitir aviso
-        </button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-    </div>
-  </div>
-
-<!-- GRUPO DE CABECERA SUPERIOR PERSISTENTE (3 ELEMENTOS SIEMPRE FIJOS) -->
-  <div class="sticky-top-mobile-group">
-    <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-        <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-      <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
-      
-    </div>
-
-    
-
-    <!-- BARRA SUPERIOR COMPACTA -->
-    <header class="mobile-header">
-      <a href="index-movil.html" class="mobile-brand">
-        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 42px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
-        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 36px;">
-        <div class="mobile-brand-title">Cuatreros <span>415</span></div>
-      </a>
-      <div style="display: flex; align-items: center; gap: 0.4rem; margin-left: auto;">
-        <!-- CONTENEDOR OFICIAL GOOGLE SIGN-IN MÓVIL (GIS) -->
-        <div id="authNavContainerMobile" class="google-auth-nav-cluster">
-          <div id="g_id_signin_mobile" class="google-signin-btn-box"></div>
-          <div id="googleUserProfileBarMobile" class="google-user-profile-bar" style="display: none;"></div>
-        </div>
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
-          Shaminket
+        <a href="artisticas.html" class="portal-nav-btn">
+          <span>🎭 Artísticas</span>
         </a>
-      </div>
-    </header>
-  </div>
-
-  <!-- HERO MÓVIL -->
-  <section class="mobile-hero">
-    <!-- IDENTIDAD INSTITUCIONAL FLOTANTE SIN FONDOS PEGADOS -->
-    <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 1.2rem;">
-      <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 75px; width: auto; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.5));">
-      <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 70px; width: auto; filter: drop-shadow(0 6px 15px rgba(0,0,0,0.5));">
+        <a href="ayuda.html" class="portal-nav-btn">
+          <span>🗺️ Guía</span>
+        </a>
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="portal-nav-btn gold">
+          <span>⚡ Encardomy</span>
+        </a>
+      </nav>
     </div>
-    <div style="display: flex; justify-content: center; margin-bottom: 1.2rem;">
-      <img src="assets/enp4-unam-wordmark.svg" alt="ENP4 unam" style="height: 65px; width: auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));">
+  </header>
+
+  <!-- 2. RADAR DE TELEMETRÍA EN VIVO (HORA CDMX Y CLASE ACTUAL) -->
+  <aside class="live-telemetry-banner">
+    <div class="telemetry-left">
+      <div class="pulse-radar-dot"></div>
+      <span id="liveRadarStatusText">Sincronizando horario en vivo del Grupo 0415...</span>
     </div>
-    <h1 class="mobile-hero-h1">Cuatreros del 415</h1>
-    <p class="mobile-hero-desc">
-      El espacio hecho por y para la comunidad del 415 en la Prepa 4. Consulta tu horario de hoy en vivo, tus salones y apóyate con tus tareas y copias con <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="link-encardomy" style="color: #93c5fd; border-bottom-color: #93c5fd;">Encardomy</a> By Shaminket.
-    </p>
-  </section>
+    <div style="display: flex; align-items: center; gap: 0.8rem;">
+      <span class="telemetry-clock" id="portalClock">--:--:--</span>
+      <span class="portal-nav-btn" id="liveRadarBadge" style="padding: 0.2rem 0.65rem; font-size: 0.74rem;">En vivo</span>
+    </div>
+  </aside>
 
-
-  <!-- ACCESO DESTACADO AL CENTRO DE CONTROL ACADÉMICO EN MÓVIL -->
-  <div class="mobile-section-wrap" style="margin-bottom: 1.5rem;">
-    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #002B7A 100%); border: 2px solid #D59F0F; border-radius: 18px; padding: 1.3rem 1.1rem; color: #ffffff; box-shadow: 0 4px 15px rgba(0,22,40,0.1);">
-      <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem;">
-        <span style="font-size: 1.6rem;">📚</span>
-        <div>
-          <span style="background: #D59F0F; color: #001628; font-size: 0.68rem; font-weight: 900; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 5px;">Nuevo</span>
-          <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin: 0.1rem 0 0;">Centro de Control de Materias</h3>
+  <!-- 3. ACTION HIGHWAY: AVISOS DESATURADOS "PICA AQUÍ" -->
+  <section class="action-highway-strip">
+    <div class="highway-container">
+      <div class="highway-header">
+        <div class="highway-title">
+          <span>⚡</span> Avisos y Tareas Prioritarias
         </div>
+        <span style="font-size: 0.74rem; color: var(--text-muted);">Pica en cualquier botón para ver detalles completos</span>
       </div>
-      <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 0.9rem;">
-        Avisos, tareas y programas de Español, Matemáticas, Física y las 12 asignaturas del 415.
-      </p>
-      <a href="centro-control-movil" class="btn-encardomy" style="display: block; text-align: center; padding: 0.7rem 1rem; font-size: 0.9rem; text-decoration: none;">
-        Explorar Centro de Control &rarr;
-      </a>
-    </div>
-  </div>
 
-      <!-- BARRA DE SELECCIÓN DE VISTA EN CELULAR: DÍA O MES -->
-    <div style="margin: 0 1rem 1.2rem; background: #ffffff; padding: 0.6rem 0.8rem; border-radius: 16px; border: 1.5px solid #D59F0F; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm);">
-      <span style="font-size: 0.78rem; font-weight: 800; color: #002B7A; text-transform: uppercase;">Calendario:</span>
-      <div style="display: flex; gap: 0.4rem;">
-        <button id="btnViewDay" class="sec-pill-btn active" onclick="setCalendarView('day')">🗓️ Vista Día</button>
-        <button id="btnViewMonth" class="sec-pill-btn" onclick="setCalendarView('month')">📅 Vista Mes</button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-    </div>
-
-    <!-- CONTENEDOR DEL CALENDARIO MENSUAL EN MÓVIL -->
-    <div id="calendarMonthViewContainer" class="calendar-month-view" style="margin: 0 1rem 1.8rem;"></div>
-
-  <!-- MÓDULO PRINCIPAL: HORARIO DE HOY (UN SOLO DÍA A LA VEZ) -->
-  <!-- CONTENEDOR DE TOLERANCIA EN MÓVIL -->
-    
-
-    <section id="horario" class="mobile-schedule-card" style="padding-top: 0; overflow: hidden;">
-    <div class="window-titlebar" style="margin: 0 -1.1rem 1.2rem; padding: 10px 14px;">
-      <div class="window-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Ampliar"></button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-      <span class="win-titlebar-text">Grupo 0415 &bull; ENP 4</span>
-    </div>
-    <div class="schedule-header-mobile">
-      <div style="display: flex; justify-content: center; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem;">
-        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 45px; width: auto;">
-        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 42px; width: auto;">
-      </div>
-      <span class="schedule-tag-pill" style="margin-bottom: 0.4rem;">📅 Horario Oficial &bull; ENP 4 Vidal Castañeda y Nájera</span>
-      <h2 id="currentDayHeading" class="current-day-title">
-        <span>🗓️</span> <span id="dayNameText">Cargando horario...</span>
-      </h2>
-      <div id="dateSubText" class="schedule-date-badge">Detectando día actual...</div>
-    </div>
-
-    <!-- Segmented Tabs para cambiar de día -->
-    <div class="days-segmented-bar">
-      <button class="day-tab-btn" data-day="1" onclick="selectDay(1)">
-        <span>LUN 14</span>
-        <span class="tab-sub">Lunes</span>
-      </button>
-      <button class="day-tab-btn" data-day="2" onclick="selectDay(2)">
-        <span>MAR 15</span>
-        <span class="tab-sub">Martes</span>
-      </button>
-      <button class="day-tab-btn" data-day="3" onclick="selectDay(3)">
-        <span>MIÉ 16</span>
-        <span class="tab-sub">Miérc.</span>
-      </button>
-      <button class="day-tab-btn" data-day="4" onclick="selectDay(4)">
-        <span>JUE 17</span>
-        <span class="tab-sub">Jueves</span>
-      </button>
-      <button class="day-tab-btn" data-day="5" onclick="selectDay(5)">
-        <span>VIE 18</span>
-        <span class="tab-sub">Viernes</span>
-      </button>
-      <button class="day-tab-btn" data-day="6" onclick="selectDay(6)">
-        <span>SÁB 19</span>
-        <span class="tab-sub">Sábado</span>
-      </button>
-      <button class="day-tab-btn" data-day="0" onclick="selectDay(0)">
-        <span>DOM 20</span>
-        <span class="tab-sub">Domingo</span>
-      </button>
-    </div>
-
-    <!-- Botones Anterior y Siguiente Día -->
-    <div class="day-arrows-row">
-      <button class="btn-day-arrow" onclick="prevDay()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        <span>Día anterior</span>
-      </button>
-      <button class="btn-day-arrow" onclick="nextDay()">
-        <span>Día siguiente</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>
-    </div>
-
-    <!-- Filtro de Sección Compacto en Dropdown -->
-    <div class="mobile-compact-filter-bar" style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.5rem 0.8rem; margin: 0 0 1rem 0;">
-      <span style="font-size: 0.82rem; font-weight: 800; color: #002B7A;">Filtrar Sección:</span>
-      <select id="mobileSectionSelect" class="select-subject-styled" style="min-width: 140px; padding: 0.4rem 0.8rem; font-size: 0.85rem; border-radius: 8px;" onchange="setMobileSection(this.value)">
-        <option value="all">Todas las secciones</option>
-        <option value="A">Sección A (B-110 / C-306)</option>
-        <option value="B">Sección B (B-112 / C-205)</option>
-      </select>
-    </div>
-
-    <!-- Timeline vertical de clases del día -->
-    <div id="timelineList" class="timeline-classes-list"></div>
-  </section>
-
-
-
-  <!-- ACCESOS RÁPIDOS MÓVIL: ARTÍSTICAS Y GUÍA DE AYUDA -->
-  <div class="mobile-section-wrap" style="margin-bottom: 1.5rem;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
-      <a href="artisticas-movil" style="background: #ffffff; border: 1.5px solid #D59F0F; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
-        <span style="font-size: 1.6rem;">🎭</span>
-        <strong style="color: #002B7A; font-size: 0.86rem;">Artísticas 415</strong>
-        <span style="color: #D59F0F; font-size: 0.72rem; font-weight: 800;">6 disciplinas &rarr;</span>
-      </a>
-
-      <a href="ayuda-movil" style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1rem 0.8rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 0.3rem;">
-        <span style="font-size: 1.6rem;">📖</span>
-        <strong style="color: #002B7A; font-size: 0.86rem;">Guía & Ayuda</strong>
-        <span style="color: #64748b; font-size: 0.72rem; font-weight: 800;">Manual de uso &rarr;</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- GUÍA DE SALONES DEL 415 EN PREPA 4 (MÓVIL) -->
-  <div class="mobile-section-wrap">
-    <div style="background: #ffffff; border-radius: 18px; border: 1.5px solid #e2e8f0; padding: 1.4rem 1.2rem; box-shadow: 0 4px 15px rgba(0,22,40,0.04);">
-      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;">
-        <span style="font-size: 1.4rem;">🗺️</span>
-        <h3 style="font-size: 1.15rem; font-weight: 800; color: #002B7A; margin: 0;">Ubicador de Salones &bull; Prepa 4</h3>
-      </div>
-      <p style="font-size: 0.84rem; color: #64748b; margin-bottom: 1rem; line-height: 1.45;">
-        Salones del Grupo 0415 en el Plantel 4 "Vidal Castañeda y Nájera" (Tacubaya):
-      </p>
-      
-      <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
-        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #002B7A;">
-          <strong style="color: #002B7A;">Edificio A:</strong> A-104 (Geografía) &bull; A-302 (Física Lab).
-        </div>
-        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #D59F0F;">
-          <strong style="color: #002B7A;">Edificio B:</strong> B-108, B-109, B-110, B-112, B-113, B-115, B-116, B-117, B-206.
-        </div>
-        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #2D7FF9;">
-          <strong style="color: #002B7A;">Edificio C:</strong> C-201 (Dibujo) &bull; C-205 / C-306 (Inglés).
-        </div>
-        <div style="background: #f8fafc; padding: 0.75rem; border-radius: 12px; border-left: 4px solid #31C98D;">
-          <strong style="color: #002B7A;">Cómputo & Deportes:</strong> I-108, CC-2 y GIM1 (Gimnasio).
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SERVICIO DE TAREAS Y COPIAS (EXCLUSIVO ENCARDOMY - AZUL ELÉCTRICO) -->
-  <div class="mobile-section-wrap">
-    <div class="mobile-promo-box">
-      <span class="promo-badge-tag" style="background: rgba(49,201,141,0.2); color: var(--enc-verde-menta); border-color: var(--enc-verde-menta);">
-        ⚡ Tareas y Copias &bull; Encardomy
-      </span>
-      <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem; color: #ffffff;">
-        ¿Te ayudamos con tus tareas? ¡Sacamos tus copias!
-      </h3>
-      <p style="font-size: 0.88rem; color: var(--enc-azul-tint); line-height: 1.5;">
-        Servicio prioritario de impresiones HD, copias limpias y apoyo académico exclusivo en la plataforma de Encardomy.
-      </p>
-      <!-- Botón Encardomy Azul Eléctrico -->
-      <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-mobile-encardomy">
-        Pedir Copias y Tareas en Encardomy
-      </a>
-    </div>
-  </div>
-
-  <!-- SECCIÓN DE PREGUNTAS Y DUDAS (DIRECTO A WHATSAPP) -->
-  <div class="mobile-section-wrap">
-    <div class="mobile-dudas-box">
-      <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
-        <span style="font-size: 1.4rem;">💬</span>
-        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--unam-blue-dark);">¿Dudas de Español o del 415?</h3>
-      </div>
-      <p style="font-size: 0.86rem; color: var(--apple-text-sec); line-height: 1.5; margin-bottom: 1rem;">
-        Para dudas académicas de Lengua Española, aclaraciones o preguntas sobre las clases, comunícate directo por WhatsApp al número de soporte del grupo.
-      </p>
-      <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20acad%C3%A9mica%20sobre%20el%20Grupo%20415" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="btn-support-trigger" 
-         style="justify-content: center; width: 100%; text-decoration: none; padding: 0.85rem 1rem; font-size: 0.95rem;">
-        <span>Preguntar por WhatsApp (+52 55 7198 5641)</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- BOTÓN FLOTANTE DE SOPORTE WHATSAPP -->
-  <div class="floating-support-container" style="bottom: 20px; right: 20px;">
-    <div class="radar-pulse-ring"></div>
-    <button class="btn-support-trigger" onclick="openSupportDialog()" aria-label="Soporte y Dudas WhatsApp" style="padding: 0.85rem 1.25rem; font-size: 0.88rem;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.77.813 2.796.814h.005c3.18 0 5.767-2.586 5.768-5.766 0-1.54-.6-2.988-1.69-4.077a5.72 5.72 0 0 0-4.083-1.923zm0-2.172c4.418 0 8 3.582 8 8 0 1.766-.575 3.398-1.554 4.725l1.523 5.568-5.733-1.504c-1.309.84-2.857 1.211-4.236 1.211-4.418 0-8-3.582-8-8 0-4.418 3.582-8 8-8z"/>
-      </svg>
-      <span>Dudas</span>
-    </button>
-  </div>
-
-  <!-- MODAL EN 2 PASOS DE WHATSAPP -->
-  <div id="supportModalBackdrop" class="modal-backdrop" onclick="onBackdropClick(event)">
-    <div class="modal-apple-card">
-      <div class="modal-top-bar">
-        <h3><span>❓</span> ¿Tienes dudas académicas?</h3>
-        <button class="modal-btn-close" onclick="closeSupportDialog()">&times;</button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
-      <div class="modal-main-body">
-        <div class="step-track-bar">
-          <div id="trackDot1" class="track-dot active"></div>
-          <div id="trackDot2" class="track-dot"></div>
-        </div>
-
-        <div id="dialogStep1" class="step-view active">
-          <p>
-            ¿Tienes dudas sobre Lengua Española o alguna tarea del 415? Conéctate directamente con el soporte oficial por WhatsApp.
-          </p>
-          <button class="btn-step-action" style="background: var(--unam-blue);" onclick="goToStep2()">
-            Continuar al paso 2 &rarr;
-          </button>
-        </div>
-
-        <div id="dialogStep2" class="step-view">
-          <p>
-            <strong>Paso 2 de 2:</strong> Se abrirá WhatsApp al número oficial <strong>+52 55 7198 5641</strong> con atención para el Grupo 415.
-          </p>
-          <a href="https://wa.me/525571985641?text=Hola,%20soy%20del%20Grupo%200415%20de%20la%20Prepa%204%20y%20tengo%20una%20duda%20sobre%20Lengua%20Espa%C3%B1ola" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="btn-step-action">
-            💬 Abrir WhatsApp (+52 55 7198 5641)
+      <div class="highway-cards-grid">
+        <!-- Historia -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">📜 Historia Universal III</span>
+            <span class="hw-action-text">Cuadernos pendientes (Lunes 12:00) &bull; Planisferio</span>
+          </div>
+          <a href="materias/historia.html#regalos" onclick="picaAqui('historia', 'regalos')" class="btn-pica-aqui">
+            👉 Pica aquí
           </a>
-          <button class="btn-step-back" onclick="goToStep1()">
-            &larr; Volver al paso 1
+        </article>
+
+        <!-- Geografía -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🌍 Geografía</span>
+            <span class="hw-action-text">4 Noticias en equipo (Lunes 7:00 AM)</span>
+          </div>
+          <a href="materias/geografia.html" onclick="picaAqui('geografia', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Educación Física -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🏃 Educación Física IV</span>
+            <span class="hw-action-text">Nueva tarea: ¿Qué es la condición física?</span>
+          </div>
+          <a href="materias/educacion-fisica.html" onclick="picaAqui('educacion-fisica', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Inglés A -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🇬🇧 Inglés IV (Sec. A)</span>
+            <span class="hw-action-text">Lunes en Mediateca Salón B-318 (Audífonos)</span>
+          </div>
+          <a href="materias/ingles-a.html" onclick="picaAqui('ingles-a', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Español -->
+        <article class="highway-card info">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">📖 Lengua Española</span>
+            <span class="hw-action-text">Hojas pospuestas: ya no son para el lunes</span>
+          </div>
+          <a href="materias/espanol.html" onclick="picaAqui('espanol', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Orientación A -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🧭 Orientación IV (Sec. A)</span>
+            <span class="hw-action-text">2 Tareas UNAM &bull; Post-it, plumones y carpeta</span>
+          </div>
+          <a href="materias/orientacion-a.html" onclick="picaAqui('orientacion-a', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Lógica -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🧠 Lógica</span>
+            <span class="hw-action-text">3 Tareas: tipos de frases, corrección y Gettier</span>
+          </div>
+          <a href="materias/logica.html" onclick="picaAqui('logica', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Dibujo A -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🎨 Dibujo II (Sec. A)</span>
+            <span class="hw-action-text">Paisaje con líneas y corrección puntillismo</span>
+          </div>
+          <a href="materias/dibujo-a.html" onclick="picaAqui('dibujo-a', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Informática -->
+        <article class="highway-card info">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">💻 Informática</span>
+            <span class="hw-action-text">Rol oficial de exposiciones por equipos (1+3=1)</span>
+          </div>
+          <a href="materias/informatica.html" onclick="picaAqui('informatica', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ETAPA MAESTRA: HORARIO SEMANAL & CALENDARIO INTERACTIVO -->
+  <main class="portal-main-stage">
+    <div class="portal-deck-panel">
+      
+      <!-- Panel Header con selector de vistas -->
+      <div class="deck-panel-header">
+        <div class="deck-panel-title">
+          <span>📅</span> Horario &bull; Calendario Escolar 415
+          <span class="badge">Ciclo 2026 - 2027</span>
+        </div>
+
+        <div class="view-switch-cluster">
+          <button id="btnViewWeek" class="view-btn active" onclick="setPortalView('week')">
+            📅 Horario Semanal
+          </button>
+          <button id="btnViewMonth" class="view-btn" onclick="setPortalView('month')">
+            🗓️ Calendario Escolar
           </button>
         </div>
       </div>
-    </div>
-  </div>
 
+      <!-- VISTA 1: TABLA SEMANAL -->
+      <div id="weekTableView" class="schedule-table-wrap">
+        <table class="portal-schedule-table">
+          <thead>
+            <tr>
+              <th style="width: 110px;">Hora</th>
+              <th>Lunes 14</th>
+              <th>Martes 15</th>
+              <th>Miércoles 16</th>
+              <th>Jueves 17</th>
+              <th>Viernes 18</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleTableBody">
+            <!-- Inyectado dinámicamente por js/portal.js -->
+          </tbody>
+        </table>
+      </div>
 
-  <!-- SECCIÓN DE FEEDBACK EN MÓVIL: ¿CREES QUE LE FALTA ALGO A ESTA PÁGINA? -->
-  <div class="mobile-section-wrap" style="margin-bottom: 2.5rem;">
-    <div style="background: #ffffff; border: 2px solid #D59F0F; border-radius: 18px; padding: 1.8rem 1.2rem; box-shadow: var(--shadow-sm); text-align: center;">
-      <span style="display: inline-block; background: rgba(213, 159, 15, 0.15); border: 1px solid #D59F0F; color: #b38205; font-size: 0.76rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 980px; margin-bottom: 0.8rem;">
-        Buzón de Alumnos
-      </span>
-      <h3 style="font-size: 1.4rem; font-weight: 900; color: #002B7A; line-height: 1.2; margin-bottom: 0.6rem;">
-        ¿Crees que le falta algo a esta página? ¿Qué es?
-      </h3>
-      <p style="font-size: 0.86rem; color: #64748b; line-height: 1.5; margin-bottom: 1.4rem;">
-        Hecha por y para nosotros los alumnos del 415. Dinos qué herramienta o apunte te gustaría que agreguemos.
-      </p>
-
-      <div style="text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem;">
-        <div style="margin-bottom: 0.9rem;">
-          <label style="display: block; font-weight: 800; font-size: 0.82rem; color: #002B7A; margin-bottom: 0.3rem;">Tu nombre (opcional):</label>
-          <input type="text" id="feedbackAuthor" placeholder="Tu nombre o apodo..." style="width: 100%; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem;">
+      <!-- VISTA 2: CALENDARIO MENSUAL -->
+      <div id="monthCalendarView" class="calendar-view-container">
+        <div class="cal-month-nav-bar">
+          <div class="cal-month-title" id="calendarMonthTitle">Septiembre 2026</div>
+          <div class="cal-month-stepper">
+            <button class="cal-step-btn" onclick="changeMonth(-1)">&larr; Mes Anterior</button>
+            <button class="cal-step-btn" onclick="changeMonth(1)">Siguiente Mes &rarr;</button>
+          </div>
         </div>
 
-        <div style="margin-bottom: 1.1rem;">
-          <label style="display: block; font-weight: 800; font-size: 0.82rem; color: #002B7A; margin-bottom: 0.3rem;">Sugerencia o necesidad: <span style="color: red;">*</span></label>
-          <textarea id="feedbackContent" rows="3" placeholder="Escribe aquí tu sugerencia para el grupo..." style="width: 100%; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem;"></textarea>
+        <!-- Rejilla del Mes -->
+        <div class="cal-grid-month" id="calendarGrid"></div>
+
+        <!-- Cajón Desplegable de Detalles de Fecha -->
+        <div class="cal-drawer-panel" id="calendarDrawer"></div>
+      </div>
+
+    </div>
+
+    <!-- 5. SERVICIOS Y UBICADOR TACUBAYA -->
+    <div class="bottom-services-cluster">
+      
+      <!-- Ubicador de Salones -->
+      <section class="rooms-quick-guide">
+        <div class="rooms-guide-title">
+          <span>🧭</span> Ubicador Rápido de Salones &bull; Prepa 4
         </div>
+        <div class="rooms-bldgs-row">
+          <div class="bldg-box">
+            <strong>🏛️ Edificio A</strong>
+            <span>A-104 (Geografía)<br>Lab A-302 (Física con bata)</span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏫 Edificio B</strong>
+            <span>B-008 (Dibujo A) &bull; B-108 (Lógica)<br>B-110 (Orientación A) &bull; B-112 (Español)<br><span style="color:#ef4444; font-weight:800;">B-318: Mediateca Inglés A</span></span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏢 Edificio C</strong>
+            <span>C-201 (Dibujo B)<br>C-205 (Inglés B)<br>C-306 (Inglés A)</span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏃 Deportes y Cómputo</strong>
+            <span>GIM1 (Ed. Física)<br>I-108 & CC-2 (Informática)</span>
+          </div>
+        </div>
+      </section>
 
-        <button onclick="submitPageFeedback()" style="width: 100%; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; border: none; padding: 0.85rem; border-radius: 10px; font-weight: 900; font-size: 0.95rem; cursor: pointer;">
-          💬 Enviar sugerencia por WhatsApp
-        </button>
-        <label class="announcement-suppress-row">
-          <input type="checkbox" id="suppressModalCheck" onchange="setAnnouncementSuppressedToday(this.checked)">
-          <span>No volver a mostrar hoy</span>
-        </label>
-      </div>
+      <!-- Encardomy Express -->
+      <aside class="encardomy-side-card">
+        <div>
+          <span style="background: rgba(255,255,255,0.15); font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Servicio Oficial 415</span>
+          <h3 style="margin-top: 0.4rem;">⚡ Encardomy By Shaminket</h3>
+          <p>¿Ocupas hojas membretadas ($50/10), impresiones urgentes o planisferio llevado a tu salón en Prepa 4?</p>
+        </div>
+        <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20apoyo%20con%20copias/tareas%20del%20Grupo%200415" target="_blank" rel="noopener noreferrer" class="btn-enc-wa">
+          💬 Pedir por WhatsApp
+        </a>
+      </aside>
+
     </div>
-  </div>
+  </main>
 
-  <!-- BARRA INFERIOR DE ACCESO RÁPIDO PARA CELULAR -->
-  <nav class="mobile-bottom-dock">
-    <a href="#horario" class="dock-item active" onclick="document.getElementById('horario').scrollIntoView({behavior:'smooth'}); return false;">
-      <span class="dock-icon">📅</span>
-      <span class="dock-label">Horario</span>
-    </a>
-    <a href="centro-control-movil" class="dock-item">
-      <span class="dock-icon">📚</span>
-      <span class="dock-label">Materias</span>
-    </a>
-    <a href="artisticas-movil" class="dock-item">
-      <span class="dock-icon">🎭</span>
-      <span class="dock-label">Artísticas</span>
-    </a>
-    <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="dock-item">
-      <span class="dock-icon">⚡</span>
-      <span class="dock-label">Copias</span>
-    </a>
-    <a href="https://wa.me/525571985641?text=Hola,%20tengo%20una%20duda%20acad%C3%A9mica%20sobre%20el%20Grupo%20415" target="_blank" rel="noopener noreferrer" class="dock-item">
-      <span class="dock-icon">💬</span>
-      <span class="dock-label">Dudas</span>
-    </a>
-  </nav>
-
-  <!-- FOOTER -->
-  <footer class="apple-footer-dark" style="padding: 2.5rem 1rem 2rem;">
-    <div class="footer-wrapper">
-      <div style="display: flex; justify-content: center; align-items: center; gap: 0.9rem; margin-bottom: 0.5rem;">
-        <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 32px;">
-        <img src="assets/logo-enp4.svg" alt="ENP 4" style="height: 28px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="text-align: center;">
-        <strong style="color: #ffffff;">Cuatreros del 415</strong><br>
-        <span style="font-size: 0.78rem; opacity: 0.75;">Universidad Nacional Autónoma de México &bull; ENP Plantel 4</span>
-      </div>
-      <div class="footer-links-list" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="centro-control-movil">Materias</a>
-        <a href="artisticas-movil">Artísticas</a>
-        <a href="ayuda-movil">Ayuda</a>
-        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-        <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-      </div>
-    </div>
+  <!-- 6. FOOTER MINIMALISTA -->
+  <footer class="portal-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera" &bull; Ecosistema Digital Desarrollado para el Grupo 0415.<br>
+      <a href="centro-control.html">Todas las materias</a> &bull; <a href="artisticas.html">Artísticas</a> &bull; <a href="ayuda.html">Visita Guiada</a> &bull; <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+    </p>
   </footer>
 
-  <!-- SCRIPT DE HORARIO DINÁMICO POR DÍA -->
-  <script>
-    const scheduleData = {
-      1: {
-        name: "Lunes",
-        classes: [
-          { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "07:50 - 08:40", subject: "Física III", room: "B-116", prof: "Profra. Reyna García Gabriela", section: "both" },
-          { time: "08:40 - 09:30", subject: "Física III", room: "B-109", prof: "Profra. Reyna García Gabriela", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
-          { time: "10:20 - 11:10", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
-          { time: "11:10 - 12:00", subject: "Lengua Española", room: "B-112", prof: "Profra. Vázquez González María", section: "both" },
-          { time: "12:00 - 12:50", subject: "Orientación Educativa IV", room: "B-110", prof: "Sección A", section: "A" },
-          { time: "12:00 - 12:50", subject: "Orientación Educativa IV", room: "B-112", prof: "Sección B", section: "B" }
-        ]
-      },
-      2: {
-        name: "Martes",
-        classes: [
-          { time: "07:00 - 07:50", subject: "Matemáticas IV", room: "B-112", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "07:50 - 08:40", subject: "Matemáticas IV", room: "B-112", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "08:40 - 09:30", subject: "Dibujo II", room: "B-008", prof: "Sección A", section: "A" },
-          { time: "09:30 - 10:20", subject: "Informática", room: "I-108", prof: "Laboratorio Informática", section: "both" },
-          { time: "10:20 - 11:10", subject: "Lógica", room: "B-206", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "11:10 - 12:00", subject: "Informática", room: "CC-2", prof: "Centro Cómputo 2", section: "both" },
-          { time: "12:00 - 12:50", subject: "Género y Prevención de las Violencias", room: "B-109", prof: "Asignatura Ordinaria", section: "both" }
-        ]
-      },
-      3: {
-        name: "Miércoles",
-        classes: [
-          { time: "07:00 - 07:50", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "07:50 - 08:40", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "08:40 - 09:30", subject: "Lógica", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
-          { time: "10:20 - 11:10", subject: "Dibujo II", room: "B-008", prof: "Sección A", section: "A" },
-          { time: "10:20 - 11:10", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
-          { time: "11:10 - 12:00", subject: "Lengua Española", room: "B-113", prof: "Profra. Vázquez González María", section: "both" },
-          { time: "12:00 - 12:50", subject: "Lengua Española", room: "B-113", prof: "Profra. Vázquez González María", section: "both" }
-        ]
-      },
-      4: {
-        name: "Jueves",
-        classes: [
-          { time: "07:00 - 07:50", subject: "Matemáticas IV", room: "B-109", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "07:50 - 08:40", subject: "Matemáticas IV", room: "B-109", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "08:40 - 09:30", subject: "Lengua Española", room: "B-110", prof: "Profra. Vázquez González María", section: "both" },
-          { time: "09:30 - 10:20", subject: "Geografía", room: "A-104", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "10:20 - 11:10", subject: "Historia Universal III", room: "B-109", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "11:10 - 12:00", subject: "Historia Universal III", room: "B-109", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "12:00 - 13:40", subject: "Tiempo Libre / Estudio", room: "-", prof: "Sin actividades programadas", section: "free" }
-        ]
-      },
-      5: {
-        name: "Viernes",
-        classes: [
-          { time: "07:00 - 07:50", subject: "Dibujo II", room: "C-201", prof: "Sección B", section: "B" },
-          { time: "07:50 - 08:40", subject: "Historia Universal III", room: "B-117", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "08:40 - 09:30", subject: "Matemáticas IV", room: "B-117", prof: "Prof. Quintana Mejía Saúl", section: "both" },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "B-318 (Mediateca)", prof: "Sec. A &bull; Examen en Mediateca B-318", section: "A", hasHomework: true, isMediateca: true },
-          { time: "09:30 - 10:20", subject: "Lengua extranjera Inglés IV", room: "C-205", prof: "Sección B", section: "B" },
-          { time: "10:20 - 11:10", subject: "Género y Prevención de las Violencias", room: "B-108", prof: "Asignatura Ordinaria", section: "both" },
-          { time: "11:10 - 12:00", subject: "Educación Física IV", room: "GIM1", prof: "Gimnasio 1", section: "both" },
-          { time: "12:00 - 12:50", subject: "Física III", room: "B-115", prof: "Profra. Reyna García Gabriela", section: "both" },
-          { time: "12:50 - 13:40", subject: "Física III (Laboratorio)", room: "A-302", prof: "Laboratorio A-302", section: "both" }
-        ]
-      }
-    ,
-      6: {
-        name: "Sábado 19",
-        classes: [
-          { time: "Todo el día", subject: "Fin de Semana &bull; Descanso", room: "-", prof: "Sin clases presenciales", section: "free" }
-        ]
-      },
-      0: {
-        name: "Domingo 20",
-        classes: [
-          { time: "Todo el día", subject: "Fin de Semana &bull; Descanso", room: "-", prof: "Prepara tus tareas para el lunes", section: "free" }
-        ]
-      }
-    };
-
-    let selectedDay = 1;
-    let selectedSection = 'all';
-
-    function getTodayDayIndex() {
-      const day = new Date().getDay();
-      if (day >= 1 && day <= 5) return day;
-      return 1;
-    }
-
-    function initMobileSchedule() {
-      selectedDay = getTodayDayIndex();
-      renderSchedule();
-      // Auto-scroll suave a la materia que se está teniendo ahora
-      setTimeout(() => {
-        const liveCard = document.getElementById('liveActiveMobileCard');
-        if (liveCard) {
-          liveCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 350);
-    }
-
-    // Actualizar periódicamente en tiempo real
-    setInterval(() => {
-      renderSchedule();
-    }, 30000);
-
-    function selectDay(dayNum) {
-      selectedDay = dayNum;
-      renderSchedule();
-    }
-
-    function prevDay() {
-      selectedDay = selectedDay > 1 ? selectedDay - 1 : 5;
-      renderSchedule();
-    }
-
-    function nextDay() {
-      selectedDay = selectedDay < 5 ? selectedDay + 1 : 1;
-      renderSchedule();
-    }
-
-    function setMobileSection(sec) {
-      const selectEl = document.getElementById('mobileSectionSelect');
-      if (selectEl && selectEl.value !== sec) selectEl.value = sec;
-      selectedSection = sec;
-      document.getElementById('secAllBtn').classList.toggle('active', sec === 'all');
-      document.getElementById('secABtn').classList.toggle('active', sec === 'A');
-      document.getElementById('secBBtn').classList.toggle('active', sec === 'B');
-      renderSchedule();
-    }
-
-    
-    // Mapeo automático de materias a sus páginas de información y tareas
-    function getSubjectLink(subjectName, section) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      const ext = (isFile || hasHtml) ? '-movil.html' : '-movil';
-
-      const s = subjectName.toLowerCase();
-      if (s.includes('español')) return 'materias/espanol' + ext;
-      if (s.includes('matemát')) return 'materias/matematicas' + ext;
-      if (s.includes('física')) return 'materias/fisica' + ext;
-      if (s.includes('geograf')) return 'materias/geografia' + ext;
-      if (s.includes('historia')) return 'materias/historia' + ext;
-      if (s.includes('informát')) return 'materias/informatica' + ext;
-      if (s.includes('lógica')) return 'materias/logica' + ext;
-      if (s.includes('género')) return 'materias/genero' + ext;
-      if (s.includes('educación física')) return 'materias/educacion-fisica' + ext;
-      if (s.includes('dibujo')) {
-        if (section === 'A') return 'materias/dibujo-a' + ext;
-        if (section === 'B') return 'materias/dibujo-b' + ext;
-        return 'materias/dibujo' + ext;
-      }
-      if (s.includes('inglés')) {
-        if (section === 'A') return 'materias/ingles-a' + ext;
-        if (section === 'B') return 'materias/ingles-b' + ext;
-        return 'materias/ingles' + ext;
-      }
-      if (s.includes('orientac')) {
-        if (section === 'A') return 'materias/orientacion-a' + ext;
-        if (section === 'B') return 'materias/orientacion-b' + ext;
-        return 'materias/orientacion' + ext;
-      }
-      return 'centro-control' + ext;
-    }
-
-    function renderSchedule() {
-      const dayData = scheduleData[selectedDay];
-      const headingElem = document.getElementById('dayNameText');
-      const subElem = document.getElementById('dateSubText');
-      const listContainer = document.getElementById('timelineList');
-
-      if (!dayData || !listContainer) return;
-
-      document.querySelectorAll('.day-tab-btn').forEach(btn => {
-        const d = parseInt(btn.getAttribute('data-day'));
-        btn.classList.toggle('active', d === selectedDay);
-      });
-
-      const isToday = (selectedDay === new Date().getDay());
-      headingElem.textContent = isToday ? `Hoy: ${dayData.name}` : `Día: ${dayData.name}`;
-      
-      if (isToday) {
-        subElem.innerHTML = `<span style="color:#22c55e; font-weight:800;">● Horario en vivo de hoy</span> &bull; Grupo 0415`;
-      } else {
-        subElem.innerHTML = `Mostrando clases del día ${dayData.name} &bull; Ciclo 2026-2027`;
-      }
-
-      listContainer.innerHTML = '';
-      let visibleCount = 0;
-
-      dayData.classes.forEach(c => {
-        if (c.section === 'free') {
-          listContainer.innerHTML += `
-            <div class="free-hour-card">
-              ☕ ${c.time} &bull; ${c.subject} (${c.prof})
-            </div>
-          `;
-          return;
-        }
-
-        const matchSec = (selectedSection === 'all') || (c.section === 'both') || (c.section === selectedSection);
-        if (!matchSec) return;
-
-        visibleCount++;
-        let secBadge = '';
-        if (c.section === 'A') secBadge = '<span class="badge-sec-mobile tag-sec-a">Sec. A</span>';
-        if (c.section === 'B') secBadge = '<span class="badge-sec-mobile tag-sec-b">Sec. B</span>';
-
-        // Comprobar si esta clase corresponde a la hora actual
-        const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
-        const [st, et] = c.time.split(' - ');
-        const [sh, sm] = st.split(':').map(Number);
-        const [eh, em] = et.split(':').map(Number);
-        const slotStart = sh * 60 + sm;
-        const slotEnd = eh * 60 + em;
-        const isLiveNow = (selectedDay === now.getDay()) && (currentMinutes >= slotStart && currentMinutes < slotEnd);
-
-        let liveBadgeHtml = '';
-        let liveClassModifier = '';
-        if (isLiveNow) {
-          liveClassModifier = ' is-live-class-now';
-          liveBadgeHtml = '<div class="live-status-badge" style="margin-bottom: 0.5rem;"><span class="live-pulse-dot"></span> EN CLASE EN VIVO AHORA</div>';
-        }
-
-        const subjectUrl = getSubjectLink(c.subject, c.section);
-
-        // Comprobar tareas y avisos de la materia
-        const homeworkSubjects = {
-          "Geografía": "📝 4 Noticias",
-          "Historia Universal III": "🗺️ Planisferio",
-          "Educación Física IV": "📝 Tarea Condición Física",
-          "Lógica": "📝 3 Tareas",
-          "Lengua Española": "🔔 Hojas pospuestas",
-          "Informática": "💻 Exposiciones"
-        };
-
-        let isHw = false;
-        let hwBadge = '';
-        const sName = c.subject;
-        if (homeworkSubjects[sName]) {
-          isHw = true;
-          if (!seenHomeworkInDay.has(sName)) {
-            hwBadge = `<span class="homework-tag-badge">${homeworkSubjects[sName]}</span>`;
-            seenHomeworkInDay.add(sName);
-          }
-        } else if (sName === 'Dibujo II' && c.section === 'A') {
-          isHw = true;
-          if (!seenHomeworkInDay.has(sName)) {
-            hwBadge = `<span class="homework-tag-badge">🎨 Paisaje Líneas</span>`;
-            seenHomeworkInDay.add(sName);
-          }
-        } /* Examen archivado */ else if (sName.includes('Orientación') && c.section === 'A') {
-          isHw = true;
-          if (!seenHomeworkInDay.has('Orientación')) {
-            hwBadge = `<span class="homework-tag-badge">📝 Materiales + 2 Tareas</span>`;
-            seenHomeworkInDay.add('Orientación');
-          }
-        }
-
-        const hwModifier = isHw ? ' has-homework' : '';
-        const isMondayInglesA = (selectedDay === 1 && sName.includes('Inglés') && c.section === 'A');
-
-        listContainer.innerHTML += `
-          <a href="${subjectUrl}" class="timeline-class-card${hwModifier}${liveClassModifier}" id="${isLiveNow ? 'liveActiveMobileCard' : ''}" style="text-decoration: none; color: inherit; display: block; cursor: pointer; ${isMondayInglesA ? 'border: 2px solid #ef4444 !important;' : ''}">
-            ${liveBadgeHtml}
-            <div class="timeline-time-row">
-              <div class="class-time-text" style="${isHw ? 'color: #bfdbfe;' : ''}">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>${c.time}</span>
-              </div>
-              <span class="badge-room-mobile" style="${isMondayInglesA ? 'background:#fee2e2; color:#b91c1c; font-weight:900;' : ''}">Salón ${c.room}</span>
-            </div>
-            <div class="class-name-mobile" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.3rem;">
-              <span>${c.subject} ${secBadge}</span>
-              ${hwBadge}
-            </div>
-            ${isMondayInglesA ? '<span class="mediateca-alert-badge" style="margin-bottom: 0.3rem;">📍 En Mediateca Salón B-318</span>' : ''}
-            <div class="class-prof-mobile" style="${isHw ? 'color: #e0f2fe;' : ''}">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span>${c.prof}</span>
-            </div>
-            <div style="font-size: 0.72rem; color: ${isHw ? '#fcd866' : '#2D7FF9'}; font-weight: 800; margin-top: 0.4rem; display: flex; align-items: center; gap: 0.25rem;">
-              <span>Ver apuntes, avisos y tareas</span> &rarr;
-            </div>
-          </a>
-        `;
-      });
-
-      if (visibleCount === 0) {
-        listContainer.innerHTML = `
-          <div class="free-hour-card" style="padding: 2rem;">
-            No hay clases para esta sección en el día seleccionado.
-          </div>
-        `;
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', initMobileSchedule);
-    initMobileSchedule();
-    // Iniciar tolerancia en móvil
-    
-  </script>
-  <script src="js/calendar.js"></script>
-  <script src="js/main.js"></script>
-  <script>initCalendarSystem("day");</script>
-  <!-- SISTEMA DE AUTENTICACIÓN GOOGLE & FIRESTORE (MODULAR) -->
-  <script type="module" src="js/firebase-auth.js"></script>
-  <!-- MÓDULO OFICIAL DE AUTENTICACIÓN GOOGLE OAUTH 2.0 (GIS) -->
-  <script src="js/google-auth.js"></script>
+  <script src="js/portal.js"></script>
 </body>
 </html>

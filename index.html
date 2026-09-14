@@ -2,184 +2,280 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cuatreros del 415 • Prepa 4 UNAM | Ecosistema Digital</title>
-  <meta name="description" content="Portal oficial ultra-disruptivo del Grupo 0415, Escuela Nacional Preparatoria Plantel 4 'Vidal Castañeda y Nájera' UNAM. Horarios en vivo, tareas, avisos y Encardomy.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cuatreros del 415 • Prepa 4 UNAM | Portal Oficial</title>
+  <meta name="description" content="Portal oficial del Grupo 0415, Escuela Nacional Preparatoria Plantel 4 'Vidal Castañeda y Nájera' UNAM. Horarios en vivo, tareas, avisos desaturados y Encardomy.">
   <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; }
-    body {
-      background: radial-gradient(ellipse at center, #001628 0%, #000a14 100%);
-      color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      overflow: hidden;
-    }
-    .dispatch-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid rgba(213, 159, 15, 0.4);
-      border-radius: 28px;
-      padding: 3rem 2.5rem;
-      max-width: 540px;
-      width: 100%;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.6), 0 0 40px rgba(0, 122, 255, 0.2);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      animation: pulseGlow 3s infinite alternate ease-in-out;
-    }
-    @keyframes pulseGlow {
-      from { border-color: rgba(213, 159, 15, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-      to { border-color: rgba(0, 122, 255, 0.6); box-shadow: 0 25px 70px rgba(0, 122, 255, 0.35); }
-    }
-    .crest-cluster {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.8rem;
-    }
-    .crest-cluster img {
-      height: 64px;
-      width: auto;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #ffffff 40%, #fcd866 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p.sub {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-    .spinner-ring {
-      width: 48px;
-      height: 48px;
-      border: 3.5px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #fcd866;
-      border-right-color: #007AFF;
-      border-radius: 50%;
-      animation: spin 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-      margin: 0 auto 1.8rem;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .status-badge {
-      display: inline-block;
-      padding: 0.4rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: rgba(0, 122, 255, 0.2);
-      color: #60a5fa;
-      border: 1px solid rgba(96, 165, 250, 0.4);
-      margin-bottom: 2rem;
-    }
-    .manual-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
-    }
-    .manual-links span {
-      font-size: 0.8rem;
-      color: #64748b;
-      margin-bottom: 0.3rem;
-    }
-    .btn-row {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn-dev {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #cbd5e1;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-dev:hover {
-      background: #007AFF;
-      color: #ffffff;
-      border-color: #007AFF;
-      transform: translateY(-2px);
-    }
-  </style>
+  <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
-  <div class="dispatch-card">
-    <div class="crest-cluster">
-      <img src="assets/escudo-unam-original.png" alt="UNAM">
-      <img src="assets/logo-enp4.svg" alt="ENP 4">
-    </div>
-    <h1>Cuatreros del 415</h1>
-    <p class="sub">Iniciando ecosistema ultra-disruptivo adaptado a tu dispositivo...</p>
-    
-    <div class="spinner-ring"></div>
-    <div class="status-badge" id="dispatchStatus">Calibrando pantalla...</div>
 
-    <div class="manual-links">
-      <span>¿Deseas forzar una versión específica?</span>
-      <div class="btn-row">
-        <a href="mobile.html?force=1" class="btn-dev">📱 Móvil</a>
-        <a href="tablet.html?force=1" class="btn-dev">📟 Tableta</a>
-        <a href="desktop.html?force=1" class="btn-dev">🖥️ Escritorio</a>
+  <!-- 1. TOP COMMAND BAR -->
+  <header class="portal-topbar">
+    <div class="portal-topbar-inner">
+      <a href="./" class="portal-brand">
+        <div class="portal-brand-crests">
+          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM">
+          <img src="assets/logo-enp4.svg" alt="Logo ENP 4">
+        </div>
+        <div class="portal-brand-text">
+          <h1>Cuatreros <span class="gold">0415</span></h1>
+          <span class="sub">Prepa 4 UNAM &bull; Tacubaya</span>
+        </div>
+      </a>
+
+      <nav class="portal-nav-links">
+        <a href="centro-control.html" class="portal-nav-btn primary">
+          <span>📚 Centro de Control</span>
+        </a>
+        <a href="artisticas.html" class="portal-nav-btn">
+          <span>🎭 Artísticas</span>
+        </a>
+        <a href="ayuda.html" class="portal-nav-btn">
+          <span>🗺️ Guía</span>
+        </a>
+        <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" class="portal-nav-btn gold">
+          <span>⚡ Encardomy</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. RADAR DE TELEMETRÍA EN VIVO (HORA CDMX Y CLASE ACTUAL) -->
+  <aside class="live-telemetry-banner">
+    <div class="telemetry-left">
+      <div class="pulse-radar-dot"></div>
+      <span id="liveRadarStatusText">Sincronizando horario en vivo del Grupo 0415...</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.8rem;">
+      <span class="telemetry-clock" id="portalClock">--:--:--</span>
+      <span class="portal-nav-btn" id="liveRadarBadge" style="padding: 0.2rem 0.65rem; font-size: 0.74rem;">En vivo</span>
+    </div>
+  </aside>
+
+  <!-- 3. ACTION HIGHWAY: AVISOS DESATURADOS "PICA AQUÍ" -->
+  <section class="action-highway-strip">
+    <div class="highway-container">
+      <div class="highway-header">
+        <div class="highway-title">
+          <span>⚡</span> Avisos y Tareas Prioritarias
+        </div>
+        <span style="font-size: 0.74rem; color: var(--text-muted);">Pica en cualquier botón para ver detalles completos</span>
+      </div>
+
+      <div class="highway-cards-grid">
+        <!-- Historia -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">📜 Historia Universal III</span>
+            <span class="hw-action-text">Cuadernos pendientes (Lunes 12:00) &bull; Planisferio</span>
+          </div>
+          <a href="materias/historia.html#regalos" onclick="picaAqui('historia', 'regalos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Geografía -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🌍 Geografía</span>
+            <span class="hw-action-text">4 Noticias en equipo (Lunes 7:00 AM)</span>
+          </div>
+          <a href="materias/geografia.html" onclick="picaAqui('geografia', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Educación Física -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🏃 Educación Física IV</span>
+            <span class="hw-action-text">Nueva tarea: ¿Qué es la condición física?</span>
+          </div>
+          <a href="materias/educacion-fisica.html" onclick="picaAqui('educacion-fisica', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Inglés A -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🇬🇧 Inglés IV (Sec. A)</span>
+            <span class="hw-action-text">Lunes en Mediateca Salón B-318 (Audífonos)</span>
+          </div>
+          <a href="materias/ingles-a.html" onclick="picaAqui('ingles-a', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Español -->
+        <article class="highway-card info">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">📖 Lengua Española</span>
+            <span class="hw-action-text">Hojas pospuestas: ya no son para el lunes</span>
+          </div>
+          <a href="materias/espanol.html" onclick="picaAqui('espanol', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Orientación A -->
+        <article class="highway-card critical">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🧭 Orientación IV (Sec. A)</span>
+            <span class="hw-action-text">2 Tareas UNAM &bull; Post-it, plumones y carpeta</span>
+          </div>
+          <a href="materias/orientacion-a.html" onclick="picaAqui('orientacion-a', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Lógica -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🧠 Lógica</span>
+            <span class="hw-action-text">3 Tareas: tipos de frases, corrección y Gettier</span>
+          </div>
+          <a href="materias/logica.html" onclick="picaAqui('logica', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Dibujo A -->
+        <article class="highway-card warning">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">🎨 Dibujo II (Sec. A)</span>
+            <span class="hw-action-text">Paisaje con líneas y corrección puntillismo</span>
+          </div>
+          <a href="materias/dibujo-a.html" onclick="picaAqui('dibujo-a', 'tareas')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
+
+        <!-- Informática -->
+        <article class="highway-card info">
+          <div class="hw-info-left">
+            <span class="hw-subject-title">💻 Informática</span>
+            <span class="hw-action-text">Rol oficial de exposiciones por equipos (1+3=1)</span>
+          </div>
+          <a href="materias/informatica.html" onclick="picaAqui('informatica', 'avisos')" class="btn-pica-aqui">
+            👉 Pica aquí
+          </a>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <script>
-    (function dispatchEnvironment() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const forced = urlParams.get('view');
-      if (forced === 'mobile') { window.location.replace('mobile.html'); return; }
-      if (forced === 'tablet') { window.location.replace('tablet.html'); return; }
-      if (forced === 'desktop') { window.location.replace('desktop.html'); return; }
+  <!-- 4. ETAPA MAESTRA: HORARIO SEMANAL & CALENDARIO INTERACTIVO -->
+  <main class="portal-main-stage">
+    <div class="portal-deck-panel">
+      
+      <!-- Panel Header con selector de vistas -->
+      <div class="deck-panel-header">
+        <div class="deck-panel-title">
+          <span>📅</span> Horario &bull; Calendario Escolar 415
+          <span class="badge">Ciclo 2026 - 2027</span>
+        </div>
 
-      const w = window.innerWidth;
-      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-      const isMobileUA = /Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      const isTabletUA = /iPad|Tablet|PlayBook/i.test(navigator.userAgent) || (isTouch && w >= 768 && w <= 1024);
+        <div class="view-switch-cluster">
+          <button id="btnViewWeek" class="view-btn active" onclick="setPortalView('week')">
+            📅 Horario Semanal
+          </button>
+          <button id="btnViewMonth" class="view-btn" onclick="setPortalView('month')">
+            🗓️ Calendario Escolar
+          </button>
+        </div>
+      </div>
 
-      let target = 'desktop.html';
-      let label = 'Despachando a Escritorio...';
+      <!-- VISTA 1: TABLA SEMANAL -->
+      <div id="weekTableView" class="schedule-table-wrap">
+        <table class="portal-schedule-table">
+          <thead>
+            <tr>
+              <th style="width: 110px;">Hora</th>
+              <th>Lunes 14</th>
+              <th>Martes 15</th>
+              <th>Miércoles 16</th>
+              <th>Jueves 17</th>
+              <th>Viernes 18</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleTableBody">
+            <!-- Inyectado dinámicamente por js/portal.js -->
+          </tbody>
+        </table>
+      </div>
 
-      if (isMobileUA || (w < 768 && isTouch) || w < 768) {
-        target = 'mobile.html';
-        label = 'Despachando a Móvil (Modo Flujo Pasillo)...';
-      } else if (isTabletUA || (w >= 768 && w <= 1024)) {
-        target = 'tablet.html';
-        label = 'Despachando a Tableta (Bento Grid)...';
-      } else {
-        target = 'desktop.html';
-        label = 'Despachando a Escritorio (Comando Espacial)...';
-      }
+      <!-- VISTA 2: CALENDARIO MENSUAL -->
+      <div id="monthCalendarView" class="calendar-view-container">
+        <div class="cal-month-nav-bar">
+          <div class="cal-month-title" id="calendarMonthTitle">Septiembre 2026</div>
+          <div class="cal-month-stepper">
+            <button class="cal-step-btn" onclick="changeMonth(-1)">&larr; Mes Anterior</button>
+            <button class="cal-step-btn" onclick="changeMonth(1)">Siguiente Mes &rarr;</button>
+          </div>
+        </div>
 
-      document.getElementById('dispatchStatus').textContent = label;
-      setTimeout(() => {
-        window.location.replace(target + window.location.search);
-      }, 350);
-    })();
-  </script>
+        <!-- Rejilla del Mes -->
+        <div class="cal-grid-month" id="calendarGrid"></div>
+
+        <!-- Cajón Desplegable de Detalles de Fecha -->
+        <div class="cal-drawer-panel" id="calendarDrawer"></div>
+      </div>
+
+    </div>
+
+    <!-- 5. SERVICIOS Y UBICADOR TACUBAYA -->
+    <div class="bottom-services-cluster">
+      
+      <!-- Ubicador de Salones -->
+      <section class="rooms-quick-guide">
+        <div class="rooms-guide-title">
+          <span>🧭</span> Ubicador Rápido de Salones &bull; Prepa 4
+        </div>
+        <div class="rooms-bldgs-row">
+          <div class="bldg-box">
+            <strong>🏛️ Edificio A</strong>
+            <span>A-104 (Geografía)<br>Lab A-302 (Física con bata)</span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏫 Edificio B</strong>
+            <span>B-008 (Dibujo A) &bull; B-108 (Lógica)<br>B-110 (Orientación A) &bull; B-112 (Español)<br><span style="color:#ef4444; font-weight:800;">B-318: Mediateca Inglés A</span></span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏢 Edificio C</strong>
+            <span>C-201 (Dibujo B)<br>C-205 (Inglés B)<br>C-306 (Inglés A)</span>
+          </div>
+          <div class="bldg-box">
+            <strong>🏃 Deportes y Cómputo</strong>
+            <span>GIM1 (Ed. Física)<br>I-108 & CC-2 (Informática)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Encardomy Express -->
+      <aside class="encardomy-side-card">
+        <div>
+          <span style="background: rgba(255,255,255,0.15); font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Servicio Oficial 415</span>
+          <h3 style="margin-top: 0.4rem;">⚡ Encardomy By Shaminket</h3>
+          <p>¿Ocupas hojas membretadas ($50/10), impresiones urgentes o planisferio llevado a tu salón en Prepa 4?</p>
+        </div>
+        <a href="https://wa.me/525571985641?text=Hola,%20ocupo%20apoyo%20con%20copias/tareas%20del%20Grupo%200415" target="_blank" rel="noopener noreferrer" class="btn-enc-wa">
+          💬 Pedir por WhatsApp
+        </a>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- 6. FOOTER MINIMALISTA -->
+  <footer class="portal-footer">
+    <p>
+      Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera" &bull; Ecosistema Digital Desarrollado para el Grupo 0415.<br>
+      <a href="centro-control.html">Todas las materias</a> &bull; <a href="artisticas.html">Artísticas</a> &bull; <a href="ayuda.html">Visita Guiada</a> &bull; <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
+    </p>
+  </footer>
+
+  <script src="js/portal.js"></script>
 </body>
 </html>
