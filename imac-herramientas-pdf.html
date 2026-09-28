@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas PDF — Grupo 415 | Gran Formato</title>
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/large.css">
+<script src="https://tools.pdf24.org/static/js/widget.js" async></script>
+
+<style>
+  .pdf24-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .pdf24-tool-btn {
+    padding: 12px 14px;
+    background: rgba(42, 45, 52, 0.4);
+    border: 1px solid rgba(247, 244, 238, 0.1);
+    border-radius: 12px;
+    color: var(--c-hueso);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 68px;
+    transition: all 0.18s ease;
+  }
+  .pdf24-tool-btn:hover, .pdf24-tool-btn.active {
+    border-color: var(--c-cempasuchil);
+    background: rgba(255, 122, 0, 0.12);
+  }
+  .pdf24-tool-btn .tool-icon { font-size: 1.2rem; }
+  .pdf24-tool-btn .tool-name { font-size: 0.88rem; font-weight: 700; line-height: 1.2; }
+  .pdf24-tool-btn .tool-cat { font-size: 0.72rem; color: var(--c-hueso-tertiary); }
+
+  .pdf24-cat-pill {
+    padding: 6px 12px;
+    background: rgba(42, 45, 52, 0.5);
+    border: 1px solid rgba(247, 244, 238, 0.1);
+    border-radius: 20px;
+    color: var(--c-hueso-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 34px;
+  }
+  .pdf24-cat-pill.active {
+    background: var(--c-cempasuchil);
+    color: #0B0C10;
+    border-color: var(--c-cempasuchil);
+  }
+</style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="large-ambient-canvas"></canvas>
+
+  <div class="large-viewport-container">
+    <div class="large-app-shell">
+      
+    <aside class="large-sidebar" id="large-sidebar" aria-label="Navegación principal">
+      <div class="large-sidebar-header">
+        <a href="imac-index.html" class="large-brand-group">
+          <div class="large-brand-badge">415</div>
+          <div class="large-brand-info">
+            <span class="large-brand-title">Grupo 415</span>
+            <span class="large-brand-sub">Prepa 4 · UNAM</span>
+          </div>
+        </a>
+
+        <div class="large-section-toggle" role="group" aria-label="Selector de Sección">
+          <button type="button" class="large-section-btn active" id="large-btn-sec-a" onclick="LargeApp415.setSection('A')">Sec. A</button>
+          <button type="button" class="large-section-btn" id="large-btn-sec-b" onclick="LargeApp415.setSection('B')">Sec. B</button>
+        </div>
+      </div>
+
+      <nav class="large-sidebar-nav">
+        <div class="large-nav-group-title">Plataforma Gran Formato</div>
+        <a href="imac-index.html" class="large-nav-item ">
+          <span class="nav-icon">✦</span>
+          <span>Inicio / Dashboard</span>
+        </a>
+        <a href="imac-centro-de-control.html" class="large-nav-item ">
+          <span class="nav-icon">❖</span>
+          <span>Centro de Control</span>
+        </a>
+        <a href="imac-calendario.html" class="large-nav-item ">
+          <span class="nav-icon">📅</span>
+          <span>Horario y Calendario</span>
+          <span class="large-nav-badge gold">30 hrs</span>
+        </a>
+        <a href="imac-archivos.html" class="large-nav-item ">
+          <span class="nav-icon">📄</span>
+          <span>Archivos y PDFs</span>
+        </a>
+        <a href="imac-historial.html" class="large-nav-item ">
+          <span class="nav-icon">🏛</span>
+          <span>Historial General</span>
+        </a>
+        <a href="imac-herramientas-pdf.html" class="large-nav-item active">
+          <span class="nav-icon">🛠</span>
+          <span>Herramientas PDF</span>
+        </a>
+        <a href="imac-recuerdos-415.html" class="large-nav-item ">
+          <span class="nav-icon">◈</span>
+          <span>Recuerdos 415</span>
+        </a>
+
+        <div class="large-nav-group-title">Materias Oficiales (12)</div>
+        <a href="imac-lengua-espanola.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua Española</span>
+          <span class="large-nav-badge">1401</span>
+        </a><a href="imac-matematicas.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Matemáticas IV</span>
+          <span class="large-nav-badge">1400</span>
+        </a><a href="imac-historia.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Historia Universal III</span>
+          <span class="large-nav-badge">1403</span>
+        </a><a href="imac-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Física III</span>
+          <span class="large-nav-badge">1402</span>
+        </a><a href="imac-logica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lógica</span>
+          <span class="large-nav-badge">1404</span>
+        </a><a href="imac-geografia.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Geografía</span>
+          <span class="large-nav-badge">1405</span>
+        </a><a href="imac-dibujo.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Dibujo II</span>
+          <span class="large-nav-badge">1406</span>
+        </a><a href="imac-ingles.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua extranjera Inglés IV</span>
+          <span class="large-nav-badge">1407</span>
+        </a><a href="imac-informatica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Informática</span>
+          <span class="large-nav-badge">1408</span>
+        </a><a href="imac-genero-prevencion.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Género y Prevención de las Violencias</span>
+          <span class="large-nav-badge">8000</span>
+        </a><a href="imac-educacion-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Educación Física IV</span>
+          <span class="large-nav-badge">1409</span>
+        </a><a href="imac-orientacion-educativa.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Orientación Educativa IV</span>
+          <span class="large-nav-badge">1410</span>
+        </a>
+      </nav>
+
+      <div class="large-sidebar-footer">
+        <div class="large-live-widget">
+          <div class="large-live-row">
+            <span class="large-live-pulse">
+              <span class="large-live-dot"></span>
+              <span>En Tiempo Real</span>
+            </span>
+            <span class="large-live-clock" id="large-live-clock">--:--:--</span>
+          </div>
+          <div style="font-size:var(--text-large-meta); color:var(--c-hueso-secondary); margin-top:2px;">
+            Turno Matutino · Ciclo 2026-2027
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+
+      <main class="large-main-stage" id="large-main-stage">
+        
+      <header class="large-top-bar">
+        <div class="large-top-bar-left">
+          <div class="large-page-title">
+            Herramientas PDF
+          </div>
+        </div>
+
+        <div class="large-top-bar-right">
+          <!-- Búsqueda con atajo de teclado accesible -->
+          <a href="imac-buscar.html" class="large-search-trigger" title="Buscar en todo el sitio (⌘K)">
+            <span>🔍</span>
+            <span>Buscar en el 415...</span>
+            <span class="large-kbd-badge">⌘K</span>
+          </a>
+
+          <!-- Conmutador entre Experiencias -->
+          <div class="large-mode-switcher">
+            <a href="imac-herramientas-pdf.html?force=large" class="large-switcher-pill active" title="Experiencia Gran Formato">
+              <span>🖥️</span>
+              <span>Gran Formato</span>
+            </a>
+            <a href="mac-herramientas-pdf.html?force=desktop" class="large-switcher-pill" title="Ver versión computadora estándar">
+              <span>💻</span>
+              <span>Mac</span>
+            </a>
+            <a href="ipad-herramientas-pdf.html?force=tablet" class="large-switcher-pill" title="Ver versión tablet">
+              <span>📱</span>
+              <span>iPad</span>
+            </a>
+            <a href="herramientas-pdf.html?force=mobile" class="large-switcher-pill" title="Ver versión celular">
+              <span>📲</span>
+              <span>Celular</span>
+            </a>
+          </div>
+        </div>
+      </header>
+    
+
+        <div class="large-stage-body">
+          
+  <div style="background:linear-gradient(135deg, rgba(42,45,52,0.7) 0%, rgba(18,20,26,0.95) 100%); border:1px solid var(--c-large-border); border-radius:var(--large-radius-panel); padding:clamp(28px, 2.4vw, 44px);">
+    <div style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:6px;">
+      Utilidades Académicas
+    </div>
+    <h1 style="margin:0 0 8px 0; font-size:var(--text-large-title1); font-weight:800; color:var(--c-hueso);">
+      Herramientas PDF y Utilidades Escolares
+    </h1>
+    <p class="large-prose-text" style="margin:0;">
+      Generador de nomenclatura oficial, visor y conversor de documentos escolares.
+    </p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--large-gap-lg);">
+    <div class="large-panel">
+      <h3 style="margin:0 0 12px 0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+        Generador de Nomenclatura Oficial
+      </h3>
+      <p class="large-prose-text" style="margin:0 0 16px 0;">
+        Ingresa tus apellidos y número de tarea para generar el nombre reglamentario exacto exigido por los profesores del Grupo 415.
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <input type="text" id="large-pdf-apellidos" placeholder="Tus apellidos (ej. MoralesVargas)" style="width:100%; height:48px; background:rgba(11,12,16,0.7); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:0 16px; color:var(--c-hueso); font-size:1rem; outline:none;">
+        <input type="text" id="large-pdf-tarea" placeholder="Número o nombre de tarea (ej. tarea01)" style="width:100%; height:48px; background:rgba(11,12,16,0.7); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:0 16px; color:var(--c-hueso); font-size:1rem; outline:none;">
+        <button type="button" class="large-action-btn" onclick="
+          const ap = (document.getElementById('large-pdf-apellidos').value.trim() || 'Apellidos').replace(/\s+/g, '');
+          const tar = (document.getElementById('large-pdf-tarea').value.trim() || 'tarea01').replace(/\s+/g, '');
+          const res = '415_' + ap + '_' + tar + '.pdf';
+          document.getElementById('large-pdf-resultado').innerText = res;
+          navigator.clipboard.writeText(res);
+          alert('✓ Nombre generado y copiado al portapapeles:\n' + res);
+        ">Generar y Copiar Nombre</button>
+
+        <div style="margin-top:12px; background:rgba(11,12,16,0.6); padding:16px; border-radius:var(--large-radius-sm); border:1px solid var(--c-large-border); font-family:var(--font-family-mono); font-size:1.05rem; color:var(--c-oro); text-align:center;" id="large-pdf-resultado">
+          415_Apellidos_tarea01.pdf
+        </div>
+      </div>
+    </div>
+
+    <div class="large-panel">
+      <h3 style="margin:0 0 12px 0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+        Visores y Procesamiento en tu Dispositivo
+      </h3>
+      <p class="large-prose-text" style="margin:0 0 16px 0;">
+        Todos los archivos PDF se procesan de manera privada y confidencial dentro de tu propio navegador. Ningún documento escolar se sube a servidores externos.
+      </p>
+      <div style="background:rgba(42,45,52,0.4); border-left:4px solid var(--c-cempasuchil); padding:16px; border-radius:var(--large-radius-sm); font-size:var(--text-large-body); line-height:1.5;">
+        Recuerda que para el envío de actividades, el peso máximo recomendado para Google Classroom de la UNAM es de <strong>25 MB</strong> por archivo.
+      </div>
+    </div>
+  </div>
+
+    <!-- SUITE OFICIAL DE HERRAMIENTAS PDF24 -->
+    <div style="margin-top:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <span style="font-size:0.75rem; font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em; display:block;">
+            Suite Oficial PDF24 Integrada
+          </span>
+          <h2 style="margin:2px 0 0; font-size:1.35rem; font-weight:800; color:var(--c-hueso);">
+            8 Herramientas de Edición y Procesamiento PDF
+          </h2>
+        </div>
+        
+        <!-- Categorías -->
+        <div class="pdf24-cat-tabs" style="display:flex; gap:6px; flex-wrap:wrap;">
+          <button type="button" class="pdf24-cat-pill active" onclick="filtrarCategoriaPDF('todas', this)">Todas (8)</button>
+          <button type="button" class="pdf24-cat-pill" onclick="filtrarCategoriaPDF('crear', this)">🛠 Crear</button>
+          <button type="button" class="pdf24-cat-pill" onclick="filtrarCategoriaPDF('organizar', this)">📂 Organizar</button>
+          <button type="button" class="pdf24-cat-pill" onclick="filtrarCategoriaPDF('optimizar', this)">⚡ Optimizar</button>
+          <button type="button" class="pdf24-cat-pill" onclick="filtrarCategoriaPDF('proteger', this)">🔒 Proteger</button>
+        </div>
+      </div>
+
+      <!-- Grid de 8 herramientas -->
+      <div class="pdf24-tools-grid" id="pdf24-tools-grid">
+        
+      <button type="button" class="pdf24-tool-btn active" data-tool="merge-pdf" data-category="organizar" onclick="seleccionarHerramientaPDF('merge-pdf', 'Une 2 archivos y más', this)">
+        <span class="tool-icon">📎</span>
+        <span class="tool-name">Une 2 archivos y más</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="convert-to-pdf" data-category="crear" onclick="seleccionarHerramientaPDF('convert-to-pdf', 'Convierte a PDF', this)">
+        <span class="tool-icon">🔄</span>
+        <span class="tool-name">Convierte a PDF</span>
+        <span class="tool-cat">Crear</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="compress-pdf" data-category="optimizar" onclick="seleccionarHerramientaPDF('compress-pdf', 'Comprime tu PDF', this)">
+        <span class="tool-icon">🗜</span>
+        <span class="tool-name">Comprime tu PDF</span>
+        <span class="tool-cat">Optimizar</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="split-pdf" data-category="organizar" onclick="seleccionarHerramientaPDF('split-pdf', 'Divide tu PDF', this)">
+        <span class="tool-icon">✂</span>
+        <span class="tool-name">Divide tu PDF</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="lock-pdf" data-category="proteger" onclick="seleccionarHerramientaPDF('lock-pdf', 'Protege tu PDF', this)">
+        <span class="tool-icon">🔒</span>
+        <span class="tool-name">Protege tu PDF</span>
+        <span class="tool-cat">Proteger</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="extract-pdf-pages" data-category="organizar" onclick="seleccionarHerramientaPDF('extract-pdf-pages', 'Extrae páginas', this)">
+        <span class="tool-icon">📑</span>
+        <span class="tool-name">Extrae páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="remove-pdf-pages" data-category="organizar" onclick="seleccionarHerramientaPDF('remove-pdf-pages', 'Elimina páginas', this)">
+        <span class="tool-icon">🗑</span>
+        <span class="tool-name">Elimina páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    
+      <button type="button" class="pdf24-tool-btn " data-tool="sort-pdf-pages" data-category="organizar" onclick="seleccionarHerramientaPDF('sort-pdf-pages', 'Reorganiza páginas', this)">
+        <span class="tool-icon">🔀</span>
+        <span class="tool-name">Reorganiza páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    
+      </div>
+
+      <!-- Contenedor del widget cargado -->
+      <div class="pdf24-stage-panel" style="margin-top:18px; background:rgba(14,16,22,0.85); border:1px solid var(--c-copal-line, rgba(247,244,238,0.1)); border-radius:18px; padding:20px; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid rgba(247,244,238,0.08); padding-bottom:10px;">
+          <h3 id="pdf24-stage-active-title" style="margin:0; font-size:1.15rem; font-weight:800; color:var(--c-hueso);">
+            Une 2 archivos y más
+          </h3>
+          <span style="font-size:0.75rem; font-weight:700; color:var(--c-cempasuchil);">
+            Widget Oficial PDF24
+          </span>
+        </div>
+
+        <div id="activePdfWidgetContainer" class="pdf24WidgetContainer" style="min-height:260px;"></div>
+
+        <div style="font-size:0.75rem; color:var(--c-hueso-tertiary); text-align:center; margin-top:12px;">
+          Procesamiento seguro directo en tu navegador mediante los servicios oficiales de PDF24.
+        </div>
+      </div>
+    </div>
+    
+        </div>
+      </main>
+
+      
+    </div>
+  </div>
+
+  <!-- MODAL HOJAS MEMBRETADAS (GRAN FORMATO / ACCESIBLE) -->
+  <div class="large-modal-backdrop" id="large-modal-hojas" role="dialog" aria-modal="true" aria-labelledby="modal-hojas-large-title">
+    <div class="large-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em;">
+          Encardomy · Material Escolar Geografía
+        </span>
+        <button type="button" onclick="LargeApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.6rem; cursor:pointer;" aria-label="Cerrar modal (Esc)">✕</button>
+      </div>
+
+      <h3 id="modal-hojas-large-title" style="margin:0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+        Solicitud de Hojas Membretadas ($30)
+      </h3>
+      <p style="margin:0; font-size:var(--text-large-body); color:var(--c-hueso-secondary); line-height:1.5;">
+        Para procesar tu pedido ($30 pesos con entrega), escribe tu <strong>nombre completo</strong> iniciando por apellidos:
+      </p>
+
+      <div>
+        <label for="large-input-nombre-apellidos" style="display:block; font-size:var(--text-large-meta); font-weight:800; color:var(--c-hueso-tertiary); text-transform:uppercase; margin-bottom:8px;">
+          Formato Obligatorio: Apellidos Nombre(s)
+        </label>
+        <input 
+          type="text" 
+          id="large-input-nombre-apellidos" 
+          placeholder="Ej: Pérez García Juan Carlos" 
+          style="width:100%; height:52px; background:rgba(11,12,16,0.75); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:0 18px; color:var(--c-hueso); font-size:1rem; outline:none;"
+          required
+        >
+      </div>
+
+      <div style="display:flex; gap:14px; margin-top:10px;">
+        <button type="button" class="large-action-btn secondary" onclick="LargeApp415.cerrarModalHojas()" style="flex:1; height:48px;">
+          Cancelar (Esc)
+        </button>
+        <button type="button" class="large-action-btn" onclick="LargeApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; height:48px; background:#25D366; color:#0B0C10; font-weight:800;">
+          Continuar a WhatsApp (Enter) ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/large.js"></script>
+  
+
+<script>
+  let currentPdfToolId = 'merge-pdf';
+
+  function filtrarCategoriaPDF(cat, btn) {
+    document.querySelectorAll('.pdf24-cat-pill').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.pdf24-tool-btn');
+    cards.forEach(card => {
+      if (cat === 'todas' || card.dataset.category === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function seleccionarHerramientaPDF(toolKey, title, btn) {
+    currentPdfToolId = toolKey;
+    document.querySelectorAll('.pdf24-tool-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const titleEl = document.getElementById('pdf24-stage-active-title');
+    if (titleEl) titleEl.textContent = title;
+    cargarWidgetPDF(toolKey);
+  }
+
+  function cargarWidgetPDF(toolKey) {
+    const container = document.getElementById('activePdfWidgetContainer');
+    if (!container) return;
+
+    container.innerHTML = `
+      <div style="padding:40px 16px; text-align:center; color:var(--c-hueso-secondary);">
+        <div style="font-size:1.8rem; margin-bottom:8px;">⏳</div>
+        <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Cargando herramienta PDF...</div>
+        <div style="font-size:0.8rem; color:var(--c-hueso-tertiary); margin-top:4px;">Conectando con el motor oficial de PDF24</div>
+      </div>
+    `;
+
+    function renderizar(intentos = 0) {
+      if (typeof window.pdf24 !== 'undefined' && typeof window.pdf24.loadWidget === 'function') {
+        container.innerHTML = '';
+        try {
+          window.pdf24.loadWidget(toolKey, {
+            containerId: 'activePdfWidgetContainer',
+            langCode: 'es',
+            readyCallback: function() {
+              console.log(`[PDF24] Widget ${toolKey} listo.`);
+            },
+            widgetConfig: {
+              theme: 'lightTheme'
+            }
+          });
+        } catch (err) {
+          console.error('[PDF24 Error]', err);
+          container.innerHTML = `
+            <div style="padding:30px; text-align:center; color:var(--c-hueso-secondary);">
+              <div style="font-size:1.5rem; margin-bottom:6px;">⚠️</div>
+              <div>Error al inicializar la herramienta: ${err.message || 'Verifica tu conexión'}</div>
+            </div>
+          `;
+        }
+      } else if (intentos < 25) {
+        setTimeout(() => renderizar(intentos + 1), 250);
+      } else {
+        container.innerHTML = `
+          <div style="padding:30px; text-align:center; color:var(--c-hueso-secondary);">
+            <div style="font-size:1.5rem; margin-bottom:6px;">🌐</div>
+            <div>No se pudo conectar con el motor de PDF24. Revisa tu conexión a internet.</div>
+          </div>
+        `;
+      }
+    }
+
+    renderizar();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    cargarWidgetPDF('merge-pdf');
+  });
+</script>
+
+</body>
+</html>

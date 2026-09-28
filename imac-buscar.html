@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Búsqueda Global — Grupo 415 | Gran Formato</title>
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/large.css">
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="large-ambient-canvas"></canvas>
+
+  <div class="large-viewport-container">
+    <div class="large-app-shell">
+      
+    <aside class="large-sidebar" id="large-sidebar" aria-label="Navegación principal">
+      <div class="large-sidebar-header">
+        <a href="imac-index.html" class="large-brand-group">
+          <div class="large-brand-badge">415</div>
+          <div class="large-brand-info">
+            <span class="large-brand-title">Grupo 415</span>
+            <span class="large-brand-sub">Prepa 4 · UNAM</span>
+          </div>
+        </a>
+
+        <div class="large-section-toggle" role="group" aria-label="Selector de Sección">
+          <button type="button" class="large-section-btn active" id="large-btn-sec-a" onclick="LargeApp415.setSection('A')">Sec. A</button>
+          <button type="button" class="large-section-btn" id="large-btn-sec-b" onclick="LargeApp415.setSection('B')">Sec. B</button>
+        </div>
+      </div>
+
+      <nav class="large-sidebar-nav">
+        <div class="large-nav-group-title">Plataforma Gran Formato</div>
+        <a href="imac-index.html" class="large-nav-item active">
+          <span class="nav-icon">✦</span>
+          <span>Inicio / Dashboard</span>
+        </a>
+        <a href="imac-centro-de-control.html" class="large-nav-item ">
+          <span class="nav-icon">❖</span>
+          <span>Centro de Control</span>
+        </a>
+        <a href="imac-calendario.html" class="large-nav-item ">
+          <span class="nav-icon">📅</span>
+          <span>Horario y Calendario</span>
+          <span class="large-nav-badge gold">30 hrs</span>
+        </a>
+        <a href="imac-archivos.html" class="large-nav-item ">
+          <span class="nav-icon">📄</span>
+          <span>Archivos y PDFs</span>
+        </a>
+        <a href="imac-historial.html" class="large-nav-item ">
+          <span class="nav-icon">🏛</span>
+          <span>Historial General</span>
+        </a>
+        <a href="imac-herramientas-pdf.html" class="large-nav-item ">
+          <span class="nav-icon">🛠</span>
+          <span>Herramientas PDF</span>
+        </a>
+        <a href="imac-recuerdos-415.html" class="large-nav-item ">
+          <span class="nav-icon">◈</span>
+          <span>Recuerdos 415</span>
+        </a>
+
+        <div class="large-nav-group-title">Materias Oficiales (12)</div>
+        <a href="imac-lengua-espanola.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua Española</span>
+          <span class="large-nav-badge">1401</span>
+        </a><a href="imac-matematicas.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Matemáticas IV</span>
+          <span class="large-nav-badge">1400</span>
+        </a><a href="imac-historia.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Historia Universal III</span>
+          <span class="large-nav-badge">1403</span>
+        </a><a href="imac-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Física III</span>
+          <span class="large-nav-badge">1402</span>
+        </a><a href="imac-logica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lógica</span>
+          <span class="large-nav-badge">1404</span>
+        </a><a href="imac-geografia.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Geografía</span>
+          <span class="large-nav-badge">1405</span>
+        </a><a href="imac-dibujo.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Dibujo II</span>
+          <span class="large-nav-badge">1406</span>
+        </a><a href="imac-ingles.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua extranjera Inglés IV</span>
+          <span class="large-nav-badge">1407</span>
+        </a><a href="imac-informatica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Informática</span>
+          <span class="large-nav-badge">1408</span>
+        </a><a href="imac-genero-prevencion.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Género y Prevención de las Violencias</span>
+          <span class="large-nav-badge">8000</span>
+        </a><a href="imac-educacion-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Educación Física IV</span>
+          <span class="large-nav-badge">1409</span>
+        </a><a href="imac-orientacion-educativa.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Orientación Educativa IV</span>
+          <span class="large-nav-badge">1410</span>
+        </a>
+      </nav>
+
+      <div class="large-sidebar-footer">
+        <div class="large-live-widget">
+          <div class="large-live-row">
+            <span class="large-live-pulse">
+              <span class="large-live-dot"></span>
+              <span>En Tiempo Real</span>
+            </span>
+            <span class="large-live-clock" id="large-live-clock">--:--:--</span>
+          </div>
+          <div style="font-size:var(--text-large-meta); color:var(--c-hueso-secondary); margin-top:2px;">
+            Turno Matutino · Ciclo 2026-2027
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+
+      <main class="large-main-stage" id="large-main-stage">
+        
+      <header class="large-top-bar">
+        <div class="large-top-bar-left">
+          <div class="large-page-title">
+            Búsqueda Global
+          </div>
+        </div>
+
+        <div class="large-top-bar-right">
+          <!-- Búsqueda con atajo de teclado accesible -->
+          <a href="imac-buscar.html" class="large-search-trigger" title="Buscar en todo el sitio (⌘K)">
+            <span>🔍</span>
+            <span>Buscar en el 415...</span>
+            <span class="large-kbd-badge">⌘K</span>
+          </a>
+
+          <!-- Conmutador entre Experiencias -->
+          <div class="large-mode-switcher">
+            <a href="imac-buscar.html?force=large" class="large-switcher-pill active" title="Experiencia Gran Formato">
+              <span>🖥️</span>
+              <span>Gran Formato</span>
+            </a>
+            <a href="mac-buscar.html?force=desktop" class="large-switcher-pill" title="Ver versión computadora estándar">
+              <span>💻</span>
+              <span>Mac</span>
+            </a>
+            <a href="ipad-buscar.html?force=tablet" class="large-switcher-pill" title="Ver versión tablet">
+              <span>📱</span>
+              <span>iPad</span>
+            </a>
+            <a href="buscar.html?force=mobile" class="large-switcher-pill" title="Ver versión celular">
+              <span>📲</span>
+              <span>Celular</span>
+            </a>
+          </div>
+        </div>
+      </header>
+    
+
+        <div class="large-stage-body">
+          
+  <div style="background:linear-gradient(135deg, rgba(42,45,52,0.7) 0%, rgba(18,20,26,0.95) 100%); border:1px solid var(--c-large-border); border-radius:var(--large-radius-panel); padding:clamp(28px, 2.4vw, 44px);">
+    <div style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:6px;">
+      Motor de Búsqueda de Alta Velocidad (⌘K)
+    </div>
+    <h1 style="margin:0 0 16px 0; font-size:var(--text-large-title1); font-weight:800; color:var(--c-hueso);">
+      Búsqueda Global Gran Formato
+    </h1>
+    <input 
+      type="text" 
+      id="large-global-search-input" 
+      placeholder="Escribe el nombre de una materia, clave, salón, tarea o archivo... (Pulsa Esc para limpiar)"
+      style="width:100%; height:62px; background:rgba(11,12,16,0.75); border:1px solid var(--c-large-border-gold); border-radius:var(--large-radius-panel); padding:0 28px; color:var(--c-hueso); font-size:1.15rem; outline:none;"
+      autofocus
+    >
+  </div>
+
+  <div id="large-search-results-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:var(--large-gap-md);"></div>
+
+        </div>
+      </main>
+
+      
+    </div>
+  </div>
+
+  <!-- MODAL HOJAS MEMBRETADAS (GRAN FORMATO / ACCESIBLE) -->
+  <div class="large-modal-backdrop" id="large-modal-hojas" role="dialog" aria-modal="true" aria-labelledby="modal-hojas-large-title">
+    <div class="large-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em;">
+          Encardomy · Material Escolar Geografía
+        </span>
+        <button type="button" onclick="LargeApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.6rem; cursor:pointer;" aria-label="Cerrar modal (Esc)">✕</button>
+      </div>
+
+      <h3 id="modal-hojas-large-title" style="margin:0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+        Solicitud de Hojas Membretadas ($30)
+      </h3>
+      <p style="margin:0; font-size:var(--text-large-body); color:var(--c-hueso-secondary); line-height:1.5;">
+        Para procesar tu pedido ($30 pesos con entrega), escribe tu <strong>nombre completo</strong> iniciando por apellidos:
+      </p>
+
+      <div>
+        <label for="large-input-nombre-apellidos" style="display:block; font-size:var(--text-large-meta); font-weight:800; color:var(--c-hueso-tertiary); text-transform:uppercase; margin-bottom:8px;">
+          Formato Obligatorio: Apellidos Nombre(s)
+        </label>
+        <input 
+          type="text" 
+          id="large-input-nombre-apellidos" 
+          placeholder="Ej: Pérez García Juan Carlos" 
+          style="width:100%; height:52px; background:rgba(11,12,16,0.75); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:0 18px; color:var(--c-hueso); font-size:1rem; outline:none;"
+          required
+        >
+      </div>
+
+      <div style="display:flex; gap:14px; margin-top:10px;">
+        <button type="button" class="large-action-btn secondary" onclick="LargeApp415.cerrarModalHojas()" style="flex:1; height:48px;">
+          Cancelar (Esc)
+        </button>
+        <button type="button" class="large-action-btn" onclick="LargeApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; height:48px; background:#25D366; color:#0B0C10; font-weight:800;">
+          Continuar a WhatsApp (Enter) ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/large.js"></script>
+  
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    LargeApp415.init();
+    const inp = document.getElementById('large-global-search-input');
+    const grid = document.getElementById('large-search-results-grid');
+    const data = (typeof DataStore !== 'undefined') ? DataStore.getActiveData() : GRUPO_415_DATA_DEFAULT;
+
+    function render(q) {
+      if (!q) {
+        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--c-hueso-tertiary); font-size:1.1rem;">Comienza a escribir para buscar en el Grupo 415 (Atajo global: ⌘K o /).</div>';
+        return;
+      }
+      let html = '';
+      data.materias.forEach(m => {
+        if (m.nombre.toLowerCase().includes(q) || m.clave.includes(q) || m.descripcionCorta.toLowerCase().includes(q)) {
+          html += `
+            <a href="imac-${m.id}.html" class="large-card" style="text-decoration:none;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span style="font-family:var(--font-family-mono); font-size:var(--text-large-meta); color:var(--c-oro); font-weight:800;">Clave ${m.clave}</span>
+                <span style="font-size:var(--text-large-meta); color:var(--c-cempasuchil); font-weight:800;">Materia</span>
+              </div>
+              <div style="font-size:var(--text-large-headline); font-weight:800; color:var(--c-hueso);">${m.nombre}</div>
+              <div style="font-size:var(--text-large-meta); color:var(--c-hueso-tertiary);">Salones: ${m.salones.join(' · ')}</div>
+            </a>
+          `;
+        }
+      });
+      data.archivos.forEach(ar => {
+        if (ar.nombre.toLowerCase().includes(q) || ar.codigo.toLowerCase().includes(q)) {
+          html += `
+            <div class="large-card accent-gold">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span style="font-family:var(--font-family-mono); font-size:var(--text-large-meta); color:var(--c-oro); font-weight:800;">${ar.codigo}</span>
+                <span style="font-size:var(--text-large-meta); color:var(--c-oro); font-weight:800;">PDF</span>
+              </div>
+              <div style="font-size:var(--text-large-headline); font-weight:700; color:var(--c-hueso);">${ar.nombre}</div>
+              <a href="${ar.url}" target="_blank" class="large-action-btn" style="height:42px; font-size:0.85rem; margin-top:8px;">↗ Abrir en Drive</a>
+            </div>
+          `;
+        }
+      });
+      grid.innerHTML = html || '<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--c-hueso-tertiary); font-size:1.1rem;">No se encontraron resultados para "' + q + '".</div>';
+    }
+
+    if (inp) {
+      inp.addEventListener('input', (e) => render(e.target.value.trim().toLowerCase()));
+      render('');
+    }
+  });
+</script>
+
+</body>
+</html>

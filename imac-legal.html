@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Marco Legal y Privacidad (iMac / Gran Formato) — Encardomy by Shaminket | Prepa 4</title>
+  <meta name="description" content="Centro legal, avisos de privacidad y términos de uso de Encardomy by Shaminket para pantallas grandes e iMac.">
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/large.css">
+  <link rel="stylesheet" href="css/legal.css">
+  <script src="js/device-router.js"></script>
+</head>
+<body class="large-body">
+  <canvas id="large-ambient-canvas" class="large-ambient-canvas"></canvas>
+
+  <div class="large-app-frame">
+    <!-- BARRA LATERAL GRAN FORMATO (SIDEBAR) -->
+    <aside class="large-sidebar" aria-label="Navegación principal">
+      <div class="large-traffic-lights" aria-hidden="true">
+        <span class="light close"></span>
+        <span class="light minimize"></span>
+        <span class="light zoom"></span>
+      </div>
+
+      <div class="large-brand-block">
+        <span class="large-brand-num">415</span>
+        <div>
+          <span class="large-brand-title">ENCARDOMY</span>
+          <span class="large-brand-sub">iMac & Display · UNAM</span>
+        </div>
+      </div>
+
+      <!-- Selector de Sección A / B -->
+      <div class="large-section-switcher" role="group" aria-label="Selector de sección">
+        <button type="button" class="large-sec-btn active" id="large-btn-sec-a" onclick="LargeApp415.setSection('A')">Sección A</button>
+        <button type="button" class="large-sec-btn" id="large-btn-sec-b" onclick="LargeApp415.setSection('B')">Sección B</button>
+      </div>
+
+      <!-- Navegación Lateral Gran Formato -->
+      <nav class="large-nav-list">
+        <a href="imac-index.html" class="large-nav-item">
+          <span class="large-nav-icon">✦</span>
+          <span>Inicio / Horario</span>
+        </a>
+        <a href="imac-centro-de-control.html" class="large-nav-item">
+          <span class="large-nav-icon">❖</span>
+          <span>Centro de Control</span>
+        </a>
+        <a href="imac-archivos.html" class="large-nav-item">
+          <span class="large-nav-icon">📄</span>
+          <span>Archivos y Guías</span>
+        </a>
+        <a href="imac-calendario.html" class="large-nav-item">
+          <span class="large-nav-icon">📅</span>
+          <span>Calendario Escolar</span>
+        </a>
+        <a href="imac-herramientas-pdf.html" class="large-nav-item">
+          <span class="large-nav-icon">🛠</span>
+          <span>Herramientas PDF</span>
+        </a>
+        <a href="imac-recuerdos-415.html" class="large-nav-item">
+          <span class="large-nav-icon">◈</span>
+          <span>Recuerdos 415</span>
+        </a>
+        <a href="imac-notificaciones.html" class="large-nav-item">
+          <span class="large-nav-icon">🔔</span>
+          <span>Avisos del Grupo</span>
+        </a>
+        <a href="imac-ayuda.html" class="large-nav-item">
+          <span class="large-nav-icon">❓</span>
+          <span>Ayuda y Preguntas</span>
+        </a>
+        <a href="imac-legal.html" class="large-nav-item active" aria-current="page">
+          <span class="large-nav-icon">⚖️</span>
+          <span>Marco Legal</span>
+        </a>
+      </nav>
+
+      <div class="large-sidebar-footer">
+        <span class="large-clock-display" id="large-live-clock">--:--</span>
+        <div class="large-switcher-links">
+          <a href="imac-legal.html?force=large" class="large-switcher-pill active" title="Experiencia Gran Formato">
+            iMac
+          </a>
+          <a href="mac-legal.html?force=desktop" class="large-switcher-pill" title="Ver versión computadora estándar">
+            Mac
+          </a>
+          <a href="ipad-legal.html?force=tablet" class="large-switcher-pill" title="Ver versión tablet">
+            iPad
+          </a>
+          <a href="legal.html?force=mobile" class="large-switcher-pill" title="Ver versión celular">
+            Móvil
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL GRAN FORMATO -->
+    <main class="large-stage">
+      <header class="large-stage-header">
+        <div>
+          <span class="large-eyebrow">GRUPO 415 · PREPA 4 UNAM</span>
+          <h1 class="large-stage-title">Centro Legal y Normativo</h1>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <a href="legal/index.html" class="legal-back-btn" style="background:var(--c-oro); color:#120621; border:none; font-weight:800; font-size:0.95rem; padding:10px 20px;">
+            Directorio Legal Completo ›
+          </a>
+          <span class="legal-badge">Gran Formato Retina 5K</span>
+        </div>
+      </header>
+
+      <div class="large-stage-body">
+        <!-- Ficha de Contacto Legal en Pantalla Grande -->
+        <section class="legal-contact-card" style="margin-bottom:32px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <h2 style="font-size:1.35rem; color:var(--c-hueso); margin:0; font-weight:800;">Datos Oficiales del Responsable</h2>
+            <span style="font-size:0.85rem; color:var(--c-hueso-tertiary);">Última actualización: 27 de septiembre de 2026</span>
+          </div>
+          <div class="legal-contact-grid">
+            <div class="legal-contact-box">
+              <span class="legal-contact-label">Responsable Titular</span>
+              <div class="legal-contact-value">Diego Periañez Hernandez</div>
+            </div>
+            <div class="legal-contact-box">
+              <span class="legal-contact-label">Plataforma Digital</span>
+              <div class="legal-contact-value">Encardomy by Shaminket (enp4.shaminket.com)</div>
+            </div>
+            <div class="legal-contact-box">
+              <span class="legal-contact-label">Correo Oficial de Privacidad</span>
+              <div class="legal-contact-value">
+                <a href="mailto:ENP4.SHAMINKET@gmail.com">ENP4.SHAMINKET@gmail.com</a>
+              </div>
+            </div>
+            <div class="legal-contact-box">
+              <span class="legal-contact-label">Línea Oficial / WhatsApp</span>
+              <div class="legal-contact-value">
+                <a href="https://wa.me/525571985641" target="_blank" rel="noopener noreferrer">+52 55 7198 5641</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Documentación en Cuadrícula Gran Formato -->
+        <h2 style="font-size:1.45rem; font-weight:800; color:var(--c-hueso); margin:0 0 20px 0;">
+          Documentos y Políticas del Sitio
+        </h2>
+
+        <div class="legal-hub-grid" style="margin-bottom:36px;">
+          <a href="legal/aviso-de-privacidad.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🛡️</span> Aviso de Privacidad Integral</div>
+            <p class="legal-hub-card-desc">Tratamiento riguroso de datos personales, finalidades primarias y secundarias, transferencias técnicas y ejercicio de derechos ARCO.</p>
+            <span class="legal-hub-card-cta">Consultar documento completo ›</span>
+          </a>
+
+          <a href="legal/aviso-privacidad-simplificado.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>📋</span> Aviso Simplificado</div>
+            <p class="legal-hub-card-desc">Explicación ágil para estudiantes sobre qué datos se solicitan y para qué fines escolares.</p>
+            <span class="legal-hub-card-cta">Ver versión simplificada ›</span>
+          </a>
+
+          <a href="legal/terminos-y-condiciones.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>📜</span> Términos y Condiciones de Uso</div>
+            <p class="legal-hub-card-desc">Condiciones de navegación, uso permitido, límites de responsabilidad y carácter de apoyo estudiantil no oficial.</p>
+            <span class="legal-hub-card-cta">Leer términos y condiciones ›</span>
+          </a>
+
+          <a href="legal/cookies.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🍪</span> Cookies y Almacenamiento Local</div>
+            <p class="legal-hub-card-desc">Información técnica sobre localStorage y sessionStorage (Sección A/B, banner) sin rastreo publicitario.</p>
+            <span class="legal-hub-card-cta">Ver política técnica ›</span>
+          </a>
+
+          <a href="legal/derechos-arco.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🔐</span> Ejercicio de Derechos ARCO</div>
+            <p class="legal-hub-card-desc">Procedimiento formal para Acceso, Rectificación, Cancelación y Oposición de datos personales.</p>
+            <span class="legal-hub-card-cta">Iniciar trámite ARCO ›</span>
+          </a>
+
+          <a href="legal/propiedad-intelectual.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>⚖️</span> Propiedad Intelectual</div>
+            <p class="legal-hub-card-desc">Protección del diseño y código de Encardomy, y respeto total a marcas de terceros (Google, WhatsApp, UNAM).</p>
+            <span class="legal-hub-card-cta">Revisar derechos ›</span>
+          </a>
+
+          <a href="legal/uso-responsable.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🤝</span> Uso Responsable y Conducta</div>
+            <p class="legal-hub-card-desc">Normas de convivencia escolar, prohibición de spam y deber de no divulgar datos de compañeros.</p>
+            <span class="legal-hub-card-cta">Ver código de conducta ›</span>
+          </a>
+
+          <a href="legal/sugerencias-y-reportes.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>💡</span> Sugerencias y Reportes de Sección</div>
+            <p class="legal-hub-card-desc">Lineamientos para el envío de tareas y avisos de Sección B o mejoras generales vía WhatsApp.</p>
+            <span class="legal-hub-card-cta">Ver lineamientos de aportes ›</span>
+          </a>
+
+          <a href="legal/accesibilidad.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>♿</span> Política de Accesibilidad</div>
+            <p class="legal-hub-card-desc">Compromiso con el diseño inclusivo, navegación por teclado, reducción de movimiento y contrastes.</p>
+            <span class="legal-hub-card-cta">Consultar accesibilidad ›</span>
+          </a>
+
+          <a href="legal/disponibilidad.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🔄</span> Disponibilidad del Servicio</div>
+            <p class="legal-hub-card-desc">Naturaleza dinámica de los horarios escolares, vigencia de avisos y mantenimiento técnico.</p>
+            <span class="legal-hub-card-cta">Ver condiciones operativas ›</span>
+          </a>
+
+          <a href="legal/menores.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>🎓</span> Usuarios Menores de Edad</div>
+            <p class="legal-hub-card-desc">Protección y recomendaciones de ciudadanía digital para alumnos de nivel medio superior.</p>
+            <span class="legal-hub-card-cta">Leer aviso para estudiantes ›</span>
+          </a>
+
+          <a href="legal/contacto-legal.html" class="legal-hub-card">
+            <div class="legal-hub-card-title"><span>📮</span> Directorio de Contacto Legal</div>
+            <p class="legal-hub-card-desc">Buzón estructurado por categorías de atención para dudas jurídicas, reportes o correcciones.</p>
+            <span class="legal-hub-card-cta">Ver canales de contacto ›</span>
+          </a>
+        </div>
+
+        <div class="legal-callout legal-callout-gold" style="margin-bottom:36px;">
+          <strong>Aviso de Independencia Institucional:</strong> <em>Encardomy by Shaminket</em> es una plataforma de apoyo académico coordinada por <strong>Diego Periañez Hernandez</strong>. No sustituye los canales oficiales de la ENP 4 ni de la UNAM. Toda información escolar oficial debe verificarse ante las instancias institucionales correspondientes.
+        </div>
+
+        <!-- Footer Legal Global -->
+        <footer class="encardomy-global-footer">
+          <span class="encardomy-global-footer-brand">Encardomy by Shaminket · Prepa 4</span>
+          <div class="encardomy-global-footer-links">
+            <a href="legal/aviso-de-privacidad.html">Aviso de privacidad</a>
+            <span>·</span>
+            <a href="legal/terminos-y-condiciones.html">Términos y condiciones</a>
+            <span>·</span>
+            <a href="legal/cookies.html">Cookies</a>
+            <span>·</span>
+            <a href="legal/propiedad-intelectual.html">Propiedad intelectual</a>
+            <span>·</span>
+            <a href="legal/uso-responsable.html">Uso responsable</a>
+            <span>·</span>
+            <a href="legal/accesibilidad.html">Accesibilidad</a>
+            <span>·</span>
+            <a href="legal/contacto-legal.html">Contacto legal</a>
+          </div>
+          <div class="encardomy-global-footer-copy">
+            Responsable: Diego Periañez Hernandez · Contacto: ENP4.SHAMINKET@gmail.com · enp4.shaminket.com<br>
+            Última actualización: 27 de septiembre de 2026.
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/large.js"></script>
+</body>
+</html>

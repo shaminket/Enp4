@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia Universal III — Grupo 415 | Gran Formato</title>
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/large.css">
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="large-ambient-canvas"></canvas>
+
+  <div class="large-viewport-container">
+    <div class="large-app-shell">
+      
+    <aside class="large-sidebar" id="large-sidebar" aria-label="Navegación principal">
+      <div class="large-sidebar-header">
+        <a href="imac-index.html" class="large-brand-group">
+          <div class="large-brand-badge">415</div>
+          <div class="large-brand-info">
+            <span class="large-brand-title">Grupo 415</span>
+            <span class="large-brand-sub">Prepa 4 · UNAM</span>
+          </div>
+        </a>
+
+        <div class="large-section-toggle" role="group" aria-label="Selector de Sección">
+          <button type="button" class="large-section-btn active" id="large-btn-sec-a" onclick="LargeApp415.setSection('A')">Sec. A</button>
+          <button type="button" class="large-section-btn" id="large-btn-sec-b" onclick="LargeApp415.setSection('B')">Sec. B</button>
+        </div>
+      </div>
+
+      <nav class="large-sidebar-nav">
+        <div class="large-nav-group-title">Plataforma Gran Formato</div>
+        <a href="imac-index.html" class="large-nav-item ">
+          <span class="nav-icon">✦</span>
+          <span>Inicio / Dashboard</span>
+        </a>
+        <a href="imac-centro-de-control.html" class="large-nav-item ">
+          <span class="nav-icon">❖</span>
+          <span>Centro de Control</span>
+        </a>
+        <a href="imac-calendario.html" class="large-nav-item ">
+          <span class="nav-icon">📅</span>
+          <span>Horario y Calendario</span>
+          <span class="large-nav-badge gold">30 hrs</span>
+        </a>
+        <a href="imac-archivos.html" class="large-nav-item ">
+          <span class="nav-icon">📄</span>
+          <span>Archivos y PDFs</span>
+        </a>
+        <a href="imac-historial.html" class="large-nav-item ">
+          <span class="nav-icon">🏛</span>
+          <span>Historial General</span>
+        </a>
+        <a href="imac-herramientas-pdf.html" class="large-nav-item ">
+          <span class="nav-icon">🛠</span>
+          <span>Herramientas PDF</span>
+        </a>
+        <a href="imac-recuerdos-415.html" class="large-nav-item ">
+          <span class="nav-icon">◈</span>
+          <span>Recuerdos 415</span>
+        </a>
+
+        <div class="large-nav-group-title">Materias Oficiales (12)</div>
+        <a href="imac-lengua-espanola.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua Española</span>
+          <span class="large-nav-badge">1401</span>
+        </a><a href="imac-matematicas.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Matemáticas IV</span>
+          <span class="large-nav-badge">1400</span>
+        </a><a href="imac-historia.html" class="large-nav-item active">
+          <span class="nav-icon">•</span>
+          <span>Historia Universal III</span>
+          <span class="large-nav-badge">1403</span>
+        </a><a href="imac-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Física III</span>
+          <span class="large-nav-badge">1402</span>
+        </a><a href="imac-logica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lógica</span>
+          <span class="large-nav-badge">1404</span>
+        </a><a href="imac-geografia.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Geografía</span>
+          <span class="large-nav-badge">1405</span>
+        </a><a href="imac-dibujo.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Dibujo II</span>
+          <span class="large-nav-badge">1406</span>
+        </a><a href="imac-ingles.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Lengua extranjera Inglés IV</span>
+          <span class="large-nav-badge">1407</span>
+        </a><a href="imac-informatica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Informática</span>
+          <span class="large-nav-badge">1408</span>
+        </a><a href="imac-genero-prevencion.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Género y Prevención de las Violencias</span>
+          <span class="large-nav-badge">8000</span>
+        </a><a href="imac-educacion-fisica.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Educación Física IV</span>
+          <span class="large-nav-badge">1409</span>
+        </a><a href="imac-orientacion-educativa.html" class="large-nav-item">
+          <span class="nav-icon">•</span>
+          <span>Orientación Educativa IV</span>
+          <span class="large-nav-badge">1410</span>
+        </a>
+      </nav>
+
+      <div class="large-sidebar-footer">
+        <div class="large-live-widget">
+          <div class="large-live-row">
+            <span class="large-live-pulse">
+              <span class="large-live-dot"></span>
+              <span>En Tiempo Real</span>
+            </span>
+            <span class="large-live-clock" id="large-live-clock">--:--:--</span>
+          </div>
+          <div style="font-size:var(--text-large-meta); color:var(--c-hueso-secondary); margin-top:2px;">
+            Turno Matutino · Ciclo 2026-2027
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+
+      <main class="large-main-stage" id="large-main-stage">
+        
+      <header class="large-top-bar">
+        <div class="large-top-bar-left">
+          <div class="large-page-title">
+            Historia Universal III
+          </div>
+        </div>
+
+        <div class="large-top-bar-right">
+          <!-- Búsqueda con atajo de teclado accesible -->
+          <a href="imac-buscar.html" class="large-search-trigger" title="Buscar en todo el sitio (⌘K)">
+            <span>🔍</span>
+            <span>Buscar en el 415...</span>
+            <span class="large-kbd-badge">⌘K</span>
+          </a>
+
+          <!-- Conmutador entre Experiencias -->
+          <div class="large-mode-switcher">
+            <a href="imac-historia.html?force=large" class="large-switcher-pill active" title="Experiencia Gran Formato">
+              <span>🖥️</span>
+              <span>Gran Formato</span>
+            </a>
+            <a href="mac-historia.html?force=desktop" class="large-switcher-pill" title="Ver versión computadora estándar">
+              <span>💻</span>
+              <span>Mac</span>
+            </a>
+            <a href="ipad-historia.html?force=tablet" class="large-switcher-pill" title="Ver versión tablet">
+              <span>📱</span>
+              <span>iPad</span>
+            </a>
+            <a href="historia.html?force=mobile" class="large-switcher-pill" title="Ver versión celular">
+              <span>📲</span>
+              <span>Celular</span>
+            </a>
+          </div>
+        </div>
+      </header>
+    
+
+        <div class="large-stage-body">
+          
+      <div style="background:linear-gradient(135deg, rgba(42,45,52,0.7) 0%, rgba(18,20,26,0.95) 100%); border:1px solid var(--c-large-border); border-radius:var(--large-radius-panel); padding:clamp(28px, 2.4vw, 44px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; flex-wrap:wrap; gap:16px;">
+          <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; letter-spacing:0.12em;">
+            Clave Oficial 1403 · 3 horas a la semana
+          </span>
+          <a href="imac-historial-historia.html" class="large-action-btn secondary" style="font-size:0.85rem; height:42px;">
+            🏛 Ver Historial de Historia Universal III ›
+          </a>
+        </div>
+        <h1 style="margin:0 0 12px 0; font-size:var(--text-large-hero); font-weight:800; color:var(--c-hueso); letter-spacing:-0.03em;">
+          Historia Universal III
+        </h1>
+        <p class="large-prose-text" style="margin:0;">
+          Procesos históricos universales, transformaciones socioeconómicas y políticas contemporáneas.
+        </p>
+        <div style="margin-top:20px; font-size:var(--text-large-body); color:var(--c-hueso-tertiary); display:flex; gap:24px; flex-wrap:wrap;">
+          <span>🗓 <strong>Horario Oficial:</strong> Jue 10:20-12:00 (B-109) · Vie 07:50-08:40 (B-117)</span>
+          <span>📍 <strong>Salones:</strong> B-109, B-117</span>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:var(--large-gap-lg); align-items:start;">
+        <div style="display:flex; flex-direction:column; gap:var(--large-gap-md);">
+          
+        <div class="large-panel" style="border-color:var(--c-large-border-gold);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-oro); background:var(--c-oro-soft); padding:4px 14px; border-radius:12px; text-transform:uppercase;">
+              🎁 Regalo 415 · Herramienta IA
+            </span>
+            <span style="font-size:var(--text-large-meta); color:var(--c-oro); font-weight:800;">Herramienta Reutilizable</span>
+          </div>
+          <h2 style="margin:0 0 12px 0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+            Prompt Maestro para Resolver Ejercicios con IA
+          </h2>
+          <p class="large-prose-text" style="margin:0 0 18px 0;">
+            Copia este prompt y pégalo en cualquier inteligencia artificial adjuntando la fotografía o archivo de tus ejercicios para resolverlos paso a paso:
+          </p>
+          <div style="background:rgba(11,12,16,0.85); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:20px; margin-bottom:18px;">
+            <pre style="margin:0; font-family:var(--font-family-mono); font-size:0.88rem; color:var(--c-hueso-secondary); white-space:pre-wrap; line-height:1.6;">Actúa como un profesor y tutor académico experto. A continuación te adjunto una imagen/documento con ejercicios académicos. Por favor:
+
+1. Analiza cuidadosamente los ejercicios adjuntos e identifica con precisión qué se está solicitando en cada uno.
+2. Si alguna parte de la imagen o texto adjunto no es claramente legible o tiene ambigüedad, indícalo expresamente antes de asumir datos.
+3. Respeta exactamente las instrucciones, restricciones y formato solicitados en el enunciado original. No inventes información, datos ni variables que no aparezcan en el documento.
+4. Resuelve cada ejercicio mostrando el procedimiento detallado paso a paso, explicando de forma didáctica y comprensible el porqué de cada paso.
+5. Si se trata de ejercicios matemáticos o de ciencias, muestra con claridad las fórmulas empleadas, la sustitución de valores, las operaciones aritméticas/algebraicas y las unidades correspondientes.
+6. Si existen varios ejercicios, numera cada respuesta de forma que coincida exactamente con la numeración del documento original.
+7. Revisa y verifica internamente los cálculos y resultados antes de entregar la respuesta para asegurar su consistencia.
+8. Presenta la respuesta final de cada ejercicio de manera destacada y clara al final de cada procedimiento.</pre>
+          </div>
+          <button type="button" class="large-action-btn gold" onclick="navigator.clipboard.writeText(document.querySelector('pre').innerText); alert('✓ Prompt copiado al portapapeles');" style="height:48px; font-size:0.95rem;">
+            📋 Copiar Prompt al Portapapeles ›
+          </button>
+        </div>
+        
+
+          <!-- Formato de renombrado reglamentario -->
+          <div class="large-panel">
+            <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; display:block; margin-bottom:8px;">
+              ⚠️ Nomenclatura Reglamentaria para Entregas
+            </span>
+            <p class="large-prose-text" style="margin:0 0 16px 0;">
+              Todo documento digital de esta asignatura debe renombrarse estrictamente antes de su envío:
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(11,12,16,0.75); padding:16px 22px; border-radius:var(--large-radius-sm); border:1px solid var(--c-large-border); flex-wrap:wrap; gap:12px;">
+              <code style="font-family:var(--font-family-mono); color:var(--c-oro); font-weight:700; font-size:1.05rem;">415_ApellidosDelAlumno_tarea01.pdf</code>
+              <button type="button" class="large-action-btn" onclick="navigator.clipboard.writeText('415_ApellidosDelAlumno_tarea01.pdf'); alert('✓ Nomenclatura copiada al portapapeles');" style="font-size:0.85rem; height:40px;">
+                Copiar formato
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:var(--large-gap-md);">
+          <div class="large-panel">
+            <h3 style="margin:0 0 12px 0; font-size:var(--text-large-headline); font-weight:700; color:var(--c-hueso);">Sesiones de Clase</h3>
+            <p class="large-prose-text" style="margin:0 0 16px 0;">Jue 10:20-12:00 (B-109) · Vie 07:50-08:40 (B-117)</p>
+            <a href="imac-calendario.html" class="large-action-btn" style="width:100%; height:46px; font-size:0.9rem;">
+              Ver en Horario Semanal ›
+            </a>
+          </div>
+
+          <div class="large-panel">
+            <h3 style="margin:0 0 12px 0; font-size:var(--text-large-headline); font-weight:700; color:var(--c-hueso);">Recursos y Lecturas</h3>
+            <p class="large-prose-text" style="margin:0 0 16px 0;">Archivos oficiales indexados con código institucional y vínculo directo a Google Drive.</p>
+            <a href="imac-archivos.html" class="large-action-btn secondary" style="width:100%; height:46px; font-size:0.9rem;">
+              Abrir Biblioteca de Archivos ›
+            </a>
+          </div>
+        </div>
+      </div>
+    
+        </div>
+      </main>
+
+      
+    <aside class="large-inspector" id="large-inspector" aria-label="Panel lateral contextual">
+      
+      <div class="large-inspector-section">
+        <div class="large-inspector-title">
+          <span>🏛</span> Información Académica
+        </div>
+        <div class="large-inspector-card">
+          <div style="font-size:var(--text-large-meta); color:var(--c-oro); font-weight:800; text-transform:uppercase;">Asignatura UNAM</div>
+          <h4 style="margin:2px 0 6px; font-size:var(--text-large-headline); color:var(--c-hueso);">Historia Universal III</h4>
+          <div style="font-size:var(--text-large-meta); color:var(--c-hueso-secondary); line-height:1.5;">
+            <div><strong>Clave:</strong> 1403</div>
+            <div><strong>Carga:</strong> 3 horas/semana</div>
+            <div><strong>Docente:</strong> Plantilla Docente Historia</div>
+            <div><strong>Salones:</strong> B-109, B-117</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="large-inspector-section">
+        <div class="large-inspector-title">
+          <span>📁</span> Acceso Directo
+        </div>
+        <div class="large-inspector-card">
+          <a href="imac-historial-historia.html" class="large-action-btn secondary" style="width:100%; height:44px; font-size:0.9rem;">
+            Ver Historial Archivado ›
+          </a>
+        </div>
+      </div>
+    
+    </aside>
+    
+    </div>
+  </div>
+
+  <!-- MODAL HOJAS MEMBRETADAS (GRAN FORMATO / ACCESIBLE) -->
+  <div class="large-modal-backdrop" id="large-modal-hojas" role="dialog" aria-modal="true" aria-labelledby="modal-hojas-large-title">
+    <div class="large-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:var(--text-large-meta); font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em;">
+          Encardomy · Material Escolar Geografía
+        </span>
+        <button type="button" onclick="LargeApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.6rem; cursor:pointer;" aria-label="Cerrar modal (Esc)">✕</button>
+      </div>
+
+      <h3 id="modal-hojas-large-title" style="margin:0; font-size:var(--text-large-title2); font-weight:800; color:var(--c-hueso);">
+        Solicitud de Hojas Membretadas ($30)
+      </h3>
+      <p style="margin:0; font-size:var(--text-large-body); color:var(--c-hueso-secondary); line-height:1.5;">
+        Para procesar tu pedido ($30 pesos con entrega), escribe tu <strong>nombre completo</strong> iniciando por apellidos:
+      </p>
+
+      <div>
+        <label for="large-input-nombre-apellidos" style="display:block; font-size:var(--text-large-meta); font-weight:800; color:var(--c-hueso-tertiary); text-transform:uppercase; margin-bottom:8px;">
+          Formato Obligatorio: Apellidos Nombre(s)
+        </label>
+        <input 
+          type="text" 
+          id="large-input-nombre-apellidos" 
+          placeholder="Ej: Pérez García Juan Carlos" 
+          style="width:100%; height:52px; background:rgba(11,12,16,0.75); border:1px solid var(--c-large-border); border-radius:var(--large-radius-sm); padding:0 18px; color:var(--c-hueso); font-size:1rem; outline:none;"
+          required
+        >
+      </div>
+
+      <div style="display:flex; gap:14px; margin-top:10px;">
+        <button type="button" class="large-action-btn secondary" onclick="LargeApp415.cerrarModalHojas()" style="flex:1; height:48px;">
+          Cancelar (Esc)
+        </button>
+        <button type="button" class="large-action-btn" onclick="LargeApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; height:48px; background:#25D366; color:#0B0C10; font-weight:800;">
+          Continuar a WhatsApp (Enter) ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/large.js"></script>
+  
+</body>
+</html>
