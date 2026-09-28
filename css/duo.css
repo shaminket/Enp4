@@ -1,0 +1,618 @@
+/**
+ * SISTEMA DE DISEÑO Y EXPERIENCIA PLEGABLE (iPHONE DUO — 5.4" CERRADO / 7.6" ABIERTO)
+ * Grupo 415 — Escuela Nacional Preparatoria N° 4 "Vidal Castañeda y Nájera" UNAM
+ * 
+ * Filosofía:
+ * - Dos contextos de uso fundamentales:
+ *   1. MODO CERRADO (Pantalla Exterior 5.4"): Optimizado para uso con una sola mano,
+ *      lectura vertical fluida, una columna, acciones rápidas, targets táctiles amplios (≥44px).
+ *   2. MODO ABIERTO (Pantalla Interior 7.6"): Composición amplia de dos zonas funcionales
+ *      (Izquierda: Horario en vivo, cuenta regresiva, estado / Derecha: Contenido principal, tareas, avisos).
+ * - Adaptación dinámica continua: transiciona entre cerrado y abierto dentro del mismo archivo
+ *   sin forzar recargas ni pérdida de estado.
+ * - Soporte para CSS Viewport Segments y env(viewport-segment-*) con fallback transparente.
+ * - Respeto riguroso de Safe Areas (env(safe-area-inset-*)) y scroll nativo sin bloquear gestos.
+ * - Paleta estricta: Obsidiana #0B0C10, Cempasúchil #FF7A00, Hueso #F7F4EE, Oro #E5A93C, Copal #2A2D34.
+ */
+
+:root {
+  --duo-safe-top: env(safe-area-inset-top, 0px);
+  --duo-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --duo-safe-left: env(safe-area-inset-left, 0px);
+  --duo-safe-right: env(safe-area-inset-right, 0px);
+
+  --duo-radius-card: 16px;
+  --duo-radius-panel: 22px;
+  --duo-radius-sm: 10px;
+
+  /* Superficies de la experiencia Duo */
+  --c-duo-bg: #1B0B2E;
+  --c-duo-header: rgba(14, 16, 22, 0.88);
+  --c-duo-panel: rgba(26, 29, 36, 0.75);
+  --c-duo-card: rgba(38, 41, 50, 0.55);
+  --c-duo-card-hover: rgba(50, 54, 66, 0.8);
+  --c-duo-border: rgba(247, 244, 238, 0.10);
+  --c-duo-border-gold: rgba(229, 169, 60, 0.35);
+  --c-duo-border-cempasuchil: rgba(255, 122, 0, 0.4);
+
+  --shadow-duo-panel: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-duo-card: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --blur-duo-glass: blur(28px) saturate(200%);
+}
+
+/* Reset táctil */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--c-duo-bg);
+  color: var(--c-hueso);
+  font-family: var(--font-family-display, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Canvas ambiental de fondo suave */
+#duo-ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; max-width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Contenedor principal de la aplicación Duo */
+.duo-app-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: max(12px, var(--duo-safe-top));
+  padding-bottom: calc(72px + max(16px, var(--duo-safe-bottom)));
+  padding-left: max(16px, var(--duo-safe-left));
+  padding-right: max(16px, var(--duo-safe-right));
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------------
+ * CABECERA SUPERIOR ADAPTATIVA
+ * ---------------------------------------------------- */
+.duo-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--c-duo-header);
+  backdrop-filter: var(--blur-duo-glass);
+  -webkit-backdrop-filter: var(--blur-duo-glass);
+  border-bottom: 1px solid var(--c-duo-border);
+  padding: 10px 16px;
+  margin-left: calc(-1 * max(16px, var(--duo-safe-left)));
+  margin-right: calc(-1 * max(16px, var(--duo-safe-right)));
+  margin-top: calc(-1 * max(12px, var(--duo-safe-top)));
+  padding-top: max(12px, var(--duo-safe-top));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.duo-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--c-hueso);
+}
+
+.duo-brand-badge {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--c-cempasuchil) 0%, #CC5200 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #0B0C10;
+  letter-spacing: -0.04em;
+  box-shadow: 0 2px 10px var(--c-cempasuchil-glow);
+  flex-shrink: 0;
+}
+
+.duo-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.duo-brand-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.duo-brand-sub {
+  font-size: 0.7rem;
+  color: var(--c-oro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Indicador de estado del pliegue (Cerrado/Abierto) */
+.duo-posture-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(42, 45, 52, 0.6);
+  border: 1px solid var(--c-duo-border);
+  color: var(--c-hueso-secondary);
+}
+
+.duo-posture-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34C759;
+  box-shadow: 0 0 6px #34C759;
+}
+
+.duo-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Conmutador Sección A / B */
+.duo-section-toggle {
+  display: flex;
+  background: rgba(42, 45, 52, 0.6);
+  border: 1px solid var(--c-duo-border);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.duo-section-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-hueso-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 32px;
+  transition: all 0.18s ease;
+}
+
+.duo-section-btn.active {
+  background: var(--c-cempasuchil);
+  color: #0B0C10;
+  font-weight: 800;
+  box-shadow: 0 2px 8px var(--c-cempasuchil-glow);
+}
+
+/* ----------------------------------------------------
+ * HERO DE HORARIO DINÁMICO EN TIEMPO REAL
+ * ---------------------------------------------------- */
+.duo-live-hero {
+  background: linear-gradient(135deg, rgba(26, 29, 36, 0.9) 0%, rgba(18, 20, 26, 0.96) 100%);
+  border: 1px solid var(--c-duo-border-cempasuchil);
+  border-radius: var(--duo-radius-panel);
+  padding: 18px 20px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-duo-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.duo-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.duo-hero-state-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #34C759;
+  background: rgba(52, 199, 89, 0.14);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.duo-hero-clock {
+  font-family: var(--font-family-mono);
+  font-size: 0.88rem;
+  color: var(--c-oro);
+  font-weight: 700;
+}
+
+.duo-subject-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--c-hueso);
+  letter-spacing: -0.02em;
+}
+
+.duo-subject-meta {
+  font-size: 0.88rem;
+  color: var(--c-hueso-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Barra de progreso de la clase actual */
+.duo-timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(11, 12, 16, 0.5);
+  border: 1px solid var(--c-duo-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.duo-timeline-times {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-mono);
+  font-size: 0.78rem;
+  color: var(--c-oro);
+  font-weight: 700;
+}
+
+.duo-timeline-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(42, 45, 52, 0.8);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.duo-timeline-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-oro) 0%, var(--c-cempasuchil) 100%);
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.duo-timeline-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--c-hueso-tertiary);
+}
+
+.duo-countdown-text {
+  color: var(--c-cempasuchil);
+  font-weight: 700;
+}
+
+/* Siguiente materia / Próximo paso */
+.duo-next-class-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(42, 45, 52, 0.45);
+  border: 1px solid var(--c-duo-border);
+  border-radius: var(--duo-radius-sm);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+}
+
+/* ----------------------------------------------------
+ * CONTENEDOR DUAL (CERRADO vs ABIERTO)
+ * ---------------------------------------------------- */
+.duo-dual-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Paneles y tarjetas */
+.duo-panel {
+  background: var(--c-duo-panel);
+  border: 1px solid var(--c-duo-border);
+  border-radius: var(--duo-radius-panel);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-duo-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duo-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--c-duo-border);
+  padding-bottom: 10px;
+}
+
+.duo-panel-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-hueso);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.duo-card {
+  background: var(--c-duo-card);
+  border: 1px solid var(--c-duo-border);
+  border-radius: var(--duo-radius-card);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-duo-card);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--c-hueso);
+  transition: all 0.18s ease;
+}
+
+.duo-card:active {
+  transform: scale(0.98);
+  background: var(--c-duo-card-hover);
+}
+
+.duo-card.accent-cempasuchil {
+  border-left: 4px solid var(--c-cempasuchil);
+}
+
+.duo-card.accent-gold {
+  border-left: 4px solid var(--c-oro);
+}
+
+/* Botones de acción táctiles (Touch-first ≥ 44px) */
+.duo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: var(--c-cempasuchil);
+  color: #0B0C10;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--c-cempasuchil-glow);
+  transition: transform 0.15s ease;
+}
+
+.duo-btn:active {
+  transform: scale(0.97);
+}
+
+.duo-btn.secondary {
+  background: rgba(42, 45, 52, 0.7);
+  color: var(--c-hueso);
+  border: 1px solid var(--c-duo-border);
+  box-shadow: none;
+}
+
+.duo-btn.gold {
+  background: var(--c-oro);
+  color: #0B0C10;
+  box-shadow: 0 4px 14px var(--c-oro-glow);
+}
+
+/* Grid de materias */
+.duo-subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.duo-subject-pill {
+  background: rgba(42, 45, 52, 0.5);
+  border: 1px solid var(--c-duo-border);
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  color: var(--c-hueso);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 64px;
+}
+
+.duo-subject-pill:active {
+  background: rgba(255, 122, 0, 0.15);
+  border-color: var(--c-duo-border-cempasuchil);
+}
+
+/* ----------------------------------------------------
+ * MODO ABIERTO: PANTALLA INTERIOR (7.6" / VIEWPORT ≥ 680px)
+ * COMPOSICIÓN DE DOS COLUMNAS FUNCIONALES
+ * ---------------------------------------------------- */
+@media (min-width: 680px) {
+  .duo-dual-container {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .duo-live-hero {
+    grid-column: 1 / -1;
+  }
+
+  .duo-subjects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+/* Soporte oficial para CSS Viewport Segments cuando el navegador lo expone */
+@media (horizontal-viewport-segments: 2) {
+  .duo-dual-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .duo-zone-context {
+    width: env(viewport-segment-width 0 0, 50%);
+    padding-right: 16px;
+  }
+
+  .duo-zone-main {
+    width: env(viewport-segment-width 1 0, 50%);
+    padding-left: 16px;
+  }
+}
+
+/* ----------------------------------------------------
+ * BARRA DE NAVEGACIÓN INFERIOR (TOUCH FIRST)
+ * ---------------------------------------------------- */
+.duo-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--c-duo-header);
+  backdrop-filter: var(--blur-duo-glass);
+  -webkit-backdrop-filter: var(--blur-duo-glass);
+  border-top: 1px solid var(--c-duo-border);
+  padding: 6px 12px calc(6px + var(--duo-safe-bottom));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.duo-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--c-hueso-secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  min-width: 52px;
+  min-height: 48px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.duo-tab-item .tab-icon {
+  font-size: 1.25rem;
+}
+
+.duo-tab-item.active {
+  color: var(--c-cempasuchil);
+}
+
+.duo-tab-item:active {
+  transform: scale(0.93);
+}
+
+/* ----------------------------------------------------
+ * MODAL DE HOJAS MEMBRETADAS EN IPHONE DUO
+ * ---------------------------------------------------- */
+.duo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  padding-bottom: max(16px, var(--duo-safe-bottom));
+}
+
+.duo-modal-backdrop.active {
+  display: flex;
+}
+
+.duo-modal-card {
+  background: #161820;
+  border: 1px solid var(--c-duo-border-gold);
+  border-radius: var(--duo-radius-panel);
+  width: 100%;
+  max-width: 480px;
+  padding: 22px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: duo-modal-up 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes duo-modal-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Foco accesible */
+:focus-visible {
+  outline: 3px solid var(--c-oro) !important;
+  outline-offset: 3px !important;
+}
+
+/* Respeto a movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Resets universales preventivos contra desbordamiento */
+img, video, canvas, svg, iframe, table, pre, code {
+  max-width: 100%;
+  height: auto;
+}

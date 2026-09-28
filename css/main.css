@@ -1,0 +1,1269 @@
+/**
+ * ESTILOS PRINCIPALES — SITIO WEB OFICIAL DEL 415 (PREPA 4 UNAM)
+ * Arquitectura Mobile-First / Experiencia iOS Apple / Sin exceso de tarjetas
+ * Regla Absoluta: Cero Scroll Horizontal (Solo desplazamiento Vertical Arriba ↕ Abajo)
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--c-obsidiana);
+  color: var(--c-hueso);
+  font-family: var(--font-family-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-x: none;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background-color: var(--c-obsidiana);
+  color: var(--c-hueso);
+  line-height: 1.45;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  position: relative;
+}
+
+/* Resets universales preventivos contra desbordamiento */
+img, video, canvas, svg, iframe, table, pre, code {
+  max-width: 100%;
+  height: auto;
+}
+
+input, select, textarea, button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenedor central móvil adaptable estrictamente acotado */
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: calc(var(--sat) + 12px) var(--content-padding) calc(var(--bottom-bar-height) + 24px);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Enlaces limpios */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------
+ * CABECERA SUPERIOR (iOS Navigation Bar Style)
+ * ---------------------------------------------------- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0 14px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand-number {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-cempasuchil);
+}
+
+.brand-sub {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-hueso-secondary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: var(--touch-target-min);
+  padding: 0 14px;
+  background: var(--c-copal-surface);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-pill);
+  color: var(--c-hueso);
+  font-size: var(--text-callout);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.16s var(--ease-ios), background 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: var(--blur-subtle);
+  white-space: nowrap;
+}
+
+.section-pill-btn:active {
+  transform: scale(0.96);
+  background: var(--c-copal-elevated);
+}
+
+.section-pill-badge {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  font-weight: 800;
+  font-size: 0.72rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----------------------------------------------------
+ * HERO / BIENVENIDA MEMORABLE (4 de 415)
+ * ---------------------------------------------------- */
+.hero-epic {
+  padding: 16px 0 20px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-tagline {
+  font-size: var(--text-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-cempasuchil);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.hero-tagline::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-cempasuchil);
+  box-shadow: 0 0 10px var(--c-cempasuchil);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--c-hueso);
+  margin-bottom: 8px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.hero-title .accent-num {
+  color: var(--c-cempasuchil);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: var(--text-headline);
+  font-weight: 400;
+  color: var(--c-hueso-secondary);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* ----------------------------------------------------
+ * SECCIÓN 1: MATERIA ACTUAL & SIGUIENTE (TIEMPO REAL)
+ * Con cuenta regresiva dinámica y barra de progreso
+ * ---------------------------------------------------- */
+.current-class-section {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.live-class-block {
+  padding: 20px 18px;
+  background: linear-gradient(145deg, rgba(62, 28, 107, 0.75) 0%, rgba(27, 11, 46, 0.95) 100%);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--blur-glass);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+}
+
+.live-class-block.is-active {
+  border-color: var(--c-cempasuchil-border);
+  box-shadow: 0 0 28px var(--c-cempasuchil-glow);
+}
+
+.live-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  background: var(--c-cempasuchil-soft);
+  border: 1px solid var(--c-cempasuchil-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-cempasuchil);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-cempasuchil);
+  box-shadow: 0 0 8px var(--c-cempasuchil);
+  animation: pulseGlow 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+.current-time-badge {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-caption);
+  color: var(--c-hueso-tertiary);
+  font-weight: 500;
+}
+
+.current-class-title {
+  font-size: var(--text-title1);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--c-hueso);
+  margin-bottom: 6px;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.current-class-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-callout);
+  color: var(--c-hueso-secondary);
+}
+
+/* Barra de progreso de la clase actual */
+.class-progress-bar-wrap {
+  margin-top: 12px;
+  height: 4px;
+  background: rgba(42, 45, 52, 0.6);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.class-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-cempasuchil), var(--c-oro));
+  border-radius: var(--radius-pill);
+  transition: width 1s linear;
+}
+
+/* Cuenta regresiva en tiempo real */
+.countdown-tag {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  color: var(--c-cempasuchil);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Siguiente materia integrada */
+.next-class-alert {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--c-oro-soft);
+  border: 1px solid var(--c-oro-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: var(--text-caption);
+  color: var(--c-oro);
+  width: 100%;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.next-class-alert strong {
+  color: var(--c-hueso);
+}
+
+/* ----------------------------------------------------
+ * ACCIÓN PRINCIPAL: CENTRO DE CONTROL
+ * ---------------------------------------------------- */
+.control-center-cta-wrap {
+  margin-bottom: 22px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.control-center-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: var(--touch-target-large);
+  padding: 16px 18px;
+  background: linear-gradient(135deg, var(--c-copal) 0%, rgba(56, 24, 98, 0.55) 100%);
+  border: 1px solid var(--c-copal-border);
+  border-radius: var(--radius-md);
+  color: var(--c-hueso);
+  font-weight: 700;
+  font-size: var(--text-headline);
+  transition: transform 0.16s var(--ease-ios), border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.control-center-cta::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--c-cempasuchil);
+}
+
+.control-center-cta:active {
+  transform: scale(0.98);
+  border-color: var(--c-cempasuchil-border);
+}
+
+.cta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cta-left span {
+  font-size: var(--text-caption);
+  font-weight: 500;
+  color: var(--c-hueso-secondary);
+}
+
+.cta-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------
+ * HORARIO: INDICADOR TEMPORAL "ESTOY AQUÍ" & 5 ESTADOS
+ * ---------------------------------------------------- */
+.schedule-section {
+  margin-bottom: 26px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.section-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.section-title {
+  font-size: var(--text-title2);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-hueso);
+}
+
+.schedule-tabs {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--c-copal-surface);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-pill);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.schedule-tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  border: none;
+  background: transparent;
+  color: var(--c-hueso-secondary);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  min-height: 34px;
+  transition: color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  font-weight: 700;
+}
+
+/* Indicador visual "Estoy aquí" */
+.timeline-now-marker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--c-cempasuchil-soft);
+  border: 1px solid var(--c-cempasuchil-border);
+  border-radius: var(--radius-pill);
+  margin: 6px 0;
+  color: var(--c-cempasuchil);
+  font-size: var(--text-micro);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  animation: pulseMarker 2s infinite ease-in-out;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+@keyframes pulseMarker {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-1px); }
+}
+
+.timeline-now-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-cempasuchil);
+  box-shadow: 0 0 10px var(--c-cempasuchil);
+  flex-shrink: 0;
+}
+
+/* Lista del Horario con los 5 Estados Visuales */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(52, 23, 88, 0.40);
+  border-left: 3px solid var(--c-copal);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: transform 0.15s var(--ease-ios), background 0.15s ease, border-color 0.15s ease, opacity 0.2s ease;
+  min-height: 56px;
+  text-decoration: none;
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.timeline-item:active {
+  transform: scale(0.98);
+  background: rgba(42, 45, 52, 0.45);
+}
+
+/* Estado 1: PASADA (ya terminó) */
+.timeline-item.state-pasada {
+  opacity: 0.55;
+  border-left-color: var(--c-copal-line);
+}
+.timeline-item.state-pasada .timeline-subject {
+  color: var(--c-hueso-secondary);
+}
+
+/* Estado 2: ACTUAL (ocurriendo ahora) */
+.timeline-item.state-actual {
+  border-left-color: var(--c-cempasuchil);
+  background: var(--c-cempasuchil-soft);
+  box-shadow: 0 0 18px var(--c-cempasuchil-glow);
+  opacity: 1;
+}
+.timeline-item.state-actual .timeline-subject {
+  color: var(--c-hueso);
+  font-weight: 800;
+}
+
+/* Estado 3: SIGUIENTE (próxima clase) */
+.timeline-item.state-siguiente {
+  border-left-color: var(--c-oro);
+  background: var(--c-oro-soft);
+  opacity: 0.95;
+}
+.timeline-item.state-siguiente .timeline-subject {
+  color: var(--c-hueso);
+}
+
+/* Estado 4: FUTURA (clases posteriores) */
+.timeline-item.state-futura {
+  border-left-color: var(--c-copal);
+  opacity: 0.85;
+}
+
+/* Estado 5: SIN CLASE */
+.timeline-item.state-sin-clase {
+  border-left-style: dashed;
+  opacity: 0.6;
+}
+
+.state-badge {
+  font-size: var(--text-micro);
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-top: 4px;
+  max-width: 100%;
+  word-break: break-word;
+}
+.state-badge.badge-actual {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+}
+.state-badge.badge-siguiente {
+  background: var(--c-oro);
+  color: var(--c-obsidiana);
+}
+.state-badge.badge-pasada {
+  background: var(--c-copal-surface);
+  color: var(--c-hueso-tertiary);
+}
+
+.timeline-time {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--c-hueso-secondary);
+  white-space: nowrap;
+}
+
+.timeline-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.timeline-subject {
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--c-hueso);
+  line-height: 1.25;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.timeline-room {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--c-hueso-tertiary);
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+.timeline-chevron {
+  color: var(--c-hueso-tertiary);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Selector semanal horizontal aislado sin overflow de página */
+.week-day-selector {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+  max-width: 100%;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.week-day-selector::-webkit-scrollbar { display: none; }
+
+.day-pill-btn {
+  flex: 0 0 auto;
+  min-width: 58px;
+  min-height: 48px;
+  padding: 6px 10px;
+  background: var(--c-copal-surface);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-sm);
+  color: var(--c-hueso-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.day-pill-btn.active {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  border-color: var(--c-cempasuchil);
+  font-weight: 700;
+}
+
+.day-pill-btn .day-short {
+  font-size: var(--text-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.day-pill-btn .day-hours {
+  font-size: 0.65rem;
+  opacity: 0.8;
+}
+
+/* ----------------------------------------------------
+ * REGLA DE RENOMBRADO DE ARCHIVOS Y TAREAS (OBLIGATORIA)
+ * 415_ApellidosDelAlumno_tarea00
+ * Stacking vertical adaptativo en smartphone
+ * ---------------------------------------------------- */
+.rename-instruction-box {
+  margin: 16px 0;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(229, 169, 60, 0.12) 0%, rgba(11, 12, 16, 0.7) 100%);
+  border: 1px solid var(--c-oro-border);
+  border-radius: var(--radius-md);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.rename-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: var(--text-caption);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-oro);
+  flex-wrap: wrap;
+}
+
+.rename-code-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  background: rgba(27, 11, 46, 0.95);
+  border: 1px dashed var(--c-oro);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.rename-code-text {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  color: var(--c-hueso);
+  word-break: break-all;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.copy-format-btn {
+  height: 38px;
+  width: 100%;
+  justify-content: center;
+  background: var(--c-oro);
+  color: var(--c-obsidiana);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-caption);
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.15s ease;
+}
+
+.copy-format-btn:active {
+  transform: scale(0.97);
+}
+
+/* ----------------------------------------------------
+ * BIBLIOTECA DE ARCHIVOS PDF
+ * ---------------------------------------------------- */
+.pdf-file-card {
+  padding: 16px;
+  background: rgba(52, 23, 88, 0.45);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.16s var(--ease-ios), border-color 0.2s ease;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.pdf-file-card:active {
+  transform: scale(0.98);
+  border-color: var(--c-cempasuchil-border);
+}
+
+.pdf-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pdf-code-tag {
+  font-family: var(--font-family-mono);
+  font-size: var(--text-micro);
+  color: var(--c-oro);
+  background: var(--c-oro-soft);
+  border: 1px solid var(--c-oro-border);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  font-weight: 700;
+}
+
+.pdf-title {
+  font-size: var(--text-headline);
+  font-weight: 700;
+  color: var(--c-hueso);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.pdf-desc {
+  font-size: var(--text-caption);
+  color: var(--c-hueso-secondary);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.pdf-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-micro);
+  color: var(--c-hueso-tertiary);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.pdf-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.btn-open-pdf {
+  flex: 1;
+  min-height: 42px;
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-caption);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  padding: 0 16px;
+  text-align: center;
+}
+
+/* ----------------------------------------------------
+ * CONTENEDOR RESPONSIVE PARA WIDGETS PDF24
+ * ---------------------------------------------------- */
+.pdf24-responsive-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--c-copal-line);
+  background: var(--c-copal-surface);
+  padding: 10px;
+  margin: 14px 0;
+  position: relative;
+  min-height: 420px;
+  box-sizing: border-box;
+}
+
+.pdf24WidgetContainer {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Selector horizontal de herramientas PDF */
+.tool-selector-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  scrollbar-width: none;
+  max-width: 100%;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.tool-selector-pills::-webkit-scrollbar { display: none; }
+
+.tool-chip {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  background: var(--c-copal-surface);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-pill);
+  color: var(--c-hueso-secondary);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 38px;
+  white-space: nowrap;
+}
+
+.tool-chip.active {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  border-color: var(--c-cempasuchil);
+}
+
+/* ----------------------------------------------------
+ * ESTADOS VACÍOS ELEGANTES
+ * ---------------------------------------------------- */
+.empty-state {
+  padding: 28px 16px;
+  text-align: center;
+  background: rgba(42, 45, 52, 0.2);
+  border: 1px dashed var(--c-copal-line);
+  border-radius: var(--radius-md);
+  color: var(--c-hueso-secondary);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.empty-state-icon {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+.empty-state-text {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--c-hueso);
+  word-break: break-word;
+}
+
+.empty-state-sub {
+  font-size: var(--text-caption);
+  color: var(--c-hueso-tertiary);
+  margin-top: 4px;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------
+ * BANNERS FLOTANTES INTELIGENTES
+ * ---------------------------------------------------- */
+.banner-dock {
+  position: fixed;
+  top: calc(var(--sat) + 8px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: calc(100% - 32px);
+  max-width: 440px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.dynamic-banner {
+  pointer-events: auto;
+  background: rgba(27, 11, 46, 0.94);
+  border: 1px solid var(--c-copal-border);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-float);
+  backdrop-filter: var(--blur-glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: slideDownBanner 0.4s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@keyframes slideDownBanner {
+  from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.banner-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.banner-task-badge {
+  background: var(--c-cempasuchil-soft);
+  color: var(--c-cempasuchil);
+  border: 1px solid var(--c-cempasuchil-border);
+}
+
+.banner-memory-badge {
+  background: var(--c-oro-soft);
+  color: var(--c-oro);
+  border: 1px solid var(--c-oro-border);
+}
+
+.banner-text-wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.banner-title {
+  font-size: var(--text-callout);
+  font-weight: 800;
+  color: var(--c-hueso);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.banner-sub {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--c-hueso-secondary);
+  word-break: break-word;
+}
+
+.banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.banner-action-btn {
+  min-height: var(--touch-target-min);
+  padding: 0 10px;
+  border: 1px solid var(--c-copal-line);
+  background: var(--c-copal-surface);
+  border-radius: var(--radius-pill);
+  color: var(--c-hueso);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--c-hueso-tertiary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-timer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--c-cempasuchil);
+  width: 100%;
+  transform-origin: left;
+}
+
+/* ----------------------------------------------------
+ * TOAST NOTIFICATIONS
+ * ---------------------------------------------------- */
+.app-toast {
+  position: fixed;
+  bottom: calc(var(--bottom-bar-height) + 16px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-caption);
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s var(--ease-spring), opacity 0.25s ease;
+  transform: translateY(20px);
+  text-align: center;
+  box-sizing: border-box;
+}
+.app-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------------
+ * BARRA DE NAVEGACIÓN INFERIOR (Centrado determinista sin transform)
+ * ---------------------------------------------------- */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  height: var(--bottom-bar-height);
+  background: rgba(27, 11, 46, 0.94);
+  border-top: 1px solid var(--c-copal-line);
+  backdrop-filter: var(--blur-glass);
+  z-index: 90;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 8px;
+  box-sizing: border-box;
+}
+
+.nav-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 54px;
+  min-height: 44px;
+  color: var(--c-hueso-tertiary);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.16s ease, transform 0.16s var(--ease-ios);
+}
+
+.nav-tab-item:active {
+  transform: scale(0.92);
+}
+
+.nav-tab-item.active {
+  color: var(--c-cempasuchil);
+}
+
+.nav-tab-icon {
+  font-size: 1.25rem;
+}
+
+/* Modal de Sección */
+.section-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 11, 46, 0.96);
+  backdrop-filter: blur(20px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.section-modal-box {
+  width: 100%;
+  max-width: 360px;
+  background: linear-gradient(165deg, rgba(42, 45, 52, 0.8) 0%, rgba(11, 12, 16, 0.95) 100%);
+  border: 1px solid var(--c-copal-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-float);
+  box-sizing: border-box;
+}
+
+.section-modal-title {
+  font-size: var(--text-title1);
+  font-weight: 800;
+  color: var(--c-hueso);
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+
+.section-modal-desc {
+  font-size: var(--text-callout);
+  color: var(--c-hueso-secondary);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.section-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.section-choice-btn {
+  height: 72px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--c-copal-line);
+  background: var(--c-copal-surface);
+  color: var(--c-hueso);
+  font-size: 2rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.16s var(--ease-ios), border-color 0.2s ease, background 0.2s ease;
+}
+
+.section-choice-btn:active {
+  transform: scale(0.94);
+  border-color: var(--c-cempasuchil);
+  background: var(--c-cempasuchil-soft);
+  color: var(--c-cempasuchil);
+}
+
+/* Reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {\n  *, *::before, *::after {\n    animation-duration: 0.001s !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.001s !important;\n    scroll-behavior: auto !important;\n  }\n}\n\n/* ----------------------------------------------------\n   ACTUALIDAD & HISTORIAL ACADÉMICO (VISTA LIMPIA)\n---------------------------------------------------- */\n.subject-recent-highlight {\n  padding: 14px 16px;\n  background: linear-gradient(135deg, rgba(243, 107, 42, 0.12) 0%, rgba(11, 12, 16, 0.6) 100%);\n  border: 1px solid var(--c-cempasuchil-border);\n  border-radius: var(--radius-md);\n  margin-bottom: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  width: 100%;\n  max-width: 100%;\n  box-sizing: border-box;\n}\n\n.subject-recent-highlight.is-clear {\n  background: rgba(42, 45, 52, 0.3);\n  border-color: var(--c-copal-line);\n}\n\n.subject-history-gate {\n  margin: 28px 0 36px;\n  width: 100%;\n  max-width: 100%;\n}\n\n.history-gate-box {\n  padding: 18px 20px;\n  background: linear-gradient(145deg, rgba(42, 45, 52, 0.45) 0%, rgba(11, 12, 16, 0.8) 100%);\n  border: 1px solid var(--c-copal-line);\n  border-radius: var(--radius-lg);\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  transition: transform 0.16s var(--ease-ios), border-color 0.2s ease;\n  width: 100%;\n  max-width: 100%;\n  box-sizing: border-box;\n}\n\n.history-gate-box:active {\n  transform: scale(0.985);\n  border-color: var(--c-cempasuchil-border);\n}\n\n.history-gate-badge {\n  font-size: var(--text-micro);\n  font-weight: 800;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n  color: var(--c-oro);\n  display: block;\n  margin-bottom: 4px;\n}\n\n.history-gate-title {\n  font-size: var(--text-headline);\n  font-weight: 700;\n  color: var(--c-hueso);\n  margin-bottom: 4px;\n}\n\n.history-gate-desc {\n  font-size: var(--text-caption);\n  color: var(--c-hueso-secondary);\n  line-height: 1.4;\n}\n\n.btn-history-gate {\n  padding: 10px 18px;\n  background: var(--c-copal);\n  border: 1px solid var(--c-copal-border);\n  border-radius: var(--radius-pill);\n  color: var(--c-hueso);\n  font-size: var(--text-caption);\n  font-weight: 700;\n  text-decoration: none;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 6px;\n  transition: background 0.16s ease, border-color 0.16s ease;\n  width: 100%;\n  text-align: center;\n}\n\n.btn-history-gate:hover {\n  background: var(--c-copal-surface);\n  border-color: var(--c-oro);\n  color: var(--c-oro);\n}\n\n/* Footer Mobile Limpio */\nfooter {\n  text-align: center;\n  padding: 16px 0 28px;\n  font-size: var(--text-micro);\n  color: var(--c-hueso-quaternary);\n  width: 100%;\n  max-width: 100%;\n  word-break: break-word;\n  line-height: 1.6;\n}\n\nfooter a {\n  color: var(--c-hueso-tertiary);\n  margin: 0 4px;\n}\nfooter a:hover {\n  color: var(--c-cempasuchil);\n}\n",
+  "IsArtifact": false,
+  "Overwrite": true,
+  "TargetFile": "/Users/shaminket/.gemini/users/user1/Enp4/css/main.css"
+}

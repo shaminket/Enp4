@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Centro de Control — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .search-bar-wrap {
+      margin-bottom: 14px;
+      position: sticky;
+      top: calc(var(--sat) + 8px);
+      z-index: 20;
+      backdrop-filter: var(--blur-glass);
+      padding: 4px 0;
+    }
+
+    .search-input-box {
+      width: 100%;
+      height: var(--touch-target-large);
+      padding: 0 16px 0 44px;
+      background: var(--c-copal-surface);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso);
+      font-size: var(--text-body);
+      font-family: var(--font-family-display);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input-box:focus {
+      border-color: var(--c-cempasuchil);
+      box-shadow: 0 0 16px var(--c-cempasuchil-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--c-hueso-tertiary);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .filter-pills-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-bottom: 18px;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .filter-pills-row::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      flex: 0 0 auto;
+      padding: 6px 14px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso-secondary);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+    }
+
+    .filter-pill.active {
+      background: var(--c-cempasuchil);
+      color: var(--c-obsidiana);
+      border-color: var(--c-cempasuchil);
+      font-weight: 700;
+    }
+
+    /* Accesos Rápidos Complementarios (2 columnas ergonómicas para teléfono) */
+    .control-shortcuts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .shortcut-pill {
+      padding: 12px 14px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-md);
+      color: var(--c-hueso);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: transform 0.16s var(--ease-ios);
+      min-height: 60px;
+    }
+    .shortcut-pill:active { transform: scale(0.96); background: rgba(42, 45, 52, 0.6); }
+
+    /* Lista editorial limpia de materias */
+    .subjects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .subject-item-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px;
+      background: rgba(42, 45, 52, 0.25);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-copal);
+      text-decoration: none;
+      transition: transform 0.16s var(--ease-ios), background 0.16s ease, border-color 0.16s ease;
+      min-height: 64px;
+      position: relative;
+    }
+
+    .subject-item-entry:active {
+      transform: scale(0.98);
+      background: rgba(42, 45, 52, 0.45);
+    }
+
+    .subject-item-entry.has-task {
+      border-left-color: var(--c-cempasuchil);
+    }
+
+    .subject-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+
+    .subject-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subject-name {
+      font-size: var(--text-headline);
+      font-weight: 700;
+      color: var(--c-hueso);
+      line-height: 1.25;
+    }
+
+    .unread-dot-badge {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c-cempasuchil);
+      box-shadow: 0 0 8px var(--c-cempasuchil);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .subject-meta-text {
+      font-size: var(--text-caption);
+      color: var(--c-hueso-tertiary);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .subject-badges-col {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: var(--c-cempasuchil-soft);
+      border: 1px solid var(--c-cempasuchil-border);
+      border-radius: var(--radius-pill);
+      color: var(--c-cempasuchil);
+      font-size: var(--text-micro);
+      font-weight: 700;
+    }
+
+    .btn-fav-star {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: transparent;
+      color: var(--c-hueso-tertiary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.16s ease, color 0.16s ease;
+      z-index: 5;
+    }
+    .btn-fav-star.is-fav {
+      color: var(--c-oro);
+      text-shadow: 0 0 8px var(--c-oro-glow);
+    }
+    .btn-fav-star:active {
+      transform: scale(1.25);
+    }
+
+    .featured-label {
+      font-size: var(--text-micro);
+      color: var(--c-cempasuchil);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+
+    <!-- Encabezado con retorno -->
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Control 415</span>
+      </div>
+      <div class="header-actions">
+        <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+          <span>Sec.</span>
+          <span class="section-pill-badge active-section-letter">A</span>
+        </button>
+      </div>
+    </header>
+
+    <section style="padding: 10px 0 14px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Centro de Control</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        Directorio académico del Grupo 415. Toca una materia para ver tareas, archivos y recursos oficiales.
+      </p>
+    </section>
+
+    <!-- Atajos Rápidos a Nuevas Secciones -->
+    <div class="control-shortcuts-grid">
+      <a href="buscar.html" class="shortcut-pill">
+        <span style="font-size:1.2rem;">🔍</span>
+        <span>Buscador</span>
+      </a>
+      <a href="calendario.html" class="shortcut-pill">
+        <span style="font-size:1.2rem;">📅</span>
+        <span>Calendario</span>
+      </a>
+      <a href="notificaciones.html" class="shortcut-pill">
+        <span style="font-size:1.2rem;">🔔</span>
+        <span>Novedades</span>
+      </a>
+      <a href="historial.html" class="shortcut-pill">
+        <span style="font-size:1.2rem;">📁</span>
+        <span>Historial</span>
+      </a>
+    </div>
+
+    <!-- Tira de Favoritos (Sección 13: Aparece si el alumno marcó alguna materia) -->
+    <div id="favoritos-quick-bar" style="margin-bottom:14px; display:none;"></div>
+
+    <!-- Buscador Rápido Instantáneo -->
+    <div class="search-bar-wrap">
+      <span class="search-icon">🔍</span>
+      <input 
+        type="search" 
+        id="subject-fast-search" 
+        class="search-input-box" 
+        placeholder="Filtrar materia (ej. hist, lengua, física)..."
+        aria-label="Buscar materias por nombre o clave"
+        autocomplete="off"
+      >
+    </div>
+
+    <!-- Filtros de Acción Rápida -->
+    <div class="filter-pills-row" role="tablist">
+      <button class="filter-pill active" data-filter="todas" onclick="setSubjectFilter('todas', this)">Todas (12)</button>
+      <button class="filter-pill" data-filter="tareas" onclick="setSubjectFilter('tareas', this)">Con Tareas</button>
+      <button class="filter-pill" data-filter="favoritas" onclick="setSubjectFilter('favoritas', this)">★ Favoritas</button>
+      <button class="filter-pill" data-filter="seccion" onclick="setSubjectFilter('seccion', this)">Por Sección</button>
+    </div>
+
+    <!-- LISTA DE MATERIAS (12 REALES) -->
+    <section class="subjects-list" id="subjects-container">
+      <!-- Generado dinámicamente -->
+    </section>
+
+    <!-- Enlace discreto a Administración (Sección 1) -->
+    <footer style="text-align:center; padding:20px 0 40px; font-size:var(--text-micro); color:var(--c-hueso-quaternary);">
+      Plataforma Digital Grupo 415 · Prepa 4 UNAM · <a href="historial.html" style="color:var(--c-hueso-tertiary); text-decoration:none;">Historial Académico</a> · <a href="admin.html" style="color:var(--c-hueso-tertiary); text-decoration:none;">Acceso Administrativo</a>
+    </footer>
+
+  </main>
+
+  <!-- Navegación Inferior -->
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item active" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos PDF">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    let activeFilter = 'todas';
+
+    function setSubjectFilter(type, btn) {
+      activeFilter = type;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSubjectList();
+    }
+
+    function renderSubjectList() {
+      const container = document.getElementById('subjects-container');
+      if (!container) return;
+
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getActiveData() : GRUPO_415_DATA;
+      const sec = App415.getCurrentSection() || 'A';
+      const searchVal = (document.getElementById('subject-fast-search').value || '').trim().toLowerCase();
+      const favs = App415.getFavoritos();
+
+      const materiasOrdenadas = [...data.materias].sort((a, b) => {
+        if (a.destacada && !b.destacada) return -1;
+        if (!a.destacada && b.destacada) return 1;
+        if (a.destacada && b.destacada) return a.ordenDestacado - b.ordenDestacado;
+        return a.nombre.localeCompare(b.nombre);
+      });
+
+      let html = '';
+
+      materiasOrdenadas.forEach((m) => {
+        if (searchVal && !m.nombre.toLowerCase().includes(searchVal) && !m.id.toLowerCase().includes(searchVal)) {
+          return;
+        }
+
+        const tareasMateria = (data.tareas || []).filter(t => t.materiaId === m.id && (t.seccion === 'Todas' || t.seccion === sec));
+        const tieneTareas = tareasMateria.length > 0;
+        const isFav = favs.includes(m.id);
+        const unread = App415.tieneNovedadSinLeer(m.id);
+
+        if (activeFilter === 'tareas' && !tieneTareas) return;
+        if (activeFilter === 'favoritas' && !isFav) return;
+        if (activeFilter === 'seccion' && !m.seccionEspecifica) return;
+
+        let salonesTexto = m.salones.join(', ');
+        if (m.seccionEspecifica) {
+          if (m.id === 'dibujo') salonesTexto = sec === 'A' ? 'Salón B-008' : 'Salón C-201';
+          if (m.id === 'ingles') salonesTexto = sec === 'A' ? 'Salón C-306' : 'Salón C-205';
+          if (m.id === 'orientacion-educativa') salonesTexto = sec === 'A' ? 'Salón B-110' : 'Salón B-112';
+        }
+
+        html += `
+          <div class="subject-item-entry ${m.destacada ? 'featured-card' : ''} ${tieneTareas ? 'has-task' : ''}" data-name="${m.nombre}" data-code="${m.clave}">
+            <div class="subject-info-col" onclick="window.location.href='${m.slug}'" style="cursor:pointer;">
+              ${m.destacada ? `<span class="featured-label">★ Destacada 415</span>` : ''}
+              <div class="subject-name-row">
+                <div class="subject-name">${m.nombre}</div>
+                ${unread ? `<span class="unread-dot-badge" title="Información nueva sin consultar"></span>` : ''}
+              </div>
+              <div class="subject-meta-text">
+                <span>${salonesTexto}</span>
+                <span>•</span>
+                <span>${m.horasSemanales} hrs/sem</span>
+              </div>
+            </div>
+            <div class="subject-badges-col">
+              ${tieneTareas ? `<span class="task-status-badge">⚡ ${tareasMateria.length}</span>` : ''}
+              <button class="btn-fav-star ${isFav ? 'is-fav' : ''}" onclick="toggleFav('${m.id}', this)" aria-label="Favorito">
+                ${isFav ? '★' : '☆'}
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      if (!html) {
+        html = `
+          <div class="empty-state">
+            <div class="empty-state-text">No se encontraron materias</div>
+            <div class="empty-state-sub">Prueba con otro término de búsqueda o cambia de filtro.</div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function toggleFav(materiaId, btn) {
+      App415.toggleFavorito(materiaId);
+      renderSubjectList();
+    }
+
+    window.renderSubjectList = renderSubjectList;
+    document.addEventListener('DOMContentLoaded', renderSubjectList);
+  </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Búsqueda Global — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .search-hero-box {
+      position: sticky;
+      top: calc(var(--sat) + 8px);
+      z-index: 20;
+      backdrop-filter: var(--blur-glass);
+      padding: 6px 0 16px;
+    }
+
+    .search-category-block {
+      margin-bottom: 22px;
+    }
+
+    .search-cat-title {
+      font-size: var(--text-micro);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--c-cempasuchil);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .result-row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: rgba(42, 45, 52, 0.3);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-copal);
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: transform 0.16s var(--ease-ios), background 0.16s ease;
+    }
+
+    .result-row-item:active {
+      transform: scale(0.98);
+      background: rgba(42, 45, 52, 0.5);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Búsqueda 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section class="search-hero-box">
+      <div style="position:relative;">
+        <span style="position:absolute; left:16px; top:50%; transform:translateY(-50%); font-size:1.1rem; color:var(--c-hueso-tertiary);">🔍</span>
+        <input 
+          type="search" 
+          id="global-omnibox" 
+          class="form-control" 
+          style="height:52px; border-radius:var(--radius-pill); padding-left:46px; font-size:var(--text-body); background:var(--c-copal-surface); border-color:var(--c-copal-border);"
+          placeholder="Busca materias, tareas, PDFs, avisos..."
+          autofocus
+        >
+      </div>
+    </section>
+
+    <!-- RESULTADOS DINÁMICOS -->
+    <div id="search-results-viewport">
+      <div style="text-align:center; padding:40px 16px; color:var(--c-hueso-tertiary);">
+        Escribe cualquier término para buscar en todo el sistema del 415 (ej. <em>historia</em>, <em>mapa</em>, <em>tablas</em>, <em>pdf</em>).
+      </div>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="buscar.html" class="nav-tab-item active" aria-label="Búsqueda Global">
+      <span class="nav-tab-icon">🔍</span>
+      <span>Buscar</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    const input = document.getElementById('global-omnibox');
+    const viewport = document.getElementById('search-results-viewport');
+
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      ejecutarBusquedaGlobal(q);
+    });
+
+    function ejecutarBusquedaGlobal(query) {
+      if (!query) {
+        viewport.innerHTML = `
+          <div style="text-align:center; padding:40px 16px; color:var(--c-hueso-tertiary);">
+            Escribe cualquier término para buscar en todo el sistema del 415 (ej. <em>historia</em>, <em>mapa</em>, <em>tablas</em>, <em>pdf</em>).
+          </div>
+        `;
+        return;
+      }
+
+      const rawData = (typeof DataStore !== 'undefined') ? DataStore.getRawData() : GRUPO_415_DATA_DEFAULT;
+      const sec = App415.getCurrentSection() || 'A';
+
+      // 1. Materias
+      const matMatches = rawData.materias.filter(m => m.nombre.toLowerCase().includes(query) || m.id.toLowerCase().includes(query) || m.clave.includes(query));
+
+      // 2. Archivos PDF
+      const pdfMatches = rawData.archivos.filter(a => {
+        const matchSec = a.seccion === 'Todas' || a.seccion === sec;
+        const matchTxt = a.nombre.toLowerCase().includes(query) || a.codigo.toLowerCase().includes(query) || a.materiaId.toLowerCase().includes(query);
+        return matchSec && matchTxt;
+      });
+
+      // 3. Tareas (Actuales e Históricas)
+      const taskMatches = rawData.tareas.filter(t => {
+        const matchSec = t.seccion === 'Todas' || t.seccion === sec;
+        const matchTxt = t.titulo.toLowerCase().includes(query) || (t.indicaciones || '').toLowerCase().includes(query) || t.materiaId.toLowerCase().includes(query);
+        return matchSec && matchTxt;
+      });
+
+      // 4. Avisos (Actuales e Históricos)
+      const avisoMatches = (rawData.avisos || []).filter(av => {
+        const matchSec = av.seccion === 'Todas' || av.seccion === sec;
+        const matchTxt = av.titulo.toLowerCase().includes(query) || (av.contenido || '').toLowerCase().includes(query);
+        return matchSec && matchTxt;
+      });
+
+      // 5. Exámenes
+      const examenMatches = (rawData.examenes || []).filter(ex => {
+        const matchSec = ex.seccion === 'Todas' || ex.seccion === sec;
+        const matchTxt = ex.titulo.toLowerCase().includes(query) || (ex.descripcion || '').toLowerCase().includes(query);
+        return matchSec && matchTxt;
+      });
+
+      const totalMatches = matMatches.length + pdfMatches.length + taskMatches.length + avisoMatches.length + examenMatches.length;
+
+      // 15. RESULTADOS SIN CONTENIDO: Estado vacío elegante
+      if (totalMatches === 0) {
+        viewport.innerHTML = `
+          <div class="empty-state" style="padding:48px 20px;">
+            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-text" style="font-size:var(--text-headline);">No encontramos eso.</div>
+            <div class="empty-state-sub" style="margin-top:6px;">
+              No hay coincidencias para "<strong>${query}</strong>" en la Sección ${sec}.<br>
+              Verifica la ortografía o intenta buscar por nombre de materia, tema o código de archivo.
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      // Renderizar Materias
+      if (matMatches.length > 0) {
+        html += `
+          <div class="search-category-block">
+            <div class="search-cat-title">📚 Materias (${matMatches.length})</div>
+            ${matMatches.map(m => `
+              <a href="${m.slug}" class="result-row-item" style="border-left-color:var(--c-cempasuchil);">
+                <div>
+                  <strong style="color:var(--c-hueso);">${m.nombre}</strong>
+                  <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">${m.horasSemanales} hrs/sem · Salones: ${m.salones.join(', ')}</div>
+                </div>
+                <span style="color:var(--c-cempasuchil);">›</span>
+              </a>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Renderizar Tareas
+      if (taskMatches.length > 0) {
+        html += `
+          <div class="search-category-block">
+            <div class="search-cat-title">📝 Tareas Registradas (${taskMatches.length})</div>
+            ${taskMatches.map(t => {
+              const clasif = DataStore.clasificarElemento(t, 'tarea');
+              const mat = rawData.materias.find(m => m.id === t.materiaId);
+              const targetUrl = clasif.esActual ? (mat ? mat.slug : '#') : `historial.html?materia=${t.materiaId}`;
+              return `
+                <a href="${targetUrl}" class="result-row-item" style="border-left-color:${clasif.esActual ? 'var(--c-cempasuchil)' : 'var(--c-copal-line)'};">
+                  <div>
+                    <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+                      <strong style="color:var(--c-hueso);">${t.titulo}</strong>
+                      <span style="font-size:var(--text-micro); padding:1px 6px; border-radius:var(--radius-pill); font-weight:800; ${clasif.esActual ? 'background:var(--c-cempasuchil); color:var(--c-obsidiana);' : 'background:rgba(184,187,197,0.15); color:var(--c-hueso-secondary);'}">
+                        ${clasif.esActual ? 'Actual' : 'Historial (' + clasif.estado + ')'}
+                      </span>
+                    </div>
+                    <div style="font-size:var(--text-micro); color:var(--c-oro);">${mat ? mat.nombre : t.materiaId} · Entrega: ${t.fechaEntrega}</div>
+                  </div>
+                  <span style="color:var(--c-cempasuchil);">›</span>
+                </a>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // Renderizar Exámenes
+      if (examenMatches.length > 0) {
+        html += `
+          <div class="search-category-block">
+            <div class="search-cat-title">📝 Exámenes (${examenMatches.length})</div>
+            ${examenMatches.map(ex => {
+              const clasif = DataStore.clasificarElemento(ex, 'examen');
+              const mat = rawData.materias.find(m => m.id === ex.materiaId);
+              const targetUrl = clasif.esActual ? (mat ? mat.slug : '#') : `historial.html?materia=${ex.materiaId}`;
+              return `
+                <a href="${targetUrl}" class="result-row-item" style="border-left-color:${clasif.esActual ? 'var(--c-cempasuchil)' : 'var(--c-copal-line)'};">
+                  <div>
+                    <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+                      <strong style="color:var(--c-hueso);">${ex.titulo}</strong>
+                      <span style="font-size:var(--text-micro); padding:1px 6px; border-radius:var(--radius-pill); font-weight:800; ${clasif.esActual ? 'background:var(--c-cempasuchil); color:var(--c-obsidiana);' : 'background:rgba(184,187,197,0.15); color:var(--c-hueso-secondary);'}">
+                        ${clasif.esActual ? 'Próximo' : 'Concluido'}
+                      </span>
+                    </div>
+                    <div style="font-size:var(--text-micro); color:var(--c-oro);">${mat ? mat.nombre : 'General'} · Fecha: ${ex.fecha}</div>
+                  </div>
+                  <span style="color:var(--c-cempasuchil);">›</span>
+                </a>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // Renderizar Archivos
+      if (pdfMatches.length > 0) {
+        html += `
+          <div class="search-category-block">
+            <div class="search-cat-title">📄 Archivos PDF (${pdfMatches.length})</div>
+            ${pdfMatches.map(f => `
+              <a href="${f.url}" target="_blank" rel="noopener noreferrer" class="result-row-item" style="border-left-color:var(--c-oro);">
+                <div>
+                  <strong style="color:var(--c-hueso);">${f.nombre}</strong>
+                  <div style="font-size:var(--text-micro); color:var(--c-oro); font-family:var(--font-family-mono);">${f.codigo}</div>
+                </div>
+                <span style="color:var(--c-oro);">↗</span>
+              </a>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Renderizar Avisos
+      if (avisoMatches.length > 0) {
+        html += `
+          <div class="search-category-block">
+            <div class="search-cat-title">🔔 Avisos Oficiales (${avisoMatches.length})</div>
+            ${avisoMatches.map(av => {
+              const clasif = DataStore.clasificarElemento(av, 'aviso');
+              return `
+                <div class="result-row-item" style="border-left-color:${clasif.esActual ? 'var(--c-cempasuchil)' : 'var(--c-copal-line)'};">
+                  <div>
+                    <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+                      <strong style="color:var(--c-hueso);">${av.titulo}</strong>
+                      <span style="font-size:var(--text-micro); padding:1px 6px; border-radius:var(--radius-pill); font-weight:800; ${clasif.esActual ? 'background:var(--c-cempasuchil); color:var(--c-obsidiana);' : 'background:rgba(184,187,197,0.15); color:var(--c-hueso-secondary);'}">
+                        ${clasif.esActual ? 'Vigente' : 'Archivado'}
+                      </span>
+                    </div>
+                    <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">${av.contenido || ''}</div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      viewport.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

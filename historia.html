@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Historia Universal III — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .subject-hero-card {
+      padding: 24px 20px;
+      background: linear-gradient(145deg, rgba(42, 45, 52, 0.7) 0%, rgba(11, 12, 16, 0.9) 100%);
+      border: 1px solid var(--c-cempasuchil-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px var(--c-cempasuchil-glow);
+    }
+    .session-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .session-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(11, 12, 16, 0.5);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-caption);
+      color: var(--c-hueso);
+    }
+    .regalos-card {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(229,169,60,0.12) 0%, rgba(11,12,16,0.8) 100%);
+      border: 1px solid var(--c-oro-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 28px;
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="centro-de-control.html" class="section-pill-btn" aria-label="Volver a Centro de Control">
+        <span>‹ Control</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section class="subject-hero-card">
+      <div style="font-size:var(--text-micro); color:var(--c-cempasuchil); font-weight:800; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:4px;">
+        ★ Materia Destacada 415 · Clave 1403
+      </div>
+      <h1 class="hero-title" style="font-size:var(--text-title1); margin-bottom:8px;">Historia Universal III</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary); line-height:1.4;">
+        Procesos históricos universales, transformaciones sociales y políticas contemporáneas. 3 horas semanales.
+      </p>
+
+      <div class="session-badge-row">
+        <span class="session-badge"><strong>Jueves:</strong> 10:20-12:00 (Salón B-109)</span>
+        <span class="session-badge"><strong>Viernes:</strong> 07:50-08:40 (Salón B-117)</span>
+      </div>
+    </section>
+
+    <!-- FORMATO OBLIGATORIO DE ENTREGA PARA HISTORIA UNIVERSAL III -->
+    <section class="rename-instruction-box">
+      <div class="rename-header">
+        <span>⚠️ Formato Obligatorio para Entregas de Historia</span>
+      </div>
+      <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">
+        Para la materia de Historia, antes de subir o enviar cualquier tarea o documento, es obligatorio nombrarlo siguiendo este formato:
+      </p>
+      <div class="rename-code-wrap">
+        <span class="rename-code-text">415_ApellidosDelAlumno_tarea00</span>
+        <button class="copy-format-btn" onclick="App415.copiarFormatoRenombrado('415_ApellidosDelAlumno_tarea00')">
+          📋 Copiar formato
+        </button>
+      </div>
+      <p style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">
+        Ejemplo: <code>415_PerezGarcia_tarea03.pdf</code> · Incluye siempre el prefijo <code>415</code>.
+      </p>
+    </section>
+
+    <!-- SECCIÓN ESPECIAL OBLIGATORIA: REGALOS DE HISTORIA (HERRAMIENTA REUTILIZABLE) -->
+    <section class="regalos-card" aria-labelledby="regalos-heading" style="max-width:100%; box-sizing:border-box;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+        <h2 id="regalos-heading" style="font-size:var(--text-headline); font-weight:800; color:var(--c-oro); margin:0; word-break:break-word;">
+          🎁 Prompt Maestro para Ejercicios
+        </h2>
+        <span style="font-size:var(--text-micro); color:var(--c-oro); font-weight:700; background:var(--c-oro-soft); padding:2px 8px; border-radius:var(--radius-pill); flex-shrink:0;">Herramienta IA</span>
+      </div>
+      <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.45; margin-bottom:14px; word-break:break-word;">
+        Copia este prompt y pégalo en cualquier inteligencia artificial (ChatGPT, Claude, Gemini, etc.) adjuntando la fotografía o archivo de tus ejercicios. La IA los resolverá paso a paso respetando estrictamente las instrucciones originales.
+      </p>
+
+      <div style="background:rgba(11,12,16,0.85); border:1px solid var(--c-copal-line); border-radius:var(--radius-md); padding:12px; position:relative; margin-bottom:14px; max-width:100%; box-sizing:border-box;">
+        <pre id="prompt-ejercicios-texto" style="font-family:var(--font-family-mono); font-size:var(--text-micro); color:var(--c-hueso-secondary); white-space:pre-wrap; word-break:break-word; overflow-wrap:break-word; max-width:100%; line-height:1.5; margin:0; user-select:all;">Actúa como un profesor y tutor académico experto. A continuación te adjunto una imagen/documento con ejercicios académicos. Por favor:
+
+1. Analiza cuidadosamente los ejercicios adjuntos e identifica con precisión qué se está solicitando en cada uno.
+2. Si alguna parte de la imagen o texto adjunto no es claramente legible o tiene ambigüedad, indícalo expresamente antes de asumir datos.
+3. Respeta exactamente las instrucciones, restricciones y formato solicitados en el enunciado original. No inventes información, datos ni variables que no aparezcan en el documento.
+4. Resuelve cada ejercicio mostrando el procedimiento detallado paso a paso, explicando de forma didáctica y comprensible el porqué de cada paso.
+5. Si se trata de ejercicios matemáticos o de ciencias, muestra con claridad las fórmulas empleadas, la sustitución de valores, las operaciones aritméticas/algebraicas y las unidades correspondientes.
+6. Si existen varios ejercicios, numera cada respuesta de forma que coincida exactamente con la numeración del documento original.
+7. Revisa y verifica internamente los cálculos y resultados antes de entregar la respuesta para asegurar su consistencia.
+8. Presenta la respuesta final de cada ejercicio de manera destacada y clara al final de cada procedimiento.</pre>
+      </div>
+
+      <button type="button" class="btn-primary" onclick="copiarPromptMaestro()" style="width:100%; justify-content:center; background:var(--c-oro); color:var(--c-obsidiana); font-weight:800; font-size:var(--text-caption); height:44px; border-radius:var(--radius-pill); cursor:pointer; border:none;">
+        <span>📋 Copiar Prompt al Portapapeles ›</span>
+      </button>
+    </section>
+
+    <!-- CONTENIDO DINÁMICO PRIORIZADO: 1. LO RECIENTE, 2. AVISOS, 3. TAREAS, 4. EXÁMENES, 5. EVENTOS, 6. RECURSOS, 7. HISTORIAL -->
+    <div id="materia-dinamica-content" data-materia-id="historia"></div>
+  </main>
+
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item active" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    function copiarPromptMaestro() {
+      const el = document.getElementById('prompt-ejercicios-texto');
+      if (el) {
+        const text = el.textContent || el.innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            App415.mostrarToast('✓ Prompt copiado al portapapeles');
+          }).catch(() => {
+            App415.mostrarToast('✓ Selecciona y copia el texto');
+          });
+        } else {
+          App415.mostrarToast('✓ Selecciona y copia el texto');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

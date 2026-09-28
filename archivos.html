@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Biblioteca de Archivos PDF — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .search-bar-wrap {
+      margin-bottom: 16px;
+      position: sticky;
+      top: calc(var(--sat) + 8px);
+      z-index: 20;
+      backdrop-filter: var(--blur-glass);
+      padding: 4px 0;
+    }
+
+    .search-input-box {
+      width: 100%;
+      height: var(--touch-target-large);
+      padding: 0 16px 0 44px;
+      background: var(--c-copal-surface);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso);
+      font-size: var(--text-body);
+      font-family: var(--font-family-display);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input-box:focus {
+      border-color: var(--c-cempasuchil);
+      box-shadow: 0 0 16px var(--c-cempasuchil-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--c-hueso-tertiary);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .filter-pills-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .filter-pills-row::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      flex: 0 0 auto;
+      padding: 6px 14px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso-secondary);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+    }
+
+    .filter-pill.active {
+      background: var(--c-cempasuchil);
+      color: var(--c-obsidiana);
+      border-color: var(--c-cempasuchil);
+      font-weight: 700;
+    }
+
+    /* Enlace a Herramientas PDF */
+    .tools-shortcut-card {
+      margin-bottom: 24px;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, rgba(42,45,52,0.6) 0%, rgba(11,12,16,0.85) 100%);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      transition: transform 0.16s var(--ease-ios);
+    }
+    .tools-shortcut-card:active {
+      transform: scale(0.98);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Archivos 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 14px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Biblioteca de Archivos</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        Repositorio oficial de documentos, lecturas y guías en PDF organizados mediante código único.
+      </p>
+    </section>
+
+    <!-- Acceso Rápido a Herramientas PDF24 -->
+    <a href="herramientas-pdf.html" class="tools-shortcut-card">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:1.6rem;">🛠</span>
+        <div>
+          <strong style="color:var(--c-hueso); font-size:var(--text-callout); display:block;">Herramientas PDF Oficiales</strong>
+          <span style="color:var(--c-hueso-secondary); font-size:var(--text-micro);">Une, comprime, divide y convierte documentos con PDF24</span>
+        </div>
+      </div>
+      <span style="color:var(--c-cempasuchil); font-weight:800; font-size:1.2rem;">→</span>
+    </a>
+
+    <!-- Buscador Rápido de Archivos -->
+    <div class="search-bar-wrap">
+      <span class="search-icon">🔍</span>
+      <input 
+        type="search" 
+        id="archivos-fast-search" 
+        class="search-input-box" 
+        placeholder="Buscar PDF por código, materia o tema..."
+        aria-label="Buscar archivos por nombre, código o materia"
+        autocomplete="off"
+      >
+    </div>
+
+    <!-- Filtros de Biblioteca -->
+    <div class="filter-pills-row" role="tablist">
+      <button class="filter-pill active" data-filter="todos" onclick="setArchivosFilter('todos', this)">Todos</button>
+      <button class="filter-pill" data-filter="historia" onclick="setArchivosFilter('historia', this)">Historia</button>
+      <button class="filter-pill" data-filter="orientacion" onclick="setArchivosFilter('orientacion-educativa', this)">Orientación</button>
+      <button class="filter-pill" data-filter="general" onclick="setArchivosFilter('general', this)">Institucional</button>
+    </div>
+
+    <!-- LISTADO DINÁMICO DE ARCHIVOS REGISTRADOS (CERO DOCUMENTOS INVENTADOS) -->
+    <section id="archivos-list-container">
+      <!-- Renderizado vía JavaScript -->
+    </section>
+
+  </main>
+
+  <!-- Navegación Inferior (5 Pestañas Adaptadas) -->
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item active" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    let activeArchivosFilter = 'todos';
+
+    function setArchivosFilter(filter, btn) {
+      activeArchivosFilter = filter;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderArchivosList();
+    }
+
+    function renderArchivosList() {
+      const container = document.getElementById('archivos-list-container');
+      if (!container) return;
+
+      const sec = App415.getCurrentSection() || 'A';
+      const searchVal = (document.getElementById('archivos-fast-search').value || '').trim().toLowerCase();
+
+      const archivos = GRUPO_415_DATA.archivos.filter((doc) => {
+        // Filtro por sección
+        if (doc.seccion !== 'Todas' && doc.seccion !== sec) return false;
+        
+        // Filtro de categoría / materia
+        if (activeArchivosFilter !== 'todos' && doc.materiaId !== activeArchivosFilter) return false;
+
+        // Búsqueda
+        if (searchVal) {
+          const matchCodigo = doc.codigo.toLowerCase().includes(searchVal);
+          const matchNombre = doc.nombre.toLowerCase().includes(searchVal);
+          const matchDesc = doc.descripcion.toLowerCase().includes(searchVal);
+          const matchMateria = doc.materiaId.toLowerCase().includes(searchVal);
+          return matchCodigo || matchNombre || matchDesc || matchMateria;
+        }
+
+        return true;
+      });
+
+      if (archivos.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <div class="empty-state-text">No se encontraron documentos</div>
+            <div class="empty-state-sub">Prueba con otro término de búsqueda o cambia de filtro.</div>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      archivos.forEach((doc) => {
+        html += `
+          <article class="pdf-file-card">
+            <div class="pdf-header-row">
+              <span class="pdf-code-tag">${doc.codigo}</span>
+              <span style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">${doc.categoria}</span>
+            </div>
+            <h2 class="pdf-title">${doc.nombre}</h2>
+            <p class="pdf-desc">${doc.descripcion}</p>
+            <div class="pdf-meta-row">
+              <span>📅 ${doc.fecha}</span>
+              <span>•</span>
+              <span>💾 ${doc.tamano}</span>
+              <span>•</span>
+              <span>📑 ${doc.paginas} pág(s)</span>
+              <span>•</span>
+              <span style="font-family:var(--font-family-mono); opacity:0.8;">${doc.nombreOriginal}</span>
+            </div>
+            <div class="pdf-actions-row">
+              <a href="${doc.url}" target="_blank" rel="noopener noreferrer" class="btn-open-pdf">
+                <span>↗ Abrir Documento</span>
+              </a>
+            </div>
+          </article>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    window.renderArchivosList = renderArchivosList;
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('archivos-fast-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', renderArchivosList);
+      }
+      renderArchivosList();
+    });
+  </script>
+</body>
+</html>

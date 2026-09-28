@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Informática — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .subject-hero-card {
+      padding: 24px 20px;
+      background: linear-gradient(145deg, rgba(42, 45, 52, 0.7) 0%, rgba(11, 12, 16, 0.9) 100%);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+    .session-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .session-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(11, 12, 16, 0.5);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-caption);
+      color: var(--c-hueso);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="centro-de-control.html" class="section-pill-btn" aria-label="Volver a Centro de Control">
+        <span>‹ Control</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section class="subject-hero-card">
+      <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary); font-weight:800; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:4px;">
+        Asignatura Oficial · Clave 1408
+      </div>
+      <h1 class="hero-title" style="font-size:var(--text-title1); margin-bottom:8px;">Informática</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary); line-height:1.4;">
+        Herramientas computacionales, laboratorio de cómputo y fundamentos de sistemas. 2 horas semanales.
+      </p>
+
+      <div class="session-badge-row">
+        <span class="session-badge"><strong>Martes:</strong> 09:30-10:20 (Salón B-108 · Teoría)</span>
+        <span class="session-badge"><strong>Martes:</strong> 11:10-12:00 (Laboratorio CC-2 · Práctica)</span>
+      </div>
+    </section>
+
+    <!-- CONTENIDO DINÁMICO PRIORIZADO: 1. LO RECIENTE, 2. AVISOS, 3. TAREAS, 4. EXÁMENES, 5. EVENTOS, 6. RECURSOS, 7. HISTORIAL -->
+    <div id="materia-dinamica-content" data-materia-id="informatica"></div>
+  </main>
+
+    <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+</body>
+</html>

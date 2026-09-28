@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Calendario Académico — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .cal-event-card {
+      padding: 16px 18px;
+      background: rgba(42, 45, 52, 0.3);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-copal);
+      margin-bottom: 12px;
+      transition: transform 0.16s var(--ease-ios);
+    }
+    .cal-event-card.type-evaluacion {
+      border-left-color: var(--c-cempasuchil);
+    }
+    .cal-event-card.type-academico {
+      border-left-color: var(--c-oro);
+    }
+    .cal-event-card.type-institucional {
+      border-left-color: var(--c-copal-border);
+    }
+    .cal-date-pill {
+      font-family: var(--font-family-mono);
+      font-size: var(--text-micro);
+      color: var(--c-oro);
+      font-weight: 700;
+      background: var(--c-oro-soft);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Calendario 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 16px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Calendario Escolar</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        ¿Qué ocurre cada día? Fechas de evaluación parcial, entrega de reportes y periodos oficiales del ciclo 2026-2027 ENP.
+      </p>
+    </section>
+
+    <!-- Explicación de diferencia entre Horario y Calendario -->
+    <div style="padding:14px 16px; background:rgba(42,45,52,0.25); border-radius:var(--radius-md); border:1px solid var(--c-copal-line); margin-bottom:20px; font-size:var(--text-caption); color:var(--c-hueso-secondary);">
+      💡 <strong>Nota de uso:</strong> Tu <em>Horario</em> diario responde a <em>"¿Qué clase me toca en este instante?"</em>; este <em>Calendario</em> responde a <em>"¿Qué eventos, fechas límites y evaluaciones corresponden a cada fecha?"</em>.
+    </div>
+
+    <!-- Lista de Hitos y Eventos Académicos Oficiales -->
+    <section id="calendario-eventos-list">
+      <!-- Renderizado dinámico -->
+    </section>
+
+  </main>
+
+  <!-- Navegación Inferior -->
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="calendario.html" class="nav-tab-item active" aria-label="Calendario">
+      <span class="nav-tab-icon">📅</span>
+      <span>Agenda</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('calendario-eventos-list');
+      if (!container) return;
+
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getActiveData() : GRUPO_415_DATA;
+      const eventos = data.eventosCalendario || [];
+
+      if (eventos.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📅</div>
+            <div class="empty-state-text">Sin eventos registrados por el momento.</div>
+            <div class="empty-state-sub">Las fechas de Consejo Técnico y periodos de exámenes se listarán aquí.</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = eventos.map((ev) => `
+        <article class="cal-event-card type-${ev.tipo || 'institucional'}">
+          <span class="cal-date-pill">🗓 ${ev.fecha}${ev.fechaFin ? ' al ' + ev.fechaFin : ''}</span>
+          <h2 style="font-size:var(--text-headline); font-weight:700; color:var(--c-hueso); margin-bottom:4px;">${ev.titulo}</h2>
+          <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">${ev.descripcion}</p>
+        </article>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

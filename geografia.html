@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Geografía — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .subject-hero-card {
+      padding: 24px 20px;
+      background: linear-gradient(145deg, rgba(42, 45, 52, 0.7) 0%, rgba(11, 12, 16, 0.9) 100%);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+    }
+    .task-card-active {
+      padding: 16px 18px;
+      background: rgba(42, 45, 52, 0.35);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-cempasuchil);
+      margin-bottom: 12px;
+    }
+    .session-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .session-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(11, 12, 16, 0.5);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      font-size: var(--text-caption);
+      color: var(--c-hueso);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="centro-de-control.html" class="section-pill-btn" aria-label="Volver a Centro de Control">
+        <span>‹ Control</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section class="subject-hero-card">
+      <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary); font-weight:800; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:4px;">
+        Asignatura Oficial · Clave 1405
+      </div>
+      <h1 class="hero-title" style="font-size:var(--text-title1); margin-bottom:8px;">Geografía</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary); line-height:1.4;">
+        Espacio geográfico, análisis cartográfico y geosistemas de México y el mundo. 3 horas semanales en el Salón A-104.
+      </p>
+
+      <div class="session-badge-row">
+        <span class="session-badge"><strong>Lunes:</strong> 07:00-07:50 (A-104)</span>
+        <span class="session-badge"><strong>Miércoles:</strong> 07:00-07:50 (A-104)</span>
+        <span class="session-badge"><strong>Jueves:</strong> 09:30-10:20 (A-104)</span>
+      </div>
+    </section>
+
+    <!-- AVISO COMERCIAL: HOJAS MEMBRETADAS ENCARDOMY ($30) -->
+    <section class="commercial-card" id="comercial-hojas-section" style="margin-bottom:24px;">
+      <div class="commercial-card-inner" style="padding:22px; background:linear-gradient(135deg, rgba(229,169,60,0.15) 0%, rgba(11,12,16,0.85) 100%); border:1px solid var(--c-oro-border); border-radius:var(--radius-lg); box-shadow:0 8px 30px var(--c-oro-glow); position:relative; overflow:hidden;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+          <span style="font-size:var(--text-micro); font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--c-oro); background:var(--c-oro-soft); padding:3px 10px; border-radius:var(--radius-pill);">
+            📜 Material de Clase · Geografía
+          </span>
+          <span style="font-size:var(--text-headline); font-weight:800; color:var(--c-oro);">$30 pesos</span>
+        </div>
+        <h2 style="font-size:var(--text-title2); font-weight:800; color:var(--c-hueso); margin-bottom:8px; line-height:1.25;">
+          Recuerda tener listas tus hojas membretadas.
+        </h2>
+        <p style="font-size:var(--text-body); color:var(--c-hueso-secondary); line-height:1.45; margin-bottom:18px;">
+          Si todavía no las tienes, puedes conseguirlas por <strong>$30 pesos</strong> mediante Encardomy y solicitar que te las lleven.
+        </p>
+        <button type="button" class="btn-primary" onclick="abrirModalHojasMembretadas()" style="width:100%; justify-content:center; background:var(--c-oro); color:var(--c-obsidiana); font-weight:800; font-size:var(--text-body); height:48px; border-radius:var(--radius-pill); cursor:pointer; border:none;">
+          <span>Pedir Hojas Membretadas ($30) ›</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- MODAL FORMULARIO ANTES DE WHATSAPP -->
+    <div class="section-modal-backdrop" id="modal-hojas-backdrop" style="display:none;">
+      <div class="section-modal-box" style="text-align:left; width:100%; max-width:380px; box-sizing:border-box;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <span style="font-size:var(--text-micro); color:var(--c-oro); font-weight:800; text-transform:uppercase;">Encardomy · Grupo 415</span>
+          <button type="button" onclick="cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.2rem; cursor:pointer;" aria-label="Cerrar">✕</button>
+        </div>
+        <h3 style="font-size:var(--text-title2); font-weight:700; color:var(--c-hueso); margin-bottom:6px;">
+          Solicitud de Hojas Membretadas
+        </h3>
+        <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); margin-bottom:16px; line-height:1.4;">
+          Por favor escribe tu <strong>nombre completo</strong> empezando por tus apellidos:
+        </p>
+        <div style="margin-bottom:18px;">
+          <label for="input-apellidos-nombre" style="font-size:var(--text-micro); color:var(--c-hueso-tertiary); font-weight:700; text-transform:uppercase; display:block; margin-bottom:4px;">
+            Formato: Apellidos Nombre(s)
+          </label>
+          <input 
+            type="text" 
+            id="input-apellidos-nombre" 
+            class="form-control" 
+            placeholder="Ej: Pérez García Juan Carlos" 
+            style="height:48px; border-radius:var(--radius-md); font-size:var(--text-body);"
+            required
+            autocomplete="name"
+          >
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="section-pill-btn" onclick="cerrarModalHojas()" style="flex:1; justify-content:center; height:46px;">
+            Cancelar
+          </button>
+          <button type="button" class="btn-primary" onclick="confirmarYEnviarWhatsAppHojas()" style="flex:2; justify-content:center; background:#25D366; color:#0B0C10; font-weight:800; border-color:#25D366; height:46px; border-radius:var(--radius-pill); cursor:pointer;">
+            <span>Continuar a WhatsApp ›</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO DINÁMICO PRIORIZADO: 1. LO RECIENTE, 2. AVISOS, 3. TAREAS, 4. EXÁMENES, 5. EVENTOS, 6. RECURSOS, 7. HISTORIAL -->
+    <div id="materia-dinamica-content" data-materia-id="geografia"></div>
+  </main>
+
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item active" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    function abrirModalHojasMembretadas() {
+      const modal = document.getElementById('modal-hojas-backdrop');
+      if (modal) modal.style.display = 'flex';
+      const inp = document.getElementById('input-apellidos-nombre');
+      if (inp) setTimeout(() => inp.focus(), 150);
+    }
+    function cerrarModalHojas() {
+      const modal = document.getElementById('modal-hojas-backdrop');
+      if (modal) modal.style.display = 'none';
+    }
+    function confirmarYEnviarWhatsAppHojas() {
+      const inp = document.getElementById('input-apellidos-nombre');
+      const nombre = inp ? inp.value.trim() : '';
+      if (!nombre) {
+        App415.mostrarToast('Por favor escribe tu nombre completo');
+        if (inp) inp.focus();
+        return;
+      }
+      const mensaje = encodeURIComponent(`Hola, soy ${nombre} y vengo desde la página del 415 para solicitar información sobre las hojas membretadas.`);
+      const url = `https://wa.me/525571985641?text=${mensaje}`;
+      cerrarModalHojas();
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  </script>
+</body>
+</html>

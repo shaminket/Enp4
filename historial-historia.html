@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Historial: Historia Universal III — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .historial-header-box {
+      padding: 12px 0 16px;
+    }
+
+    .historial-selector-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      scrollbar-width: none;
+    }
+    .historial-selector-bar::-webkit-scrollbar { display: none; }
+
+    .historial-tab-pill {
+      flex: 0 0 auto;
+      padding: 6px 14px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso-secondary);
+      font-size: var(--text-caption);
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+    }
+    .historial-tab-pill.active {
+      background: var(--c-copal);
+      color: var(--c-hueso);
+      border-color: var(--c-cempasuchil-border);
+      font-weight: 700;
+    }
+
+    .hist-item-card {
+      padding: 16px 18px;
+      background: rgba(42, 45, 52, 0.28);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-copal);
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.16s ease;
+    }
+    .hist-item-card.is-vencido {
+      border-left-color: var(--c-cempasuchil-soft);
+    }
+    .hist-item-card.is-finalizado {
+      border-left-color: var(--c-copal-border);
+    }
+    .hist-item-card.is-archivado {
+      border-left-color: var(--c-oro);
+    }
+
+    .hist-badge {
+      font-family: var(--font-family-mono);
+      font-size: var(--text-micro);
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-block;
+    }
+    .badge-vencido {
+      background: var(--c-cempasuchil-soft);
+      color: var(--c-cempasuchil);
+      border: 1px solid var(--c-cempasuchil-border);
+    }
+    .badge-finalizado {
+      background: rgba(184, 187, 197, 0.15);
+      color: var(--c-hueso-secondary);
+      border: 1px solid var(--c-copal-line);
+    }
+    .badge-archivado {
+      background: var(--c-oro-soft);
+      color: var(--c-oro);
+      border: 1px solid var(--c-oro-border);
+    }
+
+    .hist-type-label {
+      font-size: var(--text-micro);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--c-hueso-tertiary);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="historia.html" id="historial-back-btn" class="section-pill-btn" aria-label="Volver">
+        <span id="historial-back-text">‹ Historia Universal III</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Historial 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section class="historial-header-box">
+      <h1 class="hero-title" style="font-size:var(--text-title1);" id="historial-materia-title">Historial: Historia Universal III</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);" id="historial-materia-subtitle">
+        Memoria y consulta de tareas anteriores, avisos archivados y registros históricos de Historia Universal III.
+      </p>
+    </section>
+
+    <!-- Selector de Materia -->
+    <div style="margin-bottom:12px;">
+      <label for="historial-materia-select" style="font-size:var(--text-micro); color:var(--c-hueso-tertiary); font-weight:700; text-transform:uppercase; display:block; margin-bottom:4px;">
+        Filtrar por Materia:
+      </label>
+      <select id="historial-materia-select" class="form-control" style="height:44px; border-radius:var(--radius-md); background:var(--c-copal-surface); color:var(--c-hueso);" onchange="onMateriaSelectChange(this.value)">
+        <option value="todas">Todas las Materias (Registro Global)</option>
+      </select>
+    </div>
+
+    <!-- Filtro por Tipo de Contenido -->
+    <div class="historial-selector-bar" role="tablist">
+      <button class="historial-tab-pill active" data-type="todos" onclick="setHistorialType('todos', this)">Todos los registros</button>
+      <button class="historial-tab-pill" data-type="tareas" onclick="setHistorialType('tareas', this)">Tareas anteriores</button>
+      <button class="historial-tab-pill" data-type="avisos" onclick="setHistorialType('avisos', this)">Avisos anteriores</button>
+      <button class="historial-tab-pill" data-type="examenes" onclick="setHistorialType('examenes', this)">Exámenes anteriores</button>
+      <button class="historial-tab-pill" data-type="eventos" onclick="setHistorialType('eventos', this)">Eventos anteriores</button>
+      <button class="historial-tab-pill" data-type="archivos" onclick="setHistorialType('archivos', this)">Recursos / Normativa</button>
+    </div>
+
+    <!-- Buscador en Historial -->
+    <div style="margin-bottom:18px;">
+      <input 
+        type="search" 
+        id="historial-search-input" 
+        class="form-control" 
+        placeholder="Buscar en el historial (ej. diagnóstico, lectura, agosto)..."
+        style="height:42px; border-radius:var(--radius-pill); font-size:var(--text-caption); padding-left:16px;"
+        oninput="filtrarHistorial()"
+      >
+    </div>
+
+    <!-- Lista de Contenido Histórico -->
+    <section id="historial-content-list" style="margin-bottom:32px;">
+      <!-- Renderizado dinámico -->
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item active" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="calendario.html" class="nav-tab-item" aria-label="Calendario">
+      <span class="nav-tab-icon">📅</span>
+      <span>Agenda</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    let activeType = 'todos';
+    let currentMateriaParam = 'historia';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Leer query param ?materia=slug-or-id
+      const params = new URLSearchParams(window.location.search);
+      const matQuery = params.get('materia');
+
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getRawData() : GRUPO_415_DATA_DEFAULT;
+      const select = document.getElementById('historial-materia-select');
+
+      // Llenar selector con las 12 materias
+      data.materias.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.id;
+        opt.textContent = m.nombre;
+        select.appendChild(opt);
+      });
+
+      if (matQuery) {
+        // Buscar por id o por slug
+        const found = data.materias.find(m => m.id === matQuery || m.slug.includes(matQuery));
+        if (found) {
+          currentMateriaParam = found.id;
+          select.value = found.id;
+          document.getElementById('historial-materia-title').textContent = `Historial: ${found.nombre}`;
+          document.getElementById('historial-materia-subtitle').textContent = `Registro histórico y memoria académica de ${found.nombre}.`;
+          
+          // Botón de retorno a la materia
+          const backBtn = document.getElementById('historial-back-btn');
+          const backText = document.getElementById('historial-back-text');
+          if (backBtn && backText) {
+            backBtn.href = found.slug;
+            backText.textContent = `‹ ${found.nombre}`;
+          }
+        }
+      }
+
+      renderHistorial();
+    });
+
+    function onMateriaSelectChange(val) {
+      currentMateriaParam = val;
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getRawData() : GRUPO_415_DATA_DEFAULT;
+      if (val === 'todas') {
+        document.getElementById('historial-materia-title').textContent = 'Historial Académico';
+        document.getElementById('historial-materia-subtitle').textContent = 'Memoria y consulta de tareas anteriores, avisos archivados, exámenes realizados y registros históricos.';
+        const backBtn = document.getElementById('historial-back-btn');
+        const backText = document.getElementById('historial-back-text');
+        if (backBtn && backText) {
+          backBtn.href = 'centro-de-control.html';
+          backText.textContent = '‹ Control';
+        }
+      } else {
+        const found = data.materias.find(m => m.id === val);
+        if (found) {
+          document.getElementById('historial-materia-title').textContent = `Historial: ${found.nombre}`;
+          document.getElementById('historial-materia-subtitle').textContent = `Registro histórico y memoria académica de ${found.nombre}.`;
+          const backBtn = document.getElementById('historial-back-btn');
+          const backText = document.getElementById('historial-back-text');
+          if (backBtn && backText) {
+            backBtn.href = found.slug;
+            backText.textContent = `‹ ${found.nombre}`;
+          }
+        }
+      }
+      renderHistorial();
+    }
+
+    function setHistorialType(tipo, btn) {
+      activeType = tipo;
+      document.querySelectorAll('.historial-tab-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHistorial();
+    }
+
+    function filtrarHistorial() {
+      renderHistorial();
+    }
+
+    function renderHistorial() {
+      const container = document.getElementById('historial-content-list');
+      if (!container) return;
+
+      const sec = (typeof App415 !== 'undefined') ? App415.getCurrentSection() || 'A' : 'A';
+      const searchVal = (document.getElementById('historial-search-input').value || '').trim().toLowerCase();
+
+      let items = [];
+
+      if (currentMateriaParam === 'todas') {
+        const globalGroup = DataStore.getContenidoGlobal({ seccion: sec });
+        const h = globalGroup.historial;
+        if (activeType === 'todos' || activeType === 'tareas') {
+          h.tareas.forEach(t => items.push({ ...t, _tipo: 'tarea' }));
+        }
+        if (activeType === 'todos' || activeType === 'avisos') {
+          h.avisos.forEach(a => items.push({ ...a, _tipo: 'aviso' }));
+        }
+        if (activeType === 'todos' || activeType === 'examenes') {
+          h.examenes.forEach(e => items.push({ ...e, _tipo: 'examen' }));
+        }
+        if (activeType === 'todos' || activeType === 'eventos') {
+          h.eventos.forEach(ev => items.push({ ...ev, _tipo: 'evento' }));
+        }
+        if (activeType === 'todos' || activeType === 'archivos') {
+          h.archivos.forEach(ar => items.push({ ...ar, _tipo: 'archivo' }));
+        }
+      } else {
+        const matGroup = DataStore.getContenidoMateria(currentMateriaParam, { seccion: sec });
+        const h = matGroup.historial;
+        if (activeType === 'todos' || activeType === 'tareas') {
+          h.tareas.forEach(t => items.push({ ...t, _tipo: 'tarea' }));
+        }
+        if (activeType === 'todos' || activeType === 'avisos') {
+          h.avisos.forEach(a => items.push({ ...a, _tipo: 'aviso' }));
+        }
+        if (activeType === 'todos' || activeType === 'examenes') {
+          h.examenes.forEach(e => items.push({ ...e, _tipo: 'examen' }));
+        }
+        if (activeType === 'todos' || activeType === 'eventos') {
+          h.eventos.forEach(ev => items.push({ ...ev, _tipo: 'evento' }));
+        }
+        if (activeType === 'todos' || activeType === 'archivos') {
+          h.archivos.forEach(ar => items.push({ ...ar, _tipo: 'archivo' }));
+        }
+      }
+
+      // Filtro de búsqueda
+      if (searchVal) {
+        items = items.filter(it => {
+          const t = (it.titulo || it.nombre || '').toLowerCase();
+          const d = (it.indicaciones || it.descripcion || it.contenido || '').toLowerCase();
+          const c = (it.codigo || it.materiaId || '').toLowerCase();
+          return t.includes(searchVal) || d.includes(searchVal) || c.includes(searchVal);
+        });
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="padding:48px 20px;">
+            <div class="empty-state-icon">📁</div>
+            <div class="empty-state-text">Sin registros en el historial</div>
+            <div class="empty-state-sub">No hay contenido archivado o vencido que coincida con los filtros seleccionados.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const data = DataStore.getRawData();
+
+      container.innerHTML = items.map(it => {
+        const mat = data.materias.find(m => m.id === it.materiaId);
+        const matNombre = mat ? mat.nombre : (it.materiaId === 'general' ? 'Aviso General 415' : it.materiaId);
+        const clasif = it._clasificacion || { estado: 'Archivado', etiqueta: 'Registro anterior' };
+        
+        let badgeClass = 'badge-archivado';
+        if (clasif.estado === 'Vencido') badgeClass = 'badge-vencido';
+        if (clasif.estado === 'Finalizado') badgeClass = 'badge-finalizado';
+
+        const titulo = it.titulo || it.nombre || 'Registro Histórico';
+        const detalle = it.indicaciones || it.descripcion || it.contenido || '';
+        const fechaLabel = it.fechaEntrega || it.fechaFin || it.fecha || it.fechaPublicacion || '';
+
+        return `
+          <article class="hist-item-card is-${clasif.estado.toLowerCase()}">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+              <span class="hist-type-label">
+                ${it._tipo === 'tarea' ? '⚡ Tarea Anterior' : it._tipo === 'aviso' ? '🔔 Aviso Pasado' : it._tipo === 'examen' ? '📝 Examen Realizado' : it._tipo === 'evento' ? '🗓 Evento Pasado' : '📄 Documento Archivado'} · ${matNombre}
+              </span>
+              <span class="hist-badge ${badgeClass}">${clasif.estado}: ${clasif.etiqueta}</span>
+            </div>
+
+            <h3 style="font-size:var(--text-headline); font-weight:700; color:var(--c-hueso); margin:4px 0 2px;">
+              ${titulo}
+            </h3>
+
+            <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.45;">
+              ${detalle}
+            </p>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; font-size:var(--text-micro); color:var(--c-hueso-tertiary); font-family:var(--font-family-mono);">
+              <span>Fecha / Registro: <strong>${fechaLabel}</strong></span>
+              ${it.codigo ? `<span>${it.codigo}</span>` : ''}
+            </div>
+
+            ${it.url ? `
+              <div style="margin-top:6px;">
+                <a href="${it.url}" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-caption); color:var(--c-oro); font-weight:700;">
+                  ↗ Ver documento original en Google Drive
+                </a>
+              </div>
+            ` : ''}
+          </article>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

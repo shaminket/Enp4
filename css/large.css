@@ -1,0 +1,796 @@
+/**
+ * SISTEMA DE DISEÑO Y EXPERIENCIA GRAN FORMATO (iMac, Studio Display, Pro Display XDR, 4K/5K/6K, Ultrawide, TV)
+ * Grupo 415 — Escuela Nacional Preparatoria N° 4 "Vidal Castañeda y Nájera" UNAM
+ * 
+ * Filosofía:
+ * - Diseñado específicamente para pantallas grandes: 1920x1080+, 2560x1440+, 4K, 5K, 6K, Ultrawides (21:9 / 32:9),
+ *   pantallas verticales (1080x1920, 1440x2560) y visualización a distancia (Smart TVs / monitores de sala).
+ * - "Más espacio no significa más elementos": arquitectura editorial espaciosa, jerarquía visual de alto impacto,
+ *   longitud de línea de lectura ergonómica (65-75ch), espacios negativos armónicos y controles de escala visible.
+ * - Navegación accesible universal: mouse, trackpad, teclado integral (⌘K / tab), control remoto y táctil.
+ * - Paleta estricta UNAM / Día de Muertos (Obsidiana #0B0C10, Cempasúchil #FF7A00, Hueso #F7F4EE, Oro #E5A93C, Copal #2A2D34).
+ */
+
+:root {
+  /* Dimensiones estructurales de gran formato */
+  --large-sidebar-width: clamp(280px, 15vw, 360px);
+  --large-inspector-width: clamp(340px, 19vw, 440px);
+  --large-header-height: clamp(68px, 4.8vh, 84px);
+  --large-max-canvas-width: 2560px;
+
+  /* Radios generosos y fluidos */
+  --large-radius-card: clamp(16px, 1.2vw, 24px);
+  --large-radius-panel: clamp(20px, 1.5vw, 30px);
+  --large-radius-sm: clamp(8px, 0.6vw, 14px);
+
+  /* Espaciado modular */
+  --large-gap-sm: clamp(10px, 0.8vw, 18px);
+  --large-gap-md: clamp(18px, 1.4vw, 28px);
+  --large-gap-lg: clamp(28px, 2.2vw, 44px);
+  --large-gap-xl: clamp(40px, 3.2vw, 64px);
+
+  /* Superficies de Gran Formato */
+  --c-large-bg: #0B0C10;
+  --c-large-sidebar: rgba(14, 16, 22, 0.94);
+  --c-large-panel: rgba(26, 29, 36, 0.74);
+  --c-large-panel-glass: rgba(26, 29, 36, 0.55);
+  --c-large-card: rgba(38, 41, 50, 0.48);
+  --c-large-card-hover: rgba(50, 54, 66, 0.75);
+  --c-large-border: rgba(247, 244, 238, 0.10);
+  --c-large-border-hover: rgba(247, 244, 238, 0.26);
+  --c-large-border-gold: rgba(229, 169, 60, 0.38);
+  --c-large-border-cempasuchil: rgba(255, 122, 0, 0.45);
+
+  /* Sombras y profundidad en gran escala */
+  --shadow-large-panel: 0 20px 60px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(247, 244, 238, 0.05);
+  --shadow-large-card: 0 8px 30px rgba(0, 0, 0, 0.38);
+  --shadow-large-hover: 0 16px 44px rgba(0, 0, 0, 0.55), 0 0 24px var(--c-cempasuchil-glow);
+  --blur-large-glass: blur(36px) saturate(220%);
+
+  /* Escala tipográfica espaciosa y legible a distancia */
+  --text-large-hero: clamp(2.4rem, 2.8vw, 4rem);
+  --text-large-title1: clamp(1.8rem, 2vw, 2.8rem);
+  --text-large-title2: clamp(1.35rem, 1.5vw, 2rem);
+  --text-large-headline: clamp(1.1rem, 1.2vw, 1.5rem);
+  --text-large-body: clamp(0.98rem, 1.05vw, 1.28rem);
+  --text-large-callout: clamp(0.88rem, 0.95vw, 1.12rem);
+  --text-large-meta: clamp(0.8rem, 0.85vw, 1rem);
+}
+
+/* Reset y caja base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: var(--c-large-bg);
+  color: var(--c-hueso);
+  font-family: var(--font-family-display, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lienzo ambiental tenue de partículas / aura */
+#large-ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; max-width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Marco exterior para pantallas Ultrawide (3440px, 5120px, etc.) */
+.large-viewport-container {
+  position: relative;
+  z-index: 1;
+  width: 100%; max-width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background: radial-gradient(circle at 50% 10%, rgba(229, 169, 60, 0.04) 0%, transparent 60%);
+}
+
+/* Contenedor central de la aplicación */
+.large-app-shell {
+  width: 100%;
+  max-width: var(--large-max-canvas-width);
+  height: 100%;
+  display: flex;
+  background: var(--c-large-bg);
+  border-left: 1px solid var(--c-large-border);
+  border-right: 1px solid var(--c-large-border);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------
+ * COLUMNA 1: SIDEBAR DE NAVEGACIÓN PERSISTENTE
+ * ---------------------------------------------------- */
+.large-sidebar {
+  width: var(--large-sidebar-width);
+  min-width: 280px;
+  height: 100%;
+  background: var(--c-large-sidebar);
+  border-right: 1px solid var(--c-large-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  backdrop-filter: var(--blur-large-glass);
+  -webkit-backdrop-filter: var(--blur-large-glass);
+  z-index: 10;
+}
+
+.large-sidebar-header {
+  padding: clamp(20px, 1.8vw, 30px);
+  border-bottom: 1px solid var(--c-large-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--large-gap-sm);
+}
+
+.large-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--c-hueso);
+}
+
+.large-brand-badge {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--c-cempasuchil) 0%, #CC5200 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: #0B0C10;
+  letter-spacing: -0.04em;
+  box-shadow: 0 4px 16px var(--c-cempasuchil-glow);
+  flex-shrink: 0;
+}
+
+.large-brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.large-brand-title {
+  font-size: clamp(1.05rem, 1.1vw, 1.3rem);
+  font-weight: 800;
+  color: var(--c-hueso);
+  letter-spacing: -0.02em;
+}
+
+.large-brand-sub {
+  font-size: clamp(0.75rem, 0.8vw, 0.9rem);
+  color: var(--c-oro);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Selector de Sección A / B */
+.large-section-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(42, 45, 52, 0.55);
+  border: 1px solid var(--c-large-border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.large-section-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-hueso-secondary);
+  font-size: clamp(0.82rem, 0.88vw, 1rem);
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.large-section-btn.active {
+  background: var(--c-cempasuchil);
+  color: #0B0C10;
+  font-weight: 800;
+  box-shadow: 0 2px 10px var(--c-cempasuchil-glow);
+}
+
+.large-section-btn:hover:not(.active) {
+  color: var(--c-hueso);
+  background: rgba(247, 244, 238, 0.06);
+}
+
+/* Navegación lateral estructurada */
+.large-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: clamp(16px, 1.2vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.large-nav-group-title {
+  font-size: clamp(0.72rem, 0.78vw, 0.88rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--c-hueso-tertiary);
+  margin-top: 16px;
+  margin-bottom: 8px;
+  padding-left: 12px;
+}
+
+.large-nav-group-title:first-child {
+  margin-top: 0;
+}
+
+.large-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(10px, 0.9vw, 14px) 14px;
+  border-radius: 10px;
+  color: var(--c-hueso-secondary);
+  text-decoration: none;
+  font-size: clamp(0.92rem, 0.98vw, 1.12rem);
+  font-weight: 600;
+  transition: all 0.18s ease;
+  position: relative;
+  min-height: 46px;
+}
+
+.large-nav-item .nav-icon {
+  font-size: 1.15rem;
+  width: 24px;
+  text-align: center;
+  color: var(--c-hueso-tertiary);
+  transition: color 0.18s ease;
+}
+
+.large-nav-item:hover {
+  background: rgba(247, 244, 238, 0.06);
+  color: var(--c-hueso);
+}
+
+.large-nav-item:hover .nav-icon {
+  color: var(--c-cempasuchil);
+}
+
+.large-nav-item.active {
+  background: rgba(255, 122, 0, 0.14);
+  color: var(--c-cempasuchil);
+  font-weight: 700;
+  border: 1px solid var(--c-large-border-cempasuchil);
+}
+
+.large-nav-item.active .nav-icon {
+  color: var(--c-cempasuchil);
+}
+
+.large-nav-badge {
+  margin-left: auto;
+  font-size: clamp(0.7rem, 0.75vw, 0.85rem);
+  font-family: var(--font-family-mono);
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(42, 45, 52, 0.6);
+  color: var(--c-hueso-secondary);
+  font-weight: 600;
+}
+
+.large-nav-badge.gold {
+  background: rgba(229, 169, 60, 0.18);
+  color: var(--c-oro);
+  border: 1px solid var(--c-large-border-gold);
+}
+
+/* Pie de sidebar */
+.large-sidebar-footer {
+  padding: clamp(16px, 1.4vw, 24px);
+  border-top: 1px solid var(--c-large-border);
+  background: rgba(11, 12, 16, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.large-live-widget {
+  background: rgba(42, 45, 52, 0.45);
+  border: 1px solid var(--c-large-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.large-live-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.large-live-pulse {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #34C759;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.large-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #34C759;
+  box-shadow: 0 0 10px #34C759;
+  animation: large-pulse 2s infinite;
+}
+
+@keyframes large-pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.large-live-clock {
+  font-family: var(--font-family-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-hueso);
+}
+
+/* ----------------------------------------------------
+ * COLUMNA 2: ESCENARIO PRINCIPAL (MAIN CANVAS)
+ * ---------------------------------------------------- */
+.large-main-stage {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 0%, rgba(255, 122, 0, 0.03) 0%, transparent 50%);
+  min-width: 0;
+}
+
+/* Barra Superior Global */
+.large-top-bar {
+  height: var(--large-header-height);
+  padding: 0 clamp(24px, 2.2vw, 44px);
+  border-bottom: 1px solid var(--c-large-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(14, 16, 22, 0.75);
+  backdrop-filter: var(--blur-large-glass);
+  -webkit-backdrop-filter: var(--blur-large-glass);
+  flex-shrink: 0;
+  z-index: 8;
+  gap: 20px;
+}
+
+.large-top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.large-page-title {
+  font-size: clamp(1.2rem, 1.4vw, 1.8rem);
+  font-weight: 800;
+  color: var(--c-hueso);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.large-top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.2vw, 24px);
+  flex-shrink: 0;
+}
+
+/* Buscador accesible con atajo de teclado */
+.large-search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(42, 45, 52, 0.5);
+  border: 1px solid var(--c-large-border);
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: var(--c-hueso-secondary);
+  text-decoration: none;
+  font-size: clamp(0.85rem, 0.9vw, 1.05rem);
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.large-search-trigger:hover {
+  background: rgba(247, 244, 238, 0.08);
+  border-color: var(--c-large-border-hover);
+  color: var(--c-hueso);
+}
+
+.large-kbd-badge {
+  background: rgba(11, 12, 16, 0.6);
+  border: 1px solid var(--c-large-border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-family: var(--font-family-mono);
+  color: var(--c-oro);
+  font-weight: 700;
+}
+
+/* Conmutador entre Experiencias */
+.large-mode-switcher {
+  display: flex;
+  align-items: center;
+  background: rgba(42, 45, 52, 0.45);
+  border: 1px solid var(--c-large-border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.large-switcher-pill {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: clamp(0.78rem, 0.82vw, 0.92rem);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--c-hueso-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+  min-height: 36px;
+}
+
+.large-switcher-pill.active {
+  background: var(--c-cempasuchil);
+  color: #0B0C10;
+  font-weight: 800;
+}
+
+.large-switcher-pill:hover:not(.active) {
+  color: var(--c-hueso);
+  background: rgba(247, 244, 238, 0.08);
+}
+
+/* Cuerpo con scroll independiente */
+.large-stage-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: clamp(28px, 2.5vw, 52px) clamp(28px, 2.8vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--large-gap-lg);
+}
+
+/* Contención ergonómica de lectura */
+.large-readable-container {
+  max-width: min(1500px, 100%);
+  width: 100%;
+}
+
+.large-prose-text {
+  max-width: 78ch;
+  line-height: 1.65;
+  color: var(--c-hueso-secondary);
+  font-size: var(--text-large-body);
+}
+
+/* Hero en vivo */
+.large-live-hero {
+  background: linear-gradient(135deg, rgba(26, 29, 36, 0.85) 0%, rgba(18, 20, 26, 0.92) 100%);
+  border: 1px solid var(--c-large-border-cempasuchil);
+  border-radius: var(--large-radius-panel);
+  padding: clamp(28px, 2.4vw, 44px);
+  box-shadow: var(--shadow-large-panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.large-live-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: radial-gradient(circle at 100% 0%, var(--c-cempasuchil-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Paneles y tarjetas amplias */
+.large-panel {
+  background: var(--c-large-panel);
+  border: 1px solid var(--c-large-border);
+  border-radius: var(--large-radius-panel);
+  padding: clamp(24px, 2vw, 38px);
+  box-shadow: var(--shadow-large-panel);
+  display: flex;
+  flex-direction: column;
+  gap: var(--large-gap-md);
+}
+
+.large-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--c-large-border);
+  padding-bottom: 16px;
+}
+
+.large-panel-title {
+  font-size: var(--text-large-headline);
+  font-weight: 800;
+  color: var(--c-hueso);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Grid editorial amplio (no saturado) */
+.large-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: var(--large-gap-md);
+}
+
+.large-card {
+  background: var(--c-large-card);
+  border: 1px solid var(--c-large-border);
+  border-radius: var(--large-radius-card);
+  padding: clamp(20px, 1.6vw, 30px);
+  box-shadow: var(--shadow-large-card);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.large-card:hover {
+  background: var(--c-large-card-hover);
+  border-color: var(--c-large-border-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-large-hover);
+}
+
+.large-card.accent-cempasuchil {
+  border-left: 5px solid var(--c-cempasuchil);
+}
+
+.large-card.accent-gold {
+  border-left: 5px solid var(--c-oro);
+}
+
+/* Botones de acción accesibles a distancia */
+.large-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--c-cempasuchil);
+  color: #0B0C10;
+  font-weight: 800;
+  font-size: var(--text-large-callout);
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px var(--c-cempasuchil-glow);
+}
+
+.large-action-btn:hover {
+  background: #FF8F26;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px var(--c-cempasuchil-glow);
+}
+
+.large-action-btn.secondary {
+  background: rgba(42, 45, 52, 0.6);
+  color: var(--c-hueso);
+  border: 1px solid var(--c-large-border);
+  box-shadow: none;
+}
+
+.large-action-btn.secondary:hover {
+  background: rgba(247, 244, 238, 0.12);
+  border-color: var(--c-large-border-hover);
+}
+
+.large-action-btn.gold {
+  background: var(--c-oro);
+  color: #0B0C10;
+  box-shadow: 0 4px 16px var(--c-oro-glow);
+}
+
+.large-action-btn.gold:hover {
+  background: #F0B854;
+}
+
+/* ----------------------------------------------------
+ * COLUMNA 3: INSPECTOR CONTEXTUAL LATERAL
+ * ---------------------------------------------------- */
+.large-inspector {
+  width: var(--large-inspector-width);
+  min-width: 320px;
+  height: 100%;
+  background: var(--c-large-sidebar);
+  border-left: 1px solid var(--c-large-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  backdrop-filter: var(--blur-large-glass);
+  -webkit-backdrop-filter: var(--blur-large-glass);
+  overflow-y: auto;
+  padding: clamp(24px, 2vw, 36px);
+  gap: var(--large-gap-lg);
+  z-index: 9;
+}
+
+.large-inspector-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.large-inspector-title {
+  font-size: var(--text-large-headline);
+  font-weight: 800;
+  color: var(--c-hueso);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.01em;
+}
+
+.large-inspector-card {
+  background: rgba(42, 45, 52, 0.45);
+  border: 1px solid var(--c-large-border);
+  border-radius: var(--large-radius-card);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Modal de Hojas Membretadas en Gran Formato */
+.large-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.large-modal-backdrop.active {
+  display: flex;
+}
+
+.large-modal-card {
+  background: #161820;
+  border: 1px solid var(--c-large-border-gold);
+  border-radius: var(--large-radius-panel);
+  width: 100%;
+  max-width: 580px;
+  padding: clamp(28px, 2.5vw, 42px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: large-modal-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes large-modal-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ----------------------------------------------------
+ * ACCESIBILIDAD UNIVERSAL: FOCO, TECLADO Y DISTANCIA
+ * ---------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--c-oro) !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 20px var(--c-oro-glow) !important;
+}
+
+/* Soporte para movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------
+ * PANTALLAS VERTICALES GRANDES (1080x1920, 1440x2560)
+ * ---------------------------------------------------- */
+@media (max-aspect-ratio: 1/1) and (min-height: 1200px) {
+  .large-app-shell {
+    flex-direction: column;
+  }
+
+  .large-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    border-right: none;
+    border-bottom: 1px solid var(--c-large-border);
+  }
+
+  .large-inspector {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--c-large-border);
+  }
+
+  .large-main-stage {
+    height: auto;
+    flex: 1;
+  }
+}
+
+/* ----------------------------------------------------
+ * ADAPTACIÓN COMPACTA EN RESIZE INUSUAL
+ * Si por alguna razón la ventana se contrae, mantiene
+ * legibilidad fluida sin romper el layout
+ * ---------------------------------------------------- */
+@media (max-width: 1100px) {
+  .large-inspector {
+    display: none;
+  }
+}
+
+
+/* Resets universales preventivos contra desbordamiento */
+img, video, canvas, svg, iframe, table, pre, code {
+  max-width: 100%;
+  height: auto;
+}

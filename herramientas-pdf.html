@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Herramientas PDF Oficiales — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    /* Estilos específicos de la Suite de Herramientas PDF */
+    .tool-tabs-container {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .tool-tabs-container::-webkit-scrollbar { display: none; }
+
+    .category-pill {
+      flex: 0 0 auto;
+      padding: 6px 14px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso-secondary);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 38px;
+    }
+
+    .category-pill.active {
+      background: var(--c-cempasuchil);
+      color: var(--c-obsidiana);
+      border-color: var(--c-cempasuchil);
+    }
+
+    /* Selector de herramientas en cuadrícula compacta */
+    .tools-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tool-card-btn {
+      padding: 12px 14px;
+      background: rgba(42, 45, 52, 0.35);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-md);
+      color: var(--c-hueso);
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.16s var(--ease-ios), border-color 0.2s ease, background 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 72px;
+    }
+
+    .tool-card-btn:active {
+      transform: scale(0.97);
+    }
+
+    .tool-card-btn.active {
+      border-color: var(--c-cempasuchil);
+      background: var(--c-cempasuchil-soft);
+      box-shadow: 0 0 16px var(--c-cempasuchil-glow);
+    }
+
+    .tool-card-btn .tool-icon {
+      font-size: 1.25rem;
+    }
+
+    .tool-card-btn .tool-name {
+      font-size: var(--text-callout);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .tool-card-btn .tool-cat {
+      font-size: var(--text-micro);
+      color: var(--c-hueso-tertiary);
+    }
+
+    /* Contenedor del widget cargado */
+    .active-widget-stage {
+      background: rgba(11, 12, 16, 0.85);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-lg);
+      padding: 16px 14px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .stage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--c-copal-line);
+    }
+
+    .stage-title {
+      font-size: var(--text-headline);
+      font-weight: 800;
+      color: var(--c-hueso);
+    }
+
+    .stage-badge {
+      font-size: var(--text-micro);
+      color: var(--c-cempasuchil);
+      font-weight: 700;
+    }
+  </style>
+
+  <!-- Script Oficial de PDF24 -->
+  <script src="https://tools.pdf24.org/static/js/widget.js" async></script>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="archivos.html" class="section-pill-btn" aria-label="Volver a Archivos">
+        <span>‹ Archivos</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">PDF24 · 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 14px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Herramientas PDF</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        Suite académica oficial de PDF24 para preparar, procesar y optimizar tus entregas escolares.
+      </p>
+    </section>
+
+    <!-- INSTRUCCIÓN PERMANENTE DE RENOMBRADO (SECCIÓN 20-22) -->
+    <section class="rename-instruction-box">
+      <div class="rename-header">
+        <span>📋 Antes de enviar tu archivo a revisión</span>
+      </div>
+      <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">
+        Asegúrate de procesar tu PDF y nombrarlo estrictamente con este formato:
+      </p>
+      <div class="rename-code-wrap">
+        <span class="rename-code-text">415_ApellidosDelAlumno_tarea00</span>
+        <button class="copy-format-btn" onclick="App415.copiarFormatoRenombrado('415_ApellidosDelAlumno_tarea00')">
+          📋 Copiar formato
+        </button>
+      </div>
+    </section>
+
+    <!-- Filtro por Categorías Conceptuales (Crear, Organizar, Optimizar, Proteger) -->
+    <div class="tool-tabs-container" role="tablist">
+      <button class="category-pill active" onclick="filtrarCategoria('todas', this)">Todas (8)</button>
+      <button class="category-pill" onclick="filtrarCategoria('crear', this)">🛠 Crear</button>
+      <button class="category-pill" onclick="filtrarCategoria('organizar', this)">📂 Organizar</button>
+      <button class="category-pill" onclick="filtrarCategoria('optimizar', this)">⚡ Optimizar</button>
+      <button class="category-pill" onclick="filtrarCategoria('proteger', this)">🔒 Proteger</button>
+    </div>
+
+    <!-- Menú de Herramientas Compacto (Evita 8 tarjetas gigantes acumuladas) -->
+    <div class="tools-menu-grid" id="tools-selection-grid">
+      <!-- 1. Unir -->
+      <button class="tool-card-btn active" data-tool="merge-pdf" data-category="organizar" onclick="seleccionarHerramienta('merge-pdf', 'Une 2 archivos y más', this)">
+        <span class="tool-icon">📎</span>
+        <span class="tool-name">Une 2 archivos y más</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+
+      <!-- 2. Convertir -->
+      <button class="tool-card-btn" data-tool="convert-to-pdf" data-category="crear" onclick="seleccionarHerramienta('convert-to-pdf', 'Convierte a PDF', this)">
+        <span class="tool-icon">🔄</span>
+        <span class="tool-name">Convierte a PDF</span>
+        <span class="tool-cat">Crear</span>
+      </button>
+
+      <!-- 3. Comprimir -->
+      <button class="tool-card-btn" data-tool="compress-pdf" data-category="optimizar" onclick="seleccionarHerramienta('compress-pdf', 'Comprime tu PDF', this)">
+        <span class="tool-icon">🗜</span>
+        <span class="tool-name">Comprime tu PDF</span>
+        <span class="tool-cat">Optimizar</span>
+      </button>
+
+      <!-- 4. Dividir -->
+      <button class="tool-card-btn" data-tool="split-pdf" data-category="organizar" onclick="seleccionarHerramienta('split-pdf', 'Divide tu PDF', this)">
+        <span class="tool-icon">✂</span>
+        <span class="tool-name">Divide tu PDF</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+
+      <!-- 5. Proteger -->
+      <button class="tool-card-btn" data-tool="lock-pdf" data-category="proteger" onclick="seleccionarHerramienta('lock-pdf', 'Protege tu PDF', this)">
+        <span class="tool-icon">🔒</span>
+        <span class="tool-name">Protege tu PDF</span>
+        <span class="tool-cat">Proteger</span>
+      </button>
+
+      <!-- 6. Extraer páginas -->
+      <button class="tool-card-btn" data-tool="extract-pdf-pages" data-category="organizar" onclick="seleccionarHerramienta('extract-pdf-pages', 'Extrae páginas de tu PDF', this)">
+        <span class="tool-icon">📑</span>
+        <span class="tool-name">Extrae páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+
+      <!-- 7. Eliminar páginas -->
+      <button class="tool-card-btn" data-tool="remove-pdf-pages" data-category="organizar" onclick="seleccionarHerramienta('remove-pdf-pages', 'Elimina páginas de tu PDF', this)">
+        <span class="tool-icon">🗑</span>
+        <span class="tool-name">Elimina páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+
+      <!-- 8. Reorganizar páginas -->
+      <button class="tool-card-btn" data-tool="sort-pdf-pages" data-category="organizar" onclick="seleccionarHerramienta('sort-pdf-pages', 'Reorganiza las páginas', this)">
+        <span class="tool-icon">🔀</span>
+        <span class="tool-name">Reorganiza páginas</span>
+        <span class="tool-cat">Organizar</span>
+      </button>
+    </div>
+
+    <!-- CONTENEDOR RESPONSIVE DEL WIDGET ACTIVO (SECCIÓN 33-35) -->
+    <section class="active-widget-stage">
+      <div class="stage-header">
+        <h2 class="stage-title" id="stage-active-title">Une 2 archivos y más</h2>
+        <span class="stage-badge" id="stage-engine-status">Widget Oficial PDF24</span>
+      </div>
+
+      <!-- Contenedor adaptativo con Safe Area y sin overflow horizontal -->
+      <div class="pdf24-responsive-wrap">
+        <div id="activePdfWidgetContainer" class="pdf24WidgetContainer"></div>
+      </div>
+
+      <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary); text-align:center; margin-top:8px;">
+        Procesamiento seguro directo en tu navegador mediante los servicios de PDF24.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Navegación Inferior -->
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item active" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    let currentToolId = 'merge-pdf';
+
+    function filtrarCategoria(cat, btn) {
+      document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.tool-card-btn');
+      cards.forEach(card => {
+        if (cat === 'todas' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function seleccionarHerramienta(toolKey, title, btn) {
+      currentToolId = toolKey;
+      document.querySelectorAll('.tool-card-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.getElementById('stage-active-title').textContent = title;
+      cargarWidget(toolKey);
+    }
+
+    function cargarWidget(toolKey) {
+      const container = document.getElementById('activePdfWidgetContainer');
+      if (!container) return;
+
+      // Limpiar contenedor previo
+      container.innerHTML = `
+        <div style="padding:40px 16px; text-align:center; color:var(--c-hueso-secondary);">
+          <div style="font-size:1.8rem; margin-bottom:8px; animation:pulseGlow 1.5s infinite;">⏳</div>
+          <div style="font-size:var(--text-body); font-weight:700; color:var(--c-hueso);">Cargando herramienta...</div>
+          <div style="font-size:var(--text-caption); color:var(--c-hueso-tertiary); margin-top:4px;">Conectando con el motor oficial de PDF24</div>
+        </div>
+      `;
+
+      // Comprobar disponibilidad de la librería global pdf24
+      function renderizarCuandoEsteListo(intentos = 0) {
+        if (typeof window.pdf24 !== 'undefined' && typeof window.pdf24.loadWidget === 'function') {
+          container.innerHTML = '';
+          try {
+            window.pdf24.loadWidget(toolKey, {
+              containerId: 'activePdfWidgetContainer',
+              langCode: 'es',
+              readyCallback: function() {
+                console.log(`[PDF24] Widget ${toolKey} listo.`);
+              },
+              widgetConfig: {
+                theme: 'lightTheme'
+              }
+            });
+          } catch (err) {
+            console.error('[PDF24 Error]', err);
+            container.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-state-icon">⚠️</div>
+                <div class="empty-state-text">Error al inicializar la herramienta</div>
+                <div class="empty-state-sub">${err.message || 'Verifica tu conexión a internet'}</div>
+              </div>
+            `;
+          }
+        } else if (intentos < 20) {
+          setTimeout(() => renderizarCuandoEsteListo(intentos + 1), 300);
+        } else {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🌐</div>
+              <div class="empty-state-text">No se pudo cargar el script de PDF24</div>
+              <div class="empty-state-sub">Asegúrate de contar con conexión a internet para conectar con tools.pdf24.org</div>
+            </div>
+          `;
+        }
+      }
+
+      renderizarCuandoEsteListo();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarWidget('merge-pdf');
+    });
+  </script>
+</body>
+</html>

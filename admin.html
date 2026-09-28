@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Centro de Administración — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .admin-nav-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .admin-nav-bar::-webkit-scrollbar { display: none; }
+
+    .admin-tab-btn {
+      flex: 0 0 auto;
+      padding: 8px 14px;
+      background: var(--c-copal-surface);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-pill);
+      color: var(--c-hueso-secondary);
+      font-size: var(--text-caption);
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 40px;
+    }
+
+    .admin-tab-btn.active {
+      background: var(--c-cempasuchil);
+      color: var(--c-obsidiana);
+      border-color: var(--c-cempasuchil);
+    }
+
+    .admin-panel {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .admin-panel.active {
+      display: flex;
+    }
+
+    .form-card {
+      padding: 20px;
+      background: rgba(42, 45, 52, 0.4);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group label {
+      font-size: var(--text-caption);
+      font-weight: 700;
+      color: var(--c-hueso-secondary);
+    }
+
+    .form-control {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      background: var(--c-obsidiana);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-sm);
+      color: var(--c-hueso);
+      font-size: var(--text-body);
+      font-family: inherit;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--c-cempasuchil);
+    }
+
+    textarea.form-control {
+      height: 80px;
+      padding: 10px 12px;
+    }
+
+    .item-manage-card {
+      padding: 14px 16px;
+      background: rgba(11, 12, 16, 0.7);
+      border: 1px solid var(--c-copal-line);
+      border-radius: var(--radius-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-estado {
+      font-size: var(--text-micro);
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+    .badge-publicado { background: rgba(22, 167, 102, 0.2); color: #43d692; border: 1px solid #16a766; }
+    .badge-programado { background: var(--c-oro-soft); color: var(--c-oro); border: 1px solid var(--c-oro-border); }
+    .badge-borrador { background: var(--c-copal-surface); color: var(--c-hueso-tertiary); border: 1px solid var(--c-copal-line); }
+    .badge-archivado { background: rgba(255, 122, 0, 0.1); color: var(--c-hueso-quaternary); border: 1px solid var(--c-copal-line); }
+
+    .btn-action-sm {
+      height: 32px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      font-size: var(--text-micro);
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--c-copal-line);
+      background: var(--c-copal-surface);
+      color: var(--c-hueso);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container" style="padding-bottom: 60px;">
+    <!-- Encabezado Privado -->
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a la vista de alumnos">
+        <span>‹ Vista Alumno</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Admin 415</span>
+      </div>
+      <span class="badge-estado badge-publicado">Modo Local Activo</span>
+    </header>
+
+    <section style="padding: 12px 0 16px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Panel de Gestión</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        Administra tareas, avisos, archivos y calendario del Grupo 415 sin tocar código. Los cambios impactan de inmediato el sitio local.
+      </p>
+    </section>
+
+    <!-- Barra de Pestañas Administrativas -->
+    <div class="admin-nav-bar" role="tablist">
+      <button class="admin-tab-btn active" onclick="switchAdminTab('tareas', this)">📝 Tareas</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('avisos', this)">🔔 Avisos</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('archivos', this)">📄 Archivos</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('calendario', this)">📅 Calendario</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab('backup', this)">⚙️ Respaldo JSON</button>
+    </div>
+
+    <!-- PANEL 1: GESTIÓN DE TAREAS -->
+    <section class="admin-panel active" id="panel-tareas">
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-cempasuchil); font-weight:800;">
+          + Nueva Asignación / Tarea
+        </h2>
+        <div class="form-group">
+          <label>Identificador Único (ID):</label>
+          <input type="text" id="t-id" class="form-control" placeholder="ej. tarea-historia-002">
+        </div>
+        <div class="form-group">
+          <label>Materia:</label>
+          <select id="t-materia" class="form-control">
+            <!-- Llenado dinámico -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Título de la Tarea:</label>
+          <input type="text" id="t-titulo" class="form-control" placeholder="ej. Ensayo de la Revolución Industrial">
+        </div>
+        <div class="form-group">
+          <label>Número de Tarea (para renombrado):</label>
+          <input type="text" id="t-numero" class="form-control" placeholder="ej. 02">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label>Sección:</label>
+            <select id="t-seccion" class="form-control">
+              <option value="Todas">Todas</option>
+              <option value="A">Sección A</option>
+              <option value="B">Sección B</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estado:</label>
+            <select id="t-estado" class="form-control">
+              <option value="publicado">Publicado</option>
+              <option value="programado">Programado</option>
+              <option value="borrador">Borrador</option>
+              <option value="archivado">Archivado</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label>Fecha Publicación:</label>
+            <input type="date" id="t-fecha-pub" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Fecha Entrega:</label>
+            <input type="text" id="t-fecha-ent" class="form-control" placeholder="ej. 05/Oct/2026">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Indicaciones y Criterios:</label>
+          <textarea id="t-indicaciones" class="form-control" placeholder="Describe los requisitos de formato y contenido..."></textarea>
+        </div>
+        <button class="btn-open-pdf" onclick="guardarNuevaTarea()" style="border:none; cursor:pointer; min-height:44px; margin-top:6px;">
+          Guardar Asignación
+        </button>
+      </div>
+
+      <div style="margin-top:16px;">
+        <h3 style="font-size:var(--text-callout); color:var(--c-hueso); margin-bottom:10px;">Tareas Registradas en el Sistema:</h3>
+        <div id="admin-tareas-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: GESTIÓN DE AVISOS -->
+    <section class="admin-panel" id="panel-avisos">
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-oro); font-weight:800;">
+          + Nuevo Aviso Oficial
+        </h2>
+        <div class="form-group">
+          <label>ID del Aviso:</label>
+          <input type="text" id="av-id" class="form-control" placeholder="ej. aviso-general-001">
+        </div>
+        <div class="form-group">
+          <label>Título del Aviso:</label>
+          <input type="text" id="av-titulo" class="form-control" placeholder="ej. Suspensión de labores por jornada institucional">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label>Fecha Inicio:</label>
+            <input type="date" id="av-inicio" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Fecha Expiración (Fin):</label>
+            <input type="date" id="av-fin" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Contenido del Comunicado:</label>
+          <textarea id="av-contenido" class="form-control" placeholder="Escribe el texto oficial del aviso..."></textarea>
+        </div>
+        <button class="btn-open-pdf" onclick="guardarNuevoAviso()" style="background:var(--c-oro); border:none; cursor:pointer; min-height:44px; margin-top:6px;">
+          Publicar Aviso Oficial
+        </button>
+      </div>
+
+      <div style="margin-top:16px;">
+        <h3 style="font-size:var(--text-callout); color:var(--c-hueso); margin-bottom:10px;">Avisos Activos:</h3>
+        <div id="admin-avisos-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: ARCHIVOS PDF -->
+    <section class="admin-panel" id="panel-archivos">
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-cempasuchil); font-weight:800;">
+          + Registrar Nuevo Documento PDF
+        </h2>
+        <div class="form-group">
+          <label>Código Único (Nomenclatura Oficial):</label>
+          <input type="text" id="f-codigo" class="form-control" placeholder="ej. ARCHIVO-415-HISTORIA-002">
+        </div>
+        <div class="form-group">
+          <label>Nombre del Documento:</label>
+          <input type="text" id="f-nombre" class="form-control" placeholder="ej. Guía de Estudio Bloque 1">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="form-group">
+            <label>Materia:</label>
+            <select id="f-materia" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label>Categoría:</label>
+            <select id="f-categoria" class="form-control">
+              <option value="Lecturas">Lecturas</option>
+              <option value="Apuntes">Apuntes</option>
+              <option value="Guías">Guías</option>
+              <option value="Regalos">Regalos</option>
+              <option value="Institucional">Institucional</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>URL / Enlace del PDF (Google Drive u oficial):</label>
+          <input type="url" id="f-url" class="form-control" placeholder="https://drive.google.com/...">
+        </div>
+        <div class="form-group">
+          <label>Descripción:</label>
+          <textarea id="f-desc" class="form-control" placeholder="Resumen del contenido del PDF..."></textarea>
+        </div>
+        <button class="btn-open-pdf" onclick="guardarNuevoArchivo()" style="border:none; cursor:pointer; min-height:44px; margin-top:6px;">
+          Registrar en la Biblioteca
+        </button>
+      </div>
+
+      <div style="margin-top:16px;">
+        <h3 style="font-size:var(--text-callout); color:var(--c-hueso); margin-bottom:10px;">Catálogo Actual:</h3>
+        <div id="admin-archivos-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: CALENDARIO -->
+    <section class="admin-panel" id="panel-calendario">
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-oro); font-weight:800;">
+          + Agregar Fecha al Calendario
+        </h2>
+        <div class="form-group">
+          <label>Fecha (YYYY-MM-DD):</label>
+          <input type="date" id="cal-fecha" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Título del Evento:</label>
+          <input type="text" id="cal-titulo" class="form-control" placeholder="ej. 2ª Evaluación Parcial">
+        </div>
+        <div class="form-group">
+          <label>Descripción:</label>
+          <input type="text" id="cal-desc" class="form-control" placeholder="ej. Fecha límite oficial aprobada por Consejo Técnico">
+        </div>
+        <button class="btn-open-pdf" onclick="guardarFechaCalendario()" style="background:var(--c-oro); border:none; cursor:pointer; min-height:44px; margin-top:6px;">
+          Agregar al Calendario
+        </button>
+      </div>
+
+      <div style="margin-top:16px;">
+        <h3 style="font-size:var(--text-callout); color:var(--c-hueso); margin-bottom:10px;">Eventos del Calendario:</h3>
+        <div id="admin-calendario-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- PANEL 5: RESPALDO JSON & HOOKS DE BACKEND -->
+    <section class="admin-panel" id="panel-backup">
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-hueso); font-weight:800;">
+          Exportar y Respaldar Base de Datos
+        </h2>
+        <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary);">
+          Descarga toda la configuración del 415 en un archivo JSON para tener respaldo completo o compartir con otros administradores.
+        </p>
+        <button class="btn-open-pdf" onclick="descargarBackupJSON()" style="border:none; cursor:pointer; min-height:44px;">
+          📥 Descargar Respaldo JSON
+        </button>
+      </div>
+
+      <div class="form-card">
+        <h2 style="font-size:var(--text-headline); color:var(--c-oro); font-weight:800;">
+          Importar Respaldo
+        </h2>
+        <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary);">
+          Carga un archivo JSON previamente exportado para restaurar o actualizar todas las materias y tareas.
+        </p>
+        <input type="file" id="import-json-file" accept=".json" style="display:none;" onchange="importarArchivoJSON(event)">
+        <button class="section-pill-btn" onclick="document.getElementById('import-json-file').click()" style="width:100%; justify-content:center; min-height:44px;">
+          📤 Seleccionar archivo .json
+        </button>
+      </div>
+
+      <!-- Explicación de Infraestructura Faltante (Sección 3) -->
+      <div style="padding:18px; background:rgba(42,45,52,0.3); border-radius:var(--radius-md); font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.5;">
+        <strong style="color:var(--c-oro); display:block; margin-bottom:6px;">Arquitectura para Backend Real (Sin fingir base de datos):</strong>
+        Actualmente este Centro de Administración almacena los datos de forma real e instantánea en el <code>localStorage</code> del navegador mediante el módulo <code>DataStore</code>. Para que los cambios realizados por un administrador se reflejen de inmediato en los teléfonos de los más de 50 alumnos del Grupo 415, se requiere:
+        <ul style="margin:8px 0 8px 18px;">
+          <li>Una base de datos en la nube (ej. <strong>Supabase</strong> con PostgreSQL o <strong>Firebase Firestore</strong>).</li>
+          <li>Un servicio de autenticación con contraseña o Google OAuth para que solo el jefe de grupo y administradores autorizados puedan publicar.</li>
+          <li>Una regla de seguridad (Row-Level Security) que permita lectura pública para los alumnos y escritura privada solo para administradores autenticados.</li>
+        </ul>
+        La capa <code>DataStore.syncWithCloud()</code> en <code>js/data.js</code> ya tiene definidos los hooks para conectarse a esa API cuando se configure.
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    function switchAdminTab(panelId, btn) {
+      document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById('panel-' + panelId);
+      if (target) target.classList.add('active');
+    }
+
+    function renderSelectMaterias() {
+      const data = DataStore.getRawData();
+      const selects = [document.getElementById('t-materia'), document.getElementById('f-materia')];
+      selects.forEach(sel => {
+        if (!sel) return;
+        sel.innerHTML = data.materias.map(m => `<option value="${m.id}">${m.nombre}</option>`).join('');
+      });
+      if (document.getElementById('f-materia')) {
+        document.getElementById('f-materia').innerHTML += `<option value="general">General / Institucional</option>`;
+      }
+    }
+
+    function renderAdminListas() {
+      const data = DataStore.getRawData();
+
+      // Lista tareas
+      const tList = document.getElementById('admin-tareas-list');
+      if (tList) {
+        tList.innerHTML = (data.tareas || []).map((t, idx) => `
+          <div class="item-manage-card">
+            <div>
+              <strong style="color:var(--c-hueso);">${t.titulo}</strong>
+              <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">
+                ${t.materiaId} · Sec: ${t.seccion} · Entrega: ${t.fechaEntrega}
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="badge-estado badge-${t.estado || 'publicado'}">${t.estado || 'publicado'}</span>
+              <button class="btn-action-sm" onclick="eliminarTarea(${idx})" style="color:#ff6b6b;">🗑</button>
+            </div>
+          </div>
+        `).join('') || '<div class="empty-state-sub">Sin tareas registradas.</div>';
+      }
+
+      // Lista avisos
+      const avList = document.getElementById('admin-avisos-list');
+      if (avList) {
+        avList.innerHTML = (data.avisos || []).map((av, idx) => `
+          <div class="item-manage-card">
+            <div>
+              <strong style="color:var(--c-hueso);">${av.titulo}</strong>
+              <div style="font-size:var(--text-micro); color:var(--c-hueso-tertiary);">
+                Vigencia: ${av.fechaPublicacion} a ${av.fechaFin || 'Permanente'}
+              </div>
+            </div>
+            <button class="btn-action-sm" onclick="eliminarAviso(${idx})" style="color:#ff6b6b;">🗑</button>
+          </div>
+        `).join('') || '<div class="empty-state-sub">Sin avisos registrados.</div>';
+      }
+
+      // Lista archivos
+      const fList = document.getElementById('admin-archivos-list');
+      if (fList) {
+        fList.innerHTML = (data.archivos || []).map((f, idx) => `
+          <div class="item-manage-card">
+            <div>
+              <strong style="color:var(--c-hueso);">${f.nombre}</strong>
+              <div style="font-size:var(--text-micro); color:var(--c-oro); font-family:var(--font-family-mono);">${f.codigo}</div>
+            </div>
+            <button class="btn-action-sm" onclick="eliminarArchivo(${idx})" style="color:#ff6b6b;">🗑</button>
+          </div>
+        `).join('') || '<div class="empty-state-sub">Sin archivos registrados.</div>';
+      }
+
+      // Lista calendario
+      const calList = document.getElementById('admin-calendario-list');
+      if (calList) {
+        calList.innerHTML = (data.eventosCalendario || []).map((ev, idx) => `
+          <div class="item-manage-card">
+            <div>
+              <strong style="color:var(--c-hueso);">${ev.titulo}</strong>
+              <div style="font-size:var(--text-micro); color:var(--c-oro);">${ev.fecha}</div>
+            </div>
+            <button class="btn-action-sm" onclick="eliminarEventoCalendario(${idx})" style="color:#ff6b6b;">🗑</button>
+          </div>
+        `).join('') || '<div class="empty-state-sub">Sin eventos en el calendario.</div>';
+      }
+    }
+
+    function guardarNuevaTarea() {
+      const titulo = document.getElementById('t-titulo').value.trim();
+      if (!titulo) return alert('Por favor ingresa un título para la tarea');
+
+      const data = DataStore.getRawData();
+      const num = document.getElementById('t-numero').value.trim() || '01';
+      const id = document.getElementById('t-id').value.trim() || `tarea-${document.getElementById('t-materia').value}-${Date.now().toString().slice(-4)}`;
+
+      data.tareas.push({
+        id: id,
+        codigo: `TAREA-415-${num}`,
+        materiaId: document.getElementById('t-materia').value,
+        numeroTarea: num,
+        codigoRenombrado: `415_ApellidosDelAlumno_tarea${num}`,
+        titulo: titulo,
+        estado: document.getElementById('t-estado').value,
+        version: "1.0",
+        fechaModificacion: new Date().toISOString(),
+        fechaPublicacion: document.getElementById('t-fecha-pub').value || new Date().toISOString().split('T')[0],
+        fechaEntrega: document.getElementById('t-fecha-ent').value || 'Por definir',
+        seccion: document.getElementById('t-seccion').value,
+        indicaciones: document.getElementById('t-indicaciones').value.trim(),
+        archivosRelacionados: []
+      });
+
+      DataStore.saveRawData(data);
+      alert('✓ Tarea guardada con éxito.');
+      document.getElementById('t-titulo').value = '';
+      document.getElementById('t-indicaciones').value = '';
+      renderAdminListas();
+    }
+
+    function eliminarTarea(idx) {
+      if (!confirm('¿Eliminar esta tarea del sistema?')) return;
+      const data = DataStore.getRawData();
+      data.tareas.splice(idx, 1);
+      DataStore.saveRawData(data);
+      renderAdminListas();
+    }
+
+    function guardarNuevoAviso() {
+      const titulo = document.getElementById('av-titulo').value.trim();
+      const contenido = document.getElementById('av-contenido').value.trim();
+      if (!titulo || !contenido) return alert('Por favor llena título y contenido del aviso');
+
+      const data = DataStore.getRawData();
+      data.avisos.push({
+        id: document.getElementById('av-id').value.trim() || `aviso-${Date.now()}`,
+        titulo: titulo,
+        contenido: contenido,
+        fechaPublicacion: document.getElementById('av-inicio').value || new Date().toISOString().split('T')[0],
+        fechaFin: document.getElementById('av-fin').value || null,
+        estado: 'publicado',
+        seccion: 'Todas'
+      });
+
+      DataStore.saveRawData(data);
+      alert('✓ Aviso publicado con éxito.');
+      document.getElementById('av-titulo').value = '';
+      document.getElementById('av-contenido').value = '';
+      renderAdminListas();
+    }
+
+    function eliminarAviso(idx) {
+      if (!confirm('¿Eliminar este aviso?')) return;
+      const data = DataStore.getRawData();
+      data.avisos.splice(idx, 1);
+      DataStore.saveRawData(data);
+      renderAdminListas();
+    }
+
+    function guardarNuevoArchivo() {
+      const codigo = document.getElementById('f-codigo').value.trim();
+      const nombre = document.getElementById('f-nombre').value.trim();
+      const url = document.getElementById('f-url').value.trim();
+      if (!codigo || !nombre || !url) return alert('Código, nombre y URL son obligatorios');
+
+      const data = DataStore.getRawData();
+      data.archivos.push({
+        id: `archivo-${Date.now().toString().slice(-4)}`,
+        codigo: codigo,
+        nombre: nombre,
+        nombreOriginal: nombre + '.pdf',
+        materiaId: document.getElementById('f-materia').value,
+        seccion: 'Todas',
+        categoria: document.getElementById('f-categoria').value,
+        estado: 'publicado',
+        version: '1.0',
+        descripcion: document.getElementById('f-desc').value.trim() || 'Documento registrado para el grupo 415.',
+        fecha: new Date().toISOString().split('T')[0],
+        tamano: '150 KB',
+        paginas: 1,
+        url: url
+      });
+
+      DataStore.saveRawData(data);
+      alert('✓ Archivo indexado con éxito.');
+      document.getElementById('f-codigo').value = '';
+      document.getElementById('f-nombre').value = '';
+      document.getElementById('f-url').value = '';
+      renderAdminListas();
+    }
+
+    function eliminarArchivo(idx) {
+      if (!confirm('¿Eliminar este archivo de la biblioteca?')) return;
+      const data = DataStore.getRawData();
+      data.archivos.splice(idx, 1);
+      DataStore.saveRawData(data);
+      renderAdminListas();
+    }
+
+    function guardarFechaCalendario() {
+      const fecha = document.getElementById('cal-fecha').value;
+      const titulo = document.getElementById('cal-titulo').value.trim();
+      if (!fecha || !titulo) return alert('Fecha y título son requeridos');
+
+      const data = DataStore.getRawData();
+      data.eventosCalendario = data.eventosCalendario || [];
+      data.eventosCalendario.push({
+        id: `cal-${Date.now()}`,
+        fecha: fecha,
+        titulo: titulo,
+        tipo: 'evaluacion',
+        descripcion: document.getElementById('cal-desc').value.trim(),
+        seccion: 'Todas'
+      });
+      data.eventosCalendario.sort((a,b) => a.fecha.localeCompare(b.fecha));
+
+      DataStore.saveRawData(data);
+      alert('✓ Fecha agregada al calendario escolar.');
+      document.getElementById('cal-titulo').value = '';
+      document.getElementById('cal-desc').value = '';
+      renderAdminListas();
+    }
+
+    function eliminarEventoCalendario(idx) {
+      if (!confirm('¿Eliminar esta fecha del calendario?')) return;
+      const data = DataStore.getRawData();
+      data.eventosCalendario.splice(idx, 1);
+      DataStore.saveRawData(data);
+      renderAdminListas();
+    }
+
+    function descargarBackupJSON() {
+      const jsonStr = DataStore.exportJSON();
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `backup_grupo415_${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importarArchivoJSON(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const res = DataStore.importJSON(evt.target.result);
+        if (res.success) {
+          alert('✓ Base de datos restaurada correctamente.');
+          location.reload();
+        } else {
+          alert('Error al importar: ' + res.error);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSelectMaterias();
+      renderAdminListas();
+    });
+  </script>
+</body>
+</html>

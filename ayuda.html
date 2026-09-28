@@ -2,78 +2,277 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Guía y Ayuda • Cuatreros del 415 | Prepa 4 UNAM</title>
-  <meta name="description" content="Guía interactiva de uso del portal del Grupo 0415: código de colores, tolerancia de clases, centro de control y atajos.">
-  <link rel="icon" href="assets/escudo-unam-original.png" type="image/png">
-  <link rel="stylesheet" href="css/ayuda.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ayuda y Guía del Usuario — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .faq-item {
+      padding: 16px;
+      background: rgba(42, 45, 52, 0.35);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-copal-line);
+      cursor: pointer;
+      transition: background 0.16s ease, border-color 0.16s ease;
+    }
+
+    .faq-item:hover, .faq-item:active {
+      background: rgba(42, 45, 52, 0.55);
+      border-color: var(--c-copal-border);
+    }
+
+    .faq-q {
+      font-size: var(--text-headline);
+      font-weight: 700;
+      color: var(--c-hueso);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-a {
+      font-size: var(--text-body);
+      color: var(--c-hueso-secondary);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .quick-action-box {
+      margin-bottom: 24px;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--c-cempasuchil-soft) 0%, rgba(11,12,16,0.5) 100%);
+      border: 1px solid var(--c-cempasuchil-border);
+      border-radius: var(--radius-md);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
 </head>
 <body>
+  <canvas id="muertos-ambient-canvas"></canvas>
 
-  <header class="ayuda-topbar">
-    <a href="./" style="display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: #fff;">
-      <img src="assets/escudo-unam-original.png" alt="UNAM" style="height: 36px; width: auto;">
-      <strong>Cuatreros 415 &bull; Guía del Portal</strong>
-    </a>
-    <a href="./" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.4rem 0.9rem; border-radius: 999px; text-decoration: none; font-size: 0.8rem; font-weight: 700;">
-      &larr; Volver al Portal
-    </a>
-  </header>
-
-  <section class="ayuda-hero">
-    <span style="background: rgba(213,159,15,0.2); color: var(--unam-gold-bright); font-size: 0.78rem; font-weight: 800; padding: 0.25rem 0.8rem; border-radius: 999px; border: 1px solid var(--unam-gold); text-transform: uppercase;">Manual Operativo</span>
-    <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-top: 0.5rem;">¿Cómo sacarle el 100% a la plataforma?</h2>
-    <p style="color: var(--text-secondary); max-width: 650px; margin: 0.4rem auto 0; font-size: 0.92rem;">
-      Diseñada con arquitectura unicornio para que no pierdas clases, entregues a tiempo y tengas todos los salones a la mano.
-    </p>
-  </section>
-
-  <main class="ayuda-container">
-    <div class="ayuda-card">
-      <h3>🚦 1. Semáforo de Tolerancia y Alertas</h3>
-      <div class="ayuda-item">
-        <strong>🟢 Verde (> 3 min):</strong>
-        <p>Tienes tiempo de sobra para llegar al salón caminando con calma.</p>
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Ayuda 415</span>
       </div>
-      <div class="ayuda-item">
-        <strong>🟡 Amarillo (≤ 3 min):</strong>
-        <p>La tolerancia está por cerrarse. El portal emitirá pulsos de sonido para avisarte.</p>
-      </div>
-      <div class="ayuda-item">
-        <strong>🔴 Rojo (Clase en curso):</strong>
-        <p>El profesor ya inició la sesión en el aula. Entra con discreción.</p>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 16px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Centro de Ayuda</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        Guía de navegación y respuestas directas sobre el funcionamiento de la plataforma del Grupo 415.
+      </p>
+    </section>
+
+    <!-- Acción Rápida: Cambiar Sección -->
+    <div class="quick-action-box">
+      <strong style="color:var(--c-cempasuchil); display:block; margin-bottom:6px;">Configuración de tu Sección:</strong>
+      <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); margin-bottom:12px;">
+        Tu sección activa actual es la <strong style="color:var(--c-hueso);">Sección <span class="active-section-letter">A</span></strong>. Al cambiarla, tus materias y salones se actualizarán automáticamente.
+      </p>
+      <div style="display:flex; gap:10px;">
+        <button class="section-pill-btn" onclick="App415.selectSection('A')" style="flex:1; justify-content:center;">Elegir Sección A</button>
+        <button class="section-pill-btn" onclick="App415.selectSection('B')" style="flex:1; justify-content:center;">Elegir Sección B</button>
       </div>
     </div>
 
-    <div class="ayuda-card">
-      <h3>📅 2. Horario y Calendario Escolar</h3>
-      <div class="ayuda-item">
-        <strong>Vista Semanal vs Mensual:</strong>
-        <p>Alterna entre la cuadrícula de lunes a viernes o el calendario mensual de Agosto 2026 a Abril 2027.</p>
-      </div>
-      <div class="ayuda-item">
-        <strong>Cajón de Detalles:</strong>
-        <p>Toca cualquier día del calendario para ver la agenda exacta de tareas y salones con enlaces directos.</p>
-      </div>
+    <!-- Lista de Respuestas a las 13 Preguntas Obligatorias -->
+    <div class="faq-list">
+
+      <details class="faq-item" open>
+        <summary class="faq-q">¿Qué es esta página?</summary>
+        <div class="faq-a">
+          Es la plataforma digital móvil oficial creada exclusivamente para los alumnos del <strong>Grupo 415</strong> del turno matutino de la Escuela Nacional Preparatoria Plantel 4 "Vidal Castañeda y Nájera" de la UNAM. Centraliza tu horario en vivo, salones, tareas y avisos de forma ágil y precisa.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Qué hago aquí?</summary>
+        <div class="faq-a">
+          Puedes consultar al instante qué clase te toca en este preciso momento, en qué salón se imparte, cuántos minutos faltan para tu siguiente materia, revisar las tareas y actividades registradas, consultar el calendario del ciclo escolar y acceder a los recursos de cada asignatura.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo selecciono mi sección?</summary>
+        <div class="faq-a">
+          Al abrir el sitio por primera vez aparece un menú con dos únicas opciones: <strong>A</strong> o <strong>B</strong>. Solo tocas tu letra oficial asignada en ventanillas de Servicios Escolares de la Prepa 4 y el sitio recordará tu preferencia.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo veo mi materia actual?</summary>
+        <div class="faq-a">
+          En la pantalla de <strong>Inicio</strong>, el primer bloque superior muestra la materia en curso con el indicador luminoso en tiempo real, las horas de inicio y fin, el salón y el enlace directo para ver los detalles.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo funciona el horario?</summary>
+        <div class="faq-a">
+          El horario está sincronizado con el Sistema de Horarios SiHo oficial de la ENP 4. Filtra de forma inteligente tus clases según tu sección elegida (por ejemplo, tus horas de Dibujo II, Inglés IV u Orientación Educativa).
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo cambio entre diario, semanal y mensual?</summary>
+        <div class="faq-a">
+          Debajo del bloque del Centro de Control en Inicio encontrarás una barra con tres botones: <strong>Diario</strong> (clases del día con estatus en vivo), <strong>Semanal</strong> (selector de lunes a viernes) y <strong>Mensual</strong> (calendario anual y fechas de evaluación aprobadas por el Consejo Técnico de la ENP).
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo entro a una materia?</summary>
+        <div class="faq-a">
+          Simplemente toca el nombre de la materia en cualquier parte del sitio: dentro del bloque de clase actual, en la lista del horario o en el Centro de Control. Todas te llevan a la página oficial de esa asignatura (por ejemplo, <code>historia.html</code> o <code>lengua-espanola.html</code>).
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Qué es el Centro de Control?</summary>
+        <div class="faq-a">
+          Es el directorio maestro de tus 12 materias. Te permite buscar cualquier asignatura de forma instantánea escribiendo sus primeras letras, filtrar por tareas pendientes y ver con una mirada rápida qué materias tienen actividades pendientes.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo sé si tengo tareas?</summary>
+        <div class="faq-a">
+          Las materias con tareas activas muestran un indicador de color <strong>Naranja Cempasúchil (#FF7A00)</strong> con el número de tareas en el Centro de Control. Además, al ingresar a la plataforma se activa un banner inteligente de alerta que dura 3 segundos.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo sé si tengo exámenes?</summary>
+        <div class="faq-a">
+          Aparece un distintivo en color <strong>Oro Solar (#E5A93C)</strong> junto a la materia correspondiente en el Centro de Control y en su página particular. Actualmente no hay exámenes programados, por lo que verás el estado elegante "Sin exámenes por el momento".
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo funcionan los avisos?</summary>
+        <div class="faq-a">
+          Los avisos son comunicados prioritarios publicados por los jefes de grupo o la dirección del plantel. Se muestran en la sección dedicada de Inicio y en las materias correspondientes.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo cambio mi sección?</summary>
+        <div class="faq-a">
+          Puedes tocar la burbuja circular <strong>Sec. A / Sec. B</strong> ubicada en la esquina superior derecha de cualquier pantalla, o usar los botones de acceso rápido situados arriba en esta misma página de Ayuda.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo puedo enviar una imagen a Recuerdos 415?</summary>
+        <div class="faq-a">
+          Dirígete a la pestaña <strong>Recuerdos</strong> en el menú inferior y presiona el botón <strong>Ponla.</strong> Podrás previsualizar tu foto y enviarla al correo oficial <code>ENP4.SHAMINKET@GMAIL.COM</code> o al WhatsApp oficial <code>+52 55 7198 5641</code> para su curaduría.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo instalo la aplicación en mi teléfono (PWA)?</summary>
+        <div class="faq-a">
+          En Safari (iPhone), toca el botón <strong>Compartir</strong> (icono de cuadrado con flecha arriba) y elige <strong>"Agregar a pantalla de inicio"</strong>. En Chrome/Android, elige <strong>"Instalar aplicación"</strong>. Funciona como una Progressive Web App rápida e independiente.
+          <div style="margin-top:10px;">
+            <button id="pwa-install-btn" class="section-pill-btn" style="display:none; width:100%; justify-content:center; background:var(--c-cempasuchil); color:var(--c-obsidiana);">
+              📲 Agregar a inicio ahora
+            </button>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo funciona el modo sin conexión (Offline)?</summary>
+        <div class="faq-a">
+          Gracias al Service Worker de la PWA, tu horario oficial, materias y páginas consultadas previamente permanecen guardadas en tu dispositivo. Si te quedas sin datos o conexión en los pasillos de la prepa, verás una notificación discreta indicando que estás consultando la última versión sincronizada.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo marco materias como favoritas?</summary>
+        <div class="faq-a">
+          En el Centro de Control, toca la estrella <strong>☆</strong> junto a cualquier asignatura para marcarla como favorita <strong>★</strong>. Aparecerá una barra de acceso rápido para que entres a tus materias preferidas en un toque.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Qué es el Centro de Administración?</summary>
+        <div class="faq-a">
+          Es el módulo reservado para que los administradores y jefes de grupo actualicen tareas, fechas y avisos oficiales sin alterar código. Se encuentra en <a href="admin.html" style="color:var(--c-cempasuchil); text-decoration:underline;">admin.html</a> y cuenta con funciones de exportación y respaldo en formato JSON.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Qué es el Historial y cómo funciona la vista de actualidad?</summary>
+        <div class="faq-a">
+          Para mantener la plataforma ágil y limpia, las materias muestran exclusivamente información <strong>actual, reciente y relevante</strong> (avisos vigentes, tareas pendientes y próximas evaluaciones). Todo el contenido anterior (tareas vencidas, avisos expirados y exámenes concluidos) se conserva íntegramente en el <a href="historial.html" style="color:var(--c-cempasuchil); text-decoration:underline;">Historial Académico</a> de cada materia sin eliminarse.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">¿Cómo se clasifica el contenido automáticamente?</summary>
+        <div class="faq-a">
+          El motor del sistema compara automáticamente las fechas de entrega y vigencia con la fecha y hora actual. Cuando una fecha expira, el elemento pasa de <code>Actual</code> o <code>Próximo</code> a <code>Vencido</code>, <code>Finalizado</code> o <code>Archivado</code> y se muestra en el Historial de forma autónoma.
+        </div>
+      </details>
     </div>
 
-    <div class="ayuda-card">
-      <h3>📚 3. Centro de Control y Materias</h3>
-      <div class="ayuda-item">
-        <strong>Buscador Instantáneo:</strong>
-        <p>Filtra por nombre, clave o salón escribiendo en la barra superior.</p>
-      </div>
-      <div class="ayuda-item">
-        <strong>Las 3 Opciones por Materia:</strong>
-        <p>Cada materia cuenta con: 1. Tareas oficiales, 2. Avisos y acuerdos de clase, 3. Regalos, mapas y herramientas.</p>
-      </div>
-    </div>
+    <section style="text-align:center; padding:16px 0 32px; font-size:var(--text-caption); color:var(--c-hueso-tertiary);">
+      Grupo 415 · Escuela Nacional Preparatoria Plantel 4 UNAM<br>
+      ¿Dudas administrativas adicionales? Consulta la sección <a href="legal.html" style="color:var(--c-cempasuchil); text-decoration:underline;">Legal y Contacto</a>.
+    </section>
+
   </main>
 
-  <footer style="border-top: 1px solid var(--glass-stroke); background: rgba(0, 10, 20, 0.95); padding: 2rem 1rem; text-align: center; color: var(--text-secondary); font-size: 0.82rem;">
-    <p>Cuatreros del 415 &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"</p>
-  </footer>
+  <!-- Navegación Inferior -->
+    <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
 
-  <script src="js/ayuda.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+{
+  "name": "Grupo 415 — Prepa 4 UNAM",
+  "short_name": "415 UNAM",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B0C10",
+  "theme_color": "#0B0C10",
+  "orientation": "portrait",
+  "description": "Plataforma digital móvil oficial del Grupo 415 de la Escuela Nacional Preparatoria Plantel 4 UNAM.",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

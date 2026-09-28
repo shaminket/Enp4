@@ -1,0 +1,895 @@
+/**
+ * EXPERIENCIA TABLET DEDICADA — GRUPO 415 (PREPA 4 UNAM)
+ * Diseñado específicamente para iPad mini (8.3"), iPad Pro 11"/13" y Samsung Galaxy Tab S9/S10 Ultra.
+ * Filosofía iPadOS + Identidad Gráfica Día de Muertos (Obsidiana, Cempasúchil, Hueso, Oro, Copal).
+ * Layout adaptativo inteligente en Portrait y Landscape (1, 2 y 3 columnas).
+ */
+
+/* ----------------------------------------------------
+ * 1. VARIABLES Y TOKENS ESPECÍFICOS PARA TABLET
+ * ---------------------------------------------------- */
+:root {
+  --tablet-sidebar-width: 280px;
+  --tablet-inspector-width: 340px;
+  --tablet-header-height: 64px;
+  --tablet-radius-card: 22px;
+  --tablet-radius-panel: 26px;
+  --tablet-gap: 20px;
+  --tablet-touch-min: 48px;
+
+  /* Fondos y elevación específicos para iPad */
+  --c-tablet-bg: #1B0B2E;
+  --c-tablet-sidebar: rgba(30, 12, 54, 0.90);
+  --c-tablet-panel: rgba(43, 18, 76, 0.72);
+  --c-tablet-card: rgba(56, 24, 98, 0.55);
+  --c-tablet-card-hover: rgba(74, 32, 130, 0.75);
+  --c-tablet-border: rgba(186, 142, 248, 0.18);
+  --c-tablet-border-accent: rgba(255, 122, 0, 0.45);
+  --c-tablet-border-gold: rgba(255, 209, 0, 0.45);
+  
+  --blur-tablet-glass: blur(30px) saturate(200%);
+  --shadow-tablet-panel: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --shadow-tablet-card: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Reset y configuraciones base */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-tablet-bg);
+  color: var(--c-hueso);
+  font-family: var(--font-family-display, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif);
+  overflow-x: hidden; overscroll-behavior-x: none; width: 100%; max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Canvas ambiental de Día de Muertos (Fondo interactivo suave) */
+#tablet-ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; max-width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ----------------------------------------------------
+ * 2. ESTRUCTURA PRINCIPAL DE CONTENEDOR (APP SHELL)
+ * ---------------------------------------------------- */
+.tablet-app-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%; max-width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* ----------------------------------------------------
+ * 3. BARRA LATERAL (SIDEBAR DE NAVEGACIÓN — IPADOS STYLE)
+ * ---------------------------------------------------- */
+.tablet-sidebar {
+  width: var(--tablet-sidebar-width);
+  height: 100%;
+  background: var(--c-tablet-sidebar);
+  backdrop-filter: var(--blur-tablet-glass);
+  -webkit-backdrop-filter: var(--blur-tablet-glass);
+  border-right: 1px solid var(--c-tablet-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease-ios), width 0.35s var(--ease-ios);
+  z-index: 40;
+}
+
+.tablet-sidebar-header {
+  padding: 24px 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--c-tablet-border);
+}
+
+.tablet-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tablet-brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--c-cempasuchil) 0%, #D45D00 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--c-obsidiana);
+  box-shadow: 0 4px 16px var(--c-cempasuchil-glow);
+}
+
+.tablet-brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tablet-brand-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-hueso);
+  letter-spacing: -0.02em;
+}
+
+.tablet-brand-sub {
+  font-size: 0.72rem;
+  color: var(--c-hueso-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Selector de Sección A / B */
+.tablet-section-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(11, 12, 16, 0.6);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+.tablet-section-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-hueso-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-ios);
+  min-height: 32px;
+}
+
+.tablet-section-btn.active {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  box-shadow: 0 2px 8px var(--c-cempasuchil-glow);
+}
+
+/* Lista de navegación principal en Sidebar */
+.tablet-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247, 244, 238, 0.1) transparent;
+}
+
+.tablet-nav-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--c-hueso-tertiary);
+  padding: 12px 10px 4px;
+}
+
+.tablet-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--c-hueso-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s var(--ease-ios), color 0.2s var(--ease-ios), transform 0.15s;
+  min-height: 48px;
+}
+
+.tablet-nav-item:active {
+  transform: scale(0.98);
+}
+
+.tablet-nav-item:hover {
+  background: rgba(247, 244, 238, 0.05);
+  color: var(--c-hueso);
+}
+
+.tablet-nav-item.active {
+  background: rgba(255, 122, 0, 0.14);
+  color: var(--c-hueso);
+  border-left: 3px solid var(--c-cempasuchil);
+}
+
+.tablet-nav-item .nav-icon {
+  font-size: 1.15rem;
+  width: 24px;
+  text-align: center;
+}
+
+.tablet-nav-item.active .nav-icon {
+  color: var(--c-cempasuchil);
+}
+
+.tablet-nav-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--c-copal);
+  color: var(--c-hueso);
+}
+
+.tablet-nav-badge.accent {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+}
+
+/* Mini Widget de Estado en Pie de Sidebar */
+.tablet-sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--c-tablet-border);
+  background: rgba(11, 12, 16, 0.4);
+}
+
+.tablet-live-mini {
+  background: rgba(42, 45, 52, 0.4);
+  border: 1px solid var(--c-tablet-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tablet-live-mini-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tablet-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--c-cempasuchil);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tablet-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-cempasuchil);
+  animation: pulseLiveDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseLiveDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.tablet-live-clock {
+  font-family: var(--font-family-mono);
+  font-size: 0.72rem;
+  color: var(--c-hueso-tertiary);
+}
+
+/* ----------------------------------------------------
+ * 4. ÁREA CENTRAL (MAIN STAGE)
+ * ---------------------------------------------------- */
+.tablet-main-stage {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247, 244, 238, 0.1) transparent;
+}
+
+/* Header superior del Main Stage */
+.tablet-top-bar {
+  height: var(--tablet-header-height);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(11, 12, 16, 0.75);
+  backdrop-filter: var(--blur-tablet-glass);
+  -webkit-backdrop-filter: var(--blur-tablet-glass);
+  border-bottom: 1px solid var(--c-tablet-border);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  gap: 16px;
+}
+
+.tablet-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tablet-sidebar-toggle-btn {
+  display: none; /* Visible en Portrait y tablets compactas */
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(42, 45, 52, 0.6);
+  border: 1px solid var(--c-tablet-border);
+  color: var(--c-hueso);
+  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tablet-current-view-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-hueso);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tablet-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tablet-search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(42, 45, 52, 0.5);
+  border: 1px solid var(--c-tablet-border);
+  border-radius: var(--radius-pill);
+  padding: 0 14px;
+  height: 38px;
+  width: 220px;
+  transition: width 0.3s var(--ease-ios), border-color 0.2s;
+}
+
+.tablet-search-box:focus-within {
+  width: 300px;
+  border-color: var(--c-cempasuchil-border);
+  background: rgba(42, 45, 52, 0.85);
+}
+
+.tablet-search-input {
+  background: transparent;
+  border: none;
+  color: var(--c-hueso);
+  font-size: 0.85rem;
+  margin-left: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.tablet-search-input::placeholder {
+  color: var(--c-hueso-tertiary);
+}
+
+.tablet-mobile-mode-link {
+  font-size: 0.75rem;
+  color: var(--c-hueso-secondary);
+  background: rgba(247, 244, 238, 0.05);
+  border: 1px solid var(--c-tablet-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.tablet-mobile-mode-link:hover {
+  background: rgba(247, 244, 238, 0.12);
+  color: var(--c-hueso);
+}
+
+/* Contenido scrolleable del Main Stage */
+.tablet-stage-body {
+  padding: var(--tablet-gap);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tablet-gap);
+}
+
+/* ----------------------------------------------------
+ * 5. PANEL DE INSPECTOR / CONTEXTO LATERAL DERECHO
+ * ---------------------------------------------------- */
+.tablet-inspector {
+  width: var(--tablet-inspector-width);
+  height: 100%;
+  background: var(--c-tablet-sidebar);
+  backdrop-filter: var(--blur-tablet-glass);
+  -webkit-backdrop-filter: var(--blur-tablet-glass);
+  border-left: 1px solid var(--c-tablet-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 24px 20px;
+  gap: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247, 244, 238, 0.1) transparent;
+}
+
+.tablet-inspector-heading {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--c-oro);
+  margin-bottom: 4px;
+}
+
+/* ----------------------------------------------------
+ * 6. COMPONENTES Y TARJETAS EDITORIALES PARA TABLET
+ * ---------------------------------------------------- */
+
+/* Hero / Banner AHORA y DESPUÉS en Tablet */
+.tablet-live-hero {
+  background: linear-gradient(135deg, rgba(42, 45, 52, 0.75) 0%, rgba(18, 20, 26, 0.95) 100%);
+  border: 1px solid var(--c-cempasuchil-border);
+  border-radius: var(--tablet-radius-panel);
+  padding: 24px 26px;
+  box-shadow: 0 10px 30px var(--c-cempasuchil-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.tablet-live-hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.tablet-live-now-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tablet-live-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tablet-badge-now {
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.tablet-live-subject-name {
+  font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+  font-weight: 800;
+  color: var(--c-hueso);
+  line-height: 1.2;
+}
+
+.tablet-live-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--c-hueso-secondary);
+}
+
+.tablet-live-next-col {
+  background: rgba(11, 12, 16, 0.5);
+  border: 1px solid var(--c-copal-line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tablet-progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: rgba(247, 244, 238, 0.1);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.tablet-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-cempasuchil) 0%, var(--c-oro) 100%);
+  border-radius: var(--radius-pill);
+  transition: width 0.4s var(--ease-ios);
+}
+
+/* Matriz de Materias (Grid adaptativo) */
+.tablet-subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tablet-subject-card {
+  background: var(--c-tablet-card);
+  border: 1px solid var(--c-tablet-border);
+  border-radius: var(--tablet-radius-card);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s var(--ease-ios);
+  position: relative;
+  min-height: 140px;
+}
+
+.tablet-subject-card:hover {
+  background: var(--c-tablet-card-hover);
+  border-color: rgba(247, 244, 238, 0.18);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-tablet-card);
+}
+
+.tablet-subject-card.is-selected {
+  border-color: var(--c-cempasuchil);
+  background: rgba(255, 122, 0, 0.08);
+  box-shadow: 0 0 24px var(--c-cempasuchil-glow);
+}
+
+.tablet-subject-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tablet-subject-code {
+  font-family: var(--font-family-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--c-hueso-tertiary);
+  background: rgba(11, 12, 16, 0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tablet-subject-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-hueso);
+  line-height: 1.3;
+}
+
+.tablet-subject-salones {
+  font-size: 0.78rem;
+  color: var(--c-hueso-tertiary);
+}
+
+.tablet-subject-status-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+}
+
+.tablet-subject-status-pill.active {
+  background: var(--c-cempasuchil-soft);
+  color: var(--c-cempasuchil);
+  border: 1px solid var(--c-cempasuchil-border);
+}
+
+.tablet-subject-status-pill.clear {
+  background: rgba(247, 244, 238, 0.06);
+  color: var(--c-hueso-tertiary);
+}
+
+/* Espacio de Materia (Split View / Workspace en Tablet) */
+.tablet-subject-workspace {
+  background: var(--c-tablet-panel);
+  border: 1px solid var(--c-tablet-border);
+  border-radius: var(--tablet-radius-panel);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tablet-workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid var(--c-tablet-border);
+  padding-bottom: 16px;
+}
+
+.tablet-tabs-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tablet-tab-btn {
+  background: rgba(42, 45, 52, 0.5);
+  border: 1px solid var(--c-tablet-border);
+  color: var(--c-hueso-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  min-height: var(--tablet-touch-min);
+}
+
+.tablet-tab-btn.active {
+  background: var(--c-cempasuchil);
+  color: var(--c-obsidiana);
+  border-color: var(--c-cempasuchil);
+  box-shadow: 0 2px 10px var(--c-cempasuchil-glow);
+}
+
+/* Horario Semanal Integral para Tablet */
+.tablet-schedule-matrix {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.tablet-schedule-day-col {
+  background: rgba(42, 45, 52, 0.35);
+  border: 1px solid var(--c-tablet-border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tablet-schedule-day-col.is-today {
+  border-color: var(--c-cempasuchil-border);
+  background: rgba(255, 122, 0, 0.05);
+}
+
+.tablet-schedule-day-head {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--c-cempasuchil);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--c-tablet-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.tablet-schedule-session-card {
+  background: rgba(11, 12, 16, 0.6);
+  border-left: 3px solid var(--c-copal);
+  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tablet-schedule-session-card.is-active-now {
+  border-left-color: var(--c-cempasuchil);
+  background: rgba(255, 122, 0, 0.14);
+}
+
+/* Tarjeta Teatral Don Juan Tenorio (Inspector / Lateral) */
+.tablet-theatrical-card {
+  background: linear-gradient(145deg, rgba(42, 45, 52, 0.8) 0%, rgba(11, 12, 16, 0.95) 100%);
+  border: 1px solid var(--c-oro-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 0 8px 28px var(--c-oro-glow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Modal Formulario Hojas Membretadas en Tablet */
+.tablet-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 12, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.tablet-modal-card {
+  background: #181A20;
+  border: 1px solid var(--c-oro-border);
+  border-radius: var(--radius-lg);
+  max-width: 440px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ----------------------------------------------------
+ * 7. REGLAS ADAPTATIVAS SEGÚN TAMAÑO Y ORIENTACIÓN
+ * ---------------------------------------------------- */
+
+/* --- ORIENTACIÓN PORTRAIT (Todas las tablets en vertical) --- */
+@media (orientation: portrait) {
+  .tablet-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.75);
+  }
+
+  .tablet-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .tablet-sidebar-toggle-btn {
+    display: inline-flex;
+  }
+
+  .tablet-inspector {
+    display: none; /* En portrait, el inspector se transforma en tarjetas dentro del Main Stage */
+  }
+
+  .tablet-inspector-portrait-dock {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .tablet-live-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tablet-schedule-matrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- ORIENTACIÓN LANDSCAPE (Apaisado) --- */
+@media (orientation: landscape) {
+  .tablet-sidebar {
+    transform: translateX(0) !important;
+  }
+
+  .tablet-sidebar-toggle-btn {
+    display: none;
+  }
+
+  .tablet-inspector-portrait-dock {
+    display: none;
+  }
+}
+
+/* --- TABLET COMPACTA: iPad mini (8.3") [Viewport <= 900px en ancho] --- */
+@media (max-width: 900px) and (orientation: landscape) {
+  :root {
+    --tablet-sidebar-width: 230px;
+  }
+  .tablet-inspector {
+    display: none; /* En iPad mini horizontal se prioriza Sidebar + Main Stage para lectura cómoda */
+  }
+  .tablet-inspector-portrait-dock {
+    display: block;
+  }
+  .tablet-schedule-matrix {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- TABLETS MEDIANAS: 11" (iPad Pro 11", Tab S9) [Viewport 901px - 1200px] --- */
+@media (min-width: 901px) and (max-width: 1200px) and (orientation: landscape) {
+  :root {
+    --tablet-sidebar-width: 250px;
+    --tablet-inspector-width: 300px;
+  }
+  .tablet-inspector {
+    display: flex;
+  }
+  .tablet-schedule-matrix {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* --- TABLETS GRANDES: 13" - 14.6" (iPad Pro 13", Tab S10 Ultra) [Viewport > 1200px] --- */
+@media (min-width: 1201px) and (orientation: landscape) {
+  :root {
+    --tablet-sidebar-width: 290px;
+    --tablet-inspector-width: 360px;
+    --tablet-gap: 24px;
+  }
+  .tablet-inspector {
+    display: flex;
+  }
+  .tablet-subjects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .tablet-schedule-matrix {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Soporte para modo de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Resets universales preventivos contra desbordamiento */
+img, video, canvas, svg, iframe, table, pre, code {
+  max-width: 100%;
+  height: auto;
+}

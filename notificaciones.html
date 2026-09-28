@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Notificaciones y Novedades — Grupo 415 | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .notif-item-card {
+      padding: 16px 18px;
+      background: rgba(42, 45, 52, 0.32);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--c-copal);
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .notif-item-card.is-task {
+      border-left-color: var(--c-cempasuchil);
+    }
+    .notif-item-card.is-file {
+      border-left-color: var(--c-oro);
+    }
+    .notif-item-card.is-aviso {
+      border-left-color: var(--c-copal-border);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Novedades 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <h1 class="hero-title" style="font-size:var(--text-title1);">Notificaciones</h1>
+          <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+            Novedades y pendientes académicos relevantes para tu sección.
+          </p>
+        </div>
+        <button class="section-pill-btn" onclick="marcarTodoLeido()" style="font-size:var(--text-micro); height:32px; white-space:nowrap;">
+          ✓ Marcar leído
+        </button>
+      </div>
+    </section>
+
+    <!-- Lista de Novedades Reales -->
+    <section id="notificaciones-feed-container" style="margin-bottom:24px;">
+      <!-- Renderizado dinámico -->
+    </section>
+
+    <!-- Acceso a Historial General -->
+    <section class="subject-history-gate" style="margin-bottom:32px;">
+      <div class="history-gate-box">
+        <div>
+          <span class="history-gate-badge">📁 Archivo General</span>
+          <h3 class="history-gate-title">Historial y Registros Anteriores</h3>
+          <p class="history-gate-desc">
+            Consulta tareas vencidas, avisos pasados y evaluaciones concluidas de todo el grupo.
+          </p>
+        </div>
+        <a href="historial.html" class="btn-history-gate">
+          <span>Ver Historial ›</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="buscar.html" class="nav-tab-item" aria-label="Buscar">
+      <span class="nav-tab-icon">🔍</span>
+      <span>Buscar</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    function renderNotificaciones() {
+      const container = document.getElementById('notificaciones-feed-container');
+      if (!container) return;
+
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getActiveData() : GRUPO_415_DATA;
+      const sec = App415.getCurrentSection() || 'A';
+
+      // 1. Tareas activas
+      const tareas = (data.tareas || []).filter(t => t.seccion === 'Todas' || t.seccion === sec);
+      
+      // 2. Archivos activos
+      const archivos = (data.archivos || []).filter(a => a.seccion === 'Todas' || a.seccion === sec);
+
+      // 3. Avisos
+      const avisos = (data.avisos || []).filter(av => av.seccion === 'Todas' || av.seccion === sec);
+
+      const totalItems = tareas.length + archivos.length + avisos.length;
+
+      if (totalItems === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="padding:48px 20px;">
+            <div class="empty-state-icon">🔔</div>
+            <div class="empty-state-text">Todo al corriente.</div>
+            <div class="empty-state-sub">No hay novedades o avisos urgentes pendientes para la Sección ${sec}.</div>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      tareas.forEach(t => {
+        const mat = data.materias.find(m => m.id === t.materiaId);
+        html += `
+          <article class="notif-item-card is-task">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:var(--text-micro); font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase;">
+                ⚡ Tarea Asignada · ${mat ? mat.nombre : t.materiaId}
+              </span>
+              <span style="font-size:var(--text-micro); color:var(--c-oro); font-weight:700;">Entrega: ${t.fechaEntrega}</span>
+            </div>
+            <h2 style="font-size:var(--text-headline); font-weight:700; color:var(--c-hueso);">${t.titulo}</h2>
+            <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">${t.indicaciones}</p>
+            <div style="margin-top:4px;">
+              <a href="${mat ? mat.slug : '#'}" style="font-size:var(--text-caption); color:var(--c-cempasuchil); font-weight:700;">Ver materia y entregar ›</a>
+            </div>
+          </article>
+        `;
+      });
+
+      archivos.forEach(a => {
+        html += `
+          <article class="notif-item-card is-file">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:var(--text-micro); font-weight:800; color:var(--c-oro); text-transform:uppercase;">
+                📄 Documento Disponible
+              </span>
+              <span style="font-size:var(--text-micro); font-family:var(--font-family-mono); color:var(--c-hueso-tertiary);">${a.codigo}</span>
+            </div>
+            <h2 style="font-size:var(--text-headline); font-weight:700; color:var(--c-hueso);">${a.nombre}</h2>
+            <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">${a.descripcion}</p>
+            <div style="margin-top:4px;">
+              <a href="${a.url}" target="_blank" rel="noopener noreferrer" style="font-size:var(--text-caption); color:var(--c-oro); font-weight:700;">↗ Abrir documento</a>
+            </div>
+          </article>
+        `;
+      });
+
+      avisos.forEach(av => {
+        html += `
+          <article class="notif-item-card is-aviso">
+            <span style="font-size:var(--text-micro); font-weight:800; color:var(--c-hueso-secondary); text-transform:uppercase;">
+              🔔 Aviso Oficial
+            </span>
+            <h2 style="font-size:var(--text-headline); font-weight:700; color:var(--c-hueso);">${av.titulo}</h2>
+            <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); line-height:1.4;">${av.contenido}</p>
+          </article>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function marcarTodoLeido() {
+      const data = (typeof DataStore !== 'undefined') ? DataStore.getActiveData() : GRUPO_415_DATA;
+      data.materias.forEach(m => App415.marcarMateriaLeida(m.id));
+      App415.mostrarToast('✓ Todas las novedades marcadas como leídas');
+      renderNotificaciones();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderNotificaciones);
+  </script>
+</body>
+</html>

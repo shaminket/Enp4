@@ -1,0 +1,127 @@
+/**
+ * TOKENS DE DISEÑO — SITIO WEB OFICIAL GRUPO 415 (PREPA 4 UNAM)
+ * Identidad Visual: Morado Nocturno Dominante + Contrastes en Naranja, Amarillo y Blanco
+ * Inspirado en la atmósfera festiva, vibrante y contemporánea de Día de Muertos
+ * Tipografía: Google Fonts (Plus Jakarta Sans para display/cuerpo + Caveat para detalles caligráficos)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
+@import url('renovacion-notificacion.css');
+@import url('legal.css');
+
+:root {
+  /* ----------------------------------------------------
+   * PALETA IDENTITARIA (MORADO DOMINANTE + ACENTOS VIBRANTES)
+   * ---------------------------------------------------- */
+  /* Color Dominante / Fondo Base: Morado Noche Profundo */
+  --c-obsidiana: #1B0B2E;
+  --c-morado-base: #1B0B2E;
+  --c-morado-dark: #120621;
+  --c-morado-card: #2B124C;
+  --c-morado-card-hover: #371861;
+  --c-morado-elevated: #3E1B6D;
+  --c-morado-glow: rgba(142, 68, 237, 0.35);
+
+  /* Acento Primario 1: Cempasúchil / Naranja Festivo Vibrante */
+  --c-cempasuchil: #FF7A00;
+  --c-cempasuchil-glow: rgba(255, 122, 0, 0.35);
+  --c-cempasuchil-soft: rgba(255, 122, 0, 0.15);
+  --c-cempasuchil-border: rgba(255, 122, 0, 0.45);
+
+  /* Acento Primario 2: Blanco Puro Hueso / Máxima Legibilidad */
+  --c-hueso: #FFFFFF;
+  --c-hueso-secondary: rgba(255, 255, 255, 0.85);
+  --c-hueso-tertiary: rgba(235, 225, 255, 0.62);
+  --c-hueso-quaternary: rgba(235, 225, 255, 0.28);
+  --c-hueso-glass: rgba(255, 255, 255, 0.06);
+
+  /* Acento Secundario 1: Amarillo Sol / Altar Solar */
+  --c-oro: #FFD100;
+  --c-oro-glow: rgba(255, 209, 0, 0.35);
+  --c-oro-soft: rgba(255, 209, 0, 0.15);
+  --c-oro-border: rgba(255, 209, 0, 0.45);
+
+  /* Superficies de Tarjetas, Paneles y Bordes en Tonalidad Morada */
+  --c-copal: #2D144E;
+  --c-copal-surface: rgba(52, 23, 88, 0.70);
+  --c-copal-elevated: rgba(68, 30, 114, 0.90);
+  --c-copal-border: rgba(186, 142, 248, 0.25);
+  --c-copal-line: rgba(186, 142, 248, 0.18);
+
+  /* Acentos complementarios festivos tipo papel picado (uso comedido) */
+  --c-papel-magenta: #FF2A85;
+  --c-papel-turquesa: #00D2D3;
+  --c-papel-verde: #2ECC71;
+
+  /* ----------------------------------------------------
+   * TIPOGRAFÍA (PLUS JAKARTA SANS + CAVEAT SCRIPT)
+   * ---------------------------------------------------- */
+  --font-family-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-script: 'Caveat', cursive, Georgia, serif;
+  --font-family-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* Escala Modular Fluida */
+  --text-hero: clamp(2.4rem, 8vw, 3.4rem);
+  --text-title1: clamp(1.8rem, 6vw, 2.3rem);
+  --text-title2: clamp(1.35rem, 4.5vw, 1.7rem);
+  --text-headline: clamp(1.05rem, 3.6vw, 1.25rem);
+  --text-body: clamp(0.92rem, 3.2vw, 1.02rem);
+  --text-callout: 0.88rem;
+  --text-caption: 0.78rem;
+  --text-micro: 0.68rem;
+
+  /* ----------------------------------------------------
+   * MÉTRICAS IPHONE & SAFE AREAS (Apple HIG)
+   * ---------------------------------------------------- */
+  --touch-target-min: 44px;
+  --touch-target-large: 54px;
+
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Espaciado del thumb-reach (alcance de una mano) */
+  --bottom-bar-height: calc(64px + var(--sab));
+  --content-padding: clamp(16px, 5vw, 24px);
+
+  /* ----------------------------------------------------
+   * BORDES, SOMBRAS Y CURVAS FÍSICAS (iOS Springs)
+   * ---------------------------------------------------- */
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
+
+  --ease-ios: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --blur-glass: blur(28px) saturate(190%);
+  --blur-subtle: blur(14px);
+
+  --shadow-float: 0 16px 40px rgba(10, 4, 20, 0.65), 0 0 24px var(--c-morado-glow);
+  --shadow-subtle: 0 4px 18px rgba(10, 4, 20, 0.45);
+}
+
+/* ----------------------------------------------------
+ * REGLA ABSOLUTA DE SCROLL (GLOBAL EN TODAS LAS EXPERIENCIAS)
+ * Desplazamiento estrictamente vertical (Arriba ↕ Abajo)
+ * Cero overflow horizontal y cero rebote lateral
+ * ---------------------------------------------------- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, video, canvas, svg, iframe, table, pre, code {
+  max-width: 100%;
+  height: auto;
+}
