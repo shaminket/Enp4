@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Accesibilidad Universal — Encardomy by Shaminket | Prepa 4</title>
+  <meta name="description" content="Declaración de Accesibilidad Universal y buenas prácticas de diseño inclusivo en Encardomy by Shaminket.">
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/muertos.css">
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="legal-page-container">
+    <header class="legal-header">
+      <div class="legal-nav-bar">
+        <a href="index.html" class="legal-back-btn" aria-label="Volver al Centro Legal">
+          ‹ Centro Legal
+        </a>
+        <a href="../index.html" class="legal-back-btn" style="background:transparent; color:var(--c-hueso-secondary);" aria-label="Volver al Portal Principal">
+          Portal Principal
+        </a>
+        <span class="legal-badge">Inclusión Digital</span>
+      </div>
+      <h1 class="legal-title">Política de Accesibilidad Universal</h1>
+      <p class="legal-subtitle">
+        Compromiso de diseño inclusivo, ergonomía multidispositivo y eliminación de barreras digitales en <strong>Encardomy by Shaminket</strong>.
+      </p>
+      <div class="legal-meta-row">
+        <span><strong>Responsable:</strong> Diego Periañez Hernandez</span>
+        <span>·</span>
+        <span><strong>Sitio:</strong> enp4.shaminket.com</span>
+        <span>·</span>
+        <span><strong>Última actualización:</strong> 27 de septiembre de 2026</span>
+      </div>
+    </header>
+
+    <!-- Declaración Jurídica Prudente Obligatoria -->
+    <div class="legal-callout legal-callout-info">
+      <strong>Declaración de Compromiso Progresivo:</strong> Encardomy by Shaminket busca aplicar buenas prácticas de accesibilidad y mejorar progresivamente su compatibilidad con tecnologías de asistencia. El sitio ha sido diseñado con un enfoque inclusivo para que cualquier estudiante, independientemente de sus capacidades técnicas o físicas, pueda consultar sus materias y horarios con fluidez.
+    </div>
+
+    <!-- 1. Medidas de Accesibilidad Implementadas -->
+    <article class="legal-section">
+      <h2><span class="num">1.</span> Principales Medidas de Accesibilidad Implementadas</h2>
+      <p>
+        El entorno web incorpora criterios de diseño ergonómico orientados a facilitar la consulta en diversas condiciones:
+      </p>
+      <ul>
+        <li><strong>Navegación completa por teclado:</strong> Todos los elementos interactivos (botones de materias, pestañas de horarios, conmutadores de sección y modales) cuentan con foco visual claramente identificable y pueden operarse mediante la tecla Tab, Enter y barra espaciadora.</li>
+        <li><strong>Cierre accesible con tecla Escape:</strong> Los modales de colaboración, avisos flotantes y diálogos emergentes se cierran de manera inmediata y predecible al presionar la tecla <em>Esc</em> sin atrapar el foco.</li>
+        <li><strong>Soporte nativo para reducción de movimiento (<code>prefers-reduced-motion</code>):</strong> El sistema detecta automáticamente si el usuario tiene configurada la reducción de animaciones en su sistema operativo, desactivando desplazamientos bruscos y transiciones complejas para prevenir mareos o fatiga visual.</li>
+        <li><strong>Contraste visual riguroso:</strong> Se utiliza una paleta de alto contraste que combina el fondo morado nocturno profundo (<code>#1B0B2E</code>) con tipografía blanco hueso (<code>#FFFFFF</code>) y acentos en amarillo solar (<code>#FFD100</code>) y cempasúchil (<code>#FF7A00</code>), garantizando óptima legibilidad en condiciones de luz diurna o nocturna.</li>
+        <li><strong>Áreas de contacto táctil amplias (Touch Targets):</strong> Los botones principales cumplen con el estándar ergonómico mínimo de 44×44 píxeles (y 48 a 54 px en dispositivos móviles) para facilitar la pulsación en pantallas táctiles sin errores.</li>
+        <li><strong>Etiquetado semántico y ARIA:</strong> Uso de roles semánticos (<code>main</code>, <code>header</code>, <code>nav</code>, <code>article</code>, <code>aria-label</code>, <code>aria-live</code>) que proporcionan contexto descriptivo a lectores de pantalla (VoiceOver, TalkBack, NVDA).</li>
+        <li><strong>Tipografía fluida y zoom flexible:</strong> La escala tipográfica modular basada en <code>clamp()</code> permite que los textos se adapten suavemente al tamaño de pantalla y soporta ampliación del tamaño de letra del navegador hasta un 200% sin fracturar el diseño.</li>
+        <li><strong>Cero scroll horizontal forzado:</strong> La arquitectura garantiza un desplazamiento estrictamente vertical en todas las resoluciones (desde 320 px en teléfonos compactos hasta 4K en iMac), evitando el molesto desbordamiento lateral.</li>
+      </ul>
+    </article>
+
+    <!-- 2. Adaptación Multidispositivo -->
+    <article class="legal-section">
+      <h2><span class="num">2.</span> Accesibilidad Multidispositivo</h2>
+      <p>
+        El sistema cuenta con una arquitectura responsiva especializada para cinco familias de hardware:
+      </p>
+      <ol>
+        <li><strong>Teléfonos celulares:</strong> Optimización ergonómica a una mano (reachability) y barras de navegación en la zona inferior.</li>
+        <li><strong>Tablets (iPad):</strong> Distribución en dos columnas con zonas táctiles amplias y modo horizontal cómodo.</li>
+        <li><strong>Computadoras de escritorio (Mac / PC):</strong> Atajos de teclado rápidos y navegación eficiente con ratón o trackpad.</li>
+        <li><strong>Pantallas grandes (iMac / Monitores externos):</strong> Escala tipográfica majestuosa y márgenes protegidos que evitan líneas de texto excesivamente largas.</li>
+        <li><strong>Dispositivos plegables (iPhone Duo):</strong> Reconocimiento de bisagra central y separación inteligente del contenido en dos paneles visuales.</li>
+      </ol>
+    </article>
+
+    <!-- 3. Reporte de Barreras y Retroalimentación -->
+    <article class="legal-section">
+      <h2><span class="num">3.</span> Reporte de Barreras de Accesibilidad y Canal de Apoyo</h2>
+      <p>
+        Si encuentras alguna dificultad técnica para interactuar con algún formulario, si detectas un contraste insuficiente en alguna asignatura o si tu tecnología de asistencia experimenta problemas de lectura, te invitamos a informarlo a:
+      </p>
+      <p style="text-align:center;">
+        <a href="mailto:ENP4.SHAMINKET@gmail.com" style="color:var(--c-oro); font-weight:800; font-size:1.05rem;">ENP4.SHAMINKET@gmail.com</a>
+      </p>
+      <p>
+        Tu experiencia es esencial para continuar eliminando barreras y garantizar que todos los alumnos de Prepa 4 disfruten de una herramienta plenamente accesible.
+      </p>
+    </article>
+
+    <!-- Enlaces Cruzados -->
+    <nav class="legal-cross-links" aria-label="Enlaces complementarios">
+      <a href="terminos-y-condiciones.html" class="legal-cross-link">📜 Términos de Uso</a>
+      <a href="aviso-de-privacidad.html" class="legal-cross-link">🛡️ Aviso de Privacidad</a>
+      <a href="disponibilidad.html" class="legal-cross-link">🔄 Disponibilidad</a>
+      <a href="contacto-legal.html" class="legal-cross-link">📮 Contacto Oficial</a>
+    </nav>
+
+    <!-- Footer Legal Estandarizado -->
+    <footer class="encardomy-global-footer">
+      <span class="encardomy-global-footer-brand">Encardomy by Shaminket · Prepa 4</span>
+      <div class="encardomy-global-footer-links">
+        <a href="aviso-de-privacidad.html">Aviso de privacidad</a>
+        <span>·</span>
+        <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+        <span>·</span>
+        <a href="cookies.html">Cookies</a>
+        <span>·</span>
+        <a href="propiedad-intelectual.html">Propiedad intelectual</a>
+        <span>·</span>
+        <a href="uso-responsable.html">Uso responsable</a>
+        <span>·</span>
+        <a href="accesibilidad.html">Accesibilidad</a>
+        <span>·</span>
+        <a href="contacto-legal.html">Contacto legal</a>
+      </div>
+      <div class="encardomy-global-footer-copy">
+        Responsable: Diego Periañez Hernandez · Contacto: ENP4.SHAMINKET@gmail.com · enp4.shaminket.com<br>
+        Última actualización: 27 de septiembre de 2026.
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/effects.js"></script>
+</body>
+</html>

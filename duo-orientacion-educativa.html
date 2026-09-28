@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Orientación Educativa IV — Grupo 415 | iPhone Duo</title>
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/duo.css">
+  <script src="js/device-router.js"></script>
+</head>
+<body class="duo-state-compact">
+  <canvas id="duo-ambient-canvas"></canvas>
+
+  <div class="duo-app-shell">
+    
+    <header class="duo-header" aria-label="Cabecera del iPhone Duo">
+      <a href="duo-index.html" class="duo-header-left">
+        <div class="duo-brand-badge">415</div>
+        <div class="duo-brand-text">
+          <span class="duo-brand-title">Grupo 415</span>
+          <span class="duo-brand-sub">iPhone Duo</span>
+        </div>
+      </a>
+
+      <div class="duo-posture-badge" id="duo-posture-badge" title="Estado de la pantalla plegable">
+        <span class="duo-posture-dot"></span>
+        <span id="duo-posture-badge-text">Duo Dinámico</span>
+      </div>
+
+      <div class="duo-header-right">
+        <div class="duo-section-toggle" role="group" aria-label="Selector de Sección">
+          <button type="button" class="duo-section-btn active" id="duo-btn-sec-a" onclick="DuoApp415.setSection('A')">Sec. A</button>
+          <button type="button" class="duo-section-btn" id="duo-btn-sec-b" onclick="DuoApp415.setSection('B')">Sec. B</button>
+        </div>
+      </div>
+    </header>
+    
+
+    <main id="duo-main-content">
+      
+      <div style="background:linear-gradient(135deg, rgba(42,45,52,0.75) 0%, rgba(18,20,26,0.95) 100%); border:1px solid var(--c-duo-border); border-radius:var(--duo-radius-panel); padding:18px 20px; margin-top:14px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+          <span style="font-size:0.75rem; font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; letter-spacing:0.08em;">
+            Clave 1410 · 1 hrs/semana
+          </span>
+          <a href="duo-historial-orientacion-educativa.html" class="duo-btn secondary" style="min-height:36px; padding:6px 12px; font-size:0.78rem;">
+            🏛 Historial ›
+          </a>
+        </div>
+        <h1 style="margin:0 0 6px 0; font-size:1.55rem; font-weight:800; color:var(--c-hueso); letter-spacing:-0.02em;">
+          Orientación Educativa IV
+        </h1>
+        <p style="margin:0; font-size:0.88rem; color:var(--c-hueso-secondary); line-height:1.45;">
+          Autoconocimiento, integración universitaria, perfil vocacional y técnicas de estudio.
+        </p>
+      </div>
+
+      <div class="duo-dual-container">
+        <!-- ZONA CONTEXTO -->
+        <div class="duo-zone-context" style="display:flex; flex-direction:column; gap:16px;">
+          
+        <div class="duo-panel" style="text-align:center; padding:20px;">
+          <div style="font-size:1.8rem; margin-bottom:4px;">✓</div>
+          <h4 style="margin:0 0 4px 0; font-size:1rem; color:var(--c-hueso);">Sin pendientes vigentes</h4>
+          <span style="font-size:0.82rem; color:var(--c-hueso-secondary);">Asignatura al corriente en la plataforma.</span>
+        </div>
+        
+
+          <div class="duo-panel">
+            <h4 style="margin:0 0 8px 0; font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Información Oficial</h4>
+            <div style="font-size:0.82rem; color:var(--c-hueso-secondary); line-height:1.6;">
+              <div><strong>Salones:</strong> B-110</div>
+              <div><strong>Horario:</strong> Mar 12:50-13:40 (B-110)</div>
+              <div><strong>Docente:</strong> Plantilla Docente Orientación</div>
+            </div>
+            <a href="duo-calendario.html" class="duo-btn secondary" style="margin-top:8px; width:100%; min-height:40px; font-size:0.82rem;">
+              Ver en Horario Semanal ›
+            </a>
+          </div>
+        </div>
+
+        <!-- ZONA PRINCIPAL -->
+        <div class="duo-zone-main" style="display:flex; flex-direction:column; gap:16px;">
+
+          <!-- Biblioteca de archivos de la materia -->
+          <div class="duo-panel">
+            <h4 style="margin:0 0 8px 0; font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Recursos y Lecturas</h4>
+            <p style="margin:0 0 10px 0; font-size:0.85rem; color:var(--c-hueso-secondary);">
+              Consulta los documentos oficiales y lecturas complementarias en la biblioteca digital del Grupo 415.
+            </p>
+            <a href="duo-archivos.html" class="duo-btn secondary" style="width:100%; min-height:40px; font-size:0.82rem;">
+              Abrir Biblioteca de Archivos ›
+            </a>
+          </div>
+        </div>
+      </div>
+    
+    </main>
+
+    
+    <nav class="duo-bottom-bar" aria-label="Navegación inferior táctil">
+      
+      <a href="duo-index.html" class="duo-tab-item" aria-label="Inicio">
+        <span class="tab-icon">✦</span>
+        <span>Inicio</span>
+      </a>
+        
+      <a href="duo-calendario.html" class="duo-tab-item" aria-label="Horario">
+        <span class="tab-icon">📅</span>
+        <span>Horario</span>
+      </a>
+        
+      <a href="duo-centro-de-control.html" class="duo-tab-item active" aria-label="Materias">
+        <span class="tab-icon">❖</span>
+        <span>Materias</span>
+      </a>
+        
+      <a href="duo-archivos.html" class="duo-tab-item" aria-label="Archivos">
+        <span class="tab-icon">📄</span>
+        <span>Archivos</span>
+      </a>
+        
+      <a href="duo-buscar.html" class="duo-tab-item" aria-label="Buscar">
+        <span class="tab-icon">🔍</span>
+        <span>Buscar</span>
+      </a>
+        
+    </nav>
+    
+  </div>
+
+  <!-- MODAL HOJAS MEMBRETADAS (IPHONE DUO / TOUCH-FIRST) -->
+  <div class="duo-modal-backdrop" id="duo-modal-hojas" role="dialog" aria-modal="true" aria-labelledby="modal-hojas-duo-title">
+    <div class="duo-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.75rem; font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em;">
+          Encardomy · Material Escolar Geografía
+        </span>
+        <button type="button" onclick="DuoApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.6rem; cursor:pointer;" aria-label="Cerrar modal">✕</button>
+      </div>
+
+      <h3 id="modal-hojas-duo-title" style="margin:0; font-size:1.25rem; font-weight:800; color:var(--c-hueso);">
+        Solicitud de Hojas Membretadas ($30)
+      </h3>
+      <p style="margin:0; font-size:0.88rem; color:var(--c-hueso-secondary); line-height:1.45;">
+        Para procesar tu pedido ($30 con entrega escolar), escribe tu <strong>nombre completo</strong> iniciando por apellidos:
+      </p>
+
+      <div>
+        <label for="duo-input-nombre-apellidos" style="display:block; font-size:0.72rem; font-weight:800; color:var(--c-hueso-tertiary); text-transform:uppercase; margin-bottom:6px;">
+          Formato Obligatorio: Apellidos Nombre(s)
+        </label>
+        <input 
+          type="text" 
+          id="duo-input-nombre-apellidos" 
+          placeholder="Ej: Pérez García Juan Carlos" 
+          style="width:100%; height:48px; background:rgba(11,12,16,0.7); border:1px solid var(--c-duo-border); border-radius:var(--duo-radius-sm); padding:0 16px; color:var(--c-hueso); font-size:0.95rem; outline:none;"
+          required
+        >
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:6px;">
+        <button type="button" class="duo-btn secondary" onclick="DuoApp415.cerrarModalHojas()" style="flex:1;">
+          Cancelar
+        </button>
+        <button type="button" class="duo-btn" onclick="DuoApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; background:#25D366; color:#0B0C10; font-weight:800;">
+          Continuar a WhatsApp ›
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/duo.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Política de Cookies y Almacenamiento — Encardomy by Shaminket | Prepa 4</title>
+  <meta name="description" content="Política de Cookies y Tecnologías de Almacenamiento Local de Encardomy by Shaminket. Transparencia sobre localStorage, sessionStorage y cookies técnicas.">
+  <meta name="theme-color" content="#1B0B2E">
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/muertos.css">
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="legal-page-container">
+    <header class="legal-header">
+      <div class="legal-nav-bar">
+        <a href="index.html" class="legal-back-btn" aria-label="Volver al Centro Legal">
+          ‹ Centro Legal
+        </a>
+        <a href="../index.html" class="legal-back-btn" style="background:transparent; color:var(--c-hueso-secondary);" aria-label="Volver al Portal Principal">
+          Portal Principal
+        </a>
+        <span class="legal-badge">Tecnologías del Cliente</span>
+      </div>
+      <h1 class="legal-title">Política de Cookies y Almacenamiento Local</h1>
+      <p class="legal-subtitle">
+        Información técnica transparente sobre cómo opera el almacenamiento en el navegador del usuario en <strong>Encardomy by Shaminket</strong>.
+      </p>
+      <div class="legal-meta-row">
+        <span><strong>Responsable:</strong> Diego Periañez Hernandez</span>
+        <span>·</span>
+        <span><strong>Sitio:</strong> enp4.shaminket.com</span>
+        <span>·</span>
+        <span><strong>Última actualización:</strong> 27 de septiembre de 2026</span>
+      </div>
+    </header>
+
+    <!-- Declaración de Principios -->
+    <div class="legal-callout legal-callout-gold">
+      <strong>Declaración de Transparencia Tecnológica:</strong> Encardomy by Shaminket <strong>NO utiliza cookies de rastreo publicitario, píxeles de retargeting, ni herramientas de perfilamiento comercial</strong>. El sitio emplea exclusivamente tecnologías de almacenamiento web del lado del cliente estrictamente necesarias para recordar tus preferencias académicas.
+    </div>
+
+    <!-- 1. Diferenciación Técnica -->
+    <article class="legal-section">
+      <h2><span class="num">1.</span> Diferencia entre Cookies, LocalStorage y SessionStorage</h2>
+      <p>
+        Para una adecuada comprensión jurídica y técnica, es indispensable diferenciar las distintas tecnologías que pueden ejecutarse en el dispositivo del usuario:
+      </p>
+      <ul>
+        <li>
+          <strong>Cookies HTTP:</strong> Son pequeños ficheros de texto que un servidor web envía al navegador del usuario para que este los devuelva en cada petición subsecuente. Se utilizan tradicionalmente para sesiones autenticadas o analítica remota.
+        </li>
+        <li>
+          <strong>Almacenamiento Local (<code>localStorage</code>):</strong> Es una tecnología moderna de HTML5 que permite guardar pares de clave-valor directamente en el navegador del dispositivo del usuario. <em>localStorage no es exactamente lo mismo que una cookie</em>: los datos almacenados en localStorage no se transmiten automáticamente al servidor en cada solicitud web, permanecen guardados en tu equipo hasta que decidas borrarlos y ofrecen mayor velocidad y privacidad técnica.
+        </li>
+        <li>
+          <strong>Almacenamiento de Sesión (<code>sessionStorage</code>):</strong> Similar a localStorage, con la diferencia técnica de que la información se destruye automáticamente cuando el usuario cierra la pestaña o ventana del navegador web.
+        </li>
+      </ul>
+    </article>
+
+    <!-- 2. Uso Real en Encardomy -->
+    <article class="legal-section">
+      <h2><span class="num">2.</span> Variables Técnicas que Utiliza Actualmente el Sitio</h2>
+      <p>
+        En cumplimiento con el deber de información, detallamos con precisión cada una de las variables que el código JavaScript de Encardomy almacena de forma local en tu navegador:
+      </p>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; margin:16px 0; font-size:0.88rem; text-align:left;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--c-oro); color:var(--c-oro);">
+              <th style="padding:10px 12px;">Mecanismo</th>
+              <th style="padding:10px 12px;">Clave / Variable</th>
+              <th style="padding:10px 12px;">Finalidad Técnica</th>
+              <th style="padding:10px 12px;">Duración</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--c-copal-line);">
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); font-weight:700;">localStorage</td>
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); color:var(--c-papel-turquesa);">app415_active_section</td>
+              <td style="padding:10px 12px;">Recuerda si el estudiante seleccionó la <strong>Sección A</strong> o la <strong>Sección B</strong> para filtrar su horario SiHo y sus materias.</td>
+              <td style="padding:10px 12px;">Persistente hasta borrado de datos.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--c-copal-line);">
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); font-weight:700;">localStorage</td>
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); color:var(--c-papel-turquesa);">tablet_active_section / desktop_active_section</td>
+              <td style="padding:10px 12px;">Mantiene la sección activa en las interfaces de Tablet y Computadora.</td>
+              <td style="padding:10px 12px;">Persistente hasta borrado de datos.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--c-copal-line);">
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); font-weight:700;">sessionStorage</td>
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); color:var(--c-cempasuchil);">encardomy_renovacion_v415_dismissed_session</td>
+              <td style="padding:10px 12px;">Registra temporalmente si el usuario ya cerró el aviso de bienvenida para no mostrarlo repetidamente en cada página durante la sesión.</td>
+              <td style="padding:10px 12px;">Se elimina al cerrar la pestaña.</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); font-weight:700;">sessionStorage</td>
+              <td style="padding:10px 12px; font-family:var(--font-family-mono); color:var(--c-cempasuchil);">device_router_redirect_count</td>
+              <td style="padding:10px 12px;">Control de seguridad anti-bucles para evitar redirecciones excesivas en el router de pantallas.</td>
+              <td style="padding:10px 12px;">Temporal (5 segundos).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Ninguna de estas claves almacena nombres, contraseñas, correos electrónicos ni información que permita identificar personalmente al alumno sin su consentimiento.</strong>
+      </p>
+    </article>
+
+    <!-- 3. Ausencia de Cookies Publicitarias -->
+    <article class="legal-section">
+      <h2><span class="num">3.</span> Ausencia de Cookies Publicitarias y de Rastreo Externo</h2>
+      <p>
+        El proyecto se compromete activamente con la privacidad estudiantil:
+      </p>
+      <ul>
+        <li>NO se instalan cookies para la elaboración de perfiles comerciales ni remarketing de productos.</li>
+        <li>NO se comparten identificadores de dispositivo con intermediarios de datos (data brokers).</li>
+        <li>NO se insertan librerías de analítica que graben sesiones de teclado o pantallas de los alumnos.</li>
+      </ul>
+    </article>
+
+    <!-- 4. Terceros y Servicios Embebidos -->
+    <article class="legal-section">
+      <h2><span class="num">4.</span> Tecnologías de Proveedores Terceros Integrados</h2>
+      <p>
+        Al interactuar con servicios externos embebidos o enlazados (por ejemplo, al consultar un calendario de Google o al abrir la ventana de mensajería de WhatsApp), dichos proveedores tecnológicos pueden aplicar sus propias políticas de almacenamiento conforme a sus respectivos términos:
+      </p>
+      <ul>
+        <li><strong>Google Calendar:</strong> La infraestructura de Google puede utilizar cookies técnicas necesarias para autenticar la sesión institucional del usuario si este ya tiene abierta su cuenta de Google Workspace en el mismo navegador.</li>
+        <li><strong>WhatsApp Web:</strong> Cuando decides utilizar el botón oficial para enviar una sugerencia, WhatsApp Web utiliza sus propias cookies de sesión de mensajería cifrada.</li>
+      </ul>
+    </article>
+
+    <!-- 5. Cómo Administrar o Desactivar -->
+    <article class="legal-section">
+      <h2><span class="num">5.</span> Cómo Controlar y Eliminar estos Registros en tu Navegador</h2>
+      <p>
+        El usuario conserva en todo momento el control absoluto sobre los datos almacenados en su equipo. Es posible consultar, eliminar o bloquear el almacenamiento local mediante las herramientas de configuración de tu navegador:
+      </p>
+      <ul>
+        <li><strong>Google Chrome / Brave / Edge:</strong> Configuración › Privacidad y seguridad › Configuración de sitios › Datos y cookies de sitios.</li>
+        <li><strong>Safari (iOS / macOS):</strong> Preferencias o Ajustes › Safari › Avanzado › Datos de sitios web.</li>
+        <li><strong>Mozilla Firefox:</strong> Opciones › Privacidad y Seguridad › Cookies y datos del sitio › Limpiar datos.</li>
+      </ul>
+      <p class="legal-callout legal-callout-info">
+        <em>Nota operativa:</em> Si limpias el <code>localStorage</code>, únicamente se restablecerá la selección de tu sección escolar (volviendo a solicitarte si eres Sección A o B al ingresar nuevamente). La navegación por el sitio no sufrirá impedimentos.
+      </p>
+    </article>
+
+    <!-- Enlaces Cruzados -->
+    <nav class="legal-cross-links" aria-label="Enlaces complementarios">
+      <a href="aviso-de-privacidad.html" class="legal-cross-link">🛡️ Aviso de Privacidad Integral</a>
+      <a href="terminos-y-condiciones.html" class="legal-cross-link">📜 Términos y Condiciones</a>
+      <a href="propiedad-intelectual.html" class="legal-cross-link">⚖️ Propiedad Intelectual</a>
+      <a href="contacto-legal.html" class="legal-cross-link">📮 Contacto Oficial</a>
+    </nav>
+
+    <!-- Footer Legal Estandarizado -->
+    <footer class="encardomy-global-footer">
+      <span class="encardomy-global-footer-brand">Encardomy by Shaminket · Prepa 4</span>
+      <div class="encardomy-global-footer-links">
+        <a href="aviso-de-privacidad.html">Aviso de privacidad</a>
+        <span>·</span>
+        <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+        <span>·</span>
+        <a href="cookies.html">Cookies</a>
+        <span>·</span>
+        <a href="propiedad-intelectual.html">Propiedad intelectual</a>
+        <span>·</span>
+        <a href="uso-responsable.html">Uso responsable</a>
+        <span>·</span>
+        <a href="accesibilidad.html">Accesibilidad</a>
+        <span>·</span>
+        <a href="contacto-legal.html">Contacto legal</a>
+      </div>
+      <div class="encardomy-global-footer-copy">
+        Responsable: Diego Periañez Hernandez · Contacto: ENP4.SHAMINKET@gmail.com · enp4.shaminket.com<br>
+        Última actualización: 27 de septiembre de 2026.
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/effects.js"></script>
+</body>
+</html>
