@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Recuerdos 415 — Galería Oficial | Prepa 4 UNAM</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/muertos.css">
+  <style>
+    .upload-cta-card {
+      margin: 24px 0;
+      padding: 24px 20px;
+      background: linear-gradient(145deg, rgba(42, 45, 52, 0.6) 0%, rgba(11, 12, 16, 0.85) 100%);
+      border: 1px solid var(--c-cempasuchil-border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--c-cempasuchil-glow);
+    }
+
+    .upload-cta-title {
+      font-size: var(--text-title2);
+      font-weight: 800;
+      color: var(--c-hueso);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .upload-cta-sub {
+      font-size: var(--text-callout);
+      color: var(--c-hueso-secondary);
+      margin-bottom: 20px;
+    }
+
+    .btn-ponla {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--touch-target-large);
+      padding: 0 32px;
+      background: var(--c-cempasuchil);
+      color: var(--c-obsidiana);
+      font-size: 1.15rem;
+      font-weight: 800;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 122, 0, 0.35);
+      transition: transform 0.16s var(--ease-ios), box-shadow 0.2s ease;
+    }
+
+    .btn-ponla:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 10px rgba(255, 122, 0, 0.2);
+    }
+
+    /* Modal de Envío de Imagen */
+    .upload-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 12, 16, 0.95);
+      backdrop-filter: blur(24px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .upload-box {
+      width: 100%;
+      max-width: 420px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--c-copal);
+      border: 1px solid var(--c-copal-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-float);
+    }
+  </style>
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="muertos-ambient-canvas"></canvas>
+
+  <main class="app-container">
+    <header class="app-header">
+      <a href="index.html" class="section-pill-btn" aria-label="Volver a Inicio">
+        <span>‹ Inicio</span>
+      </a>
+      <div class="brand-badge">
+        <span class="brand-number">Recuerdos 415</span>
+      </div>
+      <button class="section-pill-btn" onclick="App415.promptChangeSection()" aria-label="Cambiar sección">
+        <span>Sec.</span>
+        <span class="section-pill-badge active-section-letter">A</span>
+      </button>
+    </header>
+
+    <section style="padding: 12px 0 16px;">
+      <h1 class="hero-title" style="font-size:var(--text-title1);">Memorias del 415</h1>
+      <p style="font-size:var(--text-callout); color:var(--c-hueso-secondary);">
+        El álbum de vida, proyectos y momentos colectivos de nuestra generación en la Prepa 4.
+      </p>
+    </section>
+
+    <!-- ESTADO VACÍO ELEGANTE (Cero fotos inventadas) -->
+    <section class="gallery-empty-section">
+      <div class="empty-state" style="padding:48px 20px;">
+        <div class="empty-state-icon">📸</div>
+        <div class="empty-state-text" style="font-size:var(--text-headline);">
+          Todavía no hay recuerdos publicados.
+        </div>
+        <div class="empty-state-sub" style="margin-top:8px; line-height:1.4;">
+          Las fotos oficiales de convivencias, eventos culturales y trabajos de equipo serán curadas aquí. Sé de los primeros en colaborar.
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCIÓN PRINCIPAL: ¿Quieres ver tu imagen aquí? Ponla. -->
+    <section class="upload-cta-card">
+      <h2 class="upload-cta-title">¿Quieres ver tu imagen aquí?</h2>
+      <p class="upload-cta-sub">Sube tu fotografía de grupo o evento para someterla a publicación.</p>
+      <button class="btn-ponla" onclick="abrirModalSubida()">Ponla.</button>
+    </section>
+
+    <!-- Información de Transparencia de Infraestructura -->
+    <section style="margin-top:20px; padding:16px; background:rgba(42,45,52,0.25); border-radius:var(--radius-md); font-size:var(--text-caption); color:var(--c-hueso-secondary);">
+      <strong style="color:var(--c-oro); display:block; margin-bottom:4px;">Nota sobre la arquitectura de recuerdos:</strong>
+      Para que las imágenes subidas por los alumnos se almacenen permanentemente en la nube y sean visibles para todos los dispositivos en tiempo real, se requiere conectar este módulo a un servicio de almacenamiento (Cloud Storage) y una base de datos con moderación. Mientras tanto, puedes enviar tus fotos por los canales oficiales del grupo.
+    </section>
+
+  </main>
+
+  <!-- Modal de Envío de Imagen -->
+  <div class="upload-modal" id="modal-subir-imagen">
+    <div class="upload-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:var(--text-headline); font-weight:800; color:var(--c-hueso);">Enviar Fotografía al 415</h3>
+        <button onclick="cerrarModalSubida()" style="background:transparent; border:none; color:var(--c-hueso); font-size:1.4rem; cursor:pointer;">✕</button>
+      </div>
+
+      <p style="font-size:var(--text-caption); color:var(--c-hueso-secondary); margin-bottom:16px;">
+        Selecciona una imagen de tu dispositivo para previsualizarla localmente y enviarla a la mesa de administración.
+      </p>
+
+      <input type="file" id="foto-input" accept="image/*" style="display:none;" onchange="previsualizarFoto(event)">
+      <button class="section-pill-btn" onclick="document.getElementById('foto-input').click()" style="width:100%; justify-content:center; margin-bottom:16px;">
+        📁 Seleccionar desde mi carrete
+      </button>
+
+      <div id="foto-preview-wrap" style="display:none; margin-bottom:16px; text-align:center;">
+        <img id="foto-preview-img" src="" alt="Vista previa" style="max-width:100%; max-height:220px; border-radius:var(--radius-sm); border:1px solid var(--c-copal-line);">
+        <p style="font-size:var(--text-micro); color:var(--c-cempasuchil); margin-top:6px;">✓ Imagen cargada para previsualización</p>
+      </div>
+
+      <div style="background:rgba(11,12,16,0.6); padding:14px; border-radius:var(--radius-sm); margin-bottom:16px; font-size:var(--text-caption);">
+        <strong style="color:var(--c-hueso); display:block; margin-bottom:6px;">Canales Oficiales de Recepción:</strong>
+        <p>✉ <strong>ENP4.SHAMINKET@GMAIL.COM</strong></p>
+        <p style="margin-top:4px;">📞 <strong>+52 55 7198 5641</strong></p>
+      </div>
+
+      <a href="mailto:ENP4.SHAMINKET@GMAIL.COM?subject=Foto%20para%20Recuerdos%20415" class="btn-ponla" style="width:100%; font-size:1rem; min-height:48px;">
+        Enviar por Correo Oficial
+      </a>
+    </div>
+  </div>
+
+  <!-- Navegación Inferior -->
+    <nav class="bottom-nav-bar" aria-label="Navegación principal">
+    <a href="index.html" class="nav-tab-item" aria-label="Inicio">
+      <span class="nav-tab-icon">✦</span>
+      <span>Inicio</span>
+    </a>
+    <a href="centro-de-control.html" class="nav-tab-item" aria-label="Centro de Control">
+      <span class="nav-tab-icon">❖</span>
+      <span>Control</span>
+    </a>
+    <a href="archivos.html" class="nav-tab-item" aria-label="Archivos">
+      <span class="nav-tab-icon">📄</span>
+      <span>Archivos</span>
+    </a>
+    <a href="herramientas-pdf.html" class="nav-tab-item" aria-label="Herramientas PDF">
+      <span class="nav-tab-icon">🛠</span>
+      <span>PDF</span>
+    </a>
+    <a href="recuerdos-415.html" class="nav-tab-item" aria-label="Recuerdos 415">
+      <span class="nav-tab-icon">◈</span>
+      <span>Recuerdos</span>
+    </a>
+  </nav>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/effects.js"></script>
+  <script>
+    function abrirModalSubida() {
+      document.getElementById('modal-subir-imagen').style.display = 'flex';
+    }
+    function cerrarModalSubida() {
+      document.getElementById('modal-subir-imagen').style.display = 'none';
+    }
+    function previsualizarFoto(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('foto-preview-img').src = e.target.result;
+        document.getElementById('foto-preview-wrap').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>

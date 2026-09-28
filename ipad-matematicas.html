@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Matemáticas IV — Grupo 415 | iPad & Tablet</title>
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/tablet.css">
+  <script src="js/device-router.js"></script>
+</head>
+<body>
+  <canvas id="tablet-ambient-canvas"></canvas>
+
+  <div class="tablet-app-shell">
+    
+    <aside class="tablet-sidebar" id="tablet-sidebar" aria-label="Navegación principal">
+      <div class="tablet-sidebar-header">
+        <div class="tablet-brand-group">
+          <a href="ipad-index.html" style="text-decoration:none;">
+            <div class="tablet-brand-badge">415</div>
+          </a>
+          <div class="tablet-brand-info">
+            <span class="tablet-brand-title">Grupo 415</span>
+            <span class="tablet-brand-sub">Prepa 4 · UNAM</span>
+          </div>
+        </div>
+
+        <div class="tablet-section-toggle" role="group" aria-label="Selector de Sección">
+          <button type="button" class="tablet-section-btn active" id="tablet-btn-sec-a" onclick="TabletApp415.setSection('A')">Sec. A</button>
+          <button type="button" class="tablet-section-btn" id="tablet-btn-sec-b" onclick="TabletApp415.setSection('B')">Sec. B</button>
+        </div>
+      </div>
+
+      <nav class="tablet-sidebar-nav">
+        <div class="tablet-nav-label">Navegación</div>
+        <a href="ipad-index.html" class="tablet-nav-item ">
+          <span class="nav-icon">✦</span>
+          <span>Inicio / Control</span>
+        </a>
+        <a href="ipad-centro-de-control.html" class="tablet-nav-item ">
+          <span class="nav-icon">❖</span>
+          <span>Centro de Control</span>
+        </a>
+        <a href="ipad-calendario.html" class="tablet-nav-item ">
+          <span class="nav-icon">📅</span>
+          <span>Horario y Calendario</span>
+          <span class="tablet-nav-badge">SiHo</span>
+        </a>
+        <a href="ipad-archivos.html" class="tablet-nav-item ">
+          <span class="nav-icon">📄</span>
+          <span>Recursos PDF</span>
+        </a>
+        <a href="ipad-historial.html" class="tablet-nav-item ">
+          <span class="nav-icon">🏛</span>
+          <span>Historial General</span>
+        </a>
+        <a href="ipad-herramientas-pdf.html" class="tablet-nav-item ">
+          <span class="nav-icon">🛠</span>
+          <span>Herramientas PDF</span>
+        </a>
+        <a href="ipad-recuerdos-415.html" class="tablet-nav-item ">
+          <span class="nav-icon">◈</span>
+          <span>Recuerdos 415</span>
+        </a>
+
+        <div class="tablet-nav-label">Materias 415</div>
+        <a href="ipad-lengua-espanola.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Lengua Española</span>
+        </a><a href="ipad-matematicas.html" class="tablet-nav-item active" style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Matemáticas IV</span>
+        </a><a href="ipad-historia.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Historia Universal III</span>
+        </a><a href="ipad-fisica.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Física III</span>
+        </a><a href="ipad-logica.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Lógica</span>
+        </a><a href="ipad-geografia.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Geografía</span>
+        </a><a href="ipad-dibujo.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Dibujo II</span>
+        </a><a href="ipad-ingles.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Lengua extranjera Inglés IV</span>
+        </a><a href="ipad-informatica.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Informática</span>
+        </a><a href="ipad-genero-prevencion.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Género y Prevención de las Violencias</span>
+        </a><a href="ipad-educacion-fisica.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Educación Física IV</span>
+        </a><a href="ipad-orientacion-educativa.html" class="tablet-nav-item " style="font-size:0.85rem; padding:9px 12px;">
+          <span class="nav-icon" style="font-size:0.95rem;">•</span>
+          <span>Orientación Educativa IV</span>
+        </a>
+      </nav>
+
+      <div class="tablet-sidebar-footer">
+        <div class="tablet-live-mini">
+          <div class="tablet-live-mini-row">
+            <span class="tablet-live-indicator">
+              <span class="tablet-live-dot"></span>
+              <span>En Tiempo Real</span>
+            </span>
+            <span class="tablet-live-clock" id="tablet-mini-clock">--:--:--</span>
+          </div>
+          <div style="font-size:0.75rem; color:var(--c-hueso-secondary);">
+            Turno Matutino · Ciclo 2026-2027
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+
+    <main class="tablet-main-stage" id="tablet-main-stage">
+      
+      <header class="tablet-top-bar">
+        <div class="tablet-header-left">
+          <button type="button" class="tablet-sidebar-toggle-btn" id="tablet-sidebar-toggle" onclick="TabletApp415.toggleSidebar()" aria-label="Menú">
+            ☰
+          </button>
+          <div class="tablet-current-view-title">
+            Matemáticas IV · Asignatura 415
+          </div>
+        </div>
+
+        <div class="tablet-header-right">
+          <a href="ipad-buscar.html" class="tablet-search-box" style="text-decoration:none; color:var(--c-hueso-secondary); cursor:pointer;">
+            <span>🔍</span>
+            <span style="font-size:0.85rem; margin-left:8px; opacity:0.8;">Buscar en el 415...</span>
+          </a>
+          <a href="matematicas.html?force=mobile" class="tablet-mobile-mode-link" title="Cambiar a la versión para celular">
+            <span>📱</span>
+            <span>Versión Celular</span>
+          </a>
+        </div>
+      </header>
+    
+
+      <div class="tablet-stage-body">
+        
+        <!-- HEADER HERO DE MATERIA -->
+        <div style="background:linear-gradient(135deg, rgba(42,45,52,0.7) 0%, rgba(18,20,26,0.95) 100%); border:1px solid var(--c-tablet-border); border-radius:var(--tablet-radius-panel); padding:24px 28px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <span style="font-size:0.75rem; font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; letter-spacing:0.12em;">
+              Clave 1400 · 5 hrs semanales
+            </span>
+            <a href="ipad-historial-matematicas.html" class="tablet-section-btn" style="font-size:0.75rem; text-decoration:none; color:var(--c-oro); border:1px solid var(--c-oro-border);">
+              🏛 Consultar Historial ›
+            </a>
+          </div>
+          <h1 style="margin:0 0 8px 0; font-size:clamp(1.6rem, 3.2vw, 2.2rem); font-weight:800; color:var(--c-hueso);">
+            Matemáticas IV
+          </h1>
+          <p style="margin:0; font-size:0.95rem; color:var(--c-hueso-secondary); line-height:1.45;">
+            Álgebra avanzada, geometría analítica, modelación matemática y leyes algebraicas.
+          </p>
+          <div style="margin-top:14px; font-size:0.82rem; color:var(--c-hueso-tertiary); display:flex; gap:16px; flex-wrap:wrap;">
+            <span>🗓 <strong>Horario:</strong> Mar 07:00-08:40 (B-112) · Jue 07:00-08:40 (B-109) · Vie 08:40-09:30 (B-117)</span>
+            <span>📍 <strong>Salones:</strong> B-109, B-112, B-117</span>
+          </div>
+        </div>
+
+        <!-- CONTENIDO PRINCIPAL ADAPTADO -->
+        <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:20px; align-items:start;">
+          
+          <!-- COLUMNA PRINCIPAL DE CONTENIDOS -->
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            
+        <div style="background:var(--c-tablet-panel); border:1px solid var(--c-cempasuchil-border); border-radius:var(--tablet-radius-panel); padding:24px; box-shadow:0 8px 30px var(--c-cempasuchil-glow);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span style="font-size:0.75rem; font-weight:800; color:var(--c-cempasuchil); background:var(--c-cempasuchil-soft); padding:3px 12px; border-radius:var(--radius-pill); text-transform:uppercase;">
+              ⚡ Tarea Activa
+            </span>
+            <span style="font-family:var(--font-family-mono); font-size:0.85rem; color:var(--c-oro); font-weight:700;">Martes 29 de septiembre de 2026</span>
+          </div>
+          <h3 style="margin:0 0 8px 0; font-size:1.35rem; font-weight:800; color:var(--c-hueso);">
+            Ejercicios con base en la ley de los exponentes
+          </h3>
+          <p style="margin:0 0 16px 0; font-size:0.9rem; color:var(--c-hueso-secondary); line-height:1.45;">
+            No te olvides de realizar los ejercicios en base a la ley de los exponentes. Asegúrate de incluir el procedimiento algebraico paso a paso y la simplificación de radicales.
+          </p>
+        </div>
+          </div>
+
+          <!-- COLUMNA SECUNDARIA: HORARIOS Y RECURSOS ASOCIADOS -->
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            
+            <div style="background:var(--c-tablet-panel); border:1px solid var(--c-tablet-border); border-radius:var(--tablet-radius-panel); padding:20px;">
+              <h3 style="margin:0 0 12px 0; font-size:1.05rem; font-weight:700; color:var(--c-hueso);">
+                Sesiones Semanales
+              </h3>
+              <p style="margin:0 0 12px 0; font-size:0.85rem; color:var(--c-hueso-secondary); line-height:1.4;">
+                Mar 07:00-08:40 (B-112) · Jue 07:00-08:40 (B-109) · Vie 08:40-09:30 (B-117)
+              </p>
+              <a href="ipad-calendario.html" class="tablet-section-btn active" style="display:inline-block; text-decoration:none; font-size:0.8rem; text-align:center;">
+                Ver en Horario General ›
+              </a>
+            </div>
+
+            <div style="background:var(--c-tablet-panel); border:1px solid var(--c-tablet-border); border-radius:var(--tablet-radius-panel); padding:20px;">
+              <h3 style="margin:0 0 12px 0; font-size:1.05rem; font-weight:700; color:var(--c-hueso);">
+                Recursos y Archivos
+              </h3>
+              <p style="margin:0 0 12px 0; font-size:0.85rem; color:var(--c-hueso-secondary); line-height:1.4;">
+                Lecturas en PDF y materiales de apoyo indexados con código institucional.
+              </p>
+              <a href="ipad-archivos.html" class="tablet-section-btn" style="display:inline-block; text-decoration:none; font-size:0.8rem; border:1px solid var(--c-tablet-border); color:var(--c-hueso);">
+                Explorar biblioteca de archivos ›
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL DE HOJAS MEMBRETADAS (SIEMPRE DISPONIBLE) -->
+  <div class="tablet-modal-backdrop" id="tablet-modal-hojas" role="dialog" aria-modal="true">
+    <div class="tablet-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.75rem; font-weight:800; color:var(--c-oro); text-transform:uppercase;">Encardomy · Hojas Membretadas</span>
+        <button type="button" onclick="TabletApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.3rem; cursor:pointer;">✕</button>
+      </div>
+      <h3 style="margin:0; font-size:1.2rem; font-weight:800; color:var(--c-hueso);">Solicitud de Hojas Membretadas ($30)</h3>
+      <p style="margin:0; font-size:0.85rem; color:var(--c-hueso-secondary);">Escribe tu nombre completo empezando por apellidos:</p>
+      <div>
+        <label for="tablet-input-nombre-apellidos" style="display:block; font-size:0.7rem; font-weight:800; color:var(--c-hueso-tertiary); margin-bottom:4px;">FORMATO: APELLIDOS NOMBRE(S)</label>
+        <input type="text" id="tablet-input-nombre-apellidos" placeholder="Ej: Pérez García Juan Carlos" style="width:100%; height:44px; background:rgba(42,45,52,0.6); border:1px solid var(--c-tablet-border); border-radius:var(--radius-sm); padding:0 12px; color:var(--c-hueso); font-size:0.9rem;">
+      </div>
+      <div style="display:flex; gap:10px; margin-top:6px;">
+        <button type="button" class="tablet-section-btn" onclick="TabletApp415.cerrarModalHojas()" style="flex:1; height:42px;">Cancelar</button>
+        <button type="button" class="tablet-section-btn active" onclick="TabletApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; height:42px; background:#25D366; color:#0B0C10; border-color:#25D366; font-weight:800;">Continuar a WhatsApp ›</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/colaboracion-seccion-b.js"></script>
+  <script src="js/renovacion-notificacion.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/tablet.js"></script>
+</body>
+</html>
