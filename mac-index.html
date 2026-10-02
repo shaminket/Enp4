@@ -2,465 +2,261 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Principal — Grupo 415 | Mac & Computadoras</title>
-  <meta name="theme-color" content="#1B0B2E">
-  
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/desktop.css">
-  <script src="js/device-router.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Grupo 415 — Reinvención en Proceso | Mac</title>
+  <meta name="theme-color" content="#0B0C10">
+  <style>
+
+    :root {
+      --bg-base: #0B0C10;
+      --bg-panel: rgba(24, 26, 34, 0.75);
+      --bg-panel-border: rgba(229, 169, 60, 0.25);
+      --c-cempasuchil: #FF7A00;
+      --c-cempasuchil-glow: rgba(255, 122, 0, 0.35);
+      --c-oro: #E5A93C;
+      --c-oro-soft: rgba(229, 169, 60, 0.15);
+      --c-hueso: #F4EDE2;
+      --c-hueso-muted: #A3AAB8;
+      --c-obsidiana: #050608;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-base);
+      color: var(--c-hueso);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glow */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 20% 25%, rgba(62, 28, 107, 0.45) 0%, transparent 50%),
+        radial-gradient(circle at 80% 75%, rgba(255, 122, 0, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, transparent 60%);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .badge-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(229, 169, 60, 0.12);
+      border: 1px solid var(--c-oro);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-oro);
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(229, 169, 60, 0.15);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--c-cempasuchil);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--c-cempasuchil);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .main-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--bg-panel-border);
+      border-radius: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 122, 0, 0.1);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--c-cempasuchil), var(--c-oro), transparent);
+    }
+
+    .brand-title {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--c-hueso);
+      text-wrap: balance;
+    }
+
+    .brand-title span.shamin {
+      background: linear-gradient(135deg, #FF7A00 0%, #E5A93C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-banner {
+      background: rgba(229, 169, 60, 0.08);
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      border-radius: 16px;
+      padding: 16px 24px;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--c-oro);
+      font-weight: 700;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .subtext {
+      color: var(--c-hueso-muted);
+      font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+      line-height: 1.6;
+      max-width: 650px;
+    }
+
+    .switcher-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+    }
+
+    .switcher-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--c-hueso-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .switcher-link:hover {
+      color: var(--c-hueso);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--c-oro);
+    }
+
+    .switcher-link.active {
+      background: var(--c-oro-soft);
+      border-color: var(--c-oro);
+      color: var(--c-oro);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.75rem;
+      color: var(--c-hueso-muted);
+      letter-spacing: 0.04em;
+    }
+
+  </style>
 </head>
 <body>
-  <canvas id="desktop-ambient-canvas"></canvas>
+  <div class="ambient-bg"></div>
 
-  <div class="desktop-app-shell">
-    
-    <aside class="desktop-sidebar" id="desktop-sidebar" aria-label="Navegación principal">
-      <div class="desktop-sidebar-header">
-        <a href="mac-index.html" class="desktop-brand-group">
-          <div class="desktop-brand-badge">415</div>
-          <div class="desktop-brand-info">
-            <span class="desktop-brand-title">Grupo 415</span>
-            <span class="desktop-brand-sub">Prepa 4 · UNAM</span>
-          </div>
-        </a>
-
-        <div class="desktop-section-toggle" role="group" aria-label="Selector de Sección">
-          <button type="button" class="desktop-section-btn active" id="desktop-btn-sec-a" onclick="DesktopApp415.setSection('A')">Sec. A</button>
-          <button type="button" class="desktop-section-btn" id="desktop-btn-sec-b" onclick="DesktopApp415.setSection('B')">Sec. B</button>
-        </div>
-      </div>
-
-      <nav class="desktop-sidebar-nav">
-        <div class="desktop-nav-group-title">Plataforma</div>
-        <a href="mac-index.html" class="desktop-nav-item active">
-          <span class="nav-icon">✦</span>
-          <span>Inicio / Dashboard</span>
-        </a>
-        <a href="mac-centro-de-control.html" class="desktop-nav-item ">
-          <span class="nav-icon">❖</span>
-          <span>Centro de Control</span>
-        </a>
-        <a href="mac-calendario.html" class="desktop-nav-item ">
-          <span class="nav-icon">📅</span>
-          <span>Horario y Calendario</span>
-          <span class="desktop-nav-badge gold">30 hrs</span>
-        </a>
-        <a href="mac-archivos.html" class="desktop-nav-item ">
-          <span class="nav-icon">📄</span>
-          <span>Archivos y PDFs</span>
-        </a>
-        <a href="mac-historial.html" class="desktop-nav-item ">
-          <span class="nav-icon">🏛</span>
-          <span>Historial General</span>
-        </a>
-        <a href="mac-herramientas-pdf.html" class="desktop-nav-item ">
-          <span class="nav-icon">🛠</span>
-          <span>Herramientas PDF</span>
-        </a>
-        <a href="mac-recuerdos-415.html" class="desktop-nav-item ">
-          <span class="nav-icon">◈</span>
-          <span>Recuerdos 415</span>
-        </a>
-
-        <div class="desktop-nav-group-title">Materias Oficiales (12)</div>
-        <a href="mac-lengua-espanola.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Lengua Española</span>
-          <span class="desktop-nav-badge">1401</span>
-        </a><a href="mac-matematicas.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Matemáticas IV</span>
-          <span class="desktop-nav-badge">1400</span>
-        </a><a href="mac-historia.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Historia Universal III</span>
-          <span class="desktop-nav-badge">1403</span>
-        </a><a href="mac-fisica.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Física III</span>
-          <span class="desktop-nav-badge">1402</span>
-        </a><a href="mac-logica.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Lógica</span>
-          <span class="desktop-nav-badge">1404</span>
-        </a><a href="mac-geografia.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Geografía</span>
-          <span class="desktop-nav-badge">1405</span>
-        </a><a href="mac-dibujo.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Dibujo II</span>
-          <span class="desktop-nav-badge">1406</span>
-        </a><a href="mac-ingles.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Lengua extranjera Inglés IV</span>
-          <span class="desktop-nav-badge">1407</span>
-        </a><a href="mac-informatica.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Informática</span>
-          <span class="desktop-nav-badge">1408</span>
-        </a><a href="mac-genero-prevencion.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Género y Prevención de las Violencias</span>
-          <span class="desktop-nav-badge">8000</span>
-        </a><a href="mac-educacion-fisica.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Educación Física IV</span>
-          <span class="desktop-nav-badge">1409</span>
-        </a><a href="mac-orientacion-educativa.html" class="desktop-nav-item ">
-          <span class="nav-icon">•</span>
-          <span>Orientación Educativa IV</span>
-          <span class="desktop-nav-badge">1410</span>
-        </a>
-      </nav>
-
-      <div class="desktop-sidebar-footer">
-        <div class="desktop-live-widget">
-          <div class="desktop-live-row">
-            <span class="desktop-live-pulse">
-              <span class="desktop-live-dot"></span>
-              <span>En Tiempo Real</span>
-            </span>
-            <span class="desktop-live-clock" id="desktop-live-clock">--:--:--</span>
-          </div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-secondary); margin-top:2px;">
-            Turno Matutino · Ciclo 2026-2027
-          </div>
-        </div>
-      </div>
-    </aside>
-    
-
-    <main class="desktop-main-stage" id="desktop-main-stage">
-      
-      <header class="desktop-top-bar">
-        <div class="desktop-top-bar-left">
-          <div class="desktop-page-title">
-            Dashboard Principal
-          </div>
-        </div>
-
-        <div class="desktop-top-bar-right">
-          <!-- Búsqueda con atajo de teclado -->
-          <a href="mac-buscar.html" class="desktop-search-trigger" title="Buscar en todo el sitio (⌘K)">
-            <span>🔍</span>
-            <span>Buscar en el 415...</span>
-            <span class="desktop-kbd-badge">⌘K</span>
-          </a>
-
-          <!-- Conmutador a Celular y Tablet -->
-          <div class="desktop-mode-switcher">
-            <a href="ipad-index.html?force=tablet" class="desktop-switcher-pill" title="Ver versión tablet">
-              <span>📱</span>
-              <span>Tablet</span>
-            </a>
-            <a href="index.html?force=mobile" class="desktop-switcher-pill" title="Ver versión celular">
-              <span>📲</span>
-              <span>Celular</span>
-            </a>
-          </div>
-        </div>
-      </header>
-    
-
-      <div class="desktop-stage-body">
-        
-  <section class="desktop-live-hero" id="desktop-dashboard-hero">
-    <div id="desktop-hero-dynamic-content">Cargando horario en vivo...</div>
-  </section>
-
-  <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:22px; align-items:start;">
-    
-    <!-- COLUMNA 1: TAREAS ACTIVAS Y AVISOS -->
-    <div style="display:flex; flex-direction:column; gap:20px;">
-      
-      <!-- Tareas Activas -->
-      <div style="background:var(--c-desktop-panel); border:1px solid var(--c-desktop-border); border-radius:var(--desktop-radius-panel); padding:22px; box-shadow:var(--shadow-desktop-panel);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-          <div style="font-size:0.75rem; font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase; letter-spacing:0.1em; display:flex; align-items:center; gap:8px;">
-            <span>⚡</span> Tareas Vigentes Grupo 415
-          </div>
-          <span style="font-size:0.75rem; color:var(--c-oro); font-weight:700;">1 activa</span>
-        </div>
-
-        <div style="background:rgba(42,45,52,0.45); border-left:4px solid var(--c-cempasuchil); border-radius:var(--radius-sm); padding:16px 18px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span style="font-size:0.75rem; font-weight:800; color:var(--c-cempasuchil); text-transform:uppercase;">MATEMÁTICAS IV</span>
-            <span style="font-size:0.75rem; color:var(--c-oro); font-family:var(--font-family-mono); font-weight:700;">Martes 29 de septiembre</span>
-          </div>
-          <h3 style="margin:0 0 6px 0; font-size:1.05rem; font-weight:700; color:var(--c-hueso);">
-            Ejercicios con base en la ley de los exponentes
-          </h3>
-          <p style="margin:0; font-size:0.85rem; color:var(--c-hueso-secondary); line-height:1.45;">
-            No te olvides de realizar los ejercicios en base a la ley de los exponentes. Asegurar entrega en PDF con nomenclatura oficial.
-          </p>
-        </div>
-      </div>
-
-      <!-- Avisos Actuales -->
-      <div style="background:var(--c-desktop-panel); border:1px solid var(--c-desktop-border); border-radius:var(--desktop-radius-panel); padding:22px; box-shadow:var(--shadow-desktop-panel);">
-        <div style="font-size:0.75rem; font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
-          <span>🔔</span> Avisos y Comunicados Docentes
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <div style="background:rgba(42,45,52,0.4); border-left:4px solid var(--c-oro); border-radius:var(--radius-sm); padding:14px 16px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span style="font-size:0.72rem; font-weight:800; color:var(--c-oro); text-transform:uppercase;">INFORMÁTICA</span>
-              <span style="font-size:0.72rem; color:var(--c-hueso-tertiary);">27/Septiembre/2026</span>
-            </div>
-            <h4 style="margin:0 0 4px 0; font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Exposiciones de Equipo</h4>
-            <p style="margin:0; font-size:0.82rem; color:var(--c-hueso-secondary); line-height:1.4;">
-              Equipo 1 y 3, prepárense para exponer. Si no perteneces a estos equipos, sigue preparando tu exposición.
-            </p>
-          </div>
-
-          <div style="background:rgba(42,45,52,0.4); border-left:4px solid var(--c-oro); border-radius:var(--radius-sm); padding:14px 16px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span style="font-size:0.72rem; font-weight:800; color:var(--c-oro); text-transform:uppercase;">LÓGICA</span>
-              <span style="font-size:0.72rem; color:var(--c-hueso-tertiary);">27/Septiembre/2026</span>
-            </div>
-            <h4 style="margin:0 0 4px 0; font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Recordatorio de Investigación</h4>
-            <p style="margin:0; font-size:0.82rem; color:var(--c-hueso-secondary); line-height:1.4;">
-              No olvides tu investigación. Lleva tus fuentes documentales a clase.
-            </p>
-          </div>
-
-          <div style="background:rgba(42,45,52,0.4); border-left:4px solid var(--c-oro); border-radius:var(--radius-sm); padding:14px 16px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span style="font-size:0.72rem; font-weight:800; color:var(--c-oro); text-transform:uppercase;">EDUCACIÓN FÍSICA</span>
-              <span style="font-size:0.72rem; color:var(--c-hueso-tertiary);">27/Septiembre/2026</span>
-            </div>
-            <h4 style="margin:0 0 4px 0; font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Material de Acondicionamiento</h4>
-            <p style="margin:0; font-size:0.82rem; color:var(--c-hueso-secondary); line-height:1.4;">
-              No olvides tu cuerda. Indispensable uniforme deportivo reglamentario para ingresar a GIM1.
-            </p>
-          </div>
-        </div>
-      </div>
-
+  <main class="container">
+    <div class="badge-bar">
+      <span class="status-dot"></span>
+      <span>Grupo 415 · Prepa 4 UNAM · Experiencia Mac</span>
     </div>
 
-    <!-- COLUMNA 2: MATRIZ DE MATERIAS (12 ASIGNATURAS) -->
-    <div style="background:var(--c-desktop-panel); border:1px solid var(--c-desktop-border); border-radius:var(--desktop-radius-panel); padding:22px; box-shadow:var(--shadow-desktop-panel);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-        <h3 style="margin:0; font-size:1.15rem; font-weight:800; color:var(--c-hueso);">
-          Asignaturas Oficiales (12)
-        </h3>
-        <span style="font-size:0.75rem; color:var(--c-hueso-tertiary);">Turno Matutino</span>
-      </div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:12px;">
-
-        <a href="mac-lengua-espanola.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1401</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">5 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Lengua Española</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-110, B-112, B-113</div>
-        </a>
-
-        <a href="mac-matematicas.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1400</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">5 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Matemáticas IV</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-109, B-112, B-117</div>
-        </a>
-
-        <a href="mac-historia.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1403</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">3 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Historia Universal III</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-109, B-117</div>
-        </a>
-
-        <a href="mac-fisica.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1402</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">5 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Física III</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">A-302, B-109, B-115, B-116</div>
-        </a>
-
-        <a href="mac-logica.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1404</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">3 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Lógica</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-108, B-206</div>
-        </a>
-
-        <a href="mac-geografia.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1405</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">3 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Geografía</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">A-104</div>
-        </a>
-
-        <a href="mac-dibujo.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1406</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">2 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Dibujo II</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-008 (Sec. A), C-201 (Sec. B)</div>
-        </a>
-
-        <a href="mac-ingles.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1407</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">3 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Lengua extranjera Inglés IV</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">C-306 (Sec. A), C-205 (Sec. B)</div>
-        </a>
-
-        <a href="mac-informatica.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1408</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">2 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Informática</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-108, CC-2</div>
-        </a>
-
-        <a href="mac-genero-prevencion.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">8000</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">2 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Género y Prevención de las Violencias</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-108, B-109</div>
-        </a>
-
-        <a href="mac-educacion-fisica.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1409</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">1 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Educación Física IV</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">GIM1</div>
-        </a>
-
-        <a href="mac-orientacion-educativa.html" class="desktop-subject-card" style="padding:14px 16px; min-height:auto;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <span class="desktop-subject-code">1410</span>
-            <span style="font-size:0.68rem; color:var(--c-cempasuchil); font-weight:800;">1 hrs</span>
-          </div>
-          <div style="font-size:0.95rem; font-weight:700; color:var(--c-hueso);">Orientación Educativa IV</div>
-          <div style="font-size:0.75rem; color:var(--c-hueso-tertiary);">B-110 (Sec. A), B-112 (Sec. B)</div>
-        </a>
-
-      </div>
-    </div>
-
-  </div>
-
-      </div>
-    </main>
-
-    
-    <aside class="desktop-inspector" id="desktop-inspector" aria-label="Panel lateral contextual">
+    <section class="main-card">
       
-  <div>
-    <div class="desktop-inspector-heading">Evento Cultural Destacado</div>
-    <div class="desktop-theatrical-card">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:0.7rem; font-weight:800; color:var(--c-oro); background:var(--c-oro-soft); padding:3px 10px; border-radius:var(--radius-pill); text-transform:uppercase;">
-          🎭 Don Juan Tenorio Clásico
-        </span>
-        <span style="font-family:var(--font-family-mono); font-size:0.75rem; color:var(--c-oro); font-weight:700;">17/Oct</span>
-      </div>
-      <div>
-        <h4 style="margin:0 0 4px; font-size:1.15rem; font-weight:800; color:var(--c-hueso); font-family:Georgia, serif;">Teatro Xola • Julio Prieto</h4>
-        <p style="margin:0; font-size:0.8rem; color:var(--c-hueso-secondary); line-height:1.4;">
-          Sábado 17 de octubre · 10:00 AM · $300 pesos · Informes: 55 22 99 89 49.
-        </p>
-      </div>
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Don%20Juan%20Tenorio%20Cl%C3%A1sico%20-%20Teatro%20Xola%20Julio%20Prieto&dates=20261017T160000Z/20261017T180000Z&details=Puesta%20en%20escena%20de%20Don%20Juan%20Tenorio%20Cl%C3%A1sico.%20Costo%20$300.%20Informes:%2055%2022%2099%2089%2049.&location=Teatro%20Xola%20Julio%20Prieto" target="_blank" rel="noopener noreferrer" class="desktop-action-btn" style="height:38px; font-size:0.8rem; text-align:center;">
-        📅 Agregar a Google Calendar ›
-      </a>
-    </div>
-  </div>
+      
+      <div style="font-size:1.8rem; margin-bottom:-10px;">✨</div>
+      
+      <h1 class="brand-title">
+        “Todo el equipo de <span class="shamin">ShaMinKet</span> esta reinventando la MInweb del 415 para el 415”
+      </h1>
 
-  <div style="background:var(--c-desktop-panel); border:1px solid var(--c-desktop-border); border-radius:var(--desktop-radius-card); padding:18px;">
-    <div class="desktop-inspector-heading" style="color:var(--c-cempasuchil);">Próxima Evaluación</div>
-    <div style="font-size:0.72rem; color:var(--c-cempasuchil); font-weight:800; text-transform:uppercase;">Física III</div>
-    <h4 style="margin:2px 0 4px; font-size:1rem; color:var(--c-hueso);">Examen Parcial</h4>
-    <p style="margin:0; font-size:0.82rem; color:var(--c-hueso-secondary);">Lunes 28 de septiembre de 2026 (07:50 AM)</p>
-  </div>
-
-  <div style="background:var(--c-desktop-panel); border:1px solid var(--c-oro-border); border-radius:var(--desktop-radius-card); padding:18px;">
-    <div class="desktop-inspector-heading">Hojas Membretadas ($30)</div>
-    <p style="margin:4px 0 10px; font-size:0.82rem; color:var(--c-hueso-secondary); line-height:1.4;">
-      Solicita tus hojas membretadas para Geografía mediante Encardomy.
-    </p>
-    <button type="button" class="desktop-action-btn gold" onclick="DesktopApp415.abrirModalHojas()" style="width:100%; height:38px; font-size:0.8rem;">
-      Solicitar por WhatsApp ›
-    </button>
-  </div>
-
-    </aside>
-    
-  </div>
-
-  <!-- MODAL HOJAS MEMBRETADAS (COMPUTADORA / ACCESIBLE) -->
-  <div class="desktop-modal-backdrop" id="desktop-modal-hojas" role="dialog" aria-modal="true" aria-labelledby="modal-hojas-desk-title">
-    <div class="desktop-modal-card">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:0.75rem; font-weight:800; color:var(--c-oro); text-transform:uppercase; letter-spacing:0.1em;">
-          Encardomy · Material Escolar Geografía
-        </span>
-        <button type="button" onclick="DesktopApp415.cerrarModalHojas()" style="background:none; border:none; color:var(--c-hueso-tertiary); font-size:1.4rem; cursor:pointer;" aria-label="Cerrar modal (Esc)">✕</button>
+      <div class="service-banner">
+        <span style="font-size:1.4rem;">⚡</span>
+        <span>Encardomy esta implementando nuevos servios para ti</span>
       </div>
 
-      <h3 id="modal-hojas-desk-title" style="margin:0; font-size:1.35rem; font-weight:800; color:var(--c-hueso);">
-        Solicitud de Hojas Membretadas ($30)
-      </h3>
-      <p style="margin:0; font-size:0.9rem; color:var(--c-hueso-secondary); line-height:1.45;">
-        Para procesar tu pedido ($30 pesos con entrega), escribe tu <strong>nombre completo</strong> iniciando por apellidos:
+      <p class="subtext">
+        Estamos transformando radicalmente la experiencia escolar de la Escuela Nacional Preparatoria Plantel 4 “Vidal Castañeda y Nájera”. Espéralo muy pronto con tecnología de vanguardia, diseño de alta fidelidad e innovaciones diseñadas a la medida de nuestra comunidad.
       </p>
 
-      <div>
-        <label for="desktop-input-nombre-apellidos" style="display:block; font-size:0.75rem; font-weight:800; color:var(--c-hueso-tertiary); text-transform:uppercase; margin-bottom:6px;">
-          Formato Obligatorio: Apellidos Nombre(s)
-        </label>
-        <input 
-          type="text" 
-          id="desktop-input-nombre-apellidos" 
-          placeholder="Ej: Pérez García Juan Carlos" 
-          style="width:100%; height:48px; background:rgba(11,12,16,0.7); border:1px solid var(--c-desktop-border); border-radius:var(--radius-sm); padding:0 16px; color:var(--c-hueso); font-size:0.95rem; outline:none;"
-          required
-        >
-      </div>
+      
 
-      <div style="display:flex; gap:12px; margin-top:8px;">
-        <button type="button" class="desktop-action-btn secondary" onclick="DesktopApp415.cerrarModalHojas()" style="flex:1; height:46px;">
-          Cancelar (Esc)
-        </button>
-        <button type="button" class="desktop-action-btn" onclick="DesktopApp415.confirmarEnvioHojasWhatsApp()" style="flex:2; height:46px; background:#25D366; color:#0B0C10; font-weight:800;">
-          Continuar a WhatsApp (Enter) ›
-        </button>
-      </div>
-    </div>
-  </div>
+      <nav class="switcher-bar" aria-label="Selector de Experiencia de Dispositivo">
+        <span style="width:100%; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--c-hueso-muted); margin-bottom:4px;">Versiones Disponibles:</span>
+        <a href="index.html" class="switcher-link ">📲 Celular</a>
+        <a href="mac-index.html" class="switcher-link active">💻 Mac</a>
+        <a href="ipad-index.html" class="switcher-link ">📱 iPad</a>
+        <a href="imac-index.html" class="switcher-link ">🖥️ iMac</a>
+        <a href="duo-index.html" class="switcher-link ">📖 iPhone Duo</a>
+      </nav>
+    </section>
+  </main>
 
-  <script src="js/data.js"></script>
-  <script src="js/colaboracion-seccion-b.js"></script>
-  <script src="js/renovacion-notificacion.js"></script>
-  <script src="js/legal-footer.js"></script>
-  <script src="js/desktop.js"></script>
-  
+  <footer>
+    <p>Encardomy by ShaMinKet · Escuela Nacional Preparatoria Plantel 4 · Ciclo 2026-2027</p>
+  </footer>
 </body>
 </html>

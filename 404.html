@@ -2,206 +2,274 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página No Encontrada Prepa 4 UNAM | shaminket</title>
-  <meta name="description" content="La página que buscas no existe en el portal del grupo 415 de la Prepa 4 UNAM. Regresa al horario oficial o solicita apoyo de tareas en shaminket.">
-  <link rel="canonical" href="https://shaminket.com/404">
-  <meta name="keywords" content="shaminket, prepa 4, unam, grupo 415, error 404, ayuda escolar, tareas prepa 4, enp 4">
-  <meta name="robots" content="noindex, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>404 — Reinvención en Proceso | Grupo 415</title>
+  <meta name="theme-color" content="#0B0C10">
+  <style>
 
-  <!-- Open Graph / Redes Sociales -->
-  <meta property="og:title" content="Página No Encontrada Prepa 4 UNAM | shaminket">
-  <meta property="og:description" content="La página que buscas no existe en el portal del grupo 415 de la Prepa 4 UNAM. Regresa al horario oficial o solicita apoyo de tareas en shaminket.">
-  <meta property="og:url" content="https://shaminket.com/404">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="shaminket">
-  
-  
-  <link rel="stylesheet" href="css/styles.css">
-    <script>
-    function resolveTargetUrl(target) {
-      const isFile = window.location.protocol === 'file:';
-      const hasHtml = window.location.pathname.endsWith('.html');
-      return (isFile || hasHtml) ? (target + '.html') : target;
+    :root {
+      --bg-base: #0B0C10;
+      --bg-panel: rgba(24, 26, 34, 0.75);
+      --bg-panel-border: rgba(229, 169, 60, 0.25);
+      --c-cempasuchil: #FF7A00;
+      --c-cempasuchil-glow: rgba(255, 122, 0, 0.35);
+      --c-oro: #E5A93C;
+      --c-oro-soft: rgba(229, 169, 60, 0.15);
+      --c-hueso: #F4EDE2;
+      --c-hueso-muted: #A3AAB8;
+      --c-obsidiana: #050608;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
     }
-    function checkResponsiveLayout() {
-      if (window.location.search.includes("force=desktop")) return;
-      const isMobileUA = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (window.innerWidth <= 768 || (isMobileUA && window.innerWidth < 850)) {
-        window.location.replace(resolveTargetUrl("404-movil"));
-      }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    checkResponsiveLayout();
-    window.addEventListener("resize", checkResponsiveLayout);
-  </script>
+
+    body {
+      background: var(--bg-base);
+      color: var(--c-hueso);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glow */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 20% 25%, rgba(62, 28, 107, 0.45) 0%, transparent 50%),
+        radial-gradient(circle at 80% 75%, rgba(255, 122, 0, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.08) 0%, transparent 60%);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .badge-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(229, 169, 60, 0.12);
+      border: 1px solid var(--c-oro);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-oro);
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(229, 169, 60, 0.15);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--c-cempasuchil);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--c-cempasuchil);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .main-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--bg-panel-border);
+      border-radius: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 122, 0, 0.1);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--c-cempasuchil), var(--c-oro), transparent);
+    }
+
+    .brand-title {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--c-hueso);
+      text-wrap: balance;
+    }
+
+    .brand-title span.shamin {
+      background: linear-gradient(135deg, #FF7A00 0%, #E5A93C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-banner {
+      background: rgba(229, 169, 60, 0.08);
+      border: 1px solid rgba(229, 169, 60, 0.3);
+      border-radius: 16px;
+      padding: 16px 24px;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--c-oro);
+      font-weight: 700;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .subtext {
+      color: var(--c-hueso-muted);
+      font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+      line-height: 1.6;
+      max-width: 650px;
+    }
+
+    .switcher-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+    }
+
+    .switcher-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--c-hueso-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .switcher-link:hover {
+      color: var(--c-hueso);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--c-oro);
+    }
+
+    .switcher-link.active {
+      background: var(--c-oro-soft);
+      border-color: var(--c-oro);
+      color: var(--c-oro);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.75rem;
+      color: var(--c-hueso-muted);
+      letter-spacing: 0.04em;
+    }
+
+  </style>
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body>
+  <div class="ambient-bg"></div>
 
-  <!-- CABECERA SUPERIOR PERSISTENTE -->
-  <div class="sticky-top-group">
-    <!-- 1. BARRA SUPERIOR DE LA MAC CON LOS 3 BOTONES -->
-    <div class="mac-header-topbar">
-      <div class="mac-header-dots">
-        <button class="win-dot win-dot-close" onclick="window.history.back()" title="Cerrar / Volver atrás"></button>
-        <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Minimizar / Ir al inicio"></button>
-        <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-      </div>
-      <span class="mac-header-title">Cuatreros del 415 &bull; ENP 4 Vidal Castañeda y Nájera UNAM</span>
+  <main class="container">
+    <div class="badge-bar">
+      <span class="status-dot"></span>
+      <span>Grupo 415 · Prepa 4 UNAM · 404 Not Found</span>
     </div>
-    <aside class="rebrand-cosmic-banner">
-      <div class="rebrand-inner">
-        <span class="rebrand-pill">⚠️ ERROR 404</span>
-        <span class="rebrand-text-main">
-          <strong>Ruta no encontrada</strong> &bull; Portal Grupo 0415 Prepa 4
-        </span>
-      </div>
-    </aside>
 
-    <header class="apple-nav">
-      <div class="nav-inner">
-        <a href="./" class="nav-brand">
-          <img src="assets/escudo-unam-original.png" alt="Escudo UNAM" style="height: 48px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
-          <div class="brand-text-cluster">
-            <div class="brand-name" style="display: flex; align-items: center; gap: 0.6rem;">
-              <span>Cuatreros</span> del 415
-              <img src="assets/logo-enp4.svg" alt="Logo ENP 4" style="height: 24px; width: auto;">
-            </div>
-            <div class="brand-subline">UNAM &bull; ENP Plantel 4 "Vidal Castañeda y Nájera"</div>
-          </div>
-        </a>
-
-        <nav class="nav-links-menu">
-          <a href="./" class="nav-link-item">Ir al Inicio</a>
-          <a href="centro-control" class="nav-link-item">Materias</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" class="btn-shaminket" style="padding: 0.45rem 1.15rem; font-size: 0.84rem;">
-            Shaminket
-          </a>
-        </nav>
-      </div>
-    </header>
-  </div>
-
-  <!-- HERO 404 -->
-  <section class="hero-cinematic" style="padding: 4.5rem 1.5rem 5rem; flex-grow: 1;">
-    <div class="ambient-glow-1"></div>
-    <div class="hero-content">
-      <div style="font-size: clamp(4.5rem, 10vw, 7.5rem); font-weight: 900; line-height: 1; letter-spacing: -3px; color: #D59F0F; text-shadow: 0 10px 35px rgba(213, 159, 15, 0.45); margin-bottom: 0.8rem;">
+    <section class="main-card">
+      
+      <div style="font-size:clamp(3.5rem, 10vw, 6rem); font-weight:900; line-height:1; color:var(--c-cempasuchil); font-family:var(--font-mono); text-shadow:0 0 40px var(--c-cempasuchil-glow); margin-bottom:-10px;">
         404
       </div>
+      <div style="font-size:0.9rem; font-weight:800; color:var(--c-oro); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">
+        Página en Construcción / Reinvención
+      </div>
+    
+      
+      <div style="font-size:1.8rem; margin-bottom:-10px;">✨</div>
+      
+      <h1 class="brand-title">
+        “Todo el equipo de <span class="shamin">ShaMinKet</span> esta reinventando la MInweb del 415 para el 415”
+      </h1>
 
-      <!-- CHISTE Y MENSAJE DE HUMOR -->
-      <div style="background: rgba(255, 255, 255, 0.07); border: 1.5px solid rgba(213, 159, 15, 0.4); border-radius: 24px; padding: 2rem 2.2rem; max-width: 720px; margin: 0 auto 2.5rem; backdrop-filter: blur(20px);">
-        <h2 style="font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 900; color: #ffffff; margin-bottom: 0.8rem; line-height: 1.3;">
-          ¿Sabes qué tienen en común esta página y tu tarea? 😂
-        </h2>
-        <p style="font-size: 1.25rem; color: #fcd866; font-weight: 800; margin-bottom: 0.5rem;">
-          ¡Que ninguna de las dos existe... todavía!
-        </p>
-        <p style="color: #cbd5e1; font-size: 0.98rem; line-height: 1.5; margin: 0;">
-          Parece que te desviaste de salón o el enlace cambió. No te preocupes, aquí abajo te decimos en 2 pasos cómo salvarte y a dónde dirigirte.
-        </p>
+      <div class="service-banner">
+        <span style="font-size:1.4rem;">⚡</span>
+        <span>Encardomy esta implementando nuevos servios para ti</span>
       </div>
 
-      <!-- EXPLICACIÓN EN 2 PASOS CON ACCESOS AUTOMÁTICOS -->
-      <div class="schedule-master-card" style="max-width: 780px; margin: 0 auto; text-align: left;">
-        <div class="window-titlebar">
-          <div class="window-dots">
-            <button class="win-dot win-dot-close" onclick="window.history.back()" title="Volver"></button>
-            <button class="win-dot win-dot-minimize" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Ir arriba"></button>
-            <button class="win-dot win-dot-maximize" onclick="toggleFullscreen()" title="Pantalla completa"></button>
-          </div>
-          <span class="win-titlebar-text">Asistente de Rescate 404 &bull; Grupo 0415</span>
-        </div>
-
-        <div class="schedule-card-body" style="padding: 2.2rem 2.4rem;">
-          <!-- Paso 1 -->
-          <div style="display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.8rem; border-bottom: 1px solid #edf2f7; padding-bottom: 1.4rem;">
-            <span style="background: #002B7A; color: #ffffff; font-weight: 900; font-size: 1rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
-            <div>
-              <strong style="color: #002B7A; font-size: 1.1rem;">Paso 1: Identifica qué necesitas ahora mismo</strong>
-              <p style="color: #64748b; font-size: 0.92rem; margin-top: 0.2rem;">
-                ¿Quieres volver a checar tus salones y horario, necesitas imprimir/hacer una tarea urgente, o tienes dudas con una materia?
-              </p>
-            </div>
-          </div>
-
-          <!-- Paso 2 -->
-          <div style="display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem;">
-            <span style="background: #D59F0F; color: #001628; font-weight: 900; font-size: 1rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
-            <div>
-              <strong style="color: #002B7A; font-size: 1.1rem;">Paso 2: Haz clic en la opción directa de rescate</strong>
-              <p style="color: #64748b; font-size: 0.92rem; margin-top: 0.2rem;">
-                Cada botón te conectará automáticamente con la plataforma oficial correspondiente:
-              </p>
-            </div>
-          </div>
-
-          <!-- Cuadrícula de botones automáticos -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
-            <!-- Opción 1: Página Principal -->
-            <a href="./" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 1.1rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <div>
-                <span style="font-size: 1.5rem;">🏠</span>
-                <strong style="display: block; color: #002B7A; margin-top: 0.3rem; font-size: 1rem;">Página Principal 0415</strong>
-                <p style="color: #64748b; font-size: 0.84rem; margin-top: 0.2rem;">Regresa al horario en vivo, avisos y guía de salones del plantel.</p>
-              </div>
-              <span style="color: #002B7A; font-weight: 800; font-size: 0.88rem; margin-top: 0.8rem;">Volver al inicio &rarr;</span>
-            </a>
-
-            <!-- Opción 2: Encardomy (Tareas y Copias - Azul Eléctrico) -->
-            <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer" style="background: #001628; border: 2px solid var(--enc-azul-electrico); border-radius: 14px; padding: 1.1rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <div>
-                <span style="font-size: 1.5rem;">⚡</span>
-                <strong style="display: block; color: #ffffff; margin-top: 0.3rem; font-size: 1rem;">Encardomy (Copias y Tareas)</strong>
-                <p style="color: var(--enc-azul-tint); font-size: 0.84rem; margin-top: 0.2rem;">¿Te falta la tarea de verdad? Solicita impresiones y apoyo aquí.</p>
-              </div>
-              <span class="btn-encardomy" style="padding: 0.45rem 1rem; font-size: 0.82rem; margin-top: 0.8rem; justify-content: center;">Pedir en Encardomy &rarr;</span>
-            </a>
-
-            <!-- Opción 3: Shaminket (Morado) -->
-            <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer" style="background: #fdf4ff; border: 1.5px solid #d8b4fe; border-radius: 14px; padding: 1.1rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <div>
-                <span style="font-size: 1.5rem;">🟣</span>
-                <strong style="display: block; color: var(--sham-purple-dark); margin-top: 0.3rem; font-size: 1rem;">Agencia Shaminket</strong>
-                <p style="color: #64748b; font-size: 0.84rem; margin-top: 0.2rem;">Conoce los proyectos, tecnología y diseño de Shaminket.</p>
-              </div>
-              <span class="btn-shaminket" style="padding: 0.45rem 1rem; font-size: 0.82rem; margin-top: 0.8rem; justify-content: center;">Ir a Shaminket &rarr;</span>
-            </a>
-
-            <!-- Opción 4: Soporte WhatsApp Directo -->
-            <a href="https://wa.me/525571985641?text=Hola,%20me%20perdi%20en%20la%20pagina%20del%20415%20y%20tengo%20una%20duda" target="_blank" rel="noopener noreferrer" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 1.1rem; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-              <div>
-                <span style="font-size: 1.5rem;">💬</span>
-                <strong style="display: block; color: #15803d; margin-top: 0.3rem; font-size: 1rem;">Soporte por WhatsApp</strong>
-                <p style="color: #64748b; font-size: 0.84rem; margin-top: 0.2rem;">Escríbenos directamente al (+52 55 7198 5641) y te ayudamos.</p>
-              </div>
-              <span style="color: #16a34a; font-weight: 800; font-size: 0.88rem; margin-top: 0.8rem;">Enviar WhatsApp &rarr;</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="apple-footer-dark">
-    <div class="footer-wrapper">
-      <div class="footer-top-cluster">
-        <div>
-          <strong style="color: #ffffff;">Cuatreros del 415</strong> &bull; UNAM ENP Plantel 4 "Vidal Castañeda y Nájera"
-        </div>
-        <div class="footer-links-list">
-          <a href="./">Página Principal</a>
-          <a href="https://encardomy.shaminket.com" target="_blank" rel="noopener noreferrer">Encardomy</a>
-          <a href="https://shaminket.com" target="_blank" rel="noopener noreferrer">Shaminket</a>
-        </div>
-      </div>
-      <p>
-        Diseñado con los colores oficiales Azul y Oro de la UNAM para el Grupo 0415.
+      <p class="subtext">
+        Estamos transformando radicalmente la experiencia escolar de la Escuela Nacional Preparatoria Plantel 4 “Vidal Castañeda y Nájera”. Espéralo muy pronto con tecnología de vanguardia, diseño de alta fidelidad e innovaciones diseñadas a la medida de nuestra comunidad.
       </p>
-    </div>
-  </footer>
 
-  <script src="js/main.js"></script>
+      
+      <div style="margin-top:10px;">
+        <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:linear-gradient(135deg, var(--c-cempasuchil), var(--c-oro)); color:var(--c-obsidiana); font-weight:800; border-radius:999px; text-decoration:none; font-size:0.9rem; box-shadow:0 6px 20px rgba(255,122,0,0.35); transition:transform 0.2s;">
+          ← Regresar al Inicio
+        </a>
+      </div>
+    
+
+      <nav class="switcher-bar" aria-label="Selector de Experiencia de Dispositivo">
+        <span style="width:100%; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--c-hueso-muted); margin-bottom:4px;">Versiones Disponibles:</span>
+        <a href="index.html" class="switcher-link ">📲 Celular</a>
+        <a href="mac-index.html" class="switcher-link ">💻 Mac</a>
+        <a href="ipad-index.html" class="switcher-link ">📱 iPad</a>
+        <a href="imac-index.html" class="switcher-link ">🖥️ iMac</a>
+        <a href="duo-index.html" class="switcher-link ">📖 iPhone Duo</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <p>Encardomy by ShaMinKet · Escuela Nacional Preparatoria Plantel 4 · Ciclo 2026-2027</p>
+  </footer>
 </body>
 </html>
